@@ -7,5 +7,7 @@ reports/
 test-results/
 playwright-report/
 *.tsbuildinfo
+public/logos/*.small.webp
+public/brand/symbol-small.webp
 .env*
 !.env.example

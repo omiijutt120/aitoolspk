@@ -3,7 +3,7 @@ import { FaqList, faqs } from '@/components/faq';
 import { metadata as makeMetadata, JsonLd } from '@/lib/seo';
 export const metadata = makeMetadata(
   'Frequently asked questions',
-  'Answers about PKR pricing, WhatsApp orders, product approval, warranty terms, account safety and refunds at AItoolsPK.',
+  'Answers about PKR pricing, WhatsApp orders, product approval, warranty terms, account safety and refunds at AiToolsPk.',
   '/faq/'
 );
 export default function Faq() {

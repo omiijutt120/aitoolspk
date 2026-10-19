@@ -3,7 +3,8 @@
   --color-ink: #15171a;
   --color-muted: #626871;
   --color-line: #e5e7eb;
-  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 :root {
   --ink: #15171a;
@@ -22,7 +23,7 @@ body {
   margin: 0;
   background: white;
   color: var(--ink);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

@@ -4,23 +4,16 @@ import { Footer } from '@/components/footer';
 import { JsonLd, origin } from '@/lib/seo';
 import './globals.css';
 import './storefront.css';
-import localFont from 'next/font/local';
-const GeistSans = localFont({
-  src: '../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-  display: 'optional',
-});
 import { EventBridge } from '@/components/event-bridge';
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
   title: {
-    default: 'AItoolsPK — Digital tools, clearer choices.',
-    template: '%s | AItoolsPK',
+    default: 'AiToolsPk — Digital tools, clearer choices.',
+    template: '%s | AiToolsPk',
   },
   description:
     'Compare AI tools and digital subscriptions in Pakistan. Explore exact plans, PKR prices and warranty details, then confirm your order on WhatsApp.',
-  applicationName: 'AItoolsPK',
+  applicationName: 'AiToolsPk',
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -42,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-PK" className={GeistSans.variable}>
+    <html lang="en-PK" data-scroll-behavior="smooth">
       <body>
         <a className="skip-link" href="#main">
           Skip to content
@@ -55,7 +48,7 @@ export default function RootLayout({
           data={{
             '@context': 'https://schema.org',
             '@type': 'Organization',
-            name: 'AItoolsPK',
+            name: 'AiToolsPk',
             url: origin,
             logo: `${origin}/brand/logo.png`,
             contactPoint: {
@@ -70,7 +63,7 @@ export default function RootLayout({
           data={{
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'AItoolsPK',
+            name: 'AiToolsPk',
             url: origin,
             potentialAction: {
               '@type': 'SearchAction',

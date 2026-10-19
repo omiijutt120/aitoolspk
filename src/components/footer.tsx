@@ -8,9 +8,14 @@ export function Footer() {
         <div className="footer-top">
           <div className="footer-about">
             <Link className="brand" href="/">
-              <Image src="/brand/symbol.webp" alt="" width={34} height={34} />
+              <Image
+                src="/brand/symbol-small.webp"
+                alt=""
+                width={34}
+                height={34}
+              />
               <span>
-                AItools<span className="brand-light">PK.</span>
+                AiTools<span className="brand-light">Pk</span>
               </span>
             </Link>
             <p>
@@ -29,7 +34,7 @@ export function Footer() {
           </div>
           <div>
             <p className="footer-label">EXPLORE</p>
-            <Link href="/#all-tools">All tools</Link>
+            <Link href="/tools/">All tools</Link>
             <Link href="/categories/">Categories</Link>
             <Link href="/how-to-order/">How to order</Link>
           </div>
@@ -47,7 +52,7 @@ export function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} AItoolsPK.tech</span>
+          <span>© {new Date().getFullYear()} AiToolsPk.tech</span>
           <span>
             Independent catalog. Product trademarks belong to their respective
             owners. No vendor affiliation is claimed.

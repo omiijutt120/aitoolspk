@@ -37,20 +37,19 @@ export function Header() {
   return (
     <header className="header">
       <div className="container header-inner">
-        <Link href="/" className="brand" aria-label="AItoolsPK home">
+        <Link href="/" className="brand" aria-label="AiToolsPk home">
           <Image
-            src="/brand/symbol.webp"
+            src="/brand/symbol-small.webp"
             alt=""
             width={38}
             height={38}
             priority
           />
           <span>
-            AItools<span className="brand-light">PK</span>
-            <span className="brand-dot">.</span>
+            AiTools<span className="brand-light">Pk</span>
           </span>
         </Link>
-        <form className="header-search" action="/" role="search">
+        <form className="header-search" action="/tools/" role="search">
           <Search size={18} aria-hidden="true" />
           <label htmlFor="site-search" className="sr-only">
             Search the complete catalog
@@ -101,7 +100,7 @@ export function Header() {
       >
         <div className="nav-panel">
           <div className="flex items-center justify-between">
-            <span className="eyebrow">AItoolsPK</span>
+            <span className="eyebrow">AiToolsPk</span>
             <button
               onClick={close}
               className="icon-button"

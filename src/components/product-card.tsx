@@ -17,7 +17,11 @@ export function BrandLogo({
     <div className={`product-logo ${large ? 'large' : ''}`}>
       {product.logo ? (
         <Image
-          src={product.logo}
+          src={
+            large
+              ? product.logo
+              : product.logo.replace(/\.webp$/, '.small.webp')
+          }
           alt={`${product.brand} logo`}
           width={large ? 58 : 34}
           height={large ? 58 : 34}
@@ -75,6 +79,9 @@ export function ProductCard({ product }: { product: Product }) {
           View Details
         </Link>
         <BuyButton product={product} />
+      </div>
+      <div className="card-inquiry">
+        <InquiryLink product={product} />
       </div>
     </article>
   );

@@ -2,7 +2,7 @@ import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
   'Privacy policy',
-  'How AItoolsPK handles website visits, WhatsApp enquiries, technical logs and privacy requests. No customer accounts or on-site payment collection.',
+  'How AiToolsPk handles website visits, WhatsApp enquiries, technical logs and privacy requests. No customer accounts or on-site payment collection.',
   '/privacy-policy/'
 );
 export default function Privacy() {
@@ -11,11 +11,11 @@ export default function Privacy() {
       policy
       eyebrow="YOUR INFORMATION"
       title="Privacy policy"
-      lead="AItoolsPK is a catalog website. You can browse without creating an account or submitting personal information."
+      lead="AiToolsPk is a catalog website. You can browse without creating an account or submitting personal information."
     >
       <h2>Who to contact</h2>
       <p>
-        AItoolsPK operates the catalog at AItoolsPK.tech. For privacy questions
+        AiToolsPk operates the catalog at AiToolsPk.tech. For privacy questions
         or deletion requests, message +92 371 4549245 on WhatsApp and label your
         message “Privacy request”.
       </p>

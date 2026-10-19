@@ -1,0 +1,24 @@
+{
+  "featuredProductIds": [
+    "PK-1C12A30E6D63",
+    "PK-9E9FBE0D8DD9",
+    "PK-909BA157A0CC",
+    "PK-6BB778149DFF",
+    "PK-1DDDAC9DBDF9",
+    "PK-95AF80037530",
+    "PK-B3BD5C9BB1E5",
+    "PK-2CAAE35B7200",
+    "PK-2DFC2CC916CE",
+    "PK-8E12DE9229EC",
+    "PK-BCD332D4CA42",
+    "PK-E9863103D898",
+    "PK-4EF1AD42CDD7",
+    "PK-BC2084046009",
+    "PK-F7BEA36B3D38",
+    "PK-354B9EBE6DE1",
+    "PK-29397FC809DE",
+    "PK-653CBE620D57",
+    "PK-5A5C71A8C2C3"
+  ],
+  "additionalBrands": ["chatgpt", "claude", "cursor", "perplexity", "grammarly"]
+}

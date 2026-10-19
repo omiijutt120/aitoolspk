@@ -1,20 +1,25 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   ArrowUpRight,
   MessageCircle,
   ShieldCheck,
   Banknote,
+  Search,
 } from 'lucide-react';
-import { Catalog } from '@/components/catalog';
-import { CatalogBrandLink } from '@/components/catalog-brand-link';
+import { ProductCard } from '@/components/product-card';
 import { products } from '@/lib/catalog';
+import { homeSelection } from '@/lib/catalog-order';
 import { metadata as makeMetadata } from '@/lib/seo';
+
 export const metadata = makeMetadata(
-  'AI tools & subscriptions in Pakistan — browse all plans',
-  'Browse the complete AItoolsPK catalog on one page. Search real brands, compare exact plans and PKR prices, and confirm approved orders on WhatsApp.',
+  'AI tools & subscriptions in Pakistan — selected plans',
+  'Explore selected AiToolsPk plans, compare PKR prices and browse the complete catalog with search and filters.',
   '/'
 );
+
 export default function Home() {
+  const selected = homeSelection(products);
   const brands = ['chatgpt', 'claude', 'canva', 'figma', 'notion', 'elevenlabs']
     .map((slug) => products.find((p) => p.brandSlug === slug))
     .filter((p) => p !== undefined);
@@ -29,9 +34,9 @@ export default function Home() {
             All your tools. <span>One place.</span>
           </h1>
           <p>
-            Explore {products.length} plans. Compare prices in PKR.
-            <br className="desktop-break" /> Order approved offers directly on
-            WhatsApp.
+            A few great places to start. Compare plans and prices in PKR.
+            <br className="desktop-break" /> Explore all {products.length}{' '}
+            offers when you’re ready.
           </p>
           <div className="hero-facts">
             <span>
@@ -55,37 +60,81 @@ export default function Home() {
           </div>
           <div className="tool-wall-icons">
             {brands.map((p) => (
-              <CatalogBrandLink
+              <Link
                 key={p.id}
-                href={`/?brand=${encodeURIComponent(p.brand)}#all-tools`}
-                label={`Browse ${p.brand} plans`}
+                href={`/tools/?brand=${encodeURIComponent(p.brand)}`}
+                aria-label={`Browse ${p.brand} plans`}
+                prefetch={false}
               >
                 {p.logo ? (
                   <Image src={p.logo} width={36} height={36} alt="" />
                 ) : (
                   <span>{p.brand}</span>
                 )}
-              </CatalogBrandLink>
+              </Link>
             ))}
           </div>
           <div className="tool-wall-bottom">
             <p>
               One place.
               <br />
-              <strong>{products.length} ways to get started.</strong>
+              <strong>A better toolkit starts here.</strong>
             </p>
             <span className="tool-wall-stamp">
-              AItoolsPK<span>EST. PAKISTAN</span>
+              AiToolsPk<span>EST. PAKISTAN</span>
             </span>
           </div>
         </div>
       </section>
       <section
-        id="all-tools"
-        className="container storefront-catalog"
-        aria-labelledby="catalog-heading"
+        id="featured-tools"
+        className="container home-selection"
+        aria-labelledby="featured-heading"
       >
-        <Catalog continuous />
+        <div className="store-catalog-title">
+          <div>
+            <p className="store-eyebrow">YOUR SHORTLIST</p>
+            <h2 id="featured-heading">
+              Featured tools<span>{selected.length}</span>
+            </h2>
+          </div>
+          <p>Selected plans. Less scrolling.</p>
+        </div>
+        <p className="home-verification-note">
+          Plans marked “Pending verification” need confirmation before ordering.
+          Use the WhatsApp availability link to ask about exact terms.
+        </p>
+        <div className="product-grid home-product-grid">
+          {selected.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+        <div
+          className="home-discovery"
+          aria-label="Explore the complete catalog"
+        >
+          <div>
+            <h2>Find the right fit for your next project.</h2>
+            <p>
+              Search and filter all {products.length} offers in the full
+              catalog.
+            </p>
+          </div>
+          <div className="home-discovery-actions">
+            <Link
+              className="button"
+              href="/tools/?focus=search"
+              prefetch={false}
+            >
+              <Search size={17} />
+              Find your next tool
+            </Link>
+            <Link className="button outline" href="/tools/" prefetch={false}>
+              Show all tools
+              <ArrowUpRight size={17} />
+            </Link>
+          </div>
+        </div>
       </section>
       <section className="container store-support">
         <div>
@@ -101,7 +150,8 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Talk to us on WhatsApp <ArrowUpRight size={16} />
+          Talk to us on WhatsApp
+          <ArrowUpRight size={16} />
         </a>
       </section>
     </div>

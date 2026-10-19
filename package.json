@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
+    "predev": "node scripts/optimize-assets.mjs",
     "catalog:import": "node scripts/import-catalog.mjs",
-    "prebuild": "node scripts/import-catalog.mjs --if-present && node scripts/validate-public.mjs",
+    "prebuild": "node scripts/import-catalog.mjs --if-present && node scripts/optimize-assets.mjs && node scripts/validate-public.mjs",
     "build": "next build --webpack",
     "postbuild": "node scripts/fix-static-paths.mjs",
     "start": "serve out -l 3000",

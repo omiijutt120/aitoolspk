@@ -97,6 +97,7 @@ export function CatalogBrowser({
   const [loaded, setLoaded] = useState({ key: '', count: 32 });
   const dialog = useRef<HTMLDialogElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+  const searchFocused = useRef(false);
   const filterTrigger = useRef<HTMLButtonElement>(null);
   const sentinel = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -118,10 +119,6 @@ export function CatalogBrowser({
         if (e.name !== 'AbortError') setError(true);
       });
     return () => controller.abort();
-  }, []);
-  useEffect(() => {
-    if (new URLSearchParams(window.location.search).get('focus') === 'search')
-      searchRef.current?.focus();
   }, []);
   useEffect(() => {
     if (mobileOpen) {
@@ -209,6 +206,12 @@ export function CatalogBrowser({
     pages,
     Math.max(1, Math.trunc(Number(params.get('page')) || 1))
   );
+  useEffect(() => {
+    if (all && params.get('focus') === 'search' && !searchFocused.current) {
+      searchRef.current?.focus();
+      searchFocused.current = true;
+    }
+  }, [all, params]);
   const loadKey = queryString + '|' + debounced;
   const visible = loaded.key === loadKey ? loaded.count : 32;
   const shown = continuous
@@ -369,7 +372,7 @@ export function CatalogBrowser({
         <p>Not sure which plan?</p>
         <span>We can help with the details.</span>
         <Link href="/contact/">
-          Ask us on WhatsApp <ArrowUpRight size={14} />
+          Contact support <ArrowUpRight size={14} />
         </Link>
       </div>
     </div>

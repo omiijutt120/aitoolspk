@@ -1,30 +1,12 @@
-# AItoolsPK storefront redesign
+# AiToolsPk homepage and catalog plan
 
-## What changes
+1. Put the owner's 19 named plans first, preserving their exact IDs, variants and PKR prices. Store this explicit order in data/storefront.json.
+2. Follow with five additional non-API plans from familiar brands: ChatGPT, Claude, Cursor, Perplexity and Grammarly. This is an editorial selection, not a measured sales or trending ranking. Keep the homepage at 24 cards; no infinite scrolling or full-catalog download.
+3. Add "Find your next tool" and "Show all tools" below the selection. Both open /tools/; the former focuses search. Keep all 811 offers searchable and paginated, with API offers at the end of the default order. Explicit price/name sorts retain their normal meaning.
+4. Display the brand as AiToolsPk consistently in navigation, footer, policies, metadata and WhatsApp messages. The purchased domain remains aitoolspk.tech.
+5. Use four columns on desktop, three on tablet/small laptops, two on mobile and one on very narrow screens. Keep real logos, prices and distinct plan details readable, touch actions at least 44px, and input text 16px on phones to avoid iOS zoom.
+6. Keep Buy Now gated as required by the PRD. Add functional WhatsApp availability/restock links to every card so visitors always have an appropriate next action.
+7. Test chosen product order, API ordering, both discovery links, every homepage product link and WhatsApp payload, search/filter/sort/pagination, keyboard access, mobile drawer, console errors and automated accessibility. Check phone, tablet and laptop widths, run lint/type checking/data tests/build and measure mobile Lighthouse performance.
+8. Refresh the running local production preview and existing owner-private hosted Site. Do not claim the purchased domain is configured.
 
-The homepage becomes the catalog itself. Remove the tall hero, orbit illustration, shortlist and “Find your next tool” button. Keep the full catalog on `/`: visitors search, filter, compare and scroll through every offer without moving to another page.
-
-## Layout
-
-1. Compact sticky header with the supplied brand mark, a prominent search field and WhatsApp support.
-2. Short monochrome introduction with the real catalog count and a small branded composition using actual vendor assets.
-3. Full catalog: category tabs, brand shortcuts, an offer count, numeric sorting, a desktop filter sidebar and a mobile filter drawer.
-4. Product cards with prominent genuine logos, readable plan titles, distinct duration/access/warranty details, PKR prices, stock/review status and both required actions.
-5. A compact help strip and policy footer. Put detailed guidance on its dedicated pages.
-
-## Browsing
-
-All 811 offers belong to the homepage catalog. Render the first batch immediately and automatically reveal further offers as the visitor scrolls, keeping search/filtering over the entire catalog. No “browse all” gate, homepage pagination or extra discovery CTA. Keep `/tools` and all existing category/detail URLs working.
-
-## Logos and data
-
-Use real assets from declared official vendor domains or published brand kits, stored locally with their source URLs. Verify source provenance, preserve native colors/proportions, and never substitute a made-up symbol. Keep unresolved brands as text. Logo provenance does not imply permission to resell a product or vendor endorsement. Keep product approval and quote expiry gates, exact prices and private supplier fields unchanged.
-
-## Acceptance
-
-- Products visible in the first desktop viewport; first mobile screen leads directly into search/catalog.
-- All offers searchable on `/`, no “Find your next tool” button, no navigation required to browse the rest.
-- Official logos visible on the main recognizable brands, with an asset provenance report.
-- Working category chips, brand shortcuts, filters, sorting, automatic loading and mobile drawer.
-- Check 375/390/768/1024/1440px, keyboard interaction, contrast, console/network errors, price/variant integrity, lint, TypeScript and production build.
-- Update the running local preview and the existing owner-only hosted preview; do not claim the purchased domain is configured.
+Selection context: current official [Cursor release updates](https://cursor.com/blog) and [Anthropic Claude Code updates](https://www.anthropic.com/engineering/april-23-postmortem) were checked on 2026-10-19. No popularity statistics are displayed.

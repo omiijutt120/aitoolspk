@@ -16,7 +16,7 @@ export function metadata(
       description,
       url: `${origin}${path}`,
       type: 'website',
-      siteName: 'AItoolsPK',
+      siteName: 'AiToolsPk',
       locale: 'en_PK',
       images: [{ url: '/brand/social.png', width: 1200, height: 630 }],
     },

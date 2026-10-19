@@ -101,7 +101,7 @@ test('all offer messages preserve exact identity, warranty, plan, price and page
       ])
         assert.ok(message.includes(value));
       assert.equal(
-        message.startsWith('Hi AItoolsPK, I want to order:'),
+        message.startsWith('Hi AiToolsPk, I want to order:'),
         intent === 'order'
       );
     }

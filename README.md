@@ -1,8 +1,10 @@
-# AItoolsPK.tech
+# AiToolsPk.tech
 
 A static-first Next.js 16 + React 19 + TypeScript + Tailwind CSS 4 catalog. Orders are enquiries on WhatsApp at **+923714549245**. There are no customer accounts, payment forms, carts, databases or analytics trackers.
 
-The homepage is the storefront: the complete catalog, search, category tabs, brand shortcuts and filters all work on `/`. The first 32 offers render immediately; further offers load automatically as you scroll on the same page. There is no homepage “browse all” gate or pagination. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) for the redesign decisions.
+The UI uses native system fonts with no font download. `predev` and `prebuild` generate 96px WebP thumbnails from the official local logo masters, keeping full assets for detail pages. Generated thumbnails are ignored by Git and recreated automatically. Use `node scripts/fetch-official-logos.mjs --only=leonardo,linkedin` to refresh selected brand assets; source declarations and provenance live in `data/logo-sources.json` and `data/brands.json`.
+
+The homepage shows a bounded selection of 24 offers: the 19 owner-selected plans first, then one non-API plan from each of five familiar brands. "Find your next tool" opens the full catalog with search focused; "Show all tools" opens the paginated full catalog. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) and [VERIFICATION.md](VERIFICATION.md).
 
 `npm run build` includes a narrow post-build workaround for [Next.js issue #85374](https://github.com/vercel/next.js/issues/85374): Windows builds can emit nested RSC segment filenames while the browser requests flat filenames. The script copies the required flat aliases without modifying dependencies; native Linux exports need no changes. Keep this check when deploying an export built on Windows.
 
@@ -38,7 +40,7 @@ All **811** original rows are imported with exact `SellingPricePKR` integer reta
 
 The original CSV and PRD are in ignored `private/`. **Never upload that directory, the original Downloads files, or `reports/` to a public repository or web root.** Public builds use an allowlist projection in `data/catalog.json` and `public/catalog/index.json`. Descriptions are rewritten conservatively; raw source copy, purchase requirements, supplier URLs, original prices, costs, margins, profits, sold counts and evidence are never copied. IDs are stable opaque public hashes; they do not expose supplier identifiers.
 
-The homepage server renders 32 offers and reveals more automatically on scroll. Other catalog pages server render 24 offers and retain pagination. The catalog browser fetches the sanitized index and uses Fuse.js for accent-insensitive fuzzy search over the entire catalog. Filters and sort live in the URL. Individual offers and category pages are static HTML with metadata and breadcrumbs. Pending offers are `noindex` and omitted from the sitemap. Product/Offer structured data is emitted only for approved entries, with an Offer only when purchasable.
+The homepage server renders its 24 selected offers without fetching the full catalog or loading the search engine. Manage their IDs/order and additional brands in `data/storefront.json`. API offers appear after non-API offers in the default catalog order. Catalog pages server render 24 offers and retain pagination. The catalog browser fetches the sanitized index and uses Fuse.js for accent-insensitive fuzzy search over the entire catalog. Filters and sort live in the URL. Individual offers and category pages are static HTML with metadata and breadcrumbs. Pending offers are `noindex` and omitted from the sitemap. Product/Offer structured data is emitted only for approved entries, with an Offer only when purchasable.
 
 ### Update products
 

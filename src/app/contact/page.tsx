@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'Contact AItoolsPK',
-  'Contact AItoolsPK on WhatsApp at +92 371 4549245 for plan questions, current availability, order support or refund requests.',
+  'Contact AiToolsPk',
+  'Contact AiToolsPk on WhatsApp at +92 371 4549245 for plan questions, current availability, order support or refund requests.',
   '/contact/'
 );
 export default function Contact() {
@@ -16,15 +16,15 @@ export default function Contact() {
     >
       <div className="contact-card">
         <MessageCircle size={28} />
-        <h2 className="!m-0">AItoolsPK · Pakistan</h2>
+        <h2 className="!m-0">AiToolsPk · Pakistan</h2>
         <p>
           WhatsApp: +92 371 4549245
           <br />
-          Website: AItoolsPK.tech
+          Website: AiToolsPk.tech
         </p>
         <a
           className="button"
-          href="https://wa.me/923714549245?text=Hi%20AItoolsPK%2C%20I%20have%20a%20question%20about%20a%20digital%20tool."
+          href="https://wa.me/923714549245?text=Hi%20AiToolsPk%2C%20I%20have%20a%20question%20about%20a%20digital%20tool."
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -38,7 +38,7 @@ export default function Contact() {
       </div>
       <h2>Before you send a message</h2>
       <p>
-        AItoolsPK is an independent catalog and seller contact. We do not claim
+        AiToolsPk is an independent catalog and seller contact. We do not claim
         official vendor partnerships. Availability, licensing and plan terms
         must be confirmed before an order is accepted. We do not publish
         guaranteed support hours or response times.

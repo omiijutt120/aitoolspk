@@ -74,7 +74,7 @@ export default function HowToOrder() {
       </p>
       <h2>Need a hand?</h2>
       <p>
-        <Link href="/contact/">Contact AItoolsPK</Link> with the product ID. You
+        <Link href="/contact/">Contact AiToolsPk</Link> with the product ID. You
         can also read the <Link href="/faq/">FAQs</Link> and{' '}
         <Link href="/refund-policy/">refund policy</Link>.
       </p>

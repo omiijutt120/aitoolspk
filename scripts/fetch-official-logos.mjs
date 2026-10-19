@@ -155,7 +155,15 @@ async function prepare(slug, source) {
   }
   report.push({ slug, result: 'text fallback retained', reason: error });
 }
-const queue = Object.entries(sources);
+const only = process.argv
+  .find((arg) => arg.startsWith('--only='))
+  ?.slice(7)
+  .split(',');
+if (only?.some((slug) => !sources[slug]))
+  throw new Error('Unknown brand in --only');
+const queue = Object.entries(sources).filter(
+  ([slug]) => !only || only.includes(slug)
+);
 await Promise.all(
   Array.from({ length: 8 }, async () => {
     while (queue.length) {

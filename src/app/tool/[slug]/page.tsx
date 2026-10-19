@@ -79,7 +79,7 @@ export default async function ProductDetail({
               <h2>Before you decide</h2>
               <ul>
                 <li>
-                  AItoolsPK is independent. No official vendor partnership is
+                  AiToolsPk is independent. No official vendor partnership is
                   claimed.
                 </li>
                 <li>
@@ -105,7 +105,7 @@ export default async function ProductDetail({
                 {p.warranty}.{' '}
                 {p.approval === 'approved'
                   ? 'Ask for the start date and agreed remedy in writing before paying.'
-                  : 'This is a source label, not a warranty promise from AItoolsPK. Exact coverage, exclusions and remedy must be verified.'}{' '}
+                  : 'This is a source label, not a warranty promise from AiToolsPk. Exact coverage, exclusions and remedy must be verified.'}{' '}
                 Read the{' '}
                 <Link className="underline" href="/refund-policy/">
                   refund policy
@@ -264,7 +264,7 @@ export default async function ProductDetail({
                     priceCurrency: 'PKR',
                     price: p.price,
                     availability: 'https://schema.org/InStock',
-                    seller: { '@type': 'Organization', name: 'AItoolsPK' },
+                    seller: { '@type': 'Organization', name: 'AiToolsPk' },
                   },
                 }
               : {}),

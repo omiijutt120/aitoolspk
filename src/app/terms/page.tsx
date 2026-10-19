@@ -3,7 +3,7 @@ import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
   'Terms of service',
-  'AItoolsPK catalog terms covering indicative PKR prices, independent seller status, eligibility, safe delivery, warranties and WhatsApp order confirmation.',
+  'AiToolsPk catalog terms covering indicative PKR prices, independent seller status, eligibility, safe delivery, warranties and WhatsApp order confirmation.',
   '/terms/'
 );
 export default function Terms() {
@@ -12,11 +12,11 @@ export default function Terms() {
       policy
       eyebrow="KNOW WHAT TO EXPECT"
       title="Terms of service"
-      lead="These terms explain how the AItoolsPK catalog and WhatsApp enquiry process work."
+      lead="These terms explain how the AiToolsPk catalog and WhatsApp enquiry process work."
     >
       <h2>Catalog and seller contact</h2>
       <p>
-        AItoolsPK.tech is an independent digital tools catalog serving customers
+        AiToolsPk.tech is an independent digital tools catalog serving customers
         in Pakistan. Our contact is +92 371 4549245 on WhatsApp. Vendor names
         and logos identify products; they do not indicate a partnership,
         endorsement or reseller authorization.

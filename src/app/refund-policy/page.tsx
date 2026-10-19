@@ -2,7 +2,7 @@ import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
   'Refund & resolution policy',
-  'Read how AItoolsPK handles undelivered orders, activated digital plans, warranty issues, cancellations and refund requests.',
+  'Read how AiToolsPk handles undelivered orders, activated digital plans, warranty issues, cancellations and refund requests.',
   '/refund-policy/'
 );
 export default function Refund() {
@@ -73,7 +73,7 @@ export default function Refund() {
       </p>
       <h2>Disagreements and statutory rights</h2>
       <p>
-        Contact AItoolsPK first so the agreed order terms can be reviewed. This
+        Contact AiToolsPk first so the agreed order terms can be reviewed. This
         policy does not limit rights or remedies that cannot legally be
         excluded.
       </p>

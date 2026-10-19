@@ -646,5 +646,25 @@
     "verified_date": "2026-10-19",
     "guidelines": "https://nordvpn.com/press-area/",
     "usage_notes": "Unchanged official press-kit logo. Guidelines allow descriptive identification; no affiliation or permission to resell is claimed."
+  },
+  "linkedin": {
+    "official_domain": "linkedin.com",
+    "logo_source": "https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca",
+    "asset_path": "/logos/linkedin.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://www.linkedin.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "leonardo": {
+    "official_domain": "leonardo.ai",
+    "logo_source": "https://files.readme.io/e6fd24fe6d94d90d5c885217bfc7e206f382cccef4e950586465ac1a3750f90d-Leonardo_Icon_ElectricPurple_1.png",
+    "asset_path": "/logos/leonardo.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://docs.leonardo.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
   }
 }

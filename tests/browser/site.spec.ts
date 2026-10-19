@@ -70,7 +70,7 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .click();
   await expect(page.locator('.detail-summary h1')).toBeVisible();
   await expect(page.locator('.detail-action .buy-button')).toBeDisabled();
-  const inquiry = page.getByRole('link', {
+  const inquiry = page.locator('.detail-action').getByRole('link', {
     name: /Confirm availability on WhatsApp/,
   });
   await expect(inquiry).toHaveAttribute(
@@ -133,7 +133,7 @@ test('navigation and mobile filter dialogs support keyboard close', async ({
     'Out of stock'
   );
 });
-for (const width of [375, 390, 768, 1024, 1440]) {
+for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {
   test(`responsive layout ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');

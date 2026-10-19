@@ -23,7 +23,7 @@ export function Document({
       <h1>{title}</h1>
       {policy && (
         <p className="policy-date">
-          Effective 19 October 2026 · AItoolsPK.tech
+          Effective 19 October 2026 · AiToolsPk.tech
         </p>
       )}
       <p className="lead">{lead}</p>

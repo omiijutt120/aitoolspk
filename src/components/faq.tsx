@@ -9,7 +9,7 @@ export const faqs = [
   ],
   [
     'Are these official vendor subscriptions?',
-    'AItoolsPK is an independent catalog and reseller contact, with no vendor partnership claimed. Eligibility and access methods vary by offer. A product logo identifies its brand; it does not imply authorization or endorsement.',
+    'AiToolsPk is an independent catalog and reseller contact, with no vendor partnership claimed. Eligibility and access methods vary by offer. A product logo identifies its brand; it does not imply authorization or endorsement.',
   ],
   [
     'What does the warranty cover?',

@@ -1,501 +1,511 @@
 {
-    "chatgpt":  {
-                    "name":  "ChatGPT",
-                    "domain":  "chatgpt.com",
-                    "page":  "https://openai.com/brand/",
-                    "urls":  [
-                                 "https://chatgpt.com/favicon.ico",
-                                 "https://cdn.oaistatic.com/assets/favicon-l4nq08hd.svg"
-                             ]
-                },
-    "claude":  {
-                   "name":  "Claude",
-                   "domain":  "claude.ai",
-                   "urls":  [
-                                "https://claude.ai/favicon.ico"
-                            ]
-               },
-    "gemini":  {
-                   "name":  "Gemini",
-                   "domain":  "gemini.google.com",
-                   "urls":  [
-                                "https://www.gstatic.com/lamda/images/gemini_favicon_f069958c85030456e93de685481c559f160ea06b.png"
-                            ]
-               },
-    "canva":  {
-                  "name":  "Canva",
-                  "domain":  "canva.com",
-                  "urls":  [
-                               "https://www.canva.com/favicon.ico"
-                           ]
-              },
-    "capcut":  {
-                   "name":  "CapCut",
-                   "domain":  "capcut.com",
-                   "urls":  [
-                                "https://www.capcut.com/favicon.ico"
-                            ]
-               },
-    "grok":  {
-                 "name":  "Grok",
-                 "domain":  "grok.com",
-                 "urls":  [
-                              "https://grok.com/favicon.ico"
-                          ]
-             },
-    "notion":  {
-                   "name":  "Notion",
-                   "domain":  "notion.com",
-                   "urls":  [
-                                "https://www.notion.com/front-static/favicon.ico"
-                            ]
-               },
-    "perplexity":  {
-                       "name":  "Perplexity",
-                       "domain":  "perplexity.ai",
-                       "urls":  [
-                                    "https://www.perplexity.ai/favicon.ico"
-                                ]
-                   },
-    "lovable":  {
-                    "name":  "Lovable",
-                    "domain":  "lovable.dev",
-                    "urls":  [
-                                 "https://lovable.dev/favicon.ico"
-                             ]
-                },
-    "adobe":  {
-                  "name":  "Adobe",
-                  "domain":  "adobe.com",
-                  "urls":  [
-                               "https://www.adobe.com/favicon.ico"
-                           ]
-              },
-    "microsoft":  {
-                      "name":  "Microsoft",
-                      "domain":  "microsoft.com",
-                      "urls":  [
-                                   "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png"
-                               ]
-                  },
-    "google":  {
-                   "name":  "Google",
-                   "domain":  "google.com",
-                   "urls":  [
-                                "https://www.google.com/favicon.ico"
-                            ]
-               },
-    "netflix":  {
-                    "name":  "Netflix",
-                    "domain":  "netflix.com",
-                    "urls":  [
-                                 "https://www.netflix.com/favicon.ico"
-                             ]
-                },
-    "spotify":  {
-                    "name":  "Spotify",
-                    "domain":  "spotify.com",
-                    "urls":  [
-                                 "https://open.spotify.com/favicon.ico"
-                             ]
-                },
-    "proton":  {
-                   "name":  "Proton",
-                   "domain":  "proton.me",
-                   "urls":  [
-                                "https://proton.me/favicon.ico"
-                            ]
-               },
-    "nordvpn":  {
-                    "name":  "NordVPN",
-                    "domain":  "nordvpn.com",
-                    "urls":  [
-                                 "https://nordvpn.com/favicon.ico"
-                             ]
-                },
-    "surfshark":  {
-                      "name":  "Surfshark",
-                      "domain":  "surfshark.com",
-                      "urls":  [
-                                   "https://surfshark.com/favicon.ico"
-                               ]
-                  },
-    "n8n":  {
-                "name":  "n8n",
-                "domain":  "n8n.io",
-                "urls":  [
-                             "https://n8n.io/favicon.ico"
-                         ]
-            },
-    "deepseek":  {
-                     "name":  "DeepSeek",
-                     "domain":  "deepseek.com",
-                     "urls":  [
-                                  "https://www.deepseek.com/favicon.ico"
-                              ]
-                 },
-    "freepik":  {
-                    "name":  "Freepik",
-                    "domain":  "freepik.com",
-                    "urls":  [
-                                 "https://www.freepik.com/favicon.ico"
-                             ]
-                },
-    "quillbot":  {
-                     "name":  "QuillBot",
-                     "domain":  "quillbot.com",
-                     "urls":  [
-                                  "https://quillbot.com/favicon.ico"
-                              ]
-                 },
-    "grammarly":  {
-                      "name":  "Grammarly",
-                      "domain":  "grammarly.com",
-                      "urls":  [
-                                   "https://www.grammarly.com/favicon.ico"
-                               ]
-                  },
-    "kling":  {
-                  "name":  "Kling AI",
-                  "domain":  "klingai.com",
-                  "urls":  [
-                               "https://klingai.com/favicon.ico"
-                           ]
-              },
-    "leonardo":  {
-                     "name":  "Leonardo AI",
-                     "domain":  "leonardo.ai",
-                     "urls":  [
-                                  "https://leonardo.ai/favicon.ico"
-                              ]
-                 },
-    "zoom":  {
-                 "name":  "Zoom",
-                 "domain":  "zoom.com",
-                 "urls":  [
-                              "https://www.zoom.com/favicon.ico"
-                          ]
-             },
-    "replit":  {
-                   "name":  "Replit",
-                   "domain":  "replit.com",
-                   "urls":  [
-                                "https://replit.com/favicon.ico"
-                            ]
-               },
-    "jetbrains":  {
-                      "name":  "JetBrains",
-                      "domain":  "jetbrains.com",
-                      "urls":  [
-                                   "https://www.jetbrains.com/favicon.ico"
-                               ]
-                  },
-    "suno":  {
-                 "name":  "Suno",
-                 "domain":  "suno.com",
-                 "urls":  [
-                              "https://suno.com/favicon.ico"
-                          ]
-             },
-    "runway":  {
-                   "name":  "Runway",
-                   "domain":  "runwayml.com",
-                   "urls":  [
-                                "https://runwayml.com/favicon.ico"
-                            ]
-               },
-    "heygen":  {
-                   "name":  "HeyGen",
-                   "domain":  "heygen.com",
-                   "urls":  [
-                                "https://www.heygen.com/favicon.ico"
-                            ]
-               },
-    "manus":  {
-                  "name":  "Manus",
-                  "domain":  "manus.im",
-                  "urls":  [
-                               "https://manus.im/favicon.ico"
-                           ]
-              },
-    "discord":  {
-                    "name":  "Discord",
-                    "domain":  "discord.com",
-                    "urls":  [
-                                 "https://discord.com/assets/favicon.ico"
-                             ]
-                },
-    "tele":  {
-                 "name":  "Telegram",
-                 "domain":  "telegram.org",
-                 "urls":  [
-                              "https://telegram.org/favicon.ico"
-                          ]
-             },
-    "tiktok":  {
-                   "name":  "TikTok",
-                   "domain":  "tiktok.com",
-                   "urls":  [
-                                "https://www.tiktok.com/favicon.ico"
-                            ]
-               },
-    "facebook":  {
-                     "name":  "Facebook",
-                     "domain":  "facebook.com",
-                     "urls":  [
-                                  "https://www.facebook.com/favicon.ico"
-                              ]
-                 },
-    "x":  {
-              "name":  "X",
-              "domain":  "x.com",
-              "urls":  [
-                           "https://abs.twimg.com/favicons/twitter.3.ico"
-                       ]
-          },
-    "duolingo":  {
-                     "name":  "Duolingo",
-                     "domain":  "duolingo.com",
-                     "urls":  [
-                                  "https://www.duolingo.com/favicon.ico"
-                              ]
-                 },
-    "skillshare":  {
-                       "name":  "Skillshare",
-                       "domain":  "skillshare.com",
-                       "urls":  [
-                                    "https://www.skillshare.com/favicon.ico"
-                                ]
-                   },
-    "quizlet":  {
-                    "name":  "Quizlet",
-                    "domain":  "quizlet.com",
-                    "urls":  [
-                                 "https://quizlet.com/favicon.ico"
-                             ]
-                },
-    "kahoot":  {
-                   "name":  "Kahoot!",
-                   "domain":  "kahoot.com",
-                   "urls":  [
-                                "https://kahoot.com/favicon.ico"
-                            ]
-               },
-    "gamma":  {
-                  "name":  "Gamma",
-                  "domain":  "gamma.app",
-                  "urls":  [
-                               "https://gamma.app/favicon.ico"
-                           ]
-              },
-    "openart":  {
-                    "name":  "OpenArt",
-                    "domain":  "openart.ai",
-                    "urls":  [
-                                 "https://openart.ai/favicon.ico"
-                             ]
-                },
-    "krea":  {
-                 "name":  "Krea",
-                 "domain":  "krea.ai",
-                 "urls":  [
-                              "https://www.krea.ai/favicon.ico"
-                          ]
-             },
-    "minimax":  {
-                    "name":  "MiniMax",
-                    "domain":  "minimax.io",
-                    "urls":  [
-                                 "https://www.minimax.io/favicon.ico"
-                             ]
-                },
-    "higgfield":  {
-                      "name":  "Higgsfield",
-                      "domain":  "higgsfield.ai",
-                      "urls":  [
-                                   "https://higgsfield.ai/favicon.ico"
-                               ]
-                  },
-    "coursera":  {
-                     "name":  "Coursera",
-                     "domain":  "coursera.org",
-                     "urls":  [
-                                  "https://www.coursera.org/favicon.ico"
-                              ]
-                 },
-    "railway":  {
-                    "name":  "Railway",
-                    "domain":  "railway.com",
-                    "urls":  [
-                                 "https://railway.com/favicon.ico"
-                             ]
-                },
-    "aws":  {
-                "name":  "AWS",
-                "domain":  "aws.amazon.com",
-                "urls":  [
-                             "https://aws.amazon.com/favicon.ico"
-                         ]
-            },
-    "autodesk":  {
-                     "name":  "Autodesk",
-                     "domain":  "autodesk.com",
-                     "urls":  [
-                                  "https://www.autodesk.com/favicon.ico"
-                              ]
-                 },
-    "apple":  {
-                  "name":  "Apple",
-                  "domain":  "apple.com",
-                  "urls":  [
-                               "https://www.apple.com/favicon.ico"
-                           ]
-              },
-    "icloud":  {
-                   "name":  "iCloud",
-                   "domain":  "icloud.com",
-                   "urls":  [
-                                "https://www.icloud.com/favicon.ico"
-                            ]
-               },
-    "xbox":  {
-                 "name":  "Xbox",
-                 "domain":  "xbox.com",
-                 "urls":  [
-                              "https://www.xbox.com/favicon.ico"
-                          ]
-             },
-    "roblox":  {
-                   "name":  "Roblox",
-                   "domain":  "roblox.com",
-                   "urls":  [
-                                "https://www.roblox.com/favicon.ico"
-                            ]
-               },
-    "ilovepdf":  {
-                     "name":  "iLovePDF",
-                     "domain":  "ilovepdf.com",
-                     "urls":  [
-                                  "https://www.ilovepdf.com/favicon.ico"
-                              ]
-                 },
-    "scribd":  {
-                   "name":  "Scribd",
-                   "domain":  "scribd.com",
-                   "urls":  [
-                                "https://www.scribd.com/favicon.ico"
-                            ]
-               },
-    "artlist":  {
-                    "name":  "Artlist",
-                    "domain":  "artlist.io",
-                    "urls":  [
-                                 "https://artlist.io/favicon.ico"
-                             ]
-                },
-    "brain-fm":  {
-                     "name":  "Brain.fm",
-                     "domain":  "brain.fm",
-                     "urls":  [
-                                  "https://www.brain.fm/favicon.ico"
-                              ]
-                 },
-    "wispr-flow":  {
-                       "name":  "Wispr Flow",
-                       "domain":  "wisprflow.ai",
-                       "urls":  [
-                                    "https://wisprflow.ai/favicon.ico"
-                                ]
-                   },
-    "tradingview":  {
-                        "name":  "TradingView",
-                        "domain":  "tradingview.com",
-                        "urls":  [
-                                     "https://www.tradingview.com/favicon.ico"
-                                 ]
-                    },
-    "kaspersky":  {
-                      "name":  "Kaspersky",
-                      "domain":  "kaspersky.com",
-                      "urls":  [
-                                   "https://www.kaspersky.com/favicon.ico"
-                               ]
-                  },
-    "adguard-vpn":  {
-                        "name":  "AdGuard VPN",
-                        "domain":  "adguard-vpn.com",
-                        "urls":  [
-                                     "https://adguard-vpn.com/favicon.ico"
-                                 ]
-                    },
-    "express":  {
-                    "name":  "ExpressVPN",
-                    "domain":  "expressvpn.com",
-                    "urls":  [
-                                 "https://www.expressvpn.com/favicon.ico"
-                             ]
-                },
-    "purevpn":  {
-                    "name":  "PureVPN",
-                    "domain":  "purevpn.com",
-                    "urls":  [
-                                 "https://www.purevpn.com/favicon.ico"
-                             ]
-                },
-    "pia-vpn":  {
-                    "name":  "Private Internet Access",
-                    "domain":  "privateinternetaccess.com",
-                    "urls":  [
-                                 "https://www.privateinternetaccess.com/favicon.ico"
-                             ]
-                },
-    "youtube":  {
-                    "domain":  "youtube.com",
-                    "name":  "YouTube",
-                    "urls":  [
-                                 "https://www.youtube.com/favicon.ico"
-                             ]
-                },
-    "photoroom":  {
-                      "domain":  "photoroom.com",
-                      "name":  "Photoroom",
-                      "urls":  [
-                                   "https://www.photoroom.com/favicon.ico"
-                               ]
-                  },
-    "qwen":  {
-                 "domain":  "qwen.ai",
-                 "name":  "Qwen",
-                 "urls":  [
-                              "https://www.qwen.ai/favicon.ico"
-                          ]
-             },
-    "kiro":  {
-                 "domain":  "kiro.dev",
-                 "name":  "Kiro",
-                 "urls":  [
-                              "https://www.kiro.dev/favicon.ico"
-                          ]
-             },
-    "udemy":  {
-                  "domain":  "udemy.com",
-                  "name":  "Udemy",
-                  "urls":  [
-                               "https://www.udemy.com/favicon.ico"
-                           ]
-              },
-    "genspark":  {
-                     "domain":  "genspark.ai",
-                     "name":  "Genspark",
-                     "urls":  [
-                                  "https://www.genspark.ai/favicon.ico"
-                              ]
-                 },
-    "ipvanish":  {
-                     "domain":  "ipvanish.com",
-                     "name":  "IPVanish",
-                     "urls":  [
-                                  "https://www.ipvanish.com/favicon.ico"
-                              ]
-                 }
+  "chatgpt": {
+    "name": "ChatGPT",
+    "domain": "chatgpt.com",
+    "page": "https://openai.com/brand/",
+    "urls": [
+      "https://chatgpt.com/favicon.ico",
+      "https://cdn.oaistatic.com/assets/favicon-l4nq08hd.svg"
+    ]
+  },
+  "claude": {
+    "name": "Claude",
+    "domain": "claude.ai",
+    "urls": [
+      "https://claude.ai/favicon.ico"
+    ]
+  },
+  "gemini": {
+    "name": "Gemini",
+    "domain": "gemini.google.com",
+    "urls": [
+      "https://www.gstatic.com/lamda/images/gemini_favicon_f069958c85030456e93de685481c559f160ea06b.png"
+    ]
+  },
+  "canva": {
+    "name": "Canva",
+    "domain": "canva.com",
+    "urls": [
+      "https://www.canva.com/favicon.ico"
+    ]
+  },
+  "capcut": {
+    "name": "CapCut",
+    "domain": "capcut.com",
+    "urls": [
+      "https://www.capcut.com/favicon.ico"
+    ]
+  },
+  "grok": {
+    "name": "Grok",
+    "domain": "grok.com",
+    "urls": [
+      "https://grok.com/favicon.ico"
+    ]
+  },
+  "notion": {
+    "name": "Notion",
+    "domain": "notion.com",
+    "urls": [
+      "https://www.notion.com/front-static/favicon.ico"
+    ]
+  },
+  "perplexity": {
+    "name": "Perplexity",
+    "domain": "perplexity.ai",
+    "urls": [
+      "https://www.perplexity.ai/favicon.ico"
+    ]
+  },
+  "lovable": {
+    "name": "Lovable",
+    "domain": "lovable.dev",
+    "urls": [
+      "https://lovable.dev/favicon.ico"
+    ]
+  },
+  "adobe": {
+    "name": "Adobe",
+    "domain": "adobe.com",
+    "urls": [
+      "https://www.adobe.com/favicon.ico"
+    ]
+  },
+  "microsoft": {
+    "name": "Microsoft",
+    "domain": "microsoft.com",
+    "urls": [
+      "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png"
+    ]
+  },
+  "google": {
+    "name": "Google",
+    "domain": "google.com",
+    "urls": [
+      "https://www.google.com/favicon.ico"
+    ]
+  },
+  "netflix": {
+    "name": "Netflix",
+    "domain": "netflix.com",
+    "urls": [
+      "https://www.netflix.com/favicon.ico"
+    ]
+  },
+  "spotify": {
+    "name": "Spotify",
+    "domain": "spotify.com",
+    "urls": [
+      "https://open.spotify.com/favicon.ico"
+    ]
+  },
+  "proton": {
+    "name": "Proton",
+    "domain": "proton.me",
+    "urls": [
+      "https://proton.me/favicon.ico"
+    ]
+  },
+  "nordvpn": {
+    "name": "NordVPN",
+    "domain": "nordvpn.com",
+    "urls": [
+      "https://nordvpn.com/favicon.ico"
+    ]
+  },
+  "surfshark": {
+    "name": "Surfshark",
+    "domain": "surfshark.com",
+    "urls": [
+      "https://surfshark.com/favicon.ico"
+    ]
+  },
+  "n8n": {
+    "name": "n8n",
+    "domain": "n8n.io",
+    "urls": [
+      "https://n8n.io/favicon.ico"
+    ]
+  },
+  "deepseek": {
+    "name": "DeepSeek",
+    "domain": "deepseek.com",
+    "urls": [
+      "https://www.deepseek.com/favicon.ico"
+    ]
+  },
+  "freepik": {
+    "name": "Freepik",
+    "domain": "freepik.com",
+    "urls": [
+      "https://www.freepik.com/favicon.ico"
+    ]
+  },
+  "quillbot": {
+    "name": "QuillBot",
+    "domain": "quillbot.com",
+    "urls": [
+      "https://quillbot.com/favicon.ico"
+    ]
+  },
+  "grammarly": {
+    "name": "Grammarly",
+    "domain": "grammarly.com",
+    "urls": [
+      "https://www.grammarly.com/favicon.ico"
+    ]
+  },
+  "kling": {
+    "name": "Kling AI",
+    "domain": "klingai.com",
+    "urls": [
+      "https://klingai.com/favicon.ico"
+    ]
+  },
+  "leonardo": {
+    "name": "Leonardo AI",
+    "domain": "leonardo.ai",
+    "urls": [
+      "https://files.readme.io/e6fd24fe6d94d90d5c885217bfc7e206f382cccef4e950586465ac1a3750f90d-Leonardo_Icon_ElectricPurple_1.png",
+      "https://leonardo.ai/favicon.ico"
+    ],
+    "page": "https://docs.leonardo.ai/"
+  },
+  "zoom": {
+    "name": "Zoom",
+    "domain": "zoom.com",
+    "urls": [
+      "https://www.zoom.com/favicon.ico"
+    ]
+  },
+  "replit": {
+    "name": "Replit",
+    "domain": "replit.com",
+    "urls": [
+      "https://replit.com/favicon.ico"
+    ]
+  },
+  "jetbrains": {
+    "name": "JetBrains",
+    "domain": "jetbrains.com",
+    "urls": [
+      "https://www.jetbrains.com/favicon.ico"
+    ]
+  },
+  "suno": {
+    "name": "Suno",
+    "domain": "suno.com",
+    "urls": [
+      "https://suno.com/favicon.ico"
+    ]
+  },
+  "runway": {
+    "name": "Runway",
+    "domain": "runwayml.com",
+    "urls": [
+      "https://runwayml.com/favicon.ico"
+    ]
+  },
+  "heygen": {
+    "name": "HeyGen",
+    "domain": "heygen.com",
+    "urls": [
+      "https://www.heygen.com/favicon.ico"
+    ]
+  },
+  "manus": {
+    "name": "Manus",
+    "domain": "manus.im",
+    "urls": [
+      "https://manus.im/favicon.ico"
+    ]
+  },
+  "discord": {
+    "name": "Discord",
+    "domain": "discord.com",
+    "urls": [
+      "https://discord.com/assets/favicon.ico"
+    ]
+  },
+  "tele": {
+    "name": "Telegram",
+    "domain": "telegram.org",
+    "urls": [
+      "https://telegram.org/favicon.ico"
+    ]
+  },
+  "tiktok": {
+    "name": "TikTok",
+    "domain": "tiktok.com",
+    "urls": [
+      "https://www.tiktok.com/favicon.ico"
+    ]
+  },
+  "facebook": {
+    "name": "Facebook",
+    "domain": "facebook.com",
+    "urls": [
+      "https://www.facebook.com/favicon.ico"
+    ]
+  },
+  "x": {
+    "name": "X",
+    "domain": "x.com",
+    "urls": [
+      "https://abs.twimg.com/favicons/twitter.3.ico"
+    ]
+  },
+  "duolingo": {
+    "name": "Duolingo",
+    "domain": "duolingo.com",
+    "urls": [
+      "https://www.duolingo.com/favicon.ico"
+    ]
+  },
+  "skillshare": {
+    "name": "Skillshare",
+    "domain": "skillshare.com",
+    "urls": [
+      "https://www.skillshare.com/favicon.ico"
+    ]
+  },
+  "quizlet": {
+    "name": "Quizlet",
+    "domain": "quizlet.com",
+    "urls": [
+      "https://quizlet.com/favicon.ico"
+    ]
+  },
+  "kahoot": {
+    "name": "Kahoot!",
+    "domain": "kahoot.com",
+    "urls": [
+      "https://kahoot.com/favicon.ico"
+    ]
+  },
+  "gamma": {
+    "name": "Gamma",
+    "domain": "gamma.app",
+    "urls": [
+      "https://gamma.app/favicon.ico"
+    ]
+  },
+  "openart": {
+    "name": "OpenArt",
+    "domain": "openart.ai",
+    "urls": [
+      "https://openart.ai/favicon.ico"
+    ]
+  },
+  "krea": {
+    "name": "Krea",
+    "domain": "krea.ai",
+    "urls": [
+      "https://www.krea.ai/favicon.ico"
+    ]
+  },
+  "minimax": {
+    "name": "MiniMax",
+    "domain": "minimax.io",
+    "urls": [
+      "https://www.minimax.io/favicon.ico"
+    ]
+  },
+  "higgfield": {
+    "name": "Higgsfield",
+    "domain": "higgsfield.ai",
+    "urls": [
+      "https://higgsfield.ai/favicon.ico"
+    ]
+  },
+  "coursera": {
+    "name": "Coursera",
+    "domain": "coursera.org",
+    "urls": [
+      "https://www.coursera.org/favicon.ico"
+    ]
+  },
+  "railway": {
+    "name": "Railway",
+    "domain": "railway.com",
+    "urls": [
+      "https://railway.com/favicon.ico"
+    ]
+  },
+  "aws": {
+    "name": "AWS",
+    "domain": "aws.amazon.com",
+    "urls": [
+      "https://aws.amazon.com/favicon.ico"
+    ]
+  },
+  "autodesk": {
+    "name": "Autodesk",
+    "domain": "autodesk.com",
+    "urls": [
+      "https://www.autodesk.com/favicon.ico"
+    ]
+  },
+  "apple": {
+    "name": "Apple",
+    "domain": "apple.com",
+    "urls": [
+      "https://www.apple.com/favicon.ico"
+    ]
+  },
+  "icloud": {
+    "name": "iCloud",
+    "domain": "icloud.com",
+    "urls": [
+      "https://www.icloud.com/favicon.ico"
+    ]
+  },
+  "xbox": {
+    "name": "Xbox",
+    "domain": "xbox.com",
+    "urls": [
+      "https://www.xbox.com/favicon.ico"
+    ]
+  },
+  "roblox": {
+    "name": "Roblox",
+    "domain": "roblox.com",
+    "urls": [
+      "https://www.roblox.com/favicon.ico"
+    ]
+  },
+  "ilovepdf": {
+    "name": "iLovePDF",
+    "domain": "ilovepdf.com",
+    "urls": [
+      "https://www.ilovepdf.com/favicon.ico"
+    ]
+  },
+  "scribd": {
+    "name": "Scribd",
+    "domain": "scribd.com",
+    "urls": [
+      "https://www.scribd.com/favicon.ico"
+    ]
+  },
+  "artlist": {
+    "name": "Artlist",
+    "domain": "artlist.io",
+    "urls": [
+      "https://artlist.io/favicon.ico"
+    ]
+  },
+  "brain-fm": {
+    "name": "Brain.fm",
+    "domain": "brain.fm",
+    "urls": [
+      "https://www.brain.fm/favicon.ico"
+    ]
+  },
+  "wispr-flow": {
+    "name": "Wispr Flow",
+    "domain": "wisprflow.ai",
+    "urls": [
+      "https://wisprflow.ai/favicon.ico"
+    ]
+  },
+  "tradingview": {
+    "name": "TradingView",
+    "domain": "tradingview.com",
+    "urls": [
+      "https://www.tradingview.com/favicon.ico"
+    ]
+  },
+  "kaspersky": {
+    "name": "Kaspersky",
+    "domain": "kaspersky.com",
+    "urls": [
+      "https://www.kaspersky.com/favicon.ico"
+    ]
+  },
+  "adguard-vpn": {
+    "name": "AdGuard VPN",
+    "domain": "adguard-vpn.com",
+    "urls": [
+      "https://adguard-vpn.com/favicon.ico"
+    ]
+  },
+  "express": {
+    "name": "ExpressVPN",
+    "domain": "expressvpn.com",
+    "urls": [
+      "https://www.expressvpn.com/favicon.ico"
+    ]
+  },
+  "purevpn": {
+    "name": "PureVPN",
+    "domain": "purevpn.com",
+    "urls": [
+      "https://www.purevpn.com/favicon.ico"
+    ]
+  },
+  "pia-vpn": {
+    "name": "Private Internet Access",
+    "domain": "privateinternetaccess.com",
+    "urls": [
+      "https://www.privateinternetaccess.com/favicon.ico"
+    ]
+  },
+  "youtube": {
+    "domain": "youtube.com",
+    "name": "YouTube",
+    "urls": [
+      "https://www.youtube.com/favicon.ico"
+    ]
+  },
+  "photoroom": {
+    "domain": "photoroom.com",
+    "name": "Photoroom",
+    "urls": [
+      "https://www.photoroom.com/favicon.ico"
+    ]
+  },
+  "qwen": {
+    "domain": "qwen.ai",
+    "name": "Qwen",
+    "urls": [
+      "https://www.qwen.ai/favicon.ico"
+    ]
+  },
+  "kiro": {
+    "domain": "kiro.dev",
+    "name": "Kiro",
+    "urls": [
+      "https://www.kiro.dev/favicon.ico"
+    ]
+  },
+  "udemy": {
+    "domain": "udemy.com",
+    "name": "Udemy",
+    "urls": [
+      "https://www.udemy.com/favicon.ico"
+    ]
+  },
+  "genspark": {
+    "domain": "genspark.ai",
+    "name": "Genspark",
+    "urls": [
+      "https://www.genspark.ai/favicon.ico"
+    ]
+  },
+  "ipvanish": {
+    "domain": "ipvanish.com",
+    "name": "IPVanish",
+    "urls": [
+      "https://www.ipvanish.com/favicon.ico"
+    ]
+  },
+  "linkedin": {
+    "name": "LinkedIn",
+    "domain": "linkedin.com",
+    "page": "https://www.linkedin.com/",
+    "urls": [
+      "https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
+    ]
+  }
 }

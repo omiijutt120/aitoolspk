@@ -5,5 +5,7 @@ const config: NextConfig = {
   images: { unoptimized: true },
   poweredByHeader: false,
   reactStrictMode: true,
+  // Bound build concurrency for laptops while exporting the complete catalog.
+  experimental: { cpus: 2, webpackMemoryOptimizations: true },
 };
 export default config;

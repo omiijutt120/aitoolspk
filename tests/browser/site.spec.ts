@@ -59,7 +59,7 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .hover();
   await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'Find the right AI tools'
+    'All your tools.'
   );
   await expect(
     page.getByRole('link', { name: 'View Details', exact: true }).first()

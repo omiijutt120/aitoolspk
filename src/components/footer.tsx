@@ -29,7 +29,7 @@ export function Footer() {
           </div>
           <div>
             <p className="footer-label">EXPLORE</p>
-            <Link href="/tools/">All tools</Link>
+            <Link href="/#all-tools">All tools</Link>
             <Link href="/categories/">Categories</Link>
             <Link href="/how-to-order/">How to order</Link>
           </div>

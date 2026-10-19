@@ -13,11 +13,19 @@ const subscribe = (notify: () => void) => {
 };
 const currentMinute = () => Math.floor(Date.now() / 60000) * 60000;
 const serverTime = () => 0;
-function useQuoteClock() {
-  return new Date(useSyncExternalStore(subscribe, currentMinute, serverTime));
+const noSubscription = () => () => {};
+function useQuoteClock(product: Product) {
+  const needsClock = product.approval === 'approved';
+  return new Date(
+    useSyncExternalStore(
+      needsClock ? subscribe : noSubscription,
+      needsClock ? currentMinute : serverTime,
+      serverTime
+    )
+  );
 }
 export function StockBadge({ product }: { product: Product }) {
-  const now = useQuoteClock();
+  const now = useQuoteClock(product);
   const text =
     product.stock === 'out-of-stock'
       ? 'Out of stock'
@@ -36,7 +44,7 @@ export function StockBadge({ product }: { product: Product }) {
   );
 }
 export function BuyButton({ product }: { product: Product }) {
-  const now = useQuoteClock();
+  const now = useQuoteClock(product);
   return canBuy(product, now) ? (
     <a
       className="button buy-button"

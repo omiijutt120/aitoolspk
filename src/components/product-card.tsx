@@ -32,10 +32,12 @@ export function ProductCard({ product }: { product: Product }) {
   return (
     <article className="product-card">
       <div className="product-card-top">
-        <BrandLogo product={product} />
+        <div className="product-identity">
+          <BrandLogo product={product} />
+          <span>{product.brand}</span>
+        </div>
         <span className="category-mini">{categoryName(product.category)}</span>
       </div>
-      <p className="product-brand">{product.brand}</p>
       <h3>
         <Link
           href={`/tool/${product.slug}/`}
@@ -49,7 +51,9 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="product-terms">
         <span>
           <Clock3 size={13} />
-          {product.duration} · {product.access}
+          <span>{product.duration}</span>
+          <span className="term-divider">·</span>
+          <span>{product.access}</span>
         </span>
         <span>
           <ShieldCheck size={13} />

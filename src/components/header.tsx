@@ -1,12 +1,23 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Search, Menu, X, ArrowUpRight, MessageCircle } from 'lucide-react';
 import { useRef, useState, useEffect } from 'react';
 export function Header() {
   const [open, setOpen] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  const search = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    const shortcut = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        event.preventDefault();
+        search.current?.focus();
+      }
+    };
+    document.addEventListener('keydown', shortcut);
+    return () => document.removeEventListener('keydown', shortcut);
+  }, []);
   useEffect(() => {
     if (open) {
       dialog.current?.showModal();
@@ -39,27 +50,35 @@ export function Header() {
             <span className="brand-dot">.</span>
           </span>
         </Link>
+        <form className="header-search" action="/" role="search">
+          <Search size={18} aria-hidden="true" />
+          <label htmlFor="site-search" className="sr-only">
+            Search the complete catalog
+          </label>
+          <input
+            ref={search}
+            id="site-search"
+            name="q"
+            placeholder="Find your next tool…"
+            autoComplete="off"
+          />
+          <button type="submit" aria-label="Search catalog">
+            <ArrowUpRight size={17} />
+          </button>
+          <kbd>Ctrl K</kbd>
+        </form>
         <nav aria-label="Main navigation" className="desktop-nav">
-          <Link href="/tools/">Explore tools</Link>
-          <Link href="/categories/">Categories</Link>
           <Link href="/how-to-order/">How to order</Link>
           <Link href="/contact/">Contact</Link>
         </nav>
         <div className="header-actions">
-          <Link
-            className="icon-button"
-            href="/tools/?focus=search"
-            aria-label="Search tools"
-          >
-            <Search size={19} />
-          </Link>
           <a
             href="https://wa.me/923714549245"
             target="_blank"
             rel="noopener noreferrer"
             className="button small desktop-contact"
           >
-            Let’s talk <ArrowUpRight size={15} />
+            <MessageCircle size={16} /> WhatsApp
           </a>
           <button
             ref={trigger}
@@ -93,7 +112,7 @@ export function Header() {
           </div>
           <nav aria-label="Mobile navigation">
             {[
-              ['Explore tools', '/tools/'],
+              ['All tools', '/#all-tools'],
               ['Categories', '/categories/'],
               ['How to order', '/how-to-order/'],
               ['Contact', '/contact/'],

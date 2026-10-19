@@ -3,6 +3,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { JsonLd, origin } from '@/lib/seo';
 import './globals.css';
+import './storefront.css';
 import localFont from 'next/font/local';
 const GeistSans = localFont({
   src: '../../node_modules/geist/dist/fonts/geist-sans/Geist-Variable.woff2',

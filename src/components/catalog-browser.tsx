@@ -6,13 +6,26 @@ import {
   useSyncExternalStore,
   useRef,
 } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Fuse from 'fuse.js';
-import { Search, SlidersHorizontal, X, ArrowUpRight } from 'lucide-react';
+import {
+  Search,
+  SlidersHorizontal,
+  X,
+  ArrowUpRight,
+  ChevronDown,
+  LayoutGrid,
+  Info,
+  ArrowDown,
+} from 'lucide-react';
 import type { Product } from '@/lib/types';
 import { categories } from '@/lib/categories';
+import { orderCatalog } from '@/lib/catalog-order';
 import { ProductCard } from './product-card';
+import { CategoryIcon } from './icon';
 import { emitCatalogEvent } from '@/lib/events';
+
 const subscribe = (cb: () => void) => {
   window.addEventListener('popstate', cb);
   window.addEventListener('catalog-query', cb);
@@ -23,19 +36,14 @@ const subscribe = (cb: () => void) => {
 };
 const getSnapshot = () => window.location.search;
 const getServerSnapshot = () => '';
-function Select({
-  label,
-  param,
-  values,
-  params,
-  update,
-}: {
+type SelectProps = {
   label: string;
   param: string;
   values: { value: string; label: string }[];
   params: URLSearchParams;
   update: (key: string, value: string) => void;
-}) {
+};
+function Select({ label, param, values, params, update }: SelectProps) {
   return (
     <label className="filter-field">
       <span>{label}</span>
@@ -54,14 +62,10 @@ function Select({
     </label>
   );
 }
-export function CatalogBrowser({
-  initial,
-  category,
-  options,
-  total,
-}: {
+type CatalogProps = {
   initial: Product[];
   category?: string;
+  continuous?: boolean;
   options: {
     brands: string[];
     durations: string[];
@@ -69,7 +73,15 @@ export function CatalogBrowser({
     accesses: string[];
   };
   total: number;
-}) {
+};
+
+export function CatalogBrowser({
+  initial,
+  category,
+  continuous = false,
+  options,
+  total,
+}: CatalogProps) {
   const queryString = useSyncExternalStore(
     subscribe,
     getSnapshot,
@@ -81,15 +93,18 @@ export function CatalogBrowser({
   const [all, setAll] = useState<Product[] | null>(null);
   const [error, setError] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [suggestOpen, setSuggestOpen] = useState(false);
+  const [loaded, setLoaded] = useState({ key: '', count: 32 });
   const dialog = useRef<HTMLDialogElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const filterTrigger = useRef<HTMLButtonElement>(null);
+  const sentinel = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const t = setTimeout(() => {
+    const timer = setTimeout(() => {
       setDebounced(q);
       if (q.trim()) emitCatalogEvent('search');
     }, 180);
-    return () => clearTimeout(t);
+    return () => clearTimeout(timer);
   }, [q]);
   useEffect(() => {
     const controller = new AbortController();
@@ -129,16 +144,24 @@ export function CatalogBrowser({
     window.history.replaceState(
       null,
       '',
-      `${window.location.pathname}${next.size ? '?' + next.toString() : ''}`
+      `${window.location.pathname}${next.size ? '?' + next.toString() : ''}${continuous ? '#all-tools' : ''}`
     );
     window.dispatchEvent(new Event('catalog-query'));
   }
   function clear() {
-    window.history.replaceState(null, '', window.location.pathname);
+    window.history.replaceState(
+      null,
+      '',
+      `${window.location.pathname}${continuous ? '#all-tools' : ''}`
+    );
     window.dispatchEvent(new Event('catalog-query'));
+    setSuggestOpen(false);
   }
   const source = useMemo(
-    () => all?.filter((p) => !category || p.category === category) ?? initial,
+    () =>
+      all
+        ? orderCatalog(all.filter((p) => !category || p.category === category))
+        : initial,
     [all, category, initial]
   );
   const fuse = useMemo(
@@ -160,7 +183,7 @@ export function CatalogBrowser({
     const found = debounced.trim()
       ? fuse.search(debounced.trim()).map((r) => r.item)
       : source;
-    const results = found.filter(
+    const result = found.filter(
       (p) =>
         (!params.get('category') || p.category === params.get('category')) &&
         (!params.get('brand') || p.brand === params.get('brand')) &&
@@ -172,23 +195,44 @@ export function CatalogBrowser({
         (!params.get('min') || p.price >= Number(params.get('min'))) &&
         (!params.get('max') || p.price <= Number(params.get('max')))
     );
-    switch (params.get('sort')) {
-      case 'price-asc':
-        results.sort((a, b) => a.price - b.price);
-        break;
-      case 'price-desc':
-        results.sort((a, b) => b.price - a.price);
-        break;
-      case 'name':
-        results.sort((a, b) => a.name.localeCompare(b.name));
-        break;
-    }
-    return results;
-  }, [debounced, fuse, source, params]);
+    if (params.get('sort') === 'price-asc')
+      result.sort((a, b) => a.price - b.price);
+    else if (params.get('sort') === 'price-desc')
+      result.sort((a, b) => b.price - a.price);
+    else if (params.get('sort') === 'name')
+      result.sort((a, b) => a.name.localeCompare(b.name));
+    return result;
+  }, [source, fuse, debounced, params]);
   const pageSize = 24;
   const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
-  const page = Math.min(pages, Math.max(1, Number(params.get('page')) || 1));
-  const shown = filtered.slice((page - 1) * pageSize, page * pageSize);
+  const page = Math.min(
+    pages,
+    Math.max(1, Math.trunc(Number(params.get('page')) || 1))
+  );
+  const loadKey = queryString + '|' + debounced;
+  const visible = loaded.key === loadKey ? loaded.count : 32;
+  const shown = continuous
+    ? filtered.slice(0, visible)
+    : filtered.slice((page - 1) * pageSize, page * pageSize);
+  useEffect(() => {
+    const element = sentinel.current;
+    if (!continuous || !element || !all || visible >= filtered.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting))
+          setLoaded({
+            key: loadKey,
+            count: Math.min(visible + 32, filtered.length),
+          });
+      },
+      { rootMargin: '700px' }
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [continuous, all, visible, filtered.length, loadKey]);
+  const active = Array.from(params.entries()).filter(
+    ([key]) => !['focus', 'page', 'sort'].includes(key)
+  );
   const suggestions =
     q.trim().length > 1 && q === debounced
       ? fuse
@@ -196,10 +240,16 @@ export function CatalogBrowser({
           .slice(0, 4)
           .map((r) => r.item)
       : [];
-  const [suggestOpen, setSuggestOpen] = useState(false);
-  const isFiltered = Array.from(params.keys()).some(
-    (k) => !['focus', 'sort', 'page'].includes(k)
-  );
+  const shortcuts = [
+    'chatgpt',
+    'claude',
+    'canva',
+    'capcut',
+    'gemini',
+    'notion',
+    'cursor',
+    'perplexity',
+  ].flatMap((slug) => source.find((p) => p.brandSlug === slug) || []);
   const close = () => {
     setMobileOpen(false);
     filterTrigger.current?.focus();
@@ -207,20 +257,60 @@ export function CatalogBrowser({
   const filters = (
     <div className="filter-panel">
       <div className="filter-heading">
-        <h2>Refine your search</h2>
+        <h2>
+          <SlidersHorizontal size={16} />
+          Filters
+        </h2>
         <button className="filter-clear" onClick={clear}>
-          Reset
+          Reset all
         </button>
       </div>
       {!category && (
-        <Select
-          params={params}
-          update={update}
-          label="Categories"
-          param="category"
-          values={categories.map((c) => ({ value: c.slug, label: c.name }))}
-        />
+        <div className="sidebar-categories">
+          <p className="filter-label">CATEGORIES</p>
+          <button
+            className={!params.get('category') ? 'selected' : ''}
+            onClick={() => update('category', '')}
+            aria-pressed={!params.get('category')}
+          >
+            <LayoutGrid size={16} />
+            <span>All tools</span>
+            <small>{total}</small>
+          </button>
+          {categories.map((c) => (
+            <button
+              key={c.slug}
+              className={params.get('category') === c.slug ? 'selected' : ''}
+              aria-pressed={params.get('category') === c.slug}
+              onClick={() => update('category', c.slug)}
+            >
+              <CategoryIcon name={c.icon} size={16} />
+              <span>{c.name}</span>
+            </button>
+          ))}
+        </div>
       )}
+      <div className="filter-field">
+        <span>Price range · PKR</span>
+        <div className="price-inputs">
+          <input
+            aria-label="Minimum price in PKR"
+            type="number"
+            min="0"
+            placeholder="From"
+            value={params.get('min') || ''}
+            onChange={(e) => update('min', e.target.value)}
+          />
+          <input
+            aria-label="Maximum price in PKR"
+            type="number"
+            min="0"
+            placeholder="To"
+            value={params.get('max') || ''}
+            onChange={(e) => update('max', e.target.value)}
+          />
+        </div>
+      </div>
       <Select
         params={params}
         update={update}
@@ -238,20 +328,6 @@ export function CatalogBrowser({
       <Select
         params={params}
         update={update}
-        label="Warranty terms"
-        param="warranty"
-        values={options.warranties.map((v) => ({ value: v, label: v }))}
-      />
-      <Select
-        params={params}
-        update={update}
-        label="Access types"
-        param="access"
-        values={options.accesses.map((v) => ({ value: v, label: v }))}
-      />
-      <Select
-        params={params}
-        update={update}
         label="Availability"
         param="stock"
         values={[
@@ -260,48 +336,62 @@ export function CatalogBrowser({
           { value: 'unconfirmed', label: 'Stock unconfirmed' },
         ]}
       />
-      <Select
-        params={params}
-        update={update}
-        label="Review status"
-        param="approval"
-        values={[
-          { value: 'approved', label: 'Approved for sale' },
-          { value: 'pending', label: 'Pending verification' },
-        ]}
-      />
-      <div className="filter-field">
-        <span>Price range (PKR)</span>
-        <div className="price-inputs">
-          <input
-            aria-label="Minimum price in PKR"
-            type="number"
-            min="0"
-            placeholder="Min"
-            value={params.get('min') || ''}
-            onChange={(e) => update('min', e.target.value)}
-          />
-          <input
-            aria-label="Maximum price in PKR"
-            type="number"
-            min="0"
-            placeholder="Max"
-            value={params.get('max') || ''}
-            onChange={(e) => update('max', e.target.value)}
-          />
-        </div>
+      <details className="advanced-filters">
+        <summary>
+          More filters <ChevronDown size={15} />
+        </summary>
+        <Select
+          params={params}
+          update={update}
+          label="Warranty terms"
+          param="warranty"
+          values={options.warranties.map((v) => ({ value: v, label: v }))}
+        />
+        <Select
+          params={params}
+          update={update}
+          label="Access types"
+          param="access"
+          values={options.accesses.map((v) => ({ value: v, label: v }))}
+        />
+        <Select
+          params={params}
+          update={update}
+          label="Review status"
+          param="approval"
+          values={[
+            { value: 'approved', label: 'Approved for sale' },
+            { value: 'pending', label: 'Pending verification' },
+          ]}
+        />
+      </details>
+      <div className="sidebar-help">
+        <p>Not sure which plan?</p>
+        <span>We can help with the details.</span>
+        <Link href="/contact/">
+          Ask us on WhatsApp <ArrowUpRight size={14} />
+        </Link>
       </div>
     </div>
   );
   return (
-    <div className="catalog-layout">
-      <aside className="desktop-filters" aria-label="Catalog filters">
-        {filters}
-      </aside>
-      <div className="catalog-results">
+    <div
+      className={`catalog-experience ${continuous ? 'continuous-catalog' : ''}`}
+    >
+      {continuous && (
+        <div className="store-catalog-title">
+          <div>
+            <h2 id="catalog-heading">
+              Explore all tools<span>{total}</span>
+            </h2>
+          </div>
+          <p>Every plan, in one place.</p>
+        </div>
+      )}
+      <div className="catalog-search-row">
         <div className="search-wrap">
           <div className="search-form catalog-search">
-            <Search size={19} aria-hidden="true" />
+            <Search size={21} aria-hidden="true" />
             <label htmlFor="catalog-search" className="sr-only">
               Search tools, brands or tasks
             </label>
@@ -309,7 +399,7 @@ export function CatalogBrowser({
               ref={searchRef}
               id="catalog-search"
               autoComplete="off"
-              placeholder="Search tools, brands or tasks…"
+              placeholder="Search by tool, brand or what you want to do…"
               value={q}
               onChange={(e) => {
                 update('q', e.target.value);
@@ -325,14 +415,11 @@ export function CatalogBrowser({
                   setSuggestOpen(false);
               }}
               onKeyDown={(e) => {
-                if (e.key === 'Escape') setSuggestOpen(false);
-                if (e.key === 'Enter') {
-                  e.preventDefault();
+                if (e.key === 'Escape' || e.key === 'Enter')
                   setSuggestOpen(false);
-                }
               }}
             />
-            {q && (
+            {q ? (
               <button
                 aria-label="Clear search"
                 onClick={() => {
@@ -342,125 +429,221 @@ export function CatalogBrowser({
               >
                 <X size={17} />
               </button>
+            ) : (
+              <span className="search-key">⌕</span>
             )}
           </div>
           {suggestOpen && suggestions.length > 0 && (
             <div className="suggestions" aria-label="Suggested tools">
               {suggestions.map((p) => (
                 <Link href={`/tool/${p.slug}/`} key={p.id} prefetch={false}>
-                  {p.name}
+                  {p.logo && (
+                    <Image src={p.logo} width={24} height={24} alt="" />
+                  )}
+                  <span>{p.name}</span>
                   <ArrowUpRight size={14} />
                 </Link>
               ))}
             </div>
           )}
         </div>
-        <div className="catalog-toolbar">
-          <p className="result-count" role="status" aria-live="polite">
-            {all
-              ? `${filtered.length} ${filtered.length === 1 ? 'offer' : 'offers'}${isFiltered ? ' found' : ''}`
-              : `${total} offers · Loading filters…`}
-          </p>
-          <button
-            ref={filterTrigger}
-            className="button outline mobile-filter-button"
-            onClick={() => setMobileOpen(true)}
+        <div className="catalog-sort">
+          <label htmlFor="sort">Sort by</label>
+          <select
+            id="sort"
+            value={params.get('sort') || 'relevance'}
+            onChange={(e) => update('sort', e.target.value)}
           >
-            <SlidersHorizontal size={15} />
-            Filters {isFiltered && '•'}
-          </button>
-          <div className="catalog-sort">
-            <label htmlFor="sort">Sort by</label>
-            <select
-              id="sort"
-              value={params.get('sort') || 'relevance'}
-              onChange={(e) => update('sort', e.target.value)}
-            >
-              <option value="relevance">Relevance</option>
-              <option value="price-asc">Price: low to high</option>
-              <option value="price-desc">Price: high to low</option>
-              <option value="name">Name: A–Z</option>
-            </select>
-          </div>
+            <option value="relevance">Default order</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="name">Name: A–Z</option>
+          </select>
         </div>
-        <p className="catalog-notice">
-          Prices and stock are snapshots. Pending offers require approval;
-          source warranty labels are unverified. Confirm current terms before
-          payment.
-        </p>
-        {error && (
-          <p role="alert" className="catalog-notice">
-            The full catalog could not load. Showing a saved selection.{' '}
+      </div>
+      {!category && (
+        <nav className="catalog-category-tabs" aria-label="Filter by category">
+          <button
+            className={!params.get('category') ? 'active' : ''}
+            aria-pressed={!params.get('category')}
+            onClick={() => update('category', '')}
+          >
+            <LayoutGrid size={15} />
+            All tools
+          </button>
+          {categories.map((c) => (
             <button
-              className="filter-clear"
-              onClick={() => window.location.reload()}
+              key={c.slug}
+              className={params.get('category') === c.slug ? 'active' : ''}
+              aria-pressed={params.get('category') === c.slug}
+              onClick={() => update('category', c.slug)}
             >
-              Try again
+              <CategoryIcon name={c.icon} size={15} />
+              {c.name}
             </button>
-          </p>
-        )}
-        {shown.length ? (
-          <div className="product-grid">
-            {shown.map((p) => (
-              <ProductCard key={p.id} product={p} />
+          ))}
+        </nav>
+      )}
+      <div className="catalog-layout">
+        <aside className="desktop-filters" aria-label="Catalog filters">
+          {filters}
+        </aside>
+        <div className="catalog-results">
+          <div className="catalog-toolbar">
+            <p className="result-count" role="status" aria-live="polite">
+              <strong>{all ? filtered.length : total}</strong>{' '}
+              {all && filtered.length === 1 ? 'offer' : 'offers'}{' '}
+              {active.length ? 'matching your filters' : 'to explore'}
+              {!all && (
+                <span className="loading-label"> · Loading filters…</span>
+              )}
+            </p>
+            <button
+              ref={filterTrigger}
+              className="button outline mobile-filter-button"
+              onClick={() => setMobileOpen(true)}
+            >
+              <SlidersHorizontal size={15} />
+              Filters {active.length > 0 && <span>{active.length}</span>}
+            </button>
+            <span className="catalog-currency">All prices in PKR</span>
+          </div>
+          <div className="brand-shortcuts">
+            <span>QUICK PICK</span>
+            {shortcuts.map((p) => (
+              <button
+                key={p.brandSlug}
+                aria-label={`Filter ${p.brand}`}
+                aria-pressed={params.get('brand') === p.brand}
+                className={params.get('brand') === p.brand ? 'selected' : ''}
+                onClick={() =>
+                  update(
+                    'brand',
+                    params.get('brand') === p.brand ? '' : p.brand
+                  )
+                }
+              >
+                {p.logo && <Image src={p.logo} width={18} height={18} alt="" />}
+                {p.brand}
+              </button>
             ))}
           </div>
-        ) : (
-          <div className="empty-state">
-            <h2>No tools found.</h2>
-            <p>Try a different spelling, a broader search or fewer filters.</p>
-            <button className="button outline" onClick={clear}>
-              Clear all filters
-            </button>
-          </div>
-        )}
-        {pages > 1 && (
-          <nav aria-label="Catalog pages" className="pagination">
-            <button
-              disabled={page === 1}
-              onClick={() => update('page', String(page - 1))}
-              aria-label="Previous page"
-            >
-              ←
-            </button>
-            {Array.from(
-              new Set([
-                1,
-                ...Array.from({ length: 5 }, (_, i) => page - 2 + i).filter(
-                  (n) => n > 1 && n < pages
-                ),
-                pages,
-              ])
-            )
-              .sort((a, b) => a - b)
-              .map((n, i, arr) => (
-                <span key={n}>
-                  {i > 0 && n - arr[i - 1] > 1 && (
-                    <span className="px-2" aria-hidden="true">
-                      …
-                    </span>
-                  )}
-                  <button
-                    aria-label={`Page ${n}`}
-                    aria-current={n === page ? 'page' : undefined}
-                    onClick={() => {
-                      update('page', String(n));
-                      searchRef.current?.scrollIntoView({ block: 'center' });
-                    }}
-                  >
-                    {n}
-                  </button>
-                </span>
+          {active.length > 0 && (
+            <div className="active-filters">
+              {active.map(([key, value]) => (
+                <button
+                  key={key}
+                  onClick={() => update(key, '')}
+                  aria-label={`Remove ${key} filter`}
+                >
+                  {key === 'category'
+                    ? categories.find((c) => c.slug === value)?.name || value
+                    : value}
+                  <X size={12} />
+                </button>
               ))}
-            <button
-              disabled={page === pages}
-              onClick={() => update('page', String(page + 1))}
-              aria-label="Next page"
-            >
-              →
-            </button>
-          </nav>
-        )}
+              <button className="clear-active" onClick={clear}>
+                Clear all
+              </button>
+            </div>
+          )}
+          <div className="catalog-notice">
+            <Info size={15} />
+            <p>
+              Plans marked “Pending verification” need review before ordering.
+              Prices and availability are confirmed on WhatsApp.
+            </p>
+          </div>
+          {error && (
+            <p role="alert" className="catalog-notice">
+              The catalog could not load.{' '}
+              <button
+                className="filter-clear"
+                onClick={() => window.location.reload()}
+              >
+                Try again
+              </button>
+            </p>
+          )}
+          {shown.length ? (
+            <div className="product-grid">
+              {shown.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <Search size={30} />
+              <h2>No tools found.</h2>
+              <p>Try another spelling, a different brand or fewer filters.</p>
+              <button className="button outline" onClick={clear}>
+                Clear all filters
+              </button>
+            </div>
+          )}
+          {continuous && shown.length > 0 && (
+            <div ref={sentinel} className="catalog-loader">
+              {shown.length < filtered.length ? (
+                <>
+                  <span className="loader-dots" aria-hidden="true">
+                    •••
+                  </span>
+                  <p>
+                    Keep exploring · {shown.length} of {filtered.length} offers
+                  </p>
+                  <ArrowDown size={15} />
+                </>
+              ) : (
+                <p>You’ve explored all {filtered.length} offers.</p>
+              )}
+            </div>
+          )}
+          {!continuous && pages > 1 && (
+            <nav aria-label="Catalog pages" className="pagination">
+              <button
+                disabled={page === 1}
+                onClick={() => update('page', String(page - 1))}
+                aria-label="Previous page"
+              >
+                ←
+              </button>
+              {Array.from(
+                new Set([
+                  1,
+                  ...Array.from({ length: 5 }, (_, i) => page - 2 + i).filter(
+                    (n) => n > 1 && n < pages
+                  ),
+                  pages,
+                ])
+              )
+                .sort((a, b) => a - b)
+                .map((n, i, arr) => (
+                  <span key={n}>
+                    {i > 0 && n - arr[i - 1] > 1 && (
+                      <span className="px-2">…</span>
+                    )}
+                    <button
+                      aria-label={`Page ${n}`}
+                      aria-current={n === page ? 'page' : undefined}
+                      onClick={() => {
+                        update('page', String(n));
+                        searchRef.current?.scrollIntoView({ block: 'center' });
+                      }}
+                    >
+                      {n}
+                    </button>
+                  </span>
+                ))}
+              <button
+                disabled={page === pages}
+                onClick={() => update('page', String(page + 1))}
+                aria-label="Next page"
+              >
+                →
+              </button>
+            </nav>
+          )}
+        </div>
       </div>
       <dialog
         ref={dialog}
@@ -469,7 +652,7 @@ export function CatalogBrowser({
         onCancel={close}
       >
         <div className="filter-dialog-heading">
-          <span className="eyebrow">FIND YOUR FIT</span>
+          <span className="store-eyebrow">FIND YOUR FIT</span>
           <button
             className="icon-button"
             onClick={close}

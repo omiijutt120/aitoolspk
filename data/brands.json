@@ -26,5 +26,625 @@
     "verified_date": "2026-10-19",
     "guidelines": "https://elevenlabs.io/brand",
     "usage_notes": "Official symbol from published third-party brand kit. Centered, unobstructed clearance; no affiliation implied."
+  },
+  "perplexity": {
+    "official_domain": "perplexity.ai",
+    "logo_source": "https://www.perplexity.ai/favicon.ico",
+    "asset_path": "/logos/perplexity.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://perplexity.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "claude": {
+    "official_domain": "claude.ai",
+    "logo_source": "https://claude.ai/favicon.ico",
+    "asset_path": "/logos/claude.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://claude.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "notion": {
+    "official_domain": "notion.com",
+    "logo_source": "https://www.notion.com/front-static/favicon.ico",
+    "asset_path": "/logos/notion.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://notion.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "chatgpt": {
+    "official_domain": "chatgpt.com",
+    "logo_source": "https://cdn.oaistatic.com/assets/favicon-l4nq08hd.svg",
+    "asset_path": "/logos/chatgpt.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://openai.com/brand/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "canva": {
+    "official_domain": "canva.com",
+    "logo_source": "https://static.canva.com/static/images/favicon.ico",
+    "asset_path": "/logos/canva.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://canva.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "lovable": {
+    "official_domain": "lovable.dev",
+    "logo_source": "https://lovable.dev/favicon.ico",
+    "asset_path": "/logos/lovable.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://lovable.dev/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "adobe": {
+    "official_domain": "adobe.com",
+    "logo_source": "https://www.adobe.com/favicon.ico",
+    "asset_path": "/logos/adobe.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://adobe.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "gemini": {
+    "official_domain": "gemini.google.com",
+    "logo_source": "https://www.gstatic.com/lamda/images/gemini_favicon_f069958c85030456e93de685481c559f160ea06b.png",
+    "asset_path": "/logos/gemini.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://gemini.google.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "google": {
+    "official_domain": "google.com",
+    "logo_source": "https://www.google.com/favicon.ico",
+    "asset_path": "/logos/google.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://google.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "spotify": {
+    "official_domain": "spotify.com",
+    "logo_source": "https://open.spotify.com/favicon.ico",
+    "asset_path": "/logos/spotify.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://spotify.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "netflix": {
+    "official_domain": "netflix.com",
+    "logo_source": "https://www.netflix.com/favicon.ico",
+    "asset_path": "/logos/netflix.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://netflix.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "deepseek": {
+    "official_domain": "deepseek.com",
+    "logo_source": "https://www.deepseek.com/favicon.ico",
+    "asset_path": "/logos/deepseek.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://deepseek.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "surfshark": {
+    "official_domain": "surfshark.com",
+    "logo_source": "https://surfshark.com/website/_next/public/global/favicon-32.png",
+    "asset_path": "/logos/surfshark.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://surfshark.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "capcut": {
+    "official_domain": "capcut.com",
+    "logo_source": "https://sf16-web-tos-buz.capcutstatic.com/obj/capcut-web-buz-sg/common/images/lv_web-2.ico",
+    "asset_path": "/logos/capcut.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://capcut.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "n8n": {
+    "official_domain": "n8n.io",
+    "logo_source": "https://n8n.io/favicon.ico",
+    "asset_path": "/logos/n8n.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://n8n.io/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "zoom": {
+    "official_domain": "zoom.com",
+    "logo_source": "https://www.zoom.com/favicon.ico",
+    "asset_path": "/logos/zoom.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://zoom.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "jetbrains": {
+    "official_domain": "jetbrains.com",
+    "logo_source": "https://www.jetbrains.com/favicon.ico",
+    "asset_path": "/logos/jetbrains.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://jetbrains.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "suno": {
+    "official_domain": "suno.com",
+    "logo_source": "https://suno.com/favicon.ico",
+    "asset_path": "/logos/suno.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://suno.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "kling": {
+    "official_domain": "klingai.com",
+    "logo_source": "https://klingai.com/favicon.ico",
+    "asset_path": "/logos/kling.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://klingai.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "freepik": {
+    "official_domain": "freepik.com",
+    "logo_source": "https://media.magnific.com/magnific-favicons/favicon.ico",
+    "asset_path": "/logos/freepik.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://freepik.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "grok": {
+    "official_domain": "grok.com",
+    "logo_source": "https://grok.com/images/favicon.svg",
+    "asset_path": "/logos/grok.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://grok.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "discord": {
+    "official_domain": "discord.com",
+    "logo_source": "https://discord.com/assets/favicon.ico",
+    "asset_path": "/logos/discord.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://discord.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "grammarly": {
+    "official_domain": "grammarly.com",
+    "logo_source": "https://static-web.grammarly.com/cms/master/public/favicon.ico",
+    "asset_path": "/logos/grammarly.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://grammarly.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "tiktok": {
+    "official_domain": "tiktok.com",
+    "logo_source": "https://www.tiktok.com/favicon.ico",
+    "asset_path": "/logos/tiktok.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://tiktok.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "heygen": {
+    "official_domain": "heygen.com",
+    "logo_source": "https://www.heygen.com/favicon.ico",
+    "asset_path": "/logos/heygen.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://heygen.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "facebook": {
+    "official_domain": "facebook.com",
+    "logo_source": "https://www.facebook.com/favicon.ico",
+    "asset_path": "/logos/facebook.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://facebook.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "manus": {
+    "official_domain": "manus.im",
+    "logo_source": "https://manus.im/favicon.ico",
+    "asset_path": "/logos/manus.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://manus.im/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "x": {
+    "official_domain": "x.com",
+    "logo_source": "https://abs.twimg.com/favicons/twitter.3.ico",
+    "asset_path": "/logos/x.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://x.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "replit": {
+    "official_domain": "replit.com",
+    "logo_source": "https://replit.com/public/icons/favicon-prompt-192-rebrand.png",
+    "asset_path": "/logos/replit.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://replit.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "runway": {
+    "official_domain": "runwayml.com",
+    "logo_source": "https://runway.com/icon.png?icon.35ps9bmugbe1e.png",
+    "asset_path": "/logos/runway.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://runwayml.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "skillshare": {
+    "official_domain": "skillshare.com",
+    "logo_source": "https://static.skillshare.com/assets/images/favicons/favicon.ico",
+    "asset_path": "/logos/skillshare.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://skillshare.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "kahoot": {
+    "official_domain": "kahoot.com",
+    "logo_source": "https://kahoot.com/wp-content/themes/kahoot2017/assets/img/favicon/favicon.svg",
+    "asset_path": "/logos/kahoot.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://kahoot.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "higgfield": {
+    "official_domain": "higgsfield.ai",
+    "logo_source": "https://higgsfield.ai/favicon.ico",
+    "asset_path": "/logos/higgfield.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://higgsfield.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "krea": {
+    "official_domain": "krea.ai",
+    "logo_source": "https://www.krea.ai/favicon.ico",
+    "asset_path": "/logos/krea.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://krea.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "openart": {
+    "official_domain": "openart.ai",
+    "logo_source": "https://openart.ai/pageforge-assets/favicon/favicon-96x96.png",
+    "asset_path": "/logos/openart.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://openart.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "railway": {
+    "official_domain": "railway.com",
+    "logo_source": "https://railway.com/favicon.ico",
+    "asset_path": "/logos/railway.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://railway.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "coursera": {
+    "official_domain": "coursera.org",
+    "logo_source": "https://www.coursera.org/favicon.ico",
+    "asset_path": "/logos/coursera.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://coursera.org/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "icloud": {
+    "official_domain": "icloud.com",
+    "logo_source": "https://www.icloud.com/favicon.ico",
+    "asset_path": "/logos/icloud.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://icloud.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "aws": {
+    "official_domain": "aws.amazon.com",
+    "logo_source": "https://aws.amazon.com/favicon.ico",
+    "asset_path": "/logos/aws.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://aws.amazon.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "duolingo": {
+    "official_domain": "duolingo.com",
+    "logo_source": "https://d35aaqx5ub95lt.cloudfront.net/images/duolingo-touch-icon2.png",
+    "asset_path": "/logos/duolingo.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://duolingo.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "ilovepdf": {
+    "official_domain": "ilovepdf.com",
+    "logo_source": "https://www.ilovepdf.com/favicon.ico",
+    "asset_path": "/logos/ilovepdf.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://ilovepdf.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "autodesk": {
+    "official_domain": "autodesk.com",
+    "logo_source": "https://www.autodesk.com/favicon.ico",
+    "asset_path": "/logos/autodesk.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://autodesk.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "apple": {
+    "official_domain": "apple.com",
+    "logo_source": "https://www.apple.com/favicon.ico",
+    "asset_path": "/logos/apple.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://apple.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "roblox": {
+    "official_domain": "roblox.com",
+    "logo_source": "https://www.roblox.com/favicon.ico",
+    "asset_path": "/logos/roblox.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://roblox.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "xbox": {
+    "official_domain": "xbox.com",
+    "logo_source": "https://www.xbox.com/favicon.ico",
+    "asset_path": "/logos/xbox.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://xbox.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "scribd": {
+    "official_domain": "scribd.com",
+    "logo_source": "https://s-f.scribdassets.com/scribd_rebrand.ico?v=5",
+    "asset_path": "/logos/scribd.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://scribd.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "tradingview": {
+    "official_domain": "tradingview.com",
+    "logo_source": "https://www.tradingview.com/favicon.ico",
+    "asset_path": "/logos/tradingview.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://tradingview.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "wispr-flow": {
+    "official_domain": "wisprflow.ai",
+    "logo_source": "https://cdn.prod.website-files.com/682f84b3838c89f8ff7667db/6a8406645defe8dfdb19c7f3_flow-favicon.png",
+    "asset_path": "/logos/wispr-flow.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://wisprflow.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "kaspersky": {
+    "official_domain": "kaspersky.com",
+    "logo_source": "https://www.kaspersky.com/favicon.ico",
+    "asset_path": "/logos/kaspersky.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://kaspersky.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "adguard-vpn": {
+    "official_domain": "adguard-vpn.com",
+    "logo_source": "https://st2.adguardcdn.com/favicons/vpn/favicon.ico",
+    "asset_path": "/logos/adguard-vpn.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://adguard-vpn.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "purevpn": {
+    "official_domain": "purevpn.com",
+    "logo_source": "https://www.purevpn.com/wp-content/uploads/2023/02/cropped-pvpn-favicon-img-32x32.png",
+    "asset_path": "/logos/purevpn.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://purevpn.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "minimax": {
+    "official_domain": "minimax.io",
+    "logo_source": "https://www.minimax.io/favicon.ico",
+    "asset_path": "/logos/minimax.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://minimax.io/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "proton": {
+    "official_domain": "proton.me",
+    "logo_source": "https://proton.me/favicon.ico",
+    "asset_path": "/logos/proton.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://proton.me/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "microsoft": {
+    "official_domain": "microsoft.com",
+    "logo_source": "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+    "asset_path": "/logos/microsoft.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://microsoft.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "youtube": {
+    "official_domain": "youtube.com",
+    "logo_source": "https://www.youtube.com/favicon.ico",
+    "asset_path": "/logos/youtube.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://youtube.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "photoroom": {
+    "official_domain": "photoroom.com",
+    "logo_source": "https://www.photoroom.com/favicon.ico",
+    "asset_path": "/logos/photoroom.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://photoroom.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "artlist": {
+    "official_domain": "artlist.io",
+    "logo_source": "https://artlist.io/favicon-32x32.png?v=1",
+    "asset_path": "/logos/artlist.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://artlist.io/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "genspark": {
+    "official_domain": "genspark.ai",
+    "logo_source": "https://www.genspark.ai/favicon.ico",
+    "asset_path": "/logos/genspark.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://genspark.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "kiro": {
+    "official_domain": "kiro.dev",
+    "logo_source": "https://kiro.dev/favicon.ico",
+    "asset_path": "/logos/kiro.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://kiro.dev/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "qwen": {
+    "official_domain": "qwen.ai",
+    "logo_source": "https://img.alicdn.com/imgextra/i4/O1CN01OXv3EM1FN8t9W4P79_!!6000000000474-2-tps-80-80.png",
+    "asset_path": "/logos/qwen.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://qwen.ai/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "ipvanish": {
+    "official_domain": "ipvanish.com",
+    "logo_source": "https://www.ipvanish.com/wp-content/uploads/2021/10/cropped-ipv-icon-32x32.png",
+    "asset_path": "/logos/ipvanish.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-19",
+    "guidelines": "https://ipvanish.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "nordvpn": {
+    "official_domain": "nordvpn.com",
+    "logo_source": "https://sb.nordcdn.com/m/690de41688c94510/original/Press-area-assets.zip",
+    "asset_member": "Logos/SVG/nord-logo-primary-square-vertical.svg",
+    "asset_path": "/logos/nordvpn.webp",
+    "license_review_status": "approved",
+    "verified_date": "2026-10-19",
+    "guidelines": "https://nordvpn.com/press-area/",
+    "usage_notes": "Unchanged official press-kit logo. Guidelines allow descriptive identification; no affiliation or permission to resell is claimed."
   }
 }

@@ -56,7 +56,8 @@ const brandRules = [
     /microsoft|office|windows|outlook|onedrive/i,
     'software',
   ],
-  ['google', 'Google', /google|gmail|youtube/i, 'productivity'],
+  ['youtube', 'YouTube', /youtube/i, 'entertainment'],
+  ['google', 'Google', /google|gmail/i, 'productivity'],
   ['netflix', 'Netflix', /netflix/i, 'entertainment'],
   ['spotify', 'Spotify', /spotify/i, 'entertainment'],
   ['nordvpn', 'NordVPN', /nordvpn/i, 'security'],
@@ -67,6 +68,37 @@ const brandRules = [
   ['zoom', 'Zoom', /zoom/i, 'productivity'],
   ['discord', 'Discord', /discord/i, 'entertainment'],
   ['autodesk', 'Autodesk', /autodesk/i, 'software'],
+  ['gamma', 'Gamma', /\bgamma\b/i, 'productivity'],
+  ['minimax', 'MiniMax', /minimax/i, 'video'],
+  ['quizlet', 'Quizlet', /quizlet/i, 'productivity'],
+  ['kahoot', 'Kahoot!', /kahoot/i, 'productivity'],
+  ['coursera', 'Coursera', /coursera/i, 'productivity'],
+  ['duolingo', 'Duolingo', /duolingo/i, 'productivity'],
+  ['icloud', 'iCloud', /icloud/i, 'productivity'],
+  ['apple', 'Apple', /\bapple\b/i, 'entertainment'],
+  ['kaspersky', 'Kaspersky', /kaspersky/i, 'security'],
+  ['higgfield', 'Higgsfield', /higgs?field/i, 'video'],
+  ['ilovepdf', 'iLovePDF', /i\s*love\s*pdf/i, 'productivity'],
+  ['adguard-vpn', 'AdGuard VPN', /adguard/i, 'security'],
+  ['tele', 'Telegram', /telegram|\btele\s+bot/i, 'productivity'],
+  ['tiktok', 'TikTok', /tiktok/i, 'entertainment'],
+  ['facebook', 'Facebook', /facebook/i, 'productivity'],
+  ['akool', 'AKOOL', /akool/i, 'video'],
+  ['dreamina', 'Dreamina', /dreamina/i, 'design'],
+  ['xingtu', 'Xingtu', /xingtu/i, 'design'],
+  ['fpt-play', 'FPT Play', /fpt\s*play/i, 'entertainment'],
+  ['vieon', 'VieON', /vieon/i, 'entertainment'],
+  ['gpm-login', 'GPM Login', /gpm\s*login/i, 'software'],
+  ['tv360', 'TV360', /tv360/i, 'entertainment'],
+  ['galaxy-play', 'Galaxy Play', /galaxy\s*play/i, 'entertainment'],
+  ['muse-ai', 'Muse AI', /muse[.\s]*ai/i, 'video'],
+  ['ipvanish', 'IPVanish', /ipvanish/i, 'security'],
+  ['pia-vpn', 'Private Internet Access', /\bpia\s+vpn/i, 'security'],
+  ['photoroom', 'Photoroom', /photoroom/i, 'design'],
+  ['qwen', 'Qwen', /qwen/i, 'ai-chat'],
+  ['kiro', 'Kiro', /kiro/i, 'coding'],
+  ['udemy', 'Udemy', /udemy/i, 'productivity'],
+  ['genspark', 'Genspark', /genspark/i, 'ai-chat'],
 ];
 export function normalize(row, approvals = {}, brands = {}) {
   if (!row.ProductID || !row.Name) throw new Error('Missing required identity');
@@ -194,7 +226,9 @@ export function normalize(row, approvals = {}, brands = {}) {
     throw new Error(`Invalid review date for ${id}`);
   const asset = brands[brandSlug];
   const logo =
-    asset?.license_review_status === 'approved' &&
+    (asset?.license_review_status === 'approved' ||
+      (asset?.license_review_status === 'official-identification' &&
+        asset?.source_verified === true)) &&
     asset?.asset_path?.startsWith('/logos/')
       ? asset.asset_path
       : null;

@@ -2,6 +2,8 @@
 
 A static-first Next.js 16 + React 19 + TypeScript + Tailwind CSS 4 catalog. Orders are enquiries on WhatsApp at **+923714549245**. There are no customer accounts, payment forms, carts, databases or analytics trackers.
 
+The homepage is the storefront: the complete catalog, search, category tabs, brand shortcuts and filters all work on `/`. The first 32 offers render immediately; further offers load automatically as you scroll on the same page. There is no homepage “browse all” gate or pagination. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) for the redesign decisions.
+
 `npm run build` includes a narrow post-build workaround for [Next.js issue #85374](https://github.com/vercel/next.js/issues/85374): Windows builds can emit nested RSC segment filenames while the browser requests flat filenames. The script copies the required flat aliases without modifying dependencies; native Linux exports need no changes. Keep this check when deploying an export built on Windows.
 
 ## Run locally
@@ -36,7 +38,7 @@ All **811** original rows are imported with exact `SellingPricePKR` integer reta
 
 The original CSV and PRD are in ignored `private/`. **Never upload that directory, the original Downloads files, or `reports/` to a public repository or web root.** Public builds use an allowlist projection in `data/catalog.json` and `public/catalog/index.json`. Descriptions are rewritten conservatively; raw source copy, purchase requirements, supplier URLs, original prices, costs, margins, profits, sold counts and evidence are never copied. IDs are stable opaque public hashes; they do not expose supplier identifiers.
 
-Only the first 24 offers are server rendered in catalog pages. The catalog browser fetches the sanitized index, uses Fuse.js for accent-insensitive fuzzy search, and paginates rendered cards at 24. Filters and sort live in the URL. Individual offers and category pages are static HTML with metadata and breadcrumbs. Pending offers are `noindex` and omitted from the sitemap. Product/Offer structured data is emitted only for approved entries, with an Offer only when purchasable.
+The homepage server renders 32 offers and reveals more automatically on scroll. Other catalog pages server render 24 offers and retain pagination. The catalog browser fetches the sanitized index and uses Fuse.js for accent-insensitive fuzzy search over the entire catalog. Filters and sort live in the URL. Individual offers and category pages are static HTML with metadata and breadcrumbs. Pending offers are `noindex` and omitted from the sitemap. Product/Offer structured data is emitted only for approved entries, with an Offer only when purchasable.
 
 ### Update products
 
@@ -76,6 +78,8 @@ Every card and detail page includes View Details / Buy Now. Disabled offers have
 The supplied PNG is preserved at `public/brand/logo.png`; favicon sizes, Apple/app icons and social card derive from it. Run `node scripts/prepare-brand.mjs` after replacing the master. No separate favicon attachment was present.
 
 `data/brands.json` records official domain, source, local asset path, permission review, verification date and usage notes. Official downloadable assets are stored locally; no third-party logo API or secret client ID is used. Where permission or provenance is unresolved, the UI uses a plain text brand name. Do not invent substitute logos or mark an unknown brand as licensed. Add only assets obtained from the vendor's own published kit or a licensed source, and record the applicable usage terms. Official kit sources reviewed include [Figma](https://www.figma.com/using-the-figma-brand/), [Cursor](https://cursor.com/brand), and [ElevenLabs](https://elevenlabs.io/brand). Product resale approval and trademark use are separate reviews.
+
+The storefront also uses locally stored vendor identity assets from the official domains declared in `data/logo-sources.json`. Run `node scripts/fetch-official-logos.mjs` to fetch missing assets, then reimport the catalog. The importer distinguishes published-kit review from `official-identification` source verification; neither status approves product resale or asserts a vendor partnership. The private fetch report is `reports/logo-provenance.json`, and `data/brand-asset-map.csv` lists the exact source for every mapped brand. Unresolved identities keep text labels. The NordVPN asset is the unchanged square SVG from its [official press kit](https://nordvpn.com/press-area/), recorded with its archive member path.
 
 ## Structure
 

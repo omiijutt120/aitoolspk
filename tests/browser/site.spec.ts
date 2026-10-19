@@ -137,6 +137,16 @@ for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {
   test(`responsive layout ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
+    const actions = page.locator('.home-product-grid .product-buttons').first();
+    expect(
+      await actions.evaluate(
+        (el) => getComputedStyle(el).gridTemplateColumns.split(' ').length
+      )
+    ).toBe(2);
+    const detailButton = await actions
+      .getByRole('link', { name: 'View Details', exact: true })
+      .boundingBox();
+    expect(detailButton?.height).toBeGreaterThanOrEqual(44);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth

@@ -21,10 +21,10 @@ Lighthouse 13.5.0, local production server, simulated mobile throttling:
 | Best practices | 100/100 |
 | SEO | 100/100 |
 | First contentful paint | 0.9 seconds |
-| Largest contentful paint | 2.3 seconds |
+| Largest contentful paint | 2.4 seconds |
 | Total blocking time | 30 ms |
 | Cumulative layout shift | 0 |
-| Transferred page size | 234 KiB |
+| Transferred page size | 241 KiB |
 
 The earlier measurement before the final font/image optimizations was 93/100 and 345 KiB. The final page uses system fonts and small local WebP logo thumbnails; it does not load the catalog search engine on the homepage. Full Lighthouse reports and screenshots are in the ignored local reports directory.
 

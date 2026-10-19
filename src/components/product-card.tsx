@@ -81,12 +81,18 @@ export function ProductCard({ product }: { product: Product }) {
         <BuyButton product={product} />
       </div>
       <div className="card-inquiry">
-        <InquiryLink product={product} />
+        <InquiryLink product={product} compact />
       </div>
     </article>
   );
 }
-export function InquiryLink({ product }: { product: Product }) {
+export function InquiryLink({
+  product,
+  compact = false,
+}: {
+  product: Product;
+  compact?: boolean;
+}) {
   return (
     <a
       className="text-link"
@@ -104,9 +110,13 @@ export function InquiryLink({ product }: { product: Product }) {
       rel="noopener noreferrer"
     >
       <MessageCircle size={16} />
-      {product.stock === 'out-of-stock'
-        ? 'Ask about restock'
-        : 'Confirm availability on WhatsApp'}
+      <span>
+        {product.stock === 'out-of-stock'
+          ? 'Ask about restock'
+          : compact
+            ? 'Check availability'
+            : 'Confirm availability on WhatsApp'}
+      </span>
       <ArrowUpRight size={14} />
     </a>
   );

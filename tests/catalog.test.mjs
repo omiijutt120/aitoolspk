@@ -129,4 +129,10 @@ test('sanitization and variant distinctions', () => {
   });
   assert.equal(shorthand.duration, '30 days');
   assert.match(shorthand.warranty, /warranty 24H/);
+  const credits = normalize({
+    ...source[1],
+    Name: 'Example API 10M Credit 1 Day full warranty',
+  });
+  assert.equal(credits.duration, '1 day');
+  assert.equal(credits.credits, '10M Credit');
 });

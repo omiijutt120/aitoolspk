@@ -128,7 +128,7 @@ export function normalize(row, approvals = {}, brands = {}) {
   const durationText = warrantyText ? name.replace(warrantyText, '') : name;
   const durations = Array.from(
     durationText.matchAll(
-      /\b(\d+)\s*(months?|years?|days?|hours?|hrs?|d|m|y|h)\b/gi
+      /\b(\d+)\s*(months?|years?|days?|hours?|hrs?|d|m|y|h)\b(?!\s*(?:credits?|tokens?))/gi
     ),
     (m) =>
       `${m[1]} ${{ d: 'days', m: 'months', y: 'years', h: 'hours' }[m[2].toLowerCase()] || m[2].toLowerCase()}`

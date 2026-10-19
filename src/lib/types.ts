@@ -1,0 +1,21 @@
+export type Product = {
+  id: string;
+  slug: string;
+  name: string;
+  brand: string;
+  brandSlug: string;
+  category: string;
+  price: number;
+  duration: string;
+  warranty: string;
+  access: string;
+  credits: string;
+  stock: 'in-stock' | 'out-of-stock' | 'unconfirmed';
+  approval: 'pending' | 'approved' | 'excluded';
+  description: string;
+  date: string;
+  logo: string | null;
+  purchasable: boolean;
+  risk: boolean;
+  renewal: string;
+};

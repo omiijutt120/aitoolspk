@@ -1,0 +1,9 @@
+node_modules
+.tools
+.next
+out
+private
+reports
+data/catalog.json
+public/catalog
+package-lock.json

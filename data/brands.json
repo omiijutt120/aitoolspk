@@ -1,0 +1,30 @@
+{
+  "figma": {
+    "official_domain": "figma.com",
+    "logo_source": "https://static.figma.com/app/icon/1/favicon.svg",
+    "asset_path": "/logos/figma.webp",
+    "license_review_status": "approved",
+    "verified_date": "2026-10-19",
+    "guidelines": "https://www.figma.com/using-the-figma-brand/",
+    "usage_notes": "Official unchanged mark. Guidelines permit truthful informational product identification; no affiliation implied."
+  },
+  "cursor": {
+    "official_domain": "cursor.com",
+    "logo_source": "https://ptht05hbb1ssoooe.public.blob.vercel-storage.com/assets/brand/cursor-brand-assets.zip",
+    "asset_path": "/logos/cursor.webp",
+    "license_review_status": "approved",
+    "verified_date": "2026-10-19",
+    "guidelines": "https://cursor.com/brand",
+    "usage_notes": "Asset linked by official brand resource page for accurate representation; preserve proportions and do not imply affiliation.",
+    "asset_member": "General Logos/Cube/SVG/CUBE_2D_LIGHT.svg"
+  },
+  "elevenlabs": {
+    "official_domain": "elevenlabs.io",
+    "logo_source": "https://11labs-nonprd-15f22c1d.s3.eu-west-3.amazonaws.com/a2ea339b-8b5e-41bb-b706-24eda8a4c9e3/elevenlabs-symbol.svg",
+    "asset_path": "/logos/elevenlabs.webp",
+    "license_review_status": "approved",
+    "verified_date": "2026-10-19",
+    "guidelines": "https://elevenlabs.io/brand",
+    "usage_notes": "Official symbol from published third-party brand kit. Centered, unobstructed clearance; no affiliation implied."
+  }
+}

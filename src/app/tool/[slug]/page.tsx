@@ -26,7 +26,7 @@ export async function generateMetadata({
   return {
     ...metadata(
       `${p.name} — ${money(p.price)}`,
-      `${p.name}. Listed price ${money(p.price)}. Duration: ${p.duration}. ${p.approval === 'approved' ? 'Read exact access and warranty terms.' : 'Pending verification; purchasing disabled.'}`,
+      `${p.name}. Listed price ${money(p.price)}. Duration: ${p.duration}. ${p.approval === 'approved' ? 'Read exact access and warranty terms.' : 'Pending verification; confirm availability on WhatsApp.'}`,
       `/tool/${slug}/`
     ),
     robots:
@@ -114,8 +114,9 @@ export default async function ProductDetail({
               </p>
               <h2>How delivery works</h2>
               <p>
-                Once an offer is approved and in stock, Buy Now opens WhatsApp
-                with the exact product and terms. The seller confirms
+                Buy Now opens WhatsApp with the exact product and terms.
+                Unverified offers request availability confirmation first;
+                out-of-stock offers open a restock enquiry. The seller confirms
                 eligibility, current pricing, payment details and a safe
                 delivery method before accepting an order. No delivery time is
                 guaranteed on this website.

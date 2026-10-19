@@ -3,7 +3,12 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parse } from 'csv-parse/sync';
 import { normalize, clean } from '../scripts/import-catalog.mjs';
-import { canBuy, whatsappUrl, isStale } from '../src/lib/commerce.mjs';
+import {
+  canBuy,
+  whatsappUrl,
+  isStale,
+  whatsappIntent,
+} from '../src/lib/commerce.mjs';
 const source = parse(readFileSync('private/catalog.csv', 'utf8'), {
   columns: true,
   bom: true,
@@ -106,6 +111,36 @@ test('all offer messages preserve exact identity, warranty, plan, price and page
       );
     }
   }
+});
+
+test('every offer has a working WhatsApp intent without asserting unverified stock', () => {
+  const now = new Date('2026-10-20T00:00:00+05:00');
+  for (const product of catalog) {
+    const intent = whatsappIntent(product, now);
+    assert.equal(
+      intent,
+      product.stock === 'out-of-stock'
+        ? 'restock'
+        : canBuy(product, now)
+          ? 'order'
+          : 'confirm'
+    );
+    const link = new URL(whatsappUrl(product, intent));
+    assert.equal(link.pathname, '/923714549245');
+    assert.ok(link.searchParams.get('text').includes(product.id));
+  }
+  const approved = {
+    ...catalog[0],
+    approval: 'approved',
+    purchasable: true,
+    stock: 'in-stock',
+    date: '2026-10-19',
+  };
+  assert.equal(whatsappIntent(approved, now), 'order');
+  assert.equal(
+    whatsappIntent(approved, new Date('2026-10-28T00:00:00+05:00')),
+    'confirm'
+  );
 });
 test('sanitization and variant distinctions', () => {
   assert.equal(

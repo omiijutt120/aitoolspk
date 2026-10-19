@@ -34,9 +34,9 @@ export default function Home() {
             All your tools. <span>One place.</span>
           </h1>
           <p>
-            A few great places to start. Compare plans and prices in PKR.
-            <br className="desktop-break" /> Explore all {products.length}{' '}
-            offers when you’re ready.
+            Explore {products.length} plans. Compare prices in PKR.
+            <br className="desktop-break" /> Start with our featured selection
+            or browse the complete catalog.
           </p>
           <div className="hero-facts">
             <span>
@@ -91,49 +91,52 @@ export default function Home() {
         className="container home-selection"
         aria-labelledby="featured-heading"
       >
-        <div className="store-catalog-title">
+        <div className="store-catalog-title featured-catalog-heading">
           <div>
             <p className="store-eyebrow">YOUR SHORTLIST</p>
             <h2 id="featured-heading">
               Featured tools<span>{selected.length}</span>
             </h2>
+            <p className="featured-catalog-count">
+              Showing {selected.length} of{' '}
+              <strong>{products.length} offers</strong>
+            </p>
           </div>
-          <p>Selected plans. Less scrolling.</p>
+          <div className="catalog-entry-actions">
+            <Link
+              className="button outline"
+              href="/tools/?focus=search"
+              prefetch={false}
+            >
+              <Search size={16} />
+              Find your next tool
+            </Link>
+            <Link className="button" href="/tools/" prefetch={false}>
+              Show all tools{' '}
+              <span className="catalog-total">{products.length}</span>
+              <ArrowUpRight size={16} />
+            </Link>
+          </div>
         </div>
         <p className="home-verification-note">
           Plans marked “Pending verification” need confirmation before ordering.
-          Use the WhatsApp availability link to ask about exact terms.
+          Buy Now opens WhatsApp with your selected plan so you can confirm
+          availability, price and exact terms.
         </p>
         <div className="product-grid home-product-grid">
           {selected.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-        <div
-          className="home-discovery"
-          aria-label="Explore the complete catalog"
-        >
-          <div>
-            <h2>Find the right fit for your next project.</h2>
-            <p>
-              Search and filter all {products.length} offers in the full
-              catalog.
-            </p>
-          </div>
-          <div className="home-discovery-actions">
-            <Link
-              className="button"
-              href="/tools/?focus=search"
-              prefetch={false}
-            >
-              <Search size={17} />
-              Find your next tool
-            </Link>
-            <Link className="button outline" href="/tools/" prefetch={false}>
-              Show all tools
-              <ArrowUpRight size={17} />
-            </Link>
-          </div>
+        <div className="home-catalog-end">
+          <p>
+            These are {selected.length} featured plans from our{' '}
+            {products.length}-offer catalog.
+          </p>
+          <Link className="text-link" href="/tools/" prefetch={false}>
+            Browse the complete catalog
+            <ArrowUpRight size={16} />
+          </Link>
         </div>
       </section>
       <section className="container store-support">

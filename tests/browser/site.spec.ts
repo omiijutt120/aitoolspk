@@ -21,6 +21,7 @@ test('approved offers have exact order links and expire without a redeploy', asy
     exact: true,
   });
   await expect(buy).toBeVisible();
+  await expect(buy).toHaveAttribute('href', /I%20want%20to%20order/);
   const link = new URL((await buy.getAttribute('href')) as string);
   expect(link.hostname).toBe('wa.me');
   expect(link.pathname).toBe('/923714549245');
@@ -34,12 +35,7 @@ test('approved offers have exact order links and expire without a redeploy', asy
     expect(link.searchParams.get('text')).toContain(term);
   await page.clock.setSystemTime(new Date('2026-10-28T00:00:00+05:00'));
   await page.evaluate(() => window.dispatchEvent(new Event('focus')));
-  await expect(
-    page.getByRole('button', {
-      name: `Buy Now unavailable: ${product.name}`,
-      exact: true,
-    })
-  ).toBeDisabled();
+  await expect(buy).toHaveAttribute('href', /please%20confirm%20availability/);
   await expect(page.locator('.product-card')).toContainText(
     'Quote needs refresh'
   );
@@ -69,7 +65,10 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .first()
     .click();
   await expect(page.locator('.detail-summary h1')).toBeVisible();
-  await expect(page.locator('.detail-action .buy-button')).toBeDisabled();
+  await expect(page.locator('.detail-action .buy-button')).toHaveAttribute(
+    'href',
+    /^https:\/\/wa\.me\/923714549245\?text=/
+  );
   const inquiry = page.locator('.detail-action').getByRole('link', {
     name: /Confirm availability on WhatsApp/,
   });

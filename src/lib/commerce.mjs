@@ -1,5 +1,6 @@
 export const PHONE = '923714549245';
 export const STALE_DAYS = 7;
+const pkrFormatter = new Intl.NumberFormat('en-PK');
 export function isStale(product, now = new Date()) {
   const date = Date.parse(`${product.date}T00:00:00+05:00`);
   return (
@@ -16,10 +17,15 @@ export function canBuy(product, now = new Date()) {
     !isStale(product, now)
   );
 }
+// The CTA always starts a conversation; readiness controls the message intent.
+export function whatsappIntent(product, now = new Date()) {
+  if (product.stock === 'out-of-stock') return 'restock';
+  return canBuy(product, now) ? 'order' : 'confirm';
+}
 export function whatsappUrl(product, intent = 'order') {
-  const message = `${intent === 'order' ? 'Hi AiToolsPk, I want to order:' : intent === 'restock' ? 'Hi AiToolsPk, please let me know about restock:' : 'Hi AiToolsPk, please confirm availability and eligibility:'}\nProduct: ${product.name}\nPlan: ${product.duration} / ${product.warranty} / ${product.access}${product.credits ? ' / ' + product.credits : ''}\nPrice: PKR ${product.price.toLocaleString('en-PK')}\nProduct ID: ${product.id}\nPage: https://aitoolspk.tech/tool/${product.slug}/\nPlease confirm availability and payment details. Please do not request passwords or security codes.`;
+  const message = `${intent === 'order' ? 'Hi AiToolsPk, I want to order:' : intent === 'restock' ? 'Hi AiToolsPk, please let me know about restock:' : 'Hi AiToolsPk, please confirm availability and eligibility:'}\nProduct: ${product.name}\nPlan: ${product.duration} / ${product.warranty} / ${product.access}${product.credits ? ' / ' + product.credits : ''}\nPrice: PKR ${pkrFormatter.format(product.price)}\nProduct ID: ${product.id}\nPage: https://aitoolspk.tech/tool/${product.slug}/\nPlease confirm availability and payment details. Please do not request passwords or security codes.`;
   return `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
 }
 export function money(price) {
-  return `PKR ${price.toLocaleString('en-PK')}`;
+  return `PKR ${pkrFormatter.format(price)}`;
 }

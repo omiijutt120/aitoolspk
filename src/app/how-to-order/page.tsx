@@ -46,11 +46,12 @@ export default function HowToOrder() {
       </p>
       <h2>2. Open WhatsApp</h2>
       <p>
-        Buy Now is available only for approved, confirmed in-stock offers with a
-        fresh quote. It opens +92 371 4549245 in a new tab with the selected
-        product, plan, warranty, price and public ID. Review the message before
-        sending it. WhatsApp may ask you to open its app or sign in to WhatsApp
-        Web.
+        Buy Now opens +92 371 4549245 in a new tab with the selected product,
+        plan, warranty, price and public ID. Review the message before sending
+        it. WhatsApp may ask you to open its app or sign in to WhatsApp Web.
+        Unverified or stale offers ask for availability and eligibility
+        confirmation first. Out-of-stock offers show Restock and open a restock
+        enquiry.
       </p>
       <h2>3. Confirm, then decide</h2>
       <p>

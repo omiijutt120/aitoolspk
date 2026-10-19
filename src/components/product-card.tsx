@@ -80,9 +80,6 @@ export function ProductCard({ product }: { product: Product }) {
         </Link>
         <BuyButton product={product} />
       </div>
-      <div className="card-inquiry">
-        <InquiryLink product={product} compact />
-      </div>
     </article>
   );
 }

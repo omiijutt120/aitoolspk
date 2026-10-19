@@ -4,7 +4,7 @@ A static-first Next.js 16 + React 19 + TypeScript + Tailwind CSS 4 catalog. Orde
 
 The UI uses native system fonts with no font download. `predev` and `prebuild` generate 96px WebP thumbnails from the official local logo masters, keeping full assets for detail pages. Generated thumbnails are ignored by Git and recreated automatically. Use `node scripts/fetch-official-logos.mjs --only=leonardo,linkedin` to refresh selected brand assets; source declarations and provenance live in `data/logo-sources.json` and `data/brands.json`.
 
-The homepage shows a bounded selection of 24 offers: the 19 owner-selected plans first, then one non-API plan from each of five familiar brands. "Find your next tool" opens the full catalog with search focused; "Show all tools" opens the paginated full catalog. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) and [VERIFICATION.md](VERIFICATION.md).
+The homepage shows a bounded selection of 24 offers: the 19 owner-selected plans first, then one non-API plan from each of five familiar brands. "Find your next tool" and "Show all tools 811" sit alongside the featured-products heading, making the full catalog visible before any product scrolling. The finder focuses search; the other button opens the paginated catalog. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) and [VERIFICATION.md](VERIFICATION.md).
 
 `npm run build` includes a narrow post-build workaround for [Next.js issue #85374](https://github.com/vercel/next.js/issues/85374): Windows builds can emit nested RSC segment filenames while the browser requests flat filenames. The script copies the required flat aliases without modifying dependencies; native Linux exports need no changes. Keep this check when deploying an export built on Windows.
 
@@ -71,9 +71,9 @@ Example schema (illustrative only; **do not copy it as proof**):
 }
 ```
 
-5. Reimport, run checks and redeploy. Buy Now activates only for approved, confirmed in-stock offers with a quote at most seven days old. Refresh prices and stock weekly. Refresh dates only after actually rechecking. Price changes belong in the CSV's retail-price column.
+5. Reimport, run checks and redeploy. Buy Now always opens WhatsApp. Approved, confirmed in-stock offers with a quote at most seven days old use the order message; pending, unconfirmed or expired offers use an availability-confirmation message. Out-of-stock offers show Restock and use a restock message. Approval is still required before representing a sale as ready. Refresh prices and stock weekly. Refresh dates only after actually rechecking. Price changes belong in the CSV's retail-price column.
 
-Every card and detail page includes View Details / Buy Now. Disabled offers have enquiry or restock links on their detail page. Order messages include product, exact variant terms, retail price, public ID, canonical product URL and a confirmation request. No message is sent automatically. No passwords or security codes are requested.
+Every card and detail page includes View Details / Buy Now. Unverified offers open availability enquiries; out-of-stock offers have an active Restock action. Order messages include product, exact variant terms, retail price, public ID, canonical product URL and a confirmation request. No message is sent automatically. No passwords or security codes are requested.
 
 ### Brands and assets
 

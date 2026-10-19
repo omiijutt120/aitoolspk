@@ -5,6 +5,7 @@ import {
   useMemo,
   useSyncExternalStore,
   useRef,
+  startTransition,
 } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -109,12 +110,12 @@ export function CatalogBrowser({
   }, [q]);
   useEffect(() => {
     const controller = new AbortController();
-    fetch('/catalog/index.json', { signal: controller.signal })
+    fetch('/catalog/index.json', { signal: controller.signal, priority: 'low' })
       .then((r) => {
         if (!r.ok) throw new Error('Catalog unavailable');
         return r.json();
       })
-      .then(setAll)
+      .then((data) => startTransition(() => setAll(data)))
       .catch((e) => {
         if (e.name !== 'AbortError') setError(true);
       });

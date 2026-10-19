@@ -45,7 +45,7 @@ test('homepage shows only 24 plans with exact owner-selected order and prices', 
       `PKR ${product.price.toLocaleString('en-PK')}`
     );
   }
-  await page.locator('.home-discovery').scrollIntoViewIfNeeded();
+  await page.locator('.home-catalog-end').scrollIntoViewIfNeeded();
   await expect(cards).toHaveCount(24);
   expect(catalogRequests).toEqual([]);
   await expect(page.locator('.catalog-loader')).toHaveCount(0);
@@ -55,6 +55,11 @@ test('both discovery links work and the finder focuses usable search', async ({
   page,
 }) => {
   await page.goto('/');
+  const heading = page.locator('.featured-catalog-heading');
+  await expect(heading).toContainText('Showing 24 of 811 offers');
+  await expect(
+    heading.getByRole('link', { name: 'Show all tools 811', exact: true })
+  ).toBeVisible();
   await page
     .getByRole('link', { name: 'Find your next tool', exact: true })
     .click();
@@ -65,10 +70,46 @@ test('both discovery links work and the finder focuses usable search', async ({
     /Windows 11 Pro/i
   );
   await page.goto('/');
-  await page.getByRole('link', { name: 'Show all tools', exact: true }).click();
+  await page
+    .getByRole('link', { name: 'Show all tools 811', exact: true })
+    .click();
   await expect(page).toHaveURL(/\/tools\/$/);
   await expect(page.locator('.result-count')).toContainText('811');
   await expect(page.locator('.product-card')).toHaveCount(24);
+});
+
+test('Buy Now is prominent and clickable for pending offers; restock uses its own enquiry', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const buy = page.locator('.home-product-grid a.buy-button').first();
+  await expect(buy).toBeEnabled();
+  await expect(
+    page.locator('.home-product-grid button.buy-button')
+  ).toHaveCount(0);
+  const style = await buy.evaluate((el) => ({
+    color: getComputedStyle(el).color,
+    background: getComputedStyle(el).backgroundColor,
+    height: el.getBoundingClientRect().height,
+  }));
+  expect(style.color).toBe('rgb(255, 255, 255)');
+  expect(style.background).toBe('rgb(17, 19, 24)');
+  expect(style.height).toBeGreaterThanOrEqual(48);
+  const out = { ...catalog[0], stock: 'out-of-stock', approval: 'pending' };
+  await page.route('**/catalog/index.json', (route) =>
+    route.fulfill({ json: [out] })
+  );
+  await page.goto('/tools/');
+  const restock = page.getByRole('link', {
+    name: `Ask about restock: ${out.name}`,
+    exact: true,
+  });
+  await expect(restock).toBeVisible();
+  await expect(restock).toHaveAttribute(
+    'href',
+    /please%20let%20me%20know%20about%20restock/
+  );
+  await expect(page.locator('.product-card')).toContainText('Out of stock');
 });
 
 test('all featured detail links resolve and WhatsApp enquiries include the exact plan', async ({
@@ -83,7 +124,7 @@ test('all featured detail links resolve and WhatsApp enquiries include the exact
       links.map((a) => (a as HTMLAnchorElement).getAttribute('href')!)
     );
   for (const href of urls) expect((await request.get(href)).status()).toBe(200);
-  const enquiries = cards.locator('.card-inquiry a');
+  const enquiries = cards.locator('a.buy-button');
   await expect(enquiries).toHaveCount(24);
   const chosen = homeSelection(catalog as Product[]);
   for (let i = 0; i < chosen.length; i++) {
@@ -247,10 +288,49 @@ test.describe('phone touch interactions', () => {
     await expect(page.locator('.product-card').first()).toContainText(
       'Out of stock'
     );
+    await page.context().route('https://wa.me/**', (route) =>
+      route.fulfill({
+        status: 200,
+        body: 'WhatsApp touch navigation verified',
+      })
+    );
+    const popup = page.waitForEvent('popup');
+    await page.locator('.product-card a.buy-button').first().tap();
+    const opened = await popup;
+    await opened.waitForLoadState();
+    expect(opened.url()).toContain(
+      'please%20let%20me%20know%20about%20restock'
+    );
+    await opened.close();
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth
       )
     ).toBe(true);
+  });
+});
+
+test.describe('purchase links before JavaScript loads', () => {
+  test.use({ javaScriptEnabled: false });
+  test('the primary WhatsApp action works directly from server HTML', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    const buy = page.locator('.home-product-grid a.buy-button').first();
+    await expect(buy).toHaveAttribute(
+      'href',
+      /please%20confirm%20availability/
+    );
+    await page
+      .context()
+      .route('https://wa.me/**', (route) =>
+        route.fulfill({ status: 200, body: 'Native link verified' })
+      );
+    const popup = page.waitForEvent('popup');
+    await buy.click();
+    const opened = await popup;
+    await opened.waitForLoadState();
+    expect(opened.url()).toContain('https://wa.me/923714549245?text=');
+    await opened.close();
   });
 });

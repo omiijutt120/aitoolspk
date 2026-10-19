@@ -1,11 +1,11 @@
 export const faqs = [
   [
     'How do I place an order?',
-    'Choose an exact plan and read its duration, access and warranty terms. Approved, in-stock offers have an active Buy Now button that opens WhatsApp with those details. The seller confirms the current price and availability before you decide to pay.',
+    'Choose an exact plan and read its duration, access and warranty terms. Buy Now opens WhatsApp with the selected product, plan, warranty, PKR price and ID. For unverified or stale offers, the message asks for confirmation first. The seller confirms availability and exact terms before you decide to pay.',
   ],
   [
-    'Why are some Buy Now buttons unavailable?',
-    'Purchasing is enabled only after an offer’s resale eligibility, delivery method and terms are reviewed and stock is confirmed. Pending offers, stale quotes and out-of-stock listings cannot be ordered from the website. You can ask about availability without committing to an order.',
+    'What happens when a plan is unverified or out of stock?',
+    'The WhatsApp button stays usable. Unverified or stale plans open an availability enquiry; out-of-stock plans show Restock and ask about future availability. An enquiry does not reserve a plan, confirm eligibility or create a purchase.',
   ],
   [
     'Are these official vendor subscriptions?',

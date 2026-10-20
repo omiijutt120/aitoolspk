@@ -4,7 +4,7 @@ A static-first Next.js 16 + React 19 + TypeScript + Tailwind CSS 4 catalog. Orde
 
 The UI uses native system fonts with no font download. `predev` and `prebuild` generate 96px WebP thumbnails from the official local logo masters, keeping full assets for detail pages. Generated thumbnails are ignored by Git and recreated automatically. Use `node scripts/fetch-official-logos.mjs --only=leonardo,linkedin` to refresh selected brand assets; source declarations and provenance live in `data/logo-sources.json` and `data/brands.json`.
 
-The homepage shows a bounded selection of 24 offers: the 19 owner-selected plans first, then one non-API plan from each of five familiar brands. "Find your next tool" and "Show all tools 811" sit alongside the featured-products heading, making the full catalog visible before any product scrolling. The finder focuses search; the other button opens the paginated catalog. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) and [VERIFICATION.md](VERIFICATION.md).
+The homepage shows 23 featured parent collections, selected from the owner's plan IDs and five familiar brands, with one API collection last. Each card shows the full plan count and lowest listed PKR price. "Find your next tool" and "Show all tools" sit alongside the featured heading, opening the grouped directory of 104 collections containing all 811 plans. The finder focuses search. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) and [VERIFICATION.md](VERIFICATION.md).
 
 `npm run build` includes a narrow post-build workaround for [Next.js issue #85374](https://github.com/vercel/next.js/issues/85374): Windows builds can emit nested RSC segment filenames while the browser requests flat filenames. The script copies the required flat aliases without modifying dependencies; native Linux exports need no changes. Keep this check when deploying an export built on Windows.
 
@@ -40,7 +40,7 @@ All **811** original rows are imported with exact `SellingPricePKR` integer reta
 
 The original CSV and PRD are in ignored `private/`. **Never upload that directory, the original Downloads files, or `reports/` to a public repository or web root.** Public builds use an allowlist projection in `data/catalog.json` and `public/catalog/index.json`. Descriptions are rewritten conservatively; raw source copy, purchase requirements, supplier URLs, original prices, costs, margins, profits, sold counts and evidence are never copied. IDs are stable opaque public hashes; they do not expose supplier identifiers.
 
-The homepage server renders its 24 selected offers without fetching the full catalog or loading the search engine. Manage their IDs/order and additional brands in `data/storefront.json`. API offers appear after non-API offers in the default catalog order. Catalog pages server render 24 offers and retain pagination. The catalog browser fetches the sanitized index and uses Fuse.js for accent-insensitive fuzzy search over the entire catalog. Filters and sort live in the URL. Individual offers and category pages are static HTML with metadata and breadcrumbs. Pending offers are `noindex` and omitted from the sitemap. Product/Offer structured data is emitted only for approved entries, with an Offer only when purchasable.
+The homepage server renders its selected parent cards without fetching the full catalog or loading the search engine. Manage featured product IDs and additional brands in `data/storefront.json`. API offers live in one parent, last in the default directory order. The directory renders 24 parent cards per page; each collection renders 24 individual plans per page. The browser fetches the sanitized index and uses Fuse.js for accent-insensitive fuzzy search. Filters and sort live in the URL. Individual offers, collections and categories are static HTML with metadata and breadcrumbs. Pending individual offers are `noindex` and omitted from the sitemap. Product/Offer structured data is emitted only for approved entries, with an Offer only when purchasable.
 
 ### Update products
 
@@ -73,7 +73,13 @@ Example schema (illustrative only; **do not copy it as proof**):
 
 5. Reimport, run checks and redeploy. Buy Now always opens WhatsApp. Approved, confirmed in-stock offers with a quote at most seven days old use the order message; pending, unconfirmed or expired offers use an availability-confirmation message. Out-of-stock offers show Restock and use a restock message. Approval is still required before representing a sale as ready. Refresh prices and stock weekly. Refresh dates only after actually rechecking. Price changes belong in the CSV's retail-price column.
 
-Every card and detail page includes View Details / Buy Now. Unverified offers open availability enquiries; out-of-stock offers have an active Restock action. Order messages include product, exact variant terms, retail price, public ID, canonical product URL and a confirmation request. No message is sent automatically. No passwords or security codes are requested.
+Every individual plan card and detail page includes View Details / Buy Now. Unverified offers open availability enquiries; out-of-stock offers have an active Restock action. Order messages include product, exact variant terms, retail price, public ID, canonical product URL and a confirmation request. No message is sent automatically. No passwords or security codes are requested.
+
+### Parent collections and plan management
+
+The homepage and `/tools/` directory show one parent card per tool. `/plans/chatgpt/`, for example, lists every non-API ChatGPT plan with its original price, duration, access and warranty. All API offers, including APIGPT and ZAPI entries, belong only to `/plans/api/`; they do not also appear in subscription parents. Collection counts and starting prices are calculated from the catalog. Search and filters apply to individual plans before grouping, and carry through when a collection is opened.
+
+`src/lib/collections.ts` owns grouping; `isApiProduct` in `src/lib/catalog-order.ts` identifies API offers. The importer’s `brandSlug` selects other parent groups. Update brand mappings if a new tool arrives under an incorrect brand. A new eligible tool automatically receives a collection page and sitemap entry at build time. `data/storefront.json` still controls homepage priority: selected product IDs select their whole parent collection once, additional brands follow, and the API collection appears last. No variant is merged or discarded.
 
 ### Brands and assets
 

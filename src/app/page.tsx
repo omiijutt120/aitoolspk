@@ -7,9 +7,9 @@ import {
   Banknote,
   Search,
 } from 'lucide-react';
-import { ProductCard } from '@/components/product-card';
+import { CollectionCard } from '@/components/collection-card';
 import { products } from '@/lib/catalog';
-import { homeSelection } from '@/lib/catalog-order';
+import { homeCollections, groupCollections } from '@/lib/collections';
 import { metadata as makeMetadata } from '@/lib/seo';
 
 export const metadata = makeMetadata(
@@ -19,7 +19,8 @@ export const metadata = makeMetadata(
 );
 
 export default function Home() {
-  const selected = homeSelection(products);
+  const selected = homeCollections(products);
+  const collectionCount = groupCollections(products).length;
   const brands = ['chatgpt', 'claude', 'canva', 'figma', 'notion', 'elevenlabs']
     .map((slug) => products.find((p) => p.brandSlug === slug))
     .filter((p) => p !== undefined);
@@ -35,8 +36,8 @@ export default function Home() {
           </h1>
           <p>
             Explore {products.length} plans. Compare prices in PKR.
-            <br className="desktop-break" /> Start with our featured selection
-            or browse the complete catalog.
+            <br className="desktop-break" /> Choose a tool. Find all its plans
+            in one place.
           </p>
           <div className="hero-facts">
             <span>
@@ -62,7 +63,7 @@ export default function Home() {
             {brands.map((p) => (
               <Link
                 key={p.id}
-                href={`/tools/?brand=${encodeURIComponent(p.brand)}`}
+                href={`/plans/${p.brandSlug}/`}
                 aria-label={`Browse ${p.brand} plans`}
                 prefetch={false}
               >
@@ -98,8 +99,9 @@ export default function Home() {
               Featured tools<span>{selected.length}</span>
             </h2>
             <p className="featured-catalog-count">
-              Showing {selected.length} of{' '}
-              <strong>{products.length} offers</strong>
+              {selected.length} featured collections ·{' '}
+              <strong>{products.length} plans</strong> across {collectionCount}{' '}
+              collections
             </p>
           </div>
           <div className="catalog-entry-actions">
@@ -113,25 +115,24 @@ export default function Home() {
             </Link>
             <Link className="button" href="/tools/" prefetch={false}>
               Show all tools{' '}
-              <span className="catalog-total">{products.length}</span>
+              <span className="catalog-total">{collectionCount}</span>
               <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>
         <p className="home-verification-note">
-          Plans marked “Pending verification” need confirmation before ordering.
-          Buy Now opens WhatsApp with your selected plan so you can confirm
-          availability, price and exact terms.
+          Open a tool to compare all its plans, durations and warranty options.
+          All API offers are together in the API plans collection.
         </p>
-        <div className="product-grid home-product-grid">
-          {selected.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        <div className="collection-grid home-collection-grid">
+          {selected.map((collection) => (
+            <CollectionCard key={collection.slug} collection={collection} />
           ))}
         </div>
         <div className="home-catalog-end">
           <p>
-            These are {selected.length} featured plans from our{' '}
-            {products.length}-offer catalog.
+            {products.length} individual plans, organised into {collectionCount}{' '}
+            collections.
           </p>
           <Link className="text-link" href="/tools/" prefetch={false}>
             Browse the complete catalog

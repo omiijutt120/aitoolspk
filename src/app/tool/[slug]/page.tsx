@@ -11,6 +11,7 @@ import {
 } from '@/components/product-card';
 import { metadata, JsonLd, origin } from '@/lib/seo';
 import { canBuy, money, isStale } from '@/lib/commerce.mjs';
+import { collectionSlug } from '@/lib/collections';
 export const dynamicParams = false;
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -62,7 +63,9 @@ export default async function ProductDetail({
               {categoryName(p.category)}
             </Link>
             <span>/</span>
-            <span>{p.brand}</span>
+            <Link href={`/plans/${collectionSlug(p)}/`} prefetch={false}>
+              {collectionSlug(p) === 'api' ? 'API plans' : `${p.brand} plans`}
+            </Link>
           </nav>
         </div>
         <div className="detail-layout">
@@ -197,10 +200,11 @@ export default async function ProductDetail({
                   ))}
                 </div>
                 <Link
-                  href={`/tools/?brand=${encodeURIComponent(p.brand)}`}
+                  href={`/plans/${collectionSlug(p)}/`}
                   className="text-link"
                 >
-                  See all {p.brand} offers →
+                  See all {collectionSlug(p) === 'api' ? 'API' : p.brand} plans
+                  →
                 </Link>
               </div>
             )}

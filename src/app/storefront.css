@@ -1991,6 +1991,205 @@ body {
 .home-selection {
   padding-bottom: 25px;
 }
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.home-collection-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.collection-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #e0e4e9;
+  border-radius: 14px;
+  transition:
+    border-color 160ms,
+    box-shadow 160ms,
+    transform 160ms;
+}
+.collection-card:hover {
+  border-color: #a9b0bb;
+  box-shadow: 0 8px 22px #15171a0a;
+  transform: translateY(-2px);
+}
+.collection-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.collection-logo {
+  width: 58px;
+  height: 58px;
+  border: 1px solid #eceef1;
+  border-radius: 13px;
+  background: #f8f9fa;
+  display: grid;
+  place-items: center;
+  padding: 9px;
+  flex-shrink: 0;
+}
+.collection-logo .brand-wordmark {
+  font-size: 9px;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+.collection-count {
+  font-size: 10px;
+  color: #525b68;
+  background: #f3f5f7;
+  padding: 5px 7px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.collection-category {
+  display: block;
+  color: #626b78;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 9px;
+}
+.collection-card h3 {
+  font-size: 20px;
+  letter-spacing: -0.6px;
+  overflow-wrap: anywhere;
+}
+.collection-card-copy > p {
+  color: #5c6572;
+  font-size: 11px;
+  line-height: 1.7;
+  margin-top: 10px;
+}
+.collection-card-bottom {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  border-top: 1px solid #eceef1;
+  margin-top: auto;
+  padding-top: 17px;
+}
+.collection-card-copy {
+  margin-bottom: 22px;
+}
+.collection-card-bottom > div > span {
+  display: block;
+  font-size: 10px;
+  color: #626b78;
+  margin-bottom: 3px;
+}
+.collection-card-bottom strong {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+.collection-cta {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 650;
+}
+.api-collection-card {
+  background: #f0f2f5;
+  border-color: #bbc1cb;
+}
+.api-collection-card .collection-logo {
+  background: #17191d;
+  color: white;
+  border-color: #17191d;
+}
+.collection-intro > .text-link {
+  margin-bottom: 24px;
+  font-size: 12px;
+}
+.collection-intro-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+.collection-intro-heading h1 {
+  margin: 8px 0 0;
+}
+.collection-intro-heading .store-eyebrow {
+  font-size: 10px;
+}
+.brand-shortcuts .api-shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 6px 11px;
+  border: 1px solid #bbc1cb;
+  background: #f0f2f5;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+@media (max-width: 1100px) {
+  .home-collection-grid,
+  .collection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .collection-grid {
+    gap: 12px;
+  }
+  .collection-card {
+    padding: 16px;
+  }
+  .collection-card-top {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .collection-logo {
+    width: 50px;
+    height: 50px;
+    padding: 8px;
+  }
+  .collection-card h3 {
+    font-size: 18px;
+  }
+  .collection-card-bottom {
+    gap: 4px;
+  }
+  .collection-intro-heading {
+    gap: 12px;
+  }
+  .collection-intro-heading h1 {
+    font-size: 30px;
+  }
+}
+@media (max-width: 359px) {
+  .collection-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .collection-card-top {
+    flex-wrap: nowrap;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .collection-card {
+    transition: none;
+  }
+  .collection-card:hover {
+    transform: none;
+  }
+}
 .home-product-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;

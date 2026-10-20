@@ -2,8 +2,11 @@ import type { Product } from './types';
 import selection from '../../data/storefront.json';
 
 export function isApiProduct(product: Product): boolean {
-  return /\bapi(?:\b|(?=key|token|credit))/i.test(
-    `${product.name} ${product.access}`
+  return (
+    product.brandSlug === 'apigpt' ||
+    /\b(?:z?api)(?:\b|(?=key|token|credit))/i.test(
+      `${product.name} ${product.access}`
+    )
   );
 }
 

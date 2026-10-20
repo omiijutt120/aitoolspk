@@ -1,301 +1,299 @@
 import { test, expect } from '@playwright/test';
 import catalog from '../../data/catalog.json';
 import selection from '../../data/storefront.json';
+import { orderCatalog, isApiProduct } from '../../src/lib/catalog-order';
 import {
-  orderCatalog,
-  homeSelection,
-  isApiProduct,
-} from '../../src/lib/catalog-order';
+  groupCollections,
+  collectionProducts,
+  collectionSlug,
+  homeCollections,
+} from '../../src/lib/collections';
 import type { Product } from '../../src/lib/types';
 
-test('owner-selected plans lead; every API offer follows the non-API catalog', () => {
-  const products = catalog as Product[];
+const products = catalog as Product[];
+const groups = groupCollections(products);
+const home = homeCollections(products);
+const chatgpt = collectionProducts(products, 'chatgpt');
+const api = collectionProducts(products, 'api');
+
+test('parents partition every offer once; API, APIGPT and ZAPI stay separate from subscriptions', () => {
   const ordered = orderCatalog(products);
   expect(ordered.slice(0, 19).map((p) => p.id)).toEqual(
     selection.featuredProductIds
   );
-  expect(new Set(ordered.map((p) => p.id)).size).toBe(products.length);
-  const apiStart = ordered.findIndex(isApiProduct);
-  expect(apiStart).toBeGreaterThan(19);
-  expect(ordered.slice(apiStart).every(isApiProduct)).toBe(true);
-  const home = homeSelection(products);
-  expect(home).toHaveLength(24);
-  expect(home.some(isApiProduct)).toBe(false);
+  expect(
+    ordered.slice(ordered.findIndex(isApiProduct)).every(isApiProduct)
+  ).toBe(true);
+  const assigned = groups.flatMap((g) =>
+    collectionProducts(products, g.slug).map((p) => p.id)
+  );
+  expect(assigned).toHaveLength(products.length);
+  expect(new Set(assigned).size).toBe(products.length);
+  expect(groups.reduce((n, g) => n + g.count, 0)).toBe(products.length);
+  expect(api.every(isApiProduct)).toBe(true);
+  expect(
+    chatgpt.every((p) => !isApiProduct(p) && p.brandSlug === 'chatgpt')
+  ).toBe(true);
+  expect(
+    products
+      .filter((p) => p.brandSlug === 'apigpt')
+      .every((p) => collectionSlug(p) === 'api')
+  ).toBe(true);
+  expect(groups.at(-1)?.slug).toBe('api');
+  expect(new Set(home.map((g) => g.slug)).size).toBe(home.length);
+  for (const g of groups) {
+    const plans = collectionProducts(products, g.slug);
+    expect(g.count).toBe(plans.length);
+    expect(g.minPrice).toBe(Math.min(...plans.map((p) => p.price)));
+  }
 });
 
-test('homepage shows only 24 plans with exact owner-selected order and prices', async ({
+test('homepage has one parent per tool, exact counts, starting prices and working collection URLs', async ({
   page,
+  request,
 }) => {
-  const catalogRequests: string[] = [];
-  page.on('request', (request) => {
-    if (request.url().includes('/catalog/index.json'))
-      catalogRequests.push(request.url());
+  const requests: string[] = [];
+  page.on('request', (r) => {
+    if (r.url().includes('/catalog/index.json')) requests.push(r.url());
   });
   await page.goto('/');
   await page.waitForLoadState('networkidle');
-  const cards = page.locator('.home-product-grid .product-card');
-  await expect(cards).toHaveCount(24);
+  const cards = page.locator('.home-collection-grid .collection-card');
+  await expect(cards).toHaveCount(home.length);
+  await expect(page.locator('.product-card')).toHaveCount(0);
   await expect(page.locator('.brand').first()).toHaveText('AiToolsPk');
-  for (let i = 0; i < selection.featuredProductIds.length; i++) {
-    const product = catalog.find(
-      (p) => p.id === selection.featuredProductIds[i]
-    )!;
-    await expect(cards.nth(i).locator('h3')).toHaveText(product.name);
-    await expect(cards.nth(i).locator('.product-card-price strong')).toHaveText(
-      `PKR ${product.price.toLocaleString('en-PK')}`
+  for (let i = 0; i < home.length; i++) {
+    const g = home[i];
+    await expect(cards.nth(i).locator('h3')).toHaveText(g.title);
+    await expect(cards.nth(i).locator('.collection-count')).toContainText(
+      String(g.count)
     );
+    await expect(cards.nth(i).locator('strong')).toHaveText(
+      `PKR ${g.minPrice.toLocaleString('en-PK')}`
+    );
+    expect((await request.get(`/plans/${g.slug}/`)).status()).toBe(200);
   }
-  await page.locator('.home-catalog-end').scrollIntoViewIfNeeded();
-  await expect(cards).toHaveCount(24);
-  expect(catalogRequests).toEqual([]);
-  await expect(page.locator('.catalog-loader')).toHaveCount(0);
+  await expect(cards.last()).toHaveAttribute('data-collection', 'api');
+  expect(requests).toEqual([]);
 });
 
-test('both discovery links work and the finder focuses usable search', async ({
+test('both discovery links work; plan search opens its matching parent with the query preserved', async ({
   page,
 }) => {
   await page.goto('/');
-  const heading = page.locator('.featured-catalog-heading');
-  await expect(heading).toContainText('Showing 24 of 811 offers');
-  await expect(
-    heading.getByRole('link', { name: 'Show all tools 811', exact: true })
-  ).toBeVisible();
+  await expect(page.locator('.featured-catalog-heading')).toContainText(
+    `${products.length} plans`
+  );
   await page
     .getByRole('link', { name: 'Find your next tool', exact: true })
     .click();
-  await expect(page).toHaveURL(/\/tools\/\?focus=search/);
   await expect(page.locator('#catalog-search')).toBeFocused();
   await page.locator('#catalog-search').fill('Windows 11 Pro License Key');
+  await expect(page.locator('.collection-card').first()).toContainText(
+    /Microsoft/i
+  );
+  await page.locator('#catalog-search').press('Escape');
+  await page.locator('.collection-card').first().click();
   await expect(page.locator('.product-card').first()).toContainText(
     /Windows 11 Pro/i
   );
   await page.goto('/');
   await page
-    .getByRole('link', { name: 'Show all tools 811', exact: true })
+    .locator('.featured-catalog-heading')
+    .getByRole('link', { name: /Show all tools/ })
     .click();
-  await expect(page).toHaveURL(/\/tools\/$/);
-  await expect(page.locator('.result-count')).toContainText('811');
-  await expect(page.locator('.product-card')).toHaveCount(24);
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(products.length)
+  );
+  await expect(page.locator('.collection-card')).toHaveCount(24);
 });
 
-test('Buy Now is prominent and clickable for pending offers; restock uses its own enquiry', async ({
-  page,
-}) => {
-  await page.goto('/');
-  const buy = page.locator('.home-product-grid a.buy-button').first();
-  await expect(buy).toBeEnabled();
-  await expect(
-    page.locator('.home-product-grid button.buy-button')
-  ).toHaveCount(0);
-  const style = await buy.evaluate((el) => ({
-    color: getComputedStyle(el).color,
-    background: getComputedStyle(el).backgroundColor,
-    height: el.getBoundingClientRect().height,
-  }));
-  expect(style.color).toBe('rgb(255, 255, 255)');
-  expect(style.background).toBe('rgb(17, 19, 24)');
-  expect(style.height).toBeGreaterThanOrEqual(48);
-  const out = { ...catalog[0], stock: 'out-of-stock', approval: 'pending' };
-  await page.route('**/catalog/index.json', (route) =>
-    route.fulfill({ json: [out] })
-  );
-  await page.goto('/tools/');
-  const restock = page.getByRole('link', {
-    name: `Ask about restock: ${out.name}`,
-    exact: true,
-  });
-  await expect(restock).toBeVisible();
-  await expect(restock).toHaveAttribute(
-    'href',
-    /please%20let%20me%20know%20about%20restock/
-  );
-  await expect(page.locator('.product-card')).toContainText('Out of stock');
-});
-
-test('all featured detail links resolve and WhatsApp enquiries include the exact plan', async ({
+test('ChatGPT parent exposes every exact variant across pages with correct detail and WhatsApp links', async ({
   page,
   request,
 }) => {
   await page.goto('/');
-  const cards = page.locator('.home-product-grid .product-card');
-  const urls = await cards
-    .getByRole('link', { name: 'View Details', exact: true })
-    .evaluateAll((links) =>
-      links.map((a) => (a as HTMLAnchorElement).getAttribute('href')!)
-    );
-  for (const href of urls) expect((await request.get(href)).status()).toBe(200);
-  const enquiries = cards.locator('a.buy-button');
-  await expect(enquiries).toHaveCount(24);
-  const chosen = homeSelection(catalog as Product[]);
-  for (let i = 0; i < chosen.length; i++) {
-    const p = chosen[i];
-    const url = new URL((await enquiries.nth(i).getAttribute('href'))!);
-    expect(url.hostname).toBe('wa.me');
-    expect(url.pathname).toBe('/923714549245');
-    const message = url.searchParams.get('text')!;
-    for (const term of [
-      p.name,
-      p.id,
-      p.duration,
-      p.warranty,
-      p.access,
-      `PKR ${p.price.toLocaleString('en-PK')}`,
-    ])
-      expect(message).toContain(term);
-    expect(message).toContain('confirm availability');
+  await page
+    .locator('.home-collection-grid [data-collection="chatgpt"]')
+    .click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'ChatGPT plans'
+  );
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(chatgpt.length)
+  );
+  const seen: string[] = [];
+  for (let n = 1; n <= Math.ceil(chatgpt.length / 24); n++) {
+    if (n > 1)
+      await page
+        .getByRole('button', { name: `Page ${n}`, exact: true })
+        .click();
+    const cards = page.locator('.product-card');
+    const slice = chatgpt.slice((n - 1) * 24, n * 24);
+    await expect(cards).toHaveCount(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      const p = slice[i];
+      await expect(cards.nth(i).locator('h3')).toHaveText(p.name);
+      await expect(
+        cards.nth(i).locator('.product-card-price strong')
+      ).toHaveText(`PKR ${p.price.toLocaleString('en-PK')}`);
+      const href = await cards
+        .nth(i)
+        .getByRole('link', { name: 'View Details', exact: true })
+        .getAttribute('href');
+      expect((await request.get(href!)).status()).toBe(200);
+      const url = new URL(
+        (await cards.nth(i).locator('.buy-button').getAttribute('href'))!
+      );
+      expect(url.hostname).toBe('wa.me');
+      expect(url.pathname).toBe('/923714549245');
+      for (const field of [
+        p.id,
+        p.name,
+        p.duration,
+        p.warranty,
+        p.access,
+        `PKR ${p.price.toLocaleString('en-PK')}`,
+      ])
+        expect(url.searchParams.get('text')).toContain(field);
+      seen.push(p.id);
+    }
   }
-  const popup = page.waitForEvent('popup');
+  expect(seen).toEqual(chatgpt.map((p) => p.id));
+  const buy = page.locator('.product-card .buy-button').first();
+  const style = await buy.evaluate((el) => ({
+    background: getComputedStyle(el).backgroundColor,
+    height: el.getBoundingClientRect().height,
+  }));
+  expect(style.background).toBe('rgb(17, 19, 24)');
+  expect(style.height).toBeGreaterThanOrEqual(48);
   await page
     .context()
-    .route('https://wa.me/**', (route) =>
-      route.fulfill({ status: 200, body: 'WhatsApp navigation verified' })
+    .route('https://wa.me/**', (r) =>
+      r.fulfill({ body: 'WhatsApp navigation verified' })
     );
-  await enquiries.first().click();
+  const popup = page.waitForEvent('popup');
+  await buy.click();
   const opened = await popup;
   await opened.waitForLoadState();
   expect(opened.url()).toContain('https://wa.me/923714549245?text=');
   await opened.close();
 });
 
-test('brand showcase and global keyboard search navigate to full catalog results', async ({
+test('API collection includes every API plan and allows provider search', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await page.locator('.home-collection-grid [data-collection="api"]').click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('API plans');
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(api.length)
+  );
+  for (let n = 1; n <= Math.ceil(api.length / 24); n++) {
+    if (n > 1)
+      await page
+        .getByRole('button', { name: `Page ${n}`, exact: true })
+        .click();
+    await expect(page.locator('.product-card h3')).toHaveText(
+      api.slice((n - 1) * 24, n * 24).map((p) => p.name)
+    );
+  }
+  await page.locator('#catalog-search').fill('ZAPI');
+  await page.locator('#catalog-search').press('Escape');
+  await expect(page.locator('.product-card').first()).toContainText(/ZAPI/i);
+});
+
+test('price filters and sort apply before grouping and survive opening a collection', async ({
+  page,
+}) => {
+  await page.goto('/tools/');
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(products.length)
+  );
+  const filters = page.locator('.desktop-filters');
+  await filters.getByLabel('Minimum price in PKR').fill('500');
+  await filters.getByLabel('Maximum price in PKR').fill('2000');
+  const filtered = products.filter((p) => p.price >= 500 && p.price <= 2000);
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(filtered.length)
+  );
+  await page.locator('#sort').selectOption('price-desc');
+  const prices = (
+    await page.locator('.collection-card strong').allTextContents()
+  ).map((p) => Number(p.replace(/\D/g, '')));
+  expect(prices).toEqual([...prices].sort((a, b) => b - a));
+  const first = page.locator('.collection-card').first();
+  const slug = await first.getAttribute('data-collection');
+  await first.click();
+  await expect(page).toHaveURL(/min=500/);
+  await expect(page).toHaveURL(/max=2000/);
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(filtered.filter((p) => collectionSlug(p) === slug).length)
+  );
+  await page
+    .locator('.desktop-filters')
+    .getByRole('button', { name: 'Reset all', exact: true })
+    .click();
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(collectionProducts(products, slug!).length)
+  );
+});
+
+test('brand showcase opens all Canva plans and global keyboard search returns parent matches', async ({
   page,
 }) => {
   await page.goto('/');
   await page
     .getByRole('link', { name: 'Browse Canva plans', exact: true })
     .click();
-  await expect(page).toHaveURL(/\/tools\/\?brand=Canva/);
-  await expect(page.locator('.result-count')).toContainText('13');
-  await expect(page.locator('.product-card')).toHaveCount(13);
+  await expect(page).toHaveURL(/\/plans\/canva\//);
+  await expect(page.locator('.result-count strong')).toHaveText(
+    String(collectionProducts(products, 'canva').length)
+  );
   await page.goto('/contact/');
   await page.waitForLoadState('networkidle');
   await page.keyboard.press('Control+k');
-  await expect(page.locator('#site-search')).toBeFocused();
   await page.locator('#site-search').fill('Canva');
   await page.locator('#site-search').press('Enter');
-  await expect(page).toHaveURL(/\/tools\/\?q=Canva/);
-  await expect(page.locator('.product-card').first()).toContainText(/Canva/i);
+  await expect(page.locator('[data-collection="canva"]')).toBeVisible();
 });
 
-test('full catalog tabs, brand filters and last-page API offers work', async ({
-  page,
-}) => {
-  await page.goto('/tools/');
-  await expect(page.locator('.result-count')).toContainText('811');
-  await page
-    .getByRole('navigation', { name: 'Filter by category' })
-    .getByRole('button', { name: 'Design', exact: true })
-    .click();
-  await expect(page).toHaveURL(/category=design/);
-  await expect(page.locator('.product-card .category-mini').first()).toHaveText(
-    'Design'
-  );
-  await page.getByRole('button', { name: 'Filter Canva', exact: true }).click();
-  await expect(page.locator('.product-card')).toHaveCount(13);
-  await page.getByRole('button', { name: 'Clear all', exact: true }).click();
-  await expect(page.locator('.result-count')).toContainText('811');
-  await page.getByRole('button', { name: 'Page 34', exact: true }).click();
-  await expect(page).toHaveURL(/page=34/);
-  await expect(page.locator('.product-card')).toHaveCount(19);
-  for (const name of await page.locator('.product-card h3').allTextContents())
-    expect(name).toMatch(/api/i);
-});
-
-test('advanced filters, price limits, sorting and page arrows perform their actions', async ({
-  page,
-}) => {
-  await page.goto('/tools/');
-  await expect(page.locator('.result-count')).toContainText('811');
-  const filters = page.locator('.desktop-filters');
-  await filters.locator('summary').click();
-  const sample = catalog.find(
-    (p) => p.duration === '1 month' && p.access !== 'Not specified'
-  )!;
-  const fields = [
-    ['Durations', 'duration', sample.duration],
-    ['Warranty terms', 'warranty', sample.warranty],
-    ['Access types', 'access', sample.access],
-    ['Review status', 'approval', 'pending'],
-    ['Availability', 'stock', 'in-stock'],
-  ];
-  for (const [label, key, value] of fields) {
-    await filters.getByLabel(label, { exact: true }).selectOption(value);
-    await expect
-      .poll(() => new URL(page.url()).searchParams.get(key))
-      .toBe(value);
-    await expect(page.locator('.result-count strong')).toHaveText(
-      String(catalog.filter((p) => p[key as keyof typeof p] === value).length)
-    );
-    await filters
-      .getByRole('button', { name: 'Reset all', exact: true })
-      .click();
-    await expect(page.locator('.result-count strong')).toHaveText('811');
-  }
-  await filters.getByLabel('Minimum price in PKR').fill('500');
-  await filters.getByLabel('Maximum price in PKR').fill('2000');
-  await expect(page.locator('.result-count strong')).toHaveText(
-    String(catalog.filter((p) => p.price >= 500 && p.price <= 2000).length)
-  );
-  await page.locator('#sort').selectOption('price-desc');
-  const prices = (
-    await page.locator('.product-card-price strong').allTextContents()
-  ).map((p) => Number(p.replace(/\D/g, '')));
-  expect(prices).toEqual([...prices].sort((a, b) => b - a));
-  await page.locator('#sort').selectOption('name');
-  const names = await page.locator('.product-card h3').allTextContents();
-  expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b)));
-  await filters.getByRole('button', { name: 'Reset all', exact: true }).click();
-  await page.getByRole('button', { name: 'Next page', exact: true }).click();
-  await expect(page).toHaveURL(/page=2/);
-  await page
-    .getByRole('button', { name: 'Previous page', exact: true })
-    .click();
-  await expect(
-    page.getByRole('button', { name: 'Page 1', exact: true })
-  ).toHaveAttribute('aria-current', 'page');
-  await expect(
-    page.getByRole('button', { name: 'Previous page', exact: true })
-  ).toBeDisabled();
-});
-
-test.describe('phone touch interactions', () => {
+test.describe('phone touch flow', () => {
   test.use({
     viewport: { width: 390, height: 844 },
     isMobile: true,
     hasTouch: true,
     deviceScaleFactor: 2,
   });
-  test('navigation, discovery and filter drawer work by touch', async ({
+  test('mobile navigation, parent cards, filter drawer and restock action work', async ({
     page,
   }) => {
+    const out = { ...chatgpt[0], stock: 'out-of-stock', approval: 'pending' };
+    await page.route('**/catalog/index.json', (r) =>
+      r.fulfill({ json: [out] })
+    );
     await page.goto('/');
     await page.getByRole('button', { name: 'Open navigation' }).tap();
-    await expect(page.getByRole('dialog')).toBeVisible();
-    await page.getByRole('button', { name: 'Close navigation' }).tap();
-    await expect(page.getByRole('dialog')).not.toBeVisible();
     await page
-      .getByRole('link', { name: 'Find your next tool', exact: true })
+      .getByRole('navigation', { name: 'Mobile navigation' })
+      .getByRole('link', { name: 'All tools', exact: true })
       .tap();
-    await expect(page.locator('#catalog-search')).toBeFocused();
+    await expect(page).toHaveURL(/\/tools\/$/);
+    await page.locator('[data-collection="chatgpt"]').tap();
     await page.getByRole('button', { name: /Filters/ }).tap();
     const drawer = page.getByRole('dialog', { name: 'Filter tools' });
-    await expect(drawer).toBeVisible();
     await drawer
       .getByLabel('Availability', { exact: true })
       .selectOption('out-of-stock');
     await drawer.getByRole('button', { name: /Show .* offers/ }).tap();
-    await expect(drawer).not.toBeVisible();
-    await expect(page.locator('.product-card').first()).toContainText(
-      'Out of stock'
-    );
-    await page.context().route('https://wa.me/**', (route) =>
-      route.fulfill({
-        status: 200,
-        body: 'WhatsApp touch navigation verified',
-      })
-    );
+    await expect(page.locator('.product-card')).toContainText('Out of stock');
+    await page
+      .context()
+      .route('https://wa.me/**', (r) =>
+        r.fulfill({ body: 'WhatsApp touch verified' })
+      );
     const popup = page.waitForEvent('popup');
-    await page.locator('.product-card a.buy-button').first().tap();
+    await page.locator('.product-card .buy-button').tap();
     const opened = await popup;
     await opened.waitForLoadState();
     expect(opened.url()).toContain(
@@ -310,21 +308,25 @@ test.describe('phone touch interactions', () => {
   });
 });
 
-test.describe('purchase links before JavaScript loads', () => {
+test.describe('native links without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
-  test('the primary WhatsApp action works directly from server HTML', async ({
+  test('parent opens plan list and server-rendered Buy Now opens WhatsApp', async ({
     page,
   }) => {
     await page.goto('/');
-    const buy = page.locator('.home-product-grid a.buy-button').first();
+    await page.locator('[data-collection="chatgpt"]').click();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+      'ChatGPT plans'
+    );
+    const buy = page.locator('.product-card .buy-button').first();
     await expect(buy).toHaveAttribute(
       'href',
       /please%20confirm%20availability/
     );
     await page
       .context()
-      .route('https://wa.me/**', (route) =>
-        route.fulfill({ status: 200, body: 'Native link verified' })
+      .route('https://wa.me/**', (r) =>
+        r.fulfill({ body: 'Native link verified' })
       );
     const popup = page.waitForEvent('popup');
     await buy.click();

@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import catalog from '../../data/catalog.json';
+import { collectionSlug } from '../../src/lib/collections';
+import type { Product } from '../../src/lib/types';
 test('approved offers have exact order links and expire without a redeploy', async ({
   page,
 }) => {
-  const product = {
+  const product: Product = {
     ...catalog[1],
     approval: 'approved',
     purchasable: true,
@@ -15,7 +17,7 @@ test('approved offers have exact order links and expire without a redeploy', asy
   await page.route('**/catalog/index.json', (route) =>
     route.fulfill({ json: [product] })
   );
-  await page.goto('/tools/');
+  await page.goto(`/plans/${collectionSlug(product)}/`);
   const buy = page.getByRole('link', {
     name: `Buy Now: ${product.name}`,
     exact: true,
@@ -57,9 +59,8 @@ test('homepage, details and rendered UI produce no console errors', async ({
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'All your tools.'
   );
-  await expect(
-    page.getByRole('link', { name: 'View Details', exact: true }).first()
-  ).toBeVisible();
+  await expect(page.locator('.collection-card').first()).toBeVisible();
+  await page.locator('.collection-card').first().click();
   await page
     .getByRole('link', { name: 'View Details', exact: true })
     .first()
@@ -82,16 +83,20 @@ test('search, fuzzy matching, filters, pagination and URL persistence', async ({
   page,
 }) => {
   await page.goto('/tools/?q=chatgpt');
-  await expect(page.getByRole('status')).toContainText('offers');
+  await expect(page.getByRole('status')).toContainText('plans');
   await expect(page.getByRole('status')).not.toContainText('Loading');
-  await expect(page.locator('.product-card').first()).toContainText(/chatgpt/i);
+  await expect(page.locator('.collection-card').first()).toContainText(
+    /chatgpt/i
+  );
   await page.locator('#catalog-search').fill('cluade');
-  await expect(page.locator('.product-card').first()).toContainText(/claude/i);
+  await expect(page.locator('.collection-card').first()).toContainText(
+    /claude/i
+  );
   await page.locator('#catalog-search').fill('');
   await page.locator('#sort').selectOption('price-asc');
   await expect(page).toHaveURL(/sort=price-asc/);
   const values = await page
-    .locator('.product-card-price strong')
+    .locator('.collection-card strong')
     .allTextContents();
   expect(values.map((v) => Number(v.replace(/[^\d]/g, '')))).toEqual(
     values.map((v) => Number(v.replace(/[^\d]/g, ''))).sort((a, b) => a - b)
@@ -99,7 +104,7 @@ test('search, fuzzy matching, filters, pagination and URL persistence', async ({
   await page.locator('#catalog-search').fill('zzqnonexistentproduct');
   await expect(page.getByText('No tools found.')).toBeVisible();
   await page.getByRole('button', { name: 'Clear all filters' }).click();
-  await expect(page.locator('.product-card')).toHaveCount(24);
+  await expect(page.locator('.collection-card')).toHaveCount(24);
   await page.getByRole('button', { name: 'Page 2', exact: true }).click();
   await expect(page).toHaveURL(/page=2/);
   await page.reload();
@@ -128,6 +133,7 @@ test('navigation and mobile filter dialogs support keyboard close', async ({
     .getByLabel('Availability', { exact: true })
     .selectOption('out-of-stock');
   await page.getByRole('button', { name: /Show .* offers/ }).click();
+  await page.locator('.collection-card').first().click();
   await expect(page.locator('.product-card').first()).toContainText(
     'Out of stock'
   );
@@ -136,16 +142,11 @@ for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {
   test(`responsive layout ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
-    const actions = page.locator('.home-product-grid .product-buttons').first();
-    expect(
-      await actions.evaluate(
-        (el) => getComputedStyle(el).gridTemplateColumns.split(' ').length
-      )
-    ).toBe(2);
-    const detailButton = await actions
-      .getByRole('link', { name: 'View Details', exact: true })
-      .boundingBox();
-    expect(detailButton?.height).toBeGreaterThanOrEqual(44);
+    const parent = page
+      .locator('.home-collection-grid .collection-card')
+      .first();
+    await expect(parent).toBeVisible();
+    expect((await parent.boundingBox())?.height).toBeGreaterThanOrEqual(44);
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth
@@ -156,10 +157,26 @@ for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {
       fullPage: true,
     });
     await page.goto('/tools/');
-    await expect(page.locator('.product-card').first()).toBeVisible();
+    await expect(page.locator('.collection-card').first()).toBeVisible();
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth
+      )
+    ).toBe(true);
+    await page.goto('/plans/chatgpt/');
+    await expect(page.locator('.product-card').first()).toBeVisible();
+    const actions = page.locator('.product-card .product-buttons').first();
+    const details = await actions
+      .getByRole('link', { name: 'View Details', exact: true })
+      .boundingBox();
+    expect(details?.height).toBeGreaterThanOrEqual(width <= 600 ? 44 : 38);
+    expect(details?.width).toBeGreaterThanOrEqual(44);
+    expect(
+      (await actions.locator('.buy-button').boundingBox())?.height
+    ).toBeGreaterThanOrEqual(48);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth
       )
     ).toBe(true);
   });
@@ -167,7 +184,13 @@ for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {
 test('homepage, catalog, policy and details pass automated WCAG AA checks', async ({
   page,
 }) => {
-  for (const url of ['/', '/tools/', '/privacy-policy/']) {
+  for (const url of [
+    '/',
+    '/tools/',
+    '/plans/chatgpt/',
+    '/plans/api/',
+    '/privacy-policy/',
+  ]) {
     await page.goto(url);
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
@@ -177,7 +200,7 @@ test('homepage, catalog, policy and details pass automated WCAG AA checks', asyn
       JSON.stringify(results.violations, null, 2)
     ).toEqual([]);
   }
-  await page.goto('/');
+  await page.goto('/plans/chatgpt/');
   await page
     .getByRole('link', { name: 'View Details', exact: true })
     .first()

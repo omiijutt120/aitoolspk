@@ -10,10 +10,10 @@ export default function Tools() {
     <div className="container">
       <div className="page-intro">
         <p className="eyebrow">YOUR TOOLKIT, RECONSIDERED</p>
-        <h1>Find your next advantage.</h1>
+        <h1>One tool. All its plans.</h1>
         <p>
-          Every offer has its own details. Compare the plan, check the terms,
-          and choose what fits your work.
+          Browse by tool, then compare its subscriptions, durations and warranty
+          options. All API offers live in one collection.
         </p>
       </div>
       <Catalog />

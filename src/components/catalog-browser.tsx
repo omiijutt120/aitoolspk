@@ -23,7 +23,13 @@ import {
 import type { Product } from '@/lib/types';
 import { categories } from '@/lib/categories';
 import { orderCatalog } from '@/lib/catalog-order';
+import {
+  collectionProducts,
+  groupCollections,
+  type PlanCollection,
+} from '@/lib/collections';
 import { ProductCard } from './product-card';
+import { CollectionCard } from './collection-card';
 import { CategoryIcon } from './icon';
 import { emitCatalogEvent } from '@/lib/events';
 
@@ -65,6 +71,8 @@ function Select({ label, param, values, params, update }: SelectProps) {
 }
 type CatalogProps = {
   initial: Product[];
+  initialCollections: PlanCollection[];
+  collection?: string;
   category?: string;
   continuous?: boolean;
   options: {
@@ -78,6 +86,8 @@ type CatalogProps = {
 
 export function CatalogBrowser({
   initial,
+  initialCollections,
+  collection,
   category,
   continuous = false,
   options,
@@ -158,9 +168,15 @@ export function CatalogBrowser({
   const source = useMemo(
     () =>
       all
-        ? orderCatalog(all.filter((p) => !category || p.category === category))
+        ? orderCatalog(
+            (collection ? collectionProducts(all, collection) : all).filter(
+              (p) =>
+                p.approval !== 'excluded' &&
+                (!category || p.category === category)
+            )
+          )
         : initial,
-    [all, category, initial]
+    [all, category, collection, initial]
   );
   const fuse = useMemo(
     () =>
@@ -201,8 +217,24 @@ export function CatalogBrowser({
       result.sort((a, b) => a.name.localeCompare(b.name));
     return result;
   }, [source, fuse, debounced, params]);
+  const grouped = !collection;
+  const collections = useMemo(() => {
+    const result = all ? groupCollections(filtered) : [...initialCollections];
+    if (params.get('sort') === 'price-asc')
+      result.sort((a, b) => a.minPrice - b.minPrice);
+    else if (params.get('sort') === 'price-desc')
+      result.sort((a, b) => b.minPrice - a.minPrice);
+    else if (params.get('sort') === 'name')
+      result.sort((a, b) => a.title.localeCompare(b.title));
+    return result;
+  }, [all, filtered, initialCollections, params]);
+  const itemCount = grouped ? collections.length : filtered.length;
+  const collectionQuery = new URLSearchParams(params);
+  collectionQuery.delete('page');
+  collectionQuery.delete('focus');
+  if (category) collectionQuery.set('category', category);
   const pageSize = 24;
-  const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  const pages = Math.max(1, Math.ceil(itemCount / pageSize));
   const page = Math.min(
     pages,
     Math.max(1, Math.trunc(Number(params.get('page')) || 1))
@@ -218,31 +250,31 @@ export function CatalogBrowser({
   const shown = continuous
     ? filtered.slice(0, visible)
     : filtered.slice((page - 1) * pageSize, page * pageSize);
+  const shownCollections = continuous
+    ? collections.slice(0, visible)
+    : collections.slice((page - 1) * pageSize, page * pageSize);
   useEffect(() => {
     const element = sentinel.current;
-    if (!continuous || !element || !all || visible >= filtered.length) return;
+    if (!continuous || !element || !all || visible >= itemCount) return;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting))
           setLoaded({
             key: loadKey,
-            count: Math.min(visible + 32, filtered.length),
+            count: Math.min(visible + 32, itemCount),
           });
       },
       { rootMargin: '700px' }
     );
     observer.observe(element);
     return () => observer.disconnect();
-  }, [continuous, all, visible, filtered.length, loadKey]);
+  }, [continuous, all, visible, itemCount, loadKey]);
   const active = Array.from(params.entries()).filter(
     ([key]) => !['focus', 'page', 'sort'].includes(key)
   );
   const suggestions =
     q.trim().length > 1 && q === debounced
-      ? fuse
-          .search(q)
-          .slice(0, 4)
-          .map((r) => r.item)
+      ? groupCollections(fuse.search(q).map((r) => r.item)).slice(0, 4)
       : [];
   const shortcuts = [
     'chatgpt',
@@ -440,11 +472,17 @@ export function CatalogBrowser({
           {suggestOpen && suggestions.length > 0 && (
             <div className="suggestions" aria-label="Suggested tools">
               {suggestions.map((p) => (
-                <Link href={`/tool/${p.slug}/`} key={p.id} prefetch={false}>
+                <Link
+                  href={`/plans/${p.slug}/?q=${encodeURIComponent(q)}`}
+                  key={p.slug}
+                  prefetch={false}
+                >
                   {p.logo && (
                     <Image src={p.logo} width={24} height={24} alt="" />
                   )}
-                  <span>{p.name}</span>
+                  <span>
+                    {p.title} · {p.count} {p.count === 1 ? 'match' : 'matches'}
+                  </span>
                   <ArrowUpRight size={14} />
                 </Link>
               ))}
@@ -496,8 +534,9 @@ export function CatalogBrowser({
           <div className="catalog-toolbar">
             <p className="result-count" role="status" aria-live="polite">
               <strong>{all ? filtered.length : total}</strong>{' '}
-              {all && filtered.length === 1 ? 'offer' : 'offers'}{' '}
+              {all && filtered.length === 1 ? 'plan' : 'plans'}{' '}
               {active.length ? 'matching your filters' : 'to explore'}
+              {grouped && <> · {collections.length} collections</>}
               {!all && (
                 <span className="loading-label"> · Loading filters…</span>
               )}
@@ -514,6 +553,15 @@ export function CatalogBrowser({
           </div>
           <div className="brand-shortcuts">
             <span>QUICK PICK</span>
+            {collection !== 'api' && (
+              <Link
+                href="/plans/api/"
+                className="api-shortcut"
+                prefetch={false}
+              >
+                API plans <ArrowUpRight size={13} />
+              </Link>
+            )}
             {shortcuts.map((p) => (
               <button
                 key={p.brandSlug}
@@ -569,7 +617,17 @@ export function CatalogBrowser({
               </button>
             </p>
           )}
-          {shown.length ? (
+          {grouped && shownCollections.length ? (
+            <div className="collection-grid">
+              {shownCollections.map((c) => (
+                <CollectionCard
+                  key={c.slug}
+                  collection={c}
+                  query={collectionQuery.toString()}
+                />
+              ))}
+            </div>
+          ) : !grouped && shown.length ? (
             <div className="product-grid">
               {shown.map((p) => (
                 <ProductCard key={p.id} product={p} />
@@ -585,20 +643,24 @@ export function CatalogBrowser({
               </button>
             </div>
           )}
-          {continuous && shown.length > 0 && (
+          {continuous && itemCount > 0 && (
             <div ref={sentinel} className="catalog-loader">
-              {shown.length < filtered.length ? (
+              {visible < itemCount ? (
                 <>
                   <span className="loader-dots" aria-hidden="true">
                     •••
                   </span>
                   <p>
-                    Keep exploring · {shown.length} of {filtered.length} offers
+                    Keep exploring · {Math.min(visible, itemCount)} of{' '}
+                    {itemCount} {grouped ? 'collections' : 'plans'}
                   </p>
                   <ArrowDown size={15} />
                 </>
               ) : (
-                <p>You’ve explored all {filtered.length} offers.</p>
+                <p>
+                  You’ve explored all {itemCount}{' '}
+                  {grouped ? 'collections' : 'plans'}.
+                </p>
               )}
             </div>
           )}

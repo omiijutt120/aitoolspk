@@ -111,7 +111,7 @@ export function Header() {
           </div>
           <nav aria-label="Mobile navigation">
             {[
-              ['All tools', '/#all-tools'],
+              ['All tools', '/tools/'],
               ['Categories', '/categories/'],
               ['How to order', '/how-to-order/'],
               ['Contact', '/contact/'],

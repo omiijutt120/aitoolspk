@@ -2,13 +2,15 @@
 
 A static-first Next.js 16 + React 19 + TypeScript + Tailwind CSS 4 catalog. Orders are enquiries on WhatsApp at **+923714549245**. There are no customer accounts, payment forms, carts, databases or analytics trackers.
 
-The UI uses native system fonts with no font download. `predev` and `prebuild` generate 96px WebP thumbnails from the official local logo masters, keeping full assets for detail pages. Generated thumbnails are ignored by Git and recreated automatically. Use `node scripts/fetch-official-logos.mjs --only=leonardo,linkedin` to refresh selected brand assets; source declarations and provenance live in `data/logo-sources.json` and `data/brands.json`.
+The UI uses native system fonts with no font download. `predev` and `prebuild` generate 96px WebP thumbnails from the official local logo masters, keeping full assets for larger collection logos and detail pages. Generated thumbnails are ignored by Git and recreated automatically. Use `node scripts/fetch-official-logos.mjs --only=leonardo,linkedin` to refresh selected brand assets; source declarations and provenance live in `data/logo-sources.json` and `data/brands.json`.
 
 The homepage shows 23 featured parent collections, selected from the owner's plan IDs and five familiar brands, with one API collection last. Each card shows the full plan count and lowest listed PKR price. "Find your next tool" and "Show all tools" sit alongside the featured heading, opening the grouped directory of 104 collections containing all 811 plans. The finder focuses search. See [REDESIGN_PLAN.md](REDESIGN_PLAN.md) and [VERIFICATION.md](VERIFICATION.md).
 
 `npm run build` includes a narrow post-build workaround for [Next.js issue #85374](https://github.com/vercel/next.js/issues/85374): Windows builds can emit nested RSC segment filenames while the browser requests flat filenames. The script copies the required flat aliases without modifying dependencies; native Linux exports need no changes. Keep this check when deploying an export built on Windows.
 
 ## Run locally
+
+The storefront visual system is in `src/app/storefront.css`: larger type, a responsive three-column featured grid, prominent collection logos and actions, generous spacing, category navigation, an API showcase, ordering steps and native FAQ accordions. Shared information-page styles live in `globals.css`. Collection pages keep individual prices, warranties and WhatsApp actions; this redesign does not change catalog eligibility or pricing.
 
 Install Node.js 24 LTS, then from this directory:
 

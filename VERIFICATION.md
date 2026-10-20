@@ -1,6 +1,10 @@
 # Storefront verification — 2026-10-20
 
-The static production export passed lint, TypeScript checking, 9 data/commerce tests and 23 Playwright tests in local Chrome. Four responsive cases were rerun after replacing an overly specific two-column button-layout assertion with actual target-size and overflow checks; the application did not need a layout change.
+The larger storefront redesign passed lint, TypeScript checking, a production build and all 23 Playwright tests in local Chrome. The 9 catalog/commerce tests from the parent-collection revision remain applicable; their inputs and commerce rules are unchanged.
+
+The visual system now uses larger type, a three-column featured grid on desktop, larger official brand logos, brand display panels, prominent Explore plans actions, readable individual plan cards and a more spacious navigation/footer. The homepage also includes category navigation, an API showcase, ordering steps and native FAQ accordions. The existing collection structure and all original prices and variant terms remain intact.
+
+A separate phone touch check verified both hero anchors (headings remain visible below the sticky header), FAQ expansion, the API showcase link and category navigation. Screenshots of the current design are `reports/premium-*.png`. The Browse tools navigation link disables prefetch so opening the homepage does not eagerly request the full catalog route.
 
 - All 811 exact-price plan records belong to exactly one of 104 parent collections. No record or variant was merged or discarded.
 - Homepage: 23 distinct featured parent cards, ordered from the owner's selections, with full counts, calculated starting prices and official logos where available. No full-catalog request or search engine loads on the homepage.

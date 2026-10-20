@@ -6,11 +6,18 @@ import {
   ShieldCheck,
   Banknote,
   Search,
+  ArrowRight,
+  Layers3,
+  Braces,
 } from 'lucide-react';
 import { CollectionCard } from '@/components/collection-card';
 import { products } from '@/lib/catalog';
 import { homeCollections, groupCollections } from '@/lib/collections';
 import { metadata as makeMetadata } from '@/lib/seo';
+import { categories } from '@/lib/categories';
+import { CategoryIcon } from '@/components/icon';
+import { Steps } from '@/components/steps';
+import { FaqList } from '@/components/faq';
 
 export const metadata = makeMetadata(
   'AI tools & subscriptions in Pakistan — selected plans',
@@ -29,20 +36,28 @@ export default function Home() {
       <section className="store-hero container" aria-labelledby="store-title">
         <div className="store-hero-copy">
           <p className="store-eyebrow">
-            <span /> AI TOOLS & DIGITAL SUBSCRIPTIONS
+            <span /> YOUR NEXT TOOLKIT STARTS HERE
           </p>
           <h1 id="store-title">
             All your tools. <span>One place.</span>
           </h1>
           <p>
-            Explore {products.length} plans. Compare prices in PKR.
-            <br className="desktop-break" /> Choose a tool. Find all its plans
-            in one place.
+            Big ideas deserve better tools. Discover AI subscriptions, creative
+            software and everyday essentials—all in one place, with clear prices
+            in PKR.
           </p>
+          <div className="store-hero-actions">
+            <Link className="button" href="#featured-tools">
+              Explore the tools <ArrowRight size={19} />
+            </Link>
+            <Link className="text-link" href="#ordering">
+              How it works <ArrowUpRight size={17} />
+            </Link>
+          </div>
           <div className="hero-facts">
             <span>
               <ShieldCheck size={15} />
-              Clear plan details
+              Compare every plan
             </span>
             <span>
               <Banknote size={15} />
@@ -50,14 +65,14 @@ export default function Home() {
             </span>
             <span>
               <MessageCircle size={15} />
-              No sign-up
+              Order on WhatsApp
             </span>
           </div>
         </div>
         <div className="tool-wall">
           <div className="tool-wall-top">
-            <span>YOUR NEXT WORKFLOW</span>
-            <ArrowUpRight size={19} />
+            <span>MAKE ROOM FOR BETTER WORK.</span>
+            <Layers3 size={20} />
           </div>
           <div className="tool-wall-icons">
             {brands.map((p) => (
@@ -68,77 +83,195 @@ export default function Home() {
                 prefetch={false}
               >
                 {p.logo ? (
-                  <Image src={p.logo} width={36} height={36} alt="" />
+                  <Image src={p.logo} width={44} height={44} alt="" />
                 ) : (
-                  <span>{p.brand}</span>
+                  <span className="tool-wall-text-logo" aria-hidden="true">
+                    {p.brand}
+                  </span>
                 )}
+                <span>{p.brand}</span>
               </Link>
             ))}
           </div>
           <div className="tool-wall-bottom">
             <p>
-              One place.
-              <br />
-              <strong>A better toolkit starts here.</strong>
+              Create. Build. Get things done.
+              <strong>Find the tools for your next big thing.</strong>
             </p>
             <span className="tool-wall-stamp">
-              AiToolsPk<span>EST. PAKISTAN</span>
+              {collectionCount}
+              <span>TOOL COLLECTIONS</span>
             </span>
           </div>
         </div>
       </section>
+      <div className="store-proof-strip">
+        <div className="container">
+          <p>
+            <strong>{products.length}</strong>
+            <span>plans to compare</span>
+          </p>
+          <p>
+            <strong>{collectionCount}</strong>
+            <span>tool collections</span>
+          </p>
+          <p>
+            <strong>PKR</strong>
+            <span>clear local pricing</span>
+          </p>
+          <p>
+            <MessageCircle size={23} />
+            <span>
+              One conversation.
+              <br />
+              <strong>Your exact plan.</strong>
+            </span>
+          </p>
+        </div>
+      </div>
       <section
-        id="featured-tools"
-        className="container home-selection"
-        aria-labelledby="featured-heading"
+        className="container home-categories"
+        aria-labelledby="category-heading"
       >
-        <div className="store-catalog-title featured-catalog-heading">
+        <div className="home-section-heading">
           <div>
-            <p className="store-eyebrow">YOUR SHORTLIST</p>
-            <h2 id="featured-heading">
-              Featured tools<span>{selected.length}</span>
-            </h2>
-            <p className="featured-catalog-count">
-              {selected.length} featured collections ·{' '}
-              <strong>{products.length} plans</strong> across {collectionCount}{' '}
-              collections
-            </p>
+            <p className="store-eyebrow">A TOOL FOR EVERY IDEA</p>
+            <h2 id="category-heading">What are you working on?</h2>
           </div>
-          <div className="catalog-entry-actions">
+          <Link className="text-link" href="/categories/">
+            Explore categories <ArrowUpRight size={17} />
+          </Link>
+        </div>
+        <nav
+          className="home-category-links"
+          aria-label="Browse tool categories"
+        >
+          {categories.map((category) => (
             <Link
-              className="button outline"
-              href="/tools/?focus=search"
+              href={`/category/${category.slug}/`}
+              key={category.slug}
               prefetch={false}
             >
-              <Search size={16} />
-              Find your next tool
+              <CategoryIcon name={category.icon} size={21} />
+              <span>{category.name}</span>
+              <ArrowUpRight size={15} />
             </Link>
-            <Link className="button" href="/tools/" prefetch={false}>
-              Show all tools{' '}
-              <span className="catalog-total">{collectionCount}</span>
+          ))}
+        </nav>
+      </section>
+      <div className="home-selection-wrap">
+        <section
+          id="featured-tools"
+          className="container home-selection"
+          aria-labelledby="featured-heading"
+        >
+          <div className="store-catalog-title featured-catalog-heading">
+            <div>
+              <p className="store-eyebrow">CURATED FOR YOUR NEXT CHAPTER</p>
+              <h2 id="featured-heading">
+                Featured tools<span>{selected.length}</span>
+              </h2>
+              <p className="featured-catalog-count">
+                {selected.length} featured collections ·{' '}
+                <strong>{products.length} plans</strong> across{' '}
+                {collectionCount} collections
+              </p>
+            </div>
+            <div className="catalog-entry-actions">
+              <Link
+                className="button outline"
+                href="/tools/?focus=search"
+                prefetch={false}
+              >
+                <Search size={16} />
+                Find your next tool
+              </Link>
+              <Link className="button" href="/tools/" prefetch={false}>
+                Show all tools{' '}
+                <span className="catalog-total">{collectionCount}</span>
+                <ArrowUpRight size={16} />
+              </Link>
+            </div>
+          </div>
+          <p className="home-verification-note">
+            One tool. Every option. Open a collection to find the plan that
+            fits.
+          </p>
+          <div className="collection-grid home-collection-grid">
+            {selected.map((collection) => (
+              <CollectionCard key={collection.slug} collection={collection} />
+            ))}
+          </div>
+          <div className="home-catalog-end">
+            <p>
+              {products.length} individual plans, organised into{' '}
+              {collectionCount} collections.
+            </p>
+            <Link className="text-link" href="/tools/" prefetch={false}>
+              Browse the complete catalog
               <ArrowUpRight size={16} />
             </Link>
           </div>
+        </section>
+      </div>
+      <section className="api-spotlight-wrap">
+        <div className="container">
+          <div className="api-spotlight">
+            <div className="api-spotlight-art" aria-hidden="true">
+              <Braces size={100} />
+              <span>API</span>
+            </div>
+            <div>
+              <p className="store-eyebrow">FOR THE THINGS YOU’RE BUILDING</p>
+              <h2>
+                Big on APIs.
+                <br />
+                Easy to explore.
+              </h2>
+              <p>
+                Skip the scattered listings. Find every API offer in one place,
+                with credits, token limits and exact plan details to compare.
+              </p>
+              <Link className="button" href="/plans/api/" prefetch={false}>
+                Explore API plans <ArrowRight size={18} />
+              </Link>
+            </div>
+          </div>
         </div>
-        <p className="home-verification-note">
-          Open a tool to compare all its plans, durations and warranty options.
-          All API offers are together in the API plans collection.
-        </p>
-        <div className="collection-grid home-collection-grid">
-          {selected.map((collection) => (
-            <CollectionCard key={collection.slug} collection={collection} />
-          ))}
-        </div>
-        <div className="home-catalog-end">
-          <p>
-            {products.length} individual plans, organised into {collectionCount}{' '}
-            collections.
-          </p>
-          <Link className="text-link" href="/tools/" prefetch={false}>
-            Browse the complete catalog
-            <ArrowUpRight size={16} />
+      </section>
+      <section
+        id="ordering"
+        className="container home-ordering"
+        aria-labelledby="ordering-heading"
+      >
+        <div className="home-section-heading">
+          <div>
+            <p className="store-eyebrow">FROM BROWSING TO YOUR NEXT TOOL</p>
+            <h2 id="ordering-heading">Three steps. One conversation.</h2>
+          </div>
+          <Link className="text-link" href="/how-to-order/">
+            The ordering guide <ArrowUpRight size={17} />
           </Link>
         </div>
+        <Steps />
+      </section>
+      <section className="container home-faq" aria-labelledby="faq-heading">
+        <div>
+          <p className="store-eyebrow">GOOD QUESTIONS. CLEAR ANSWERS.</p>
+          <h2 id="faq-heading">
+            A little clarity
+            <br />
+            before you choose.
+          </h2>
+          <p>
+            Understand the details, then decide. We’re here to help you find
+            your fit.
+          </p>
+          <Link className="text-link" href="/faq/">
+            Read all FAQs <ArrowUpRight size={17} />
+          </Link>
+        </div>
+        <FaqList limit={4} />
       </section>
       <section className="container store-support">
         <div>

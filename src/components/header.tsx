@@ -67,6 +67,9 @@ export function Header() {
           <kbd>Ctrl K</kbd>
         </form>
         <nav aria-label="Main navigation" className="desktop-nav">
+          <Link href="/tools/" prefetch={false}>
+            Browse tools
+          </Link>
           <Link href="/how-to-order/">How to order</Link>
           <Link href="/contact/">Contact</Link>
         </nav>

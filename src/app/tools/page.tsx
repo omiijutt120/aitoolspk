@@ -1,11 +1,25 @@
 import { Catalog } from '@/components/catalog';
 import { metadata as makeMetadata } from '@/lib/seo';
-export const metadata = makeMetadata(
-  'Explore all tools & subscriptions in Pakistan',
-  'Search AI tools, compare exact subscriptions and retail PKR prices, and filter by brand, duration, warranty, access and availability.',
-  '/tools/'
-);
-export default function Tools() {
+import { notFound } from 'next/navigation';
+import { products } from '@/lib/catalog';
+import { groupCollections } from '@/lib/collections';
+import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
+type Props = { params: Promise<{ page?: string }> };
+export async function generateMetadata({ params }: Props) {
+  const page = pageNumber((await params).page);
+  return makeMetadata(
+    `Explore all tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
+    'Search AI tools, compare exact subscriptions and retail PKR prices, and filter by brand, duration, warranty, access and availability.',
+    pagePath('/tools/', page)
+  );
+}
+export default async function Tools({ params }: Props) {
+  const page = pageNumber((await params).page);
+  if (
+    !Number.isSafeInteger(page) ||
+    page > pageCount(groupCollections(products).length)
+  )
+    notFound();
   return (
     <div className="container">
       <div className="page-intro">
@@ -16,7 +30,7 @@ export default function Tools() {
           options. All API offers live in one collection.
         </p>
       </div>
-      <Catalog />
+      <Catalog initialPage={page} />
     </div>
   );
 }

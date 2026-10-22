@@ -1241,11 +1241,17 @@ body {
   gap: 8px;
   flex-wrap: wrap;
 }
-.pagination button {
+.pagination :is(a, .pagination-disabled) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 44px;
   min-height: 44px;
   font-size: 14px;
   border-radius: 8px;
+}
+.pagination-disabled {
+  opacity: 0.4;
 }
 .empty-state {
   padding: 65px 24px;

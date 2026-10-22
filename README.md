@@ -29,6 +29,8 @@ npm run build
 npm start
 ```
 
+For the complete release gate, run `npm run launch:check`, then `npx playwright install chromium` and `npm run test:browser`. The gate checks repository privacy, lint, types, data, dependency advisories, a production build and all exported routes. See [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) for technical results, the narrowly scoped unpatched development-tool advisory and owner-side launch requirements. Do not treat passing checks as commercial authorization or proof that the custom domain is live.
+
 `npm start` serves the production export in `out/`. The bundled workspace-only runtime, if needed on this PC, lives in `.tools/node-v24.22.0-win-x64/`; it is ignored by Git. In PowerShell, prepend it for the current terminal only:
 
 ```powershell
@@ -44,12 +46,14 @@ The original CSV and PRD are in ignored `private/`. **Never upload that director
 
 The homepage server renders its selected parent cards without fetching the full catalog or loading the search engine. Manage featured product IDs and additional brands in `data/storefront.json`. API offers live in one parent, last in the default directory order. The directory renders 24 parent cards per page; each collection renders 24 individual plans per page. The browser fetches the sanitized index and uses Fuse.js for accent-insensitive fuzzy search. Filters and sort live in the URL. Individual offers, collections and categories are static HTML with metadata and breadcrumbs. Pending individual offers are `noindex` and omitted from the sitemap. Product/Offer structured data is emitted only for approved entries, with an Offer only when purchasable.
 
+Pagination uses real static paths such as `/tools/page/2/` and `/plans/chatgpt/page/2/`, with native links, distinct server-rendered contents and a self-canonical per page. Query-only `?page=2` is not used. Query filters, sort and tracking variants canonicalize to the clean path; robots allows crawlers to read those signals. The sitemap lists all indexable pagination pages. See [SEO_CANONICAL_CHECKLIST.md](SEO_CANONICAL_CHECKLIST.md) for the attached canonical-guide audit and remaining live-domain/Search Console checks.
+
 ### Update products
 
 1. Replace `private/catalog.csv` with a UTF-8 CSV with the original column names. Keep source and product ID values stable to preserve public IDs and URLs.
 2. Run `npm run catalog:import`. Inspect `reports/catalog-audit.json` for missing durations, warranty terms, logo coverage and risky claims. Critical identity, date, price or approval errors stop the import.
 3. Review each offer's commercial authorization, eligibility, delivery method and truthful terms. Do not approve credential handover, OTP rentals, unsupported education access, lifetime/unlimited claims or shared plans without resolving the concern.
-4. Add the review to `data/approvals.json` under the generated `PK-…` ID. Omit entries to keep them pending; set `status: "excluded"` to remove a listing entirely. Do not enter confidential evidence contents or credentials; store evidence references to private records.
+4. Add the review to ignored `private/approvals.json` under the generated `PK-…` ID (create an empty `{}` file if absent). Omit entries to keep them pending; set `status: "excluded"` to remove a listing entirely. Keep evidence references private. The public repository receives only the sanitized catalog after reimport, never the approval/evidence file.
 
 Example schema (illustrative only; **do not copy it as proof**):
 
@@ -98,7 +102,7 @@ src/app/                 Routes, metadata, sitemap and robots
 src/components/          Layout, cards, catalog browser, dialogs and shared content
 src/lib/                 Typed public catalog, categories, SEO and commerce rules
 scripts/                 Private CSV import and brand asset generation
-data/                    Sanitized catalog, approvals and official asset map
+data/                    Sanitized catalog and official asset map
 public/                  Public assets and sanitized searchable index
 private/                 Original sources (ignored; never deploy)
 reports/                 Private QA/audit output (ignored)
@@ -108,6 +112,21 @@ tests/                   Data/commerce tests and browser accessibility checks
 ## Deploy to your purchased AItoolsPK.tech domain
 
 This repository does **not** itself configure domain ownership, DNS, HTTPS, Search Console or hosting. Deployment is complete only after a host is serving the export and DNS/SSL have been checked. Keep the launch catalog under review until resale evidence and exact offer terms are available.
+
+### Public GitHub repository and CI
+
+The public repository is [omiijutt120/aitoolspk](https://github.com/omiijutt120/aitoolspk). Commit only the sanitized product output and application source. Keep `private/`, reports, credentials, local runtimes and generated builds ignored. `npm run check:repo` scans the working files and reachable Git history for common secrets and confidential catalog fields; it does not replace reviewing what you publish.
+
+The **Website checks** workflow runs on pushes and pull requests with Node 24, a locked install, release checks and Chromium browser checks. On a clean checkout the private CSV comparison is explicitly skipped; the public catalog, synthetic import and commerce tests still run. The original 811-row comparison must also pass locally before catalog releases. Browser configuration uses local Chrome on this Windows PC and Playwright Chromium on CI; `CHROME_PATH` can override the executable.
+
+### GitHub Pages with your custom domain
+
+1. Open the repository's **Settings > Pages** and select **GitHub Actions** as the build source. Set the custom domain to `aitoolspk.tech`. Configure the registrar/DNS using [GitHub's current instructions](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), then verify the domain and enable HTTPS when available. The public DNS returned `127.0.0.1` during this audit; replace it with the hosting provider's actual records.
+2. This export uses root-relative URLs for **https://aitoolspk.tech/**. It is not configured for the project subpath `https://omiijutt120.github.io/aitoolspk/`. Set the custom domain before publishing. Changing hosts is fine; use that provider's instructions instead of combining DNS records from different providers.
+3. Once the domain and Pages settings are ready and CI is green, open **Actions > Publish custom-domain website > Run workflow** and explicitly select the domain-ready checkbox. The workflow builds, verifies and publishes only `out/`. It does not run automatically on pushes.
+4. Verify HTTPS, deep links, images, filters, WhatsApp, policies, `/sitemap.xml`, `/robots.txt` and 404 responses on the actual domain. GitHub Pages ignores `_headers` and `vercel.json`; production HTML includes a CSP and referrer policy, but full response headers need a capable host/proxy and verification. Follow the remaining checkpoints in [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md).
+
+To roll back, run the publishing workflow for the last known good release commit or redeploy its artifact, then repeat live checks. No domain deployment is claimed by a source push alone.
 
 ### Cloudflare Pages
 
@@ -135,4 +154,4 @@ This repository does **not** itself configure domain ownership, DNS, HTTPS, Sear
 
 ## Browser checks
 
-`npm run test:browser` uses the production export at port 3000 and local Chrome. On another OS set `CHROME_PATH` to an installed Chrome executable, or adapt the Playwright config to your installed Playwright browser. Screenshots go to ignored `reports/`. Tests cover 375/390/768/1024/1440px, keyboard dialogs, query/filter behavior, console errors and automated WCAG AA scanning. Automated accessibility checks do not replace a manual screen-reader review.
+`npm run test:browser` uses the production export at port 3000. Install Chromium with `npx playwright install chromium` on a new machine; Linux CI uses `npx playwright install --with-deps chromium`. Screenshots go to ignored `reports/`. Tests cover 320/375/390/600/768/820/1024/1280/1440px, touch, keyboard dialogs, query/filter behavior, console errors and automated WCAG AA scanning. These are emulated Chrome checks; physical devices, Safari, a real WhatsApp handoff and a manual screen-reader review remain separate checks.

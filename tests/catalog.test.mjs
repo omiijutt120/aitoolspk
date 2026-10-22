@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { parse } from 'csv-parse/sync';
 import { normalize, clean } from '../scripts/import-catalog.mjs';
 import {
@@ -9,21 +9,45 @@ import {
   isStale,
   whatsappIntent,
 } from '../src/lib/commerce.mjs';
-const source = parse(readFileSync('private/catalog.csv', 'utf8'), {
-  columns: true,
-  bom: true,
-});
+const source = existsSync('private/catalog.csv')
+  ? parse(readFileSync('private/catalog.csv', 'utf8'), {
+      columns: true,
+      bom: true,
+    })
+  : null;
+// Synthetic importer input. No supplier identifiers or private costs belong in fixtures.
+const sample = {
+  Source: 'synthetic-test',
+  ProductID: 'example-plan',
+  Name: 'Example 1 month',
+  Category: 'none',
+  SellingPricePKR: '1000',
+  AvailableStock: '1',
+  ListingStatus: 'In stock',
+  RateDate: '2026-10-19',
+};
 const catalog = JSON.parse(readFileSync('data/catalog.json', 'utf8'));
 test('all 811 offers retain exact integer retail prices and unique identities', () => {
-  assert.equal(source.length, 811);
   assert.equal(catalog.length, 811);
   assert.equal(new Set(catalog.map((p) => p.id)).size, 811);
   assert.equal(new Set(catalog.map((p) => p.slug)).size, 811);
-  source.forEach((row, i) => {
-    assert.equal(catalog[i].price, Number(row.SellingPricePKR));
-    assert.equal(normalize(row).id, catalog[i].id);
-  });
+  assert.ok(catalog.every((p) => Number.isSafeInteger(p.price) && p.price > 0));
 });
+test(
+  'private CSV retains exact retail prices and identities',
+  {
+    skip:
+      !source &&
+      'Private CSV is intentionally absent from GitHub; public catalog checks still run',
+  },
+  () => {
+    assert.equal(source.length, catalog.length);
+    source.forEach((row, i) => {
+      assert.equal(catalog[i].price, Number(row.SellingPricePKR));
+      assert.equal(normalize(row).id, catalog[i].id);
+    });
+  }
+);
 test('source stock matches the PRD snapshot', () => {
   assert.equal(catalog.filter((p) => p.stock === 'in-stock').length, 537);
   assert.equal(catalog.filter((p) => p.stock === 'out-of-stock').length, 192);
@@ -66,9 +90,9 @@ test('every unapproved offer is gated pending commercial approval', () => {
   );
 });
 test('approval requires evidence, exact terms and reviewed stock', () => {
-  const p = normalize(source[1]);
+  const p = normalize(sample);
   assert.throws(
-    () => normalize(source[1], { [p.id]: { status: 'approved' } }),
+    () => normalize(sample, { [p.id]: { status: 'approved' } }),
     /evidence/
   );
 });
@@ -147,9 +171,9 @@ test('sanitization and variant distinctions', () => {
     clean('<b>Plan</b> https://vendor.test/private user@example.com'),
     'Plan'
   );
-  const a = normalize({ ...source[1], Name: 'Example 1 month 24H warranty' });
+  const a = normalize({ ...sample, Name: 'Example 1 month 24H warranty' });
   const b = normalize({
-    ...source[1],
+    ...sample,
     ProductID: 'another',
     Name: 'Example 3 months full warranty',
   });
@@ -159,15 +183,19 @@ test('sanitization and variant distinctions', () => {
   assert.equal(b.duration, '3 months');
   assert.match(b.warranty, /full warranty/);
   const shorthand = normalize({
-    ...source[1],
+    ...sample,
     Name: 'Example Plus 30D warranty 24H',
   });
   assert.equal(shorthand.duration, '30 days');
   assert.match(shorthand.warranty, /warranty 24H/);
   const credits = normalize({
-    ...source[1],
+    ...sample,
     Name: 'Example API 10M Credit 1 Day full warranty',
   });
   assert.equal(credits.duration, '1 day');
   assert.equal(credits.credits, '10M Credit');
+  assert.equal(
+    normalize({ ...sample, Name: 'Example ZAPI 1B Credit 1 Day' }).credits,
+    '1B Credit'
+  );
 });

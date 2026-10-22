@@ -2,6 +2,9 @@
   "name": "aitoolspk",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
     "predev": "node scripts/optimize-assets.mjs",
@@ -14,6 +17,9 @@
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
     "test:browser": "playwright test",
+    "check:repo": "node scripts/check-repository.mjs",
+    "check:export": "node scripts/check-export.mjs",
+    "launch:check": "node scripts/verify-launch.mjs",
     "format": "prettier --write src scripts tests *.ts *.mjs README.md"
   },
   "dependencies": {
@@ -31,13 +37,17 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "csv-parse": "^6.1.0",
-    "eslint": "^9.0.0",
+    "csv-parse": "^7.0.3",
+    "eslint": "^9.39.5",
     "eslint-config-next": "^16.0.0",
     "prettier": "^3.9.10",
     "serve": "^14.2.0",
-    "sharp": "^0.34.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.1.0",
     "typescript": "^5.9.0"
+  },
+  "overrides": {
+    "sharp": "$sharp",
+    "compression": "^1.8.2"
   }
 }

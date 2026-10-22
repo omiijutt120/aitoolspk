@@ -26,7 +26,7 @@ header.writeUInt32LE(png.length, 14);
 header.writeUInt32LE(22, 18);
 writeFileSync('public/favicon.ico', Buffer.concat([header, png]));
 const social = Buffer.from(
-  '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><rect width="1200" height="630" fill="#f7f8fa"/><path d="M60 525H1140" stroke="#dfe2e6"/><text x="65" y="290" font-family="Arial, sans-serif" font-size="95" font-weight="700" letter-spacing="-5" fill="#15171a">AItoolsPK.</text><text x="70" y="365" font-family="Arial, sans-serif" font-size="32" fill="#626871">Digital tools. Clearer choices. Prices in PKR.</text><text x="70" y="572" font-family="Arial, sans-serif" font-size="23" fill="#626871">AItoolsPK.tech</text></svg>'
+  '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><rect width="1200" height="630" fill="#f7f8fa"/><path d="M60 525H1140" stroke="#dfe2e6"/><text x="65" y="290" font-family="Arial, sans-serif" font-size="95" font-weight="700" letter-spacing="-5" fill="#15171a">AiToolsPk</text><text x="70" y="365" font-family="Arial, sans-serif" font-size="32" fill="#626871">Digital tools. Clearer choices. Prices in PKR.</text><text x="70" y="572" font-family="Arial, sans-serif" font-size="23" fill="#626871">AiToolsPk.tech</text></svg>'
 );
 await sharp(social)
   .composite([

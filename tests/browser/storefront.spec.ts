@@ -125,9 +125,7 @@ test('ChatGPT parent exposes every exact variant across pages with correct detai
   const seen: string[] = [];
   for (let n = 1; n <= Math.ceil(chatgpt.length / 24); n++) {
     if (n > 1)
-      await page
-        .getByRole('button', { name: `Page ${n}`, exact: true })
-        .click();
+      await page.getByRole('link', { name: `Page ${n}`, exact: true }).click();
     const cards = page.locator('.product-card');
     const slice = chatgpt.slice((n - 1) * 24, n * 24);
     await expect(cards).toHaveCount(slice.length);
@@ -191,9 +189,7 @@ test('API collection includes every API plan and allows provider search', async 
   );
   for (let n = 1; n <= Math.ceil(api.length / 24); n++) {
     if (n > 1)
-      await page
-        .getByRole('button', { name: `Page ${n}`, exact: true })
-        .click();
+      await page.getByRole('link', { name: `Page ${n}`, exact: true }).click();
     await expect(page.locator('.product-card h3')).toHaveText(
       api.slice((n - 1) * 24, n * 24).map((p) => p.name)
     );
@@ -201,6 +197,11 @@ test('API collection includes every API plan and allows provider search', async 
   await page.locator('#catalog-search').fill('ZAPI');
   await page.locator('#catalog-search').press('Escape');
   await expect(page.locator('.product-card').first()).toContainText(/ZAPI/i);
+  await expect(page).toHaveURL(/\/plans\/api\/\?q=ZAPI/);
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://aitoolspk.tech/plans/api/'
+  );
 });
 
 test('price filters and sort apply before grouping and survive opening a collection', async ({

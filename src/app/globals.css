@@ -1050,7 +1050,7 @@ input {
   flex-wrap: wrap;
   margin-top: 30px;
 }
-.pagination button {
+.pagination :is(a, .pagination-disabled) {
   width: 44px;
   height: 44px;
   border-radius: 8px;
@@ -1058,7 +1058,7 @@ input {
   background: white;
   font-size: 12px;
 }
-.pagination button[aria-current='page'] {
+.pagination :is(a, .pagination-disabled)[aria-current='page'] {
   background: #17191d;
   color: #fff;
 }

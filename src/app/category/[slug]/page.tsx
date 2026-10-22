@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { categories } from '@/lib/categories';
 import { Catalog } from '@/components/catalog';
 import { metadata, JsonLd, origin } from '@/lib/seo';
+import { products } from '@/lib/catalog';
+import { groupCollections } from '@/lib/collections';
+import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
 export const dynamicParams = false;
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -10,26 +13,36 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; page?: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, page: value } = await params;
+  const page = pageNumber(value);
   const c = categories.find((c) => c.slug === slug);
   return c
     ? metadata(
-        `${c.name} tools & subscriptions in Pakistan`,
+        `${c.name} tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
         c.description + ' Compare exact plans and PKR prices.',
-        `/category/${slug}/`
+        pagePath(`/category/${slug}/`, page)
       )
     : {};
 }
 export default async function Category({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; page?: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, page: value } = await params;
+  const page = pageNumber(value);
   const c = categories.find((c) => c.slug === slug);
   if (!c) notFound();
+  if (
+    !Number.isSafeInteger(page) ||
+    page >
+      pageCount(
+        groupCollections(products.filter((p) => p.category === slug)).length
+      )
+  )
+    notFound();
   return (
     <div className="container">
       <div className="page-intro">
@@ -47,7 +60,7 @@ export default async function Category({
           before choosing a plan.
         </p>
       </div>
-      <Catalog category={slug} />
+      <Catalog category={slug} initialPage={page} />
       <JsonLd
         data={{
           '@context': 'https://schema.org',

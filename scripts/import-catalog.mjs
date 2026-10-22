@@ -184,7 +184,7 @@ export function normalize(row, approvals = {}, brands = {}) {
               ? 'Upgrade / renewal'
               : 'Not specified';
   const credits =
-    name.match(/\b[\d,.]+\s*[mk]?\s*(?:credits?|tokens?)\b/i)?.[0] || '';
+    name.match(/\b[\d,.]+\s*[kmb]?\s*(?:credits?|tokens?)\b/i)?.[0] || '';
   const stock =
     review.stockStatus ||
     (Number(row.AvailableStock) === 0 && row.AvailableStock !== ''
@@ -284,7 +284,11 @@ if (
       bom: true,
       skip_empty_lines: true,
     });
-    const approvals = JSON.parse(readFileSync('data/approvals.json', 'utf8'));
+    const approvals = existsSync('private/approvals.json')
+      ? JSON.parse(
+          readFileSync('private/approvals.json', 'utf8').replace(/^\uFEFF/, '')
+        )
+      : {};
     const brands = JSON.parse(readFileSync('data/brands.json', 'utf8'));
     const previous = existsSync('data/catalog.json')
       ? JSON.parse(readFileSync('data/catalog.json', 'utf8'))

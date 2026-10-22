@@ -105,11 +105,11 @@ test('search, fuzzy matching, filters, pagination and URL persistence', async ({
   await expect(page.getByText('No tools found.')).toBeVisible();
   await page.getByRole('button', { name: 'Clear all filters' }).click();
   await expect(page.locator('.collection-card')).toHaveCount(24);
-  await page.getByRole('button', { name: 'Page 2', exact: true }).click();
-  await expect(page).toHaveURL(/page=2/);
+  await page.getByRole('link', { name: 'Page 2', exact: true }).click();
+  await expect(page).toHaveURL(/\/page\/2\//);
   await page.reload();
   await expect(
-    page.getByRole('button', { name: 'Page 2', exact: true })
+    page.getByRole('link', { name: 'Page 2', exact: true })
   ).toHaveAttribute('aria-current', 'page');
 });
 test('navigation and mobile filter dialogs support keyboard close', async ({
@@ -158,6 +158,12 @@ for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {
     });
     await page.goto('/tools/');
     await expect(page.locator('.collection-card').first()).toBeVisible();
+    if (width === 390) {
+      const mobileAccessibility = await new AxeBuilder({ page })
+        .withRules(['select-name', 'heading-order'])
+        .analyze();
+      expect(mobileAccessibility.violations).toEqual([]);
+    }
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth

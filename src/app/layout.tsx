@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description:
     'Compare AI tools and digital subscriptions in Pakistan. Explore exact plans, PKR prices and warranty details, then confirm your order on WhatsApp.',
   applicationName: 'AiToolsPk',
+  referrer: 'strict-origin-when-cross-origin',
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -36,6 +37,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-PK" data-scroll-behavior="smooth">
+      <head>
+        {process.env.NODE_ENV === 'production' && (
+          <meta
+            httpEquiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+          />
+        )}
+      </head>
       <body>
         <a className="skip-link" href="#main">
           Skip to content

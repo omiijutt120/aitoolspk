@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import { Braces, ArrowLeft } from 'lucide-react';
 import { Catalog } from '@/components/catalog';
 import { products } from '@/lib/catalog';
-import { groupCollections } from '@/lib/collections';
+import { collectionProducts, groupCollections } from '@/lib/collections';
+import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
 import { metadata, JsonLd, origin } from '@/lib/seo';
 
 const collections = groupCollections(products);
@@ -15,25 +16,32 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; page?: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, page: value } = await params;
+  const page = pageNumber(value);
   const collection = collections.find((c) => c.slug === slug);
   if (!collection) return {};
   return metadata(
-    `${collection.title} in Pakistan — compare ${collection.count} options`,
+    `${collection.title} in Pakistan — compare ${collection.count} options${page > 1 ? ` — Page ${page}` : ''}`,
     `Browse ${collection.count} ${collection.title}. Compare listed PKR prices, durations, access and warranty terms. Confirm your selected offer on WhatsApp.`,
-    `/plans/${slug}/`
+    pagePath(`/plans/${slug}/`, page)
   );
 }
 export default async function PlansPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; page?: string }>;
 }) {
-  const { slug } = await params;
+  const { slug, page: value } = await params;
+  const page = pageNumber(value);
   const c = collections.find((collection) => collection.slug === slug);
   if (!c) notFound();
+  if (
+    !Number.isSafeInteger(page) ||
+    page > pageCount(collectionProducts(products, slug).length)
+  )
+    notFound();
   return (
     <div className="container">
       <div className="page-intro collection-intro">
@@ -69,7 +77,7 @@ export default async function PlansPage({
             : `All ${c.brand} subscriptions and variants, together. Compare the exact duration, access and warranty before choosing your plan.`}
         </p>
       </div>
-      <Catalog collection={slug} />
+      <Catalog collection={slug} initialPage={page} />
       <JsonLd
         data={{
           '@context': 'https://schema.org',

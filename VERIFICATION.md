@@ -1,4 +1,20 @@
-# Storefront verification — 2026-10-20
+# Storefront verification
+
+## Pre-GitHub audit — 2026-10-23
+
+The final production export passed all **26 Playwright cases**, including nine viewport widths from 320 to 1440px, keyboard dialogs, touch/restock popups, native purchase links without JavaScript, grouped search/filter behavior, exact ChatGPT variants and API partitioning. The sampled home, directory, collections, policy and detail pages passed automated WCAG AA checks. No console errors were observed in the covered navigation flow. This is Chrome emulation, not physical-device or Safari certification.
+
+All **10 local data/commerce tests** passed with the private CSV, including an exact comparison of all 811 retail prices and identities. The release gate also builds with that CSV absent: public checks still run, and only the private-source comparison is intentionally skipped. GitHub now uses platform-independent Playwright configuration. Private approval evidence lives in ignored `private/approvals.json`, outside the public source and web projection.
+
+The dependency refresh fixes the csv-parse, sharp and compression advisories. Production dependency audit is clean. One unpatched braces advisory remains in the dev-only Next.js lint chain; its exact exception and upstream source are documented in [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md). The current-file and reachable-history privacy scan found no issues. Mobile Lighthouse also found a sort label hidden by responsive CSS and a skipped heading level in results; the dropdown now has an accessible name at every width, and results have an H2 before their H3 cards. The 390px browser case includes both rules to prevent a regression.
+
+Fresh Lighthouse 13.5.0 simulated-mobile measurements of the final local export: homepage **97 performance**, LCP **2.5s**, TBT **30ms**, CLS **0**; catalog **97 performance**, LCP **2.6s**, TBT **50ms**, CLS **0**. Both scored **100 accessibility, 100 best practices and 100 SEO**. These meet the PRD's Lighthouse score target; the catalog's single local LCP is above the 2.5s field target. Neither is a field measurement. Final reports and screenshots are in ignored `reports/launch-*` files.
+
+The attached canonical guide exposed two SEO gaps: blocked query copies and page-two canonicals pointing at page one. Both were fixed with crawlable query copies and 16 real static pagination routes. The sitemap now has **138 indexable canonical URLs**. Browser checks verified every sitemap target returns HTTP 200 without redirects locally; source-head, query-copy and no-JavaScript pagination cases passed. A provider-search regression from the last API page was also fixed: changing filters/search resets to the actual first-page route, preserving correct Next.js metadata. See [SEO_CANONICAL_CHECKLIST.md](SEO_CANONICAL_CHECKLIST.md) for the full PDF-based audit and live-domain limits.
+
+The public repository is [omiijutt120/aitoolspk](https://github.com/omiijutt120/aitoolspk). The owner will connect the domain; its public A record returned `127.0.0.1` at audit time. No public-domain launch is claimed. The manual custom-domain Pages workflow is separate from verification CI and is not triggered by a push.
+
+## Storefront redesign — 2026-10-20
 
 The larger storefront redesign passed lint, TypeScript checking, a production build and all 23 Playwright tests in local Chrome. The 9 catalog/commerce tests from the parent-collection revision remain applicable; their inputs and commerce rules are unchanged.
 

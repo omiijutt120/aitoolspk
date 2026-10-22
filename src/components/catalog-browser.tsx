@@ -9,6 +9,7 @@ import {
 } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Fuse from 'fuse.js';
 import {
   Search,
@@ -32,6 +33,7 @@ import { ProductCard } from './product-card';
 import { CollectionCard } from './collection-card';
 import { CategoryIcon } from './icon';
 import { emitCatalogEvent } from '@/lib/events';
+import { PAGE_SIZE, pageCount, pagePath } from '@/lib/pagination';
 
 const subscribe = (cb: () => void) => {
   window.addEventListener('popstate', cb);
@@ -82,6 +84,7 @@ type CatalogProps = {
     accesses: string[];
   };
   total: number;
+  initialPage: number;
 };
 
 export function CatalogBrowser({
@@ -92,7 +95,21 @@ export function CatalogBrowser({
   continuous = false,
   options,
   total,
+  initialPage,
 }: CatalogProps) {
+  const router = useRouter();
+  const navigationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const basePath = collection
+    ? `/plans/${collection}/`
+    : category
+      ? `/category/${category}/`
+      : '/tools/';
+  useEffect(
+    () => () => {
+      if (navigationTimer.current) clearTimeout(navigationTimer.current);
+    },
+    []
+  );
   const queryString = useSyncExternalStore(
     subscribe,
     getSnapshot,
@@ -149,6 +166,19 @@ export function CatalogBrowser({
     if (value) next.set(key, value);
     else next.delete(key);
     if (key !== 'page') next.delete('page');
+    if (initialPage > 1) {
+      if (navigationTimer.current) clearTimeout(navigationTimer.current);
+      if (key === 'q') next.set('focus', 'search');
+      navigationTimer.current = setTimeout(
+        () => {
+          router.replace(
+            `${basePath}${next.size ? '?' + next.toString() : ''}`,
+            { scroll: false }
+          );
+        },
+        key === 'q' ? 250 : 0
+      );
+    }
     window.history.replaceState(
       null,
       '',
@@ -157,6 +187,11 @@ export function CatalogBrowser({
     window.dispatchEvent(new Event('catalog-query'));
   }
   function clear() {
+    if (navigationTimer.current) clearTimeout(navigationTimer.current);
+    if (initialPage > 1) {
+      router.replace(basePath, { scroll: false });
+      return;
+    }
     window.history.replaceState(
       null,
       '',
@@ -228,17 +263,26 @@ export function CatalogBrowser({
       result.sort((a, b) => a.title.localeCompare(b.title));
     return result;
   }, [all, filtered, initialCollections, params]);
-  const itemCount = grouped ? collections.length : filtered.length;
+  const itemCount = grouped
+    ? collections.length
+    : all
+      ? filtered.length
+      : total;
   const collectionQuery = new URLSearchParams(params);
   collectionQuery.delete('page');
   collectionQuery.delete('focus');
   if (category) collectionQuery.set('category', category);
-  const pageSize = 24;
-  const pages = Math.max(1, Math.ceil(itemCount / pageSize));
-  const page = Math.min(
-    pages,
-    Math.max(1, Math.trunc(Number(params.get('page')) || 1))
-  );
+  const pageSize = PAGE_SIZE;
+  const pages = pageCount(itemCount);
+  const page = Math.min(pages, initialPage);
+  const paginationHref = (number: number) => {
+    const query = new URLSearchParams(params);
+    query.delete('page');
+    query.delete('focus');
+    return (
+      pagePath(basePath, number) + (query.size ? '?' + query.toString() : '')
+    );
+  };
   useEffect(() => {
     if (all && params.get('focus') === 'search' && !searchFocused.current) {
       searchRef.current?.focus();
@@ -249,7 +293,9 @@ export function CatalogBrowser({
   const visible = loaded.key === loadKey ? loaded.count : 32;
   const shown = continuous
     ? filtered.slice(0, visible)
-    : filtered.slice((page - 1) * pageSize, page * pageSize);
+    : !all
+      ? initial
+      : filtered.slice((page - 1) * pageSize, page * pageSize);
   const shownCollections = continuous
     ? collections.slice(0, visible)
     : collections.slice((page - 1) * pageSize, page * pageSize);
@@ -493,6 +539,7 @@ export function CatalogBrowser({
           <label htmlFor="sort">Sort by</label>
           <select
             id="sort"
+            aria-label="Sort by"
             value={params.get('sort') || 'relevance'}
             onChange={(e) => update('sort', e.target.value)}
           >
@@ -617,6 +664,9 @@ export function CatalogBrowser({
               </button>
             </p>
           )}
+          <h2 className="sr-only">
+            {grouped ? 'Tool collections' : 'Available plans'}
+          </h2>
           {grouped && shownCollections.length ? (
             <div className="collection-grid">
               {shownCollections.map((c) => (
@@ -666,13 +716,19 @@ export function CatalogBrowser({
           )}
           {!continuous && pages > 1 && (
             <nav aria-label="Catalog pages" className="pagination">
-              <button
-                disabled={page === 1}
-                onClick={() => update('page', String(page - 1))}
-                aria-label="Previous page"
-              >
-                ←
-              </button>
+              {page > 1 ? (
+                <a href={paginationHref(page - 1)} aria-label="Previous page">
+                  ←
+                </a>
+              ) : (
+                <span
+                  className="pagination-disabled"
+                  aria-disabled="true"
+                  aria-label="Previous page"
+                >
+                  ←
+                </span>
+              )}
               {Array.from(
                 new Set([
                   1,
@@ -688,25 +744,28 @@ export function CatalogBrowser({
                     {i > 0 && n - arr[i - 1] > 1 && (
                       <span className="px-2">…</span>
                     )}
-                    <button
+                    <a
                       aria-label={`Page ${n}`}
                       aria-current={n === page ? 'page' : undefined}
-                      onClick={() => {
-                        update('page', String(n));
-                        searchRef.current?.scrollIntoView({ block: 'center' });
-                      }}
+                      href={paginationHref(n)}
                     >
                       {n}
-                    </button>
+                    </a>
                   </span>
                 ))}
-              <button
-                disabled={page === pages}
-                onClick={() => update('page', String(page + 1))}
-                aria-label="Next page"
-              >
-                →
-              </button>
+              {page < pages ? (
+                <a href={paginationHref(page + 1)} aria-label="Next page">
+                  →
+                </a>
+              ) : (
+                <span
+                  className="pagination-disabled"
+                  aria-disabled="true"
+                  aria-label="Next page"
+                >
+                  →
+                </span>
+              )}
             </nav>
           )}
         </div>

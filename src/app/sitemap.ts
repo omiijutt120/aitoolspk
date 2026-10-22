@@ -3,9 +3,11 @@ import { origin } from '@/lib/seo';
 import { categories } from '@/lib/categories';
 import { products } from '@/lib/catalog';
 import { groupCollections } from '@/lib/collections';
+import { paginatedSitemapUrls } from '@/lib/catalog-pagination';
 export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    ...paginatedSitemapUrls().map((path) => ({ url: `${origin}${path}` })),
     ...[
       '',
       '/tools',

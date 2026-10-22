@@ -23,6 +23,9 @@ test('approved offers have exact order links and expire without a redeploy', asy
     exact: true,
   });
   await expect(buy).toBeVisible();
+  await expect(
+    page.locator('.product-card').filter({ has: buy }).locator('.stock-badge')
+  ).toHaveText('Available');
   await expect(buy).toHaveAttribute('href', /I%20want%20to%20order/);
   const link = new URL((await buy.getAttribute('href')) as string);
   expect(link.hostname).toBe('wa.me');
@@ -131,11 +134,11 @@ test('navigation and mobile filter dialogs support keyboard close', async ({
   await page
     .getByRole('dialog')
     .getByLabel('Availability', { exact: true })
-    .selectOption('out-of-stock');
+    .selectOption('in-stock');
   await page.getByRole('button', { name: /Show .* offers/ }).click();
   await page.locator('.collection-card').first().click();
   await expect(page.locator('.product-card').first()).toContainText(
-    'Out of stock'
+    'Available'
   );
 });
 for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {

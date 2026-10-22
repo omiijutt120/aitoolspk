@@ -1,6 +1,6 @@
 import { MessageCircle } from 'lucide-react';
 import type { Product } from '@/lib/types';
-import { canBuy, isStale, whatsappUrl } from '@/lib/commerce.mjs';
+import { isStale, whatsappUrl } from '@/lib/commerce.mjs';
 
 export function PurchaseLink({
   product,
@@ -37,15 +37,13 @@ export function StatusBadge({ product, now }: { product: Product; now: Date }) {
   const text =
     product.stock === 'out-of-stock'
       ? 'Out of stock'
-      : product.approval !== 'approved'
-        ? 'Pending verification'
-        : isStale(product, now)
+      : product.stock === 'unconfirmed'
+        ? 'Stock unconfirmed'
+        : product.approval === 'approved' && isStale(product, now)
           ? 'Quote needs refresh'
-          : product.stock === 'in-stock'
-            ? 'In stock'
-            : 'Stock unconfirmed';
+          : 'Available';
   return (
-    <span className={`stock-badge ${canBuy(product, now) ? 'available' : ''}`}>
+    <span className={`stock-badge ${text === 'Available' ? 'available' : ''}`}>
       <span />
       {text}
     </span>

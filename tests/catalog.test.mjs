@@ -48,10 +48,52 @@ test(
     });
   }
 );
-test('source stock matches the PRD snapshot', () => {
-  assert.equal(catalog.filter((p) => p.stock === 'in-stock').length, 537);
-  assert.equal(catalog.filter((p) => p.stock === 'out-of-stock').length, 192);
-  assert.equal(catalog.filter((p) => p.stock === 'unconfirmed').length, 82);
+test('owner-confirmed inventory survives imports without approving unverified offers', () => {
+  const inventory = JSON.parse(readFileSync('data/inventory.json', 'utf8'));
+  assert.equal(Object.keys(inventory).length, catalog.length);
+  for (const p of catalog) {
+    assert.equal(p.stock, inventory[p.id].stock);
+    assert.equal(whatsappIntent(p), 'confirm');
+  }
+  const row = { ...sample, AvailableStock: '0', ListingStatus: 'Out of stock' };
+  const original = normalize(row);
+  const overrides = {
+    [original.id]: { stock: 'in-stock', checkedAt: '2026-10-23' },
+  };
+  const updated = normalize(row, {}, {}, overrides);
+  assert.equal(original.stock, 'out-of-stock');
+  assert.equal(updated.stock, 'in-stock');
+  assert.equal(updated.approval, 'pending');
+  assert.equal(updated.purchasable, false);
+  assert.equal(updated.price, original.price);
+  assert.equal(updated.date, original.date);
+  assert.equal(updated.warranty, original.warranty);
+  assert.equal(
+    normalize(
+      row,
+      {
+        [original.id]: {
+          stockStatus: 'out-of-stock',
+          stockCheckedAt: '2026-10-24',
+        },
+      },
+      {},
+      overrides
+    ).stock,
+    'out-of-stock'
+  );
+  assert.throws(
+    () =>
+      normalize(
+        row,
+        {},
+        {},
+        {
+          [original.id]: { stock: 'in-stock', checkedAt: 'invalid' },
+        }
+      ),
+    /inventory confirmation date/
+  );
 });
 test('public projection contains no confidential supplier fields, URLs, copy or evidence', () => {
   const forbidden = [

@@ -413,7 +413,7 @@ export function CatalogBrowser({
         label="Availability"
         param="stock"
         values={[
-          { value: 'in-stock', label: 'Source reports stock (not live)' },
+          { value: 'in-stock', label: 'Available' },
           { value: 'out-of-stock', label: 'Out of stock' },
           { value: 'unconfirmed', label: 'Stock unconfirmed' },
         ]}
@@ -649,8 +649,8 @@ export function CatalogBrowser({
           <div className="catalog-notice">
             <Info size={15} />
             <p>
-              Plans marked “Pending verification” need review before ordering.
-              Prices and availability are confirmed on WhatsApp.
+              Availability reflects seller-confirmed stock. Confirm your plan,
+              current price and terms on WhatsApp before payment.
             </p>
           </div>
           {error && (

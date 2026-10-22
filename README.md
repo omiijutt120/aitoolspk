@@ -40,7 +40,9 @@ npm.cmd run dev
 
 ## Catalog and privacy boundary
 
-All **811** original rows are imported with exact `SellingPricePKR` integer retail prices. No brand-level deduplication occurs. The initial snapshot contains 537 source-reported in-stock, 192 out-of-stock, 62 stock-unconfirmed and 20 custom offers. The last two groups normalize to 82 unconfirmed offers. Source stock is never presented as an approval to sell.
+All **811** original rows are imported with exact `SellingPricePKR` integer retail prices. No brand-level deduplication occurs. The initial snapshot contained 537 source-reported in-stock, 192 out-of-stock and 82 unconfirmed offers. On 2026-10-23 the owner confirmed all 811 plans available; `data/inventory.json` records these updates by public product ID. The importer applies the latest dated stock confirmation, independently of commercial approval, warranty and quote freshness. Plan badges show **Available** for in-stock offers; review status remains on the detail page.
+
+To manage stock, edit a product's `stock` (`in-stock`, `out-of-stock` or `unconfirmed`) and actual `checkedAt` date in `data/inventory.json`, then run `npm run catalog:import`, checks and deployment. A newer dated stock review in private approvals takes precedence. Inventory confirmations never refresh retail price dates or approve unverified plan claims. On GitHub, where the private CSV is absent, commit both regenerated sanitized catalogs alongside inventory changes.
 
 The original CSV and PRD are in ignored `private/`. **Never upload that directory, the original Downloads files, or `reports/` to a public repository or web root.** Public builds use an allowlist projection in `data/catalog.json` and `public/catalog/index.json`. Descriptions are rewritten conservatively; raw source copy, purchase requirements, supplier URLs, original prices, costs, margins, profits, sold counts and evidence are never copied. IDs are stable opaque public hashes; they do not expose supplier identifiers.
 

@@ -100,7 +100,7 @@ const brandRules = [
   ['udemy', 'Udemy', /udemy/i, 'productivity'],
   ['genspark', 'Genspark', /genspark/i, 'ai-chat'],
 ];
-export function normalize(row, approvals = {}, brands = {}) {
+export function normalize(row, approvals = {}, brands = {}, inventory = {}) {
   if (!row.ProductID || !row.Name) throw new Error('Missing required identity');
   const price = Number(row.SellingPricePKR);
   if (!Number.isSafeInteger(price) || price <= 0)
@@ -185,7 +185,18 @@ export function normalize(row, approvals = {}, brands = {}) {
               : 'Not specified';
   const credits =
     name.match(/\b[\d,.]+\s*[kmb]?\s*(?:credits?|tokens?)\b/i)?.[0] || '';
+  const stockUpdate = inventory[id];
+  if (
+    stockUpdate &&
+    (!/^\d{4}-\d{2}-\d{2}$/.test(stockUpdate.checkedAt) ||
+      !Number.isFinite(Date.parse(stockUpdate.checkedAt)))
+  )
+    throw new Error(`Invalid inventory confirmation date for ${id}`);
   const stock =
+    (stockUpdate &&
+    (!review.stockCheckedAt || stockUpdate.checkedAt >= review.stockCheckedAt)
+      ? stockUpdate.stock
+      : undefined) ||
     review.stockStatus ||
     (Number(row.AvailableStock) === 0 && row.AvailableStock !== ''
       ? 'out-of-stock'
@@ -290,12 +301,15 @@ if (
         )
       : {};
     const brands = JSON.parse(readFileSync('data/brands.json', 'utf8'));
+    const inventory = existsSync('data/inventory.json')
+      ? JSON.parse(readFileSync('data/inventory.json', 'utf8'))
+      : {};
     const previous = existsSync('data/catalog.json')
       ? JSON.parse(readFileSync('data/catalog.json', 'utf8'))
       : [];
     const priorSlugs = new Map(previous.map((p) => [p.id, p.slug]));
     const products = rows
-      .map((row) => normalize(row, approvals, brands))
+      .map((row) => normalize(row, approvals, brands, inventory))
       .map((p) => ({ ...p, slug: priorSlugs.get(p.id) || p.slug }));
     if (new Set(products.map((p) => p.id)).size !== products.length)
       throw new Error('Duplicate product identity');
@@ -304,6 +318,9 @@ if (
     for (const id of Object.keys(approvals))
       if (!products.some((p) => p.id === id))
         throw new Error(`Unknown approval ID ${id}`);
+    for (const id of Object.keys(inventory))
+      if (!products.some((p) => p.id === id))
+        throw new Error(`Unknown inventory ID ${id}`);
     mkdirSync('reports', { recursive: true });
     mkdirSync('public/catalog', { recursive: true });
     writeFileSync(

@@ -210,10 +210,15 @@ test('homepage, catalog, policy and details pass automated WCAG AA checks', asyn
     ).toEqual([]);
   }
   await page.goto('/plans/chatgpt/');
+  const productName = (
+    await page.locator('.product-card h3').first().innerText()
+  ).trim();
   await page
     .getByRole('link', { name: 'View Details', exact: true })
     .first()
     .click();
+  await expect(page).toHaveURL(/\/tool\/[^/]+\/$/);
+  await expect.poll(() => page.title()).toContain(productName);
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
     .analyze();

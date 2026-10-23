@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
+import { isGoogleVerificationAsset } from './seo/verification-assets.mjs';
 const catalog = JSON.parse(readFileSync('data/catalog.json', 'utf8')).filter(
   (p) => p.approval !== 'excluded'
 );
@@ -7,7 +8,8 @@ let pageCount = 0,
   links = 0,
   seoPages = 0,
   structuredDataBlocks = 0,
-  externalLinks = 0;
+  externalLinks = 0,
+  verificationAssets = 0;
 const origin = (
   process.env.NEXT_PUBLIC_SITE_URL || 'https://aitoolspk.tech'
 ).replace(/\/$/, '');
@@ -30,10 +32,23 @@ function walk(dir) {
     const file = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(file);
     else if (entry.name.endsWith('.html')) {
+      const html = readFileSync(file, 'utf8');
+      const relative = path.relative('out', file).replaceAll('\\', '/');
+      if (isGoogleVerificationAsset(relative, html)) {
+        if (
+          !readFileSync(path.join('public', relative)).equals(
+            readFileSync(file)
+          )
+        )
+          throw new Error(
+            `Verification file differs from public source: ${file}`
+          );
+        verificationAssets++;
+        continue;
+      }
       pageCount++;
       if (pageCount % 200 === 0)
         console.log(`Checked ${pageCount} HTML pages…`);
-      const html = readFileSync(file, 'utf8');
       const pagePath = '/' + path.relative('out', file).replaceAll('\\', '/');
       const errorPage = /(?:^|\/)(?:404|_not-found)(?:\/|\.html)/.test(
         pagePath
@@ -151,6 +166,7 @@ if (broken.length)
   throw new Error(JSON.stringify(broken.slice(0, 20), null, 2));
 const report = {
   pages: pageCount,
+  verificationAssets,
   productRoutes: catalog.length,
   internalReferencesChecked: links,
   uniqueTargets: checked.size,

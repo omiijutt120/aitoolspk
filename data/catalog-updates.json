@@ -1,0 +1,12 @@
+{
+  "products": {
+    "PK-1C4151BB27E1": {
+      "price": 1200,
+      "warranty": "Full seller warranty (18 months)",
+      "date": "2026-10-24"
+    }
+  },
+  "consolidations": {
+    "PK-1C4151BB27E1": ["PK-8F87F47B2D50", "PK-F08F8B73C1FF"]
+  }
+}

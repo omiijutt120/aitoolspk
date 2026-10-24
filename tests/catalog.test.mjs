@@ -27,6 +27,9 @@ const sample = {
   RateDate: '2026-10-19',
 };
 const catalog = JSON.parse(readFileSync('data/catalog.json', 'utf8'));
+const catalogUpdates = JSON.parse(
+  readFileSync('data/catalog-updates.json', 'utf8')
+);
 test('all 811 offers retain exact integer retail prices and unique identities', () => {
   assert.equal(catalog.length, 811);
   assert.equal(new Set(catalog.map((p) => p.id)).size, 811);
@@ -43,7 +46,11 @@ test(
   () => {
     assert.equal(source.length, catalog.length);
     source.forEach((row, i) => {
-      assert.equal(catalog[i].price, Number(row.SellingPricePKR));
+      assert.equal(
+        catalog[i].price,
+        catalogUpdates.products[catalog[i].id]?.price ??
+          Number(row.SellingPricePKR)
+      );
       assert.equal(normalize(row).id, catalog[i].id);
     });
   }

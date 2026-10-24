@@ -40,6 +40,8 @@ npm.cmd run dev
 
 ## Catalog and privacy boundary
 
+Owner-confirmed price and warranty changes live in `data/catalog-updates.json`. Run `npm run catalog:import` after editing it. These updates override the source snapshot and survive clean-checkout builds. On 2026-10-24, the three Gemini Pro 18-month listings were consolidated into `PK-1C4151BB27E1`: **PKR 1,200**, **Full seller warranty (18 months)**. The other two IDs remain excluded import-history records and are omitted from listings/search; all other offers remain distinct. Commercial approval is independent of this price/warranty update. There are 809 active plans and 811 retained records.
+
 All **811** original rows are imported with exact `SellingPricePKR` integer retail prices. No brand-level deduplication occurs. The initial snapshot contained 537 source-reported in-stock, 192 out-of-stock and 82 unconfirmed offers. On 2026-10-23 the owner confirmed all 811 plans available; `data/inventory.json` records these updates by public product ID. The importer applies the latest dated stock confirmation, independently of commercial approval, warranty and quote freshness. Plan badges show **Available** for in-stock offers; review status remains on the detail page.
 
 To manage stock, edit a product's `stock` (`in-stock`, `out-of-stock` or `unconfirmed`) and actual `checkedAt` date in `data/inventory.json`, then run `npm run catalog:import`, checks and deployment. A newer dated stock review in private approvals takes precedence. Inventory confirmations never refresh retail price dates or approve unverified plan claims. On GitHub, where the private CSV is absent, commit both regenerated sanitized catalogs alongside inventory changes.

@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { parse } from 'csv-parse/sync';
+import { applyCatalogUpdates } from './catalog-updates.mjs';
 
 export function clean(value = '') {
   return String(value)
@@ -278,6 +279,9 @@ if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
+  const catalogUpdates = existsSync('data/catalog-updates.json')
+    ? JSON.parse(readFileSync('data/catalog-updates.json', 'utf8'))
+    : {};
   if (
     !existsSync('private/catalog.csv') &&
     process.argv.includes('--if-present')
@@ -288,6 +292,18 @@ if (
       );
     console.log(
       'Private CSV absent. Using committed sanitized catalog; validation follows.'
+    );
+    const products = applyCatalogUpdates(
+      JSON.parse(readFileSync('data/catalog.json', 'utf8')),
+      catalogUpdates
+    );
+    writeFileSync(
+      'data/catalog.json',
+      JSON.stringify(products, null, 2) + '\n'
+    );
+    writeFileSync(
+      'public/catalog/index.json',
+      JSON.stringify(products.filter((p) => p.approval !== 'excluded'))
     );
   } else {
     const rows = parse(readFileSync('private/catalog.csv', 'utf8'), {
@@ -308,9 +324,12 @@ if (
       ? JSON.parse(readFileSync('data/catalog.json', 'utf8'))
       : [];
     const priorSlugs = new Map(previous.map((p) => [p.id, p.slug]));
-    const products = rows
-      .map((row) => normalize(row, approvals, brands, inventory))
-      .map((p) => ({ ...p, slug: priorSlugs.get(p.id) || p.slug }));
+    const products = applyCatalogUpdates(
+      rows
+        .map((row) => normalize(row, approvals, brands, inventory))
+        .map((p) => ({ ...p, slug: priorSlugs.get(p.id) || p.slug })),
+      catalogUpdates
+    );
     if (new Set(products.map((p) => p.id)).size !== products.length)
       throw new Error('Duplicate product identity');
     if (new Set(products.map((p) => p.slug)).size !== products.length)

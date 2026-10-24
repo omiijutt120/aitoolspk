@@ -10,7 +10,7 @@ import {
 } from '../../src/lib/collections';
 import type { Product } from '../../src/lib/types';
 
-const products = catalog as Product[];
+const products = (catalog as Product[]).filter((p) => p.approval !== 'excluded');
 const groups = groupCollections(products);
 const home = homeCollections(products);
 const chatgpt = collectionProducts(products, 'chatgpt');

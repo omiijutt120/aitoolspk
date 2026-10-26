@@ -5,7 +5,7 @@ import { Catalog } from '@/components/catalog';
 import { metadata, JsonLd, origin } from '@/lib/seo';
 import { products } from '@/lib/catalog';
 import { groupCollections } from '@/lib/collections';
-import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
+import { pageCount, pageDescription, pageNumber, pagePath } from '@/lib/pagination';
 export const dynamicParams = false;
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -21,7 +21,7 @@ export async function generateMetadata({
   return c
     ? metadata(
         `${c.name} tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
-        c.description + ' Compare exact plans and PKR prices.',
+        pageDescription(c.description + ' Compare exact plans and PKR prices.', page),
         pagePath(`/category/${slug}/`, page)
       )
     : {};

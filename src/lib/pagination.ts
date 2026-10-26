@@ -1,4 +1,6 @@
 export const PAGE_SIZE = 24;
+export const pageDescription = (description: string, page: number) =>
+  page > 1 ? `Page ${page}: ${description}` : description;
 export const pageCount = (items: number) =>
   Math.max(1, Math.ceil(items / PAGE_SIZE));
 export const pagePath = (base: string, page: number) =>

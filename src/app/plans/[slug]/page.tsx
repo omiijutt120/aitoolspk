@@ -77,6 +77,33 @@ export default async function PlansPage({
             : `All ${c.brand} subscriptions and variants, together. Compare the exact duration, access and warranty before choosing your plan.`}
         </p>
       </div>
+      {slug === 'chatgpt' && page === 1 && (
+        <section
+          className="page-intro"
+          aria-labelledby="chatgpt-buyer-clarity"
+        >
+          <h2 id="chatgpt-buyer-clarity">Before comparing ChatGPT plans</h2>
+          <p>
+            Compare the exact edition, duration, access method and warranty
+            separately. Subscription duration is not the warranty period. If
+            access or warranty details are unspecified or unverified, ask for
+            written clarification before paying.
+          </p>
+          <p>
+            Stock availability does not confirm access approval or resale
+            eligibility. Check the individual offer&apos;s review status. Pending
+            offers require availability and eligibility confirmation first; an
+            enquiry is not a purchase or reservation.
+          </p>
+          <p>
+            Use the product ID to confirm the final PKR price, safe delivery
+            method, renewal terms and written warranty coverage. Never share
+            passwords, cookies, recovery keys or security codes. Read the{' '}
+            <Link href="/how-to-order/">ordering checklist</Link> and{' '}
+            <Link href="/refund-policy/">refund policy</Link> before deciding.
+          </p>
+        </section>
+      )}
       <Catalog collection={slug} initialPage={page} />
       <JsonLd
         data={{

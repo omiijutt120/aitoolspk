@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { Braces, ArrowLeft } from 'lucide-react';
 import { Catalog } from '@/components/catalog';
 import { products } from '@/lib/catalog';
+import { categoryName } from '@/lib/categories';
 import { collectionProducts, groupCollections } from '@/lib/collections';
 import { pageCount, pageDescription, pageNumber, pagePath } from '@/lib/pagination';
 import { metadata, JsonLd, origin } from '@/lib/seo';
@@ -79,6 +80,22 @@ export default async function PlansPage({
             ? 'Every API offer, together. Search providers and compare credits, durations and access before choosing a plan.'
             : `All ${c.brand} subscriptions and variants, together. Compare the exact duration, access and warranty before choosing your plan.`}
         </p>
+        <nav aria-label="Related categories" className="mt-6">
+          <p>Explore related categories</p>
+          <ul className="flex flex-wrap gap-x-6">
+            {c.categories.map((category) => (
+              <li key={category}>
+                <Link
+                  href={`/category/${category}/`}
+                  className="text-link"
+                  prefetch={false}
+                >
+                  {categoryName(category)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
       {slug === 'chatgpt' && page === 1 && (
         <section

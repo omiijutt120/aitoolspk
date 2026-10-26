@@ -5,7 +5,7 @@ import { Braces, ArrowLeft } from 'lucide-react';
 import { Catalog } from '@/components/catalog';
 import { products } from '@/lib/catalog';
 import { collectionProducts, groupCollections } from '@/lib/collections';
-import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
+import { pageCount, pageDescription, pageNumber, pagePath } from '@/lib/pagination';
 import { metadata, JsonLd, origin } from '@/lib/seo';
 
 const collections = groupCollections(products);
@@ -24,7 +24,10 @@ export async function generateMetadata({
   if (!collection) return {};
   return metadata(
     `${collection.title} in Pakistan — compare ${collection.count} options${page > 1 ? ` — Page ${page}` : ''}`,
-    `Browse ${collection.count} ${collection.title}. Compare listed PKR prices, durations, access and warranty terms. Confirm your selected offer on WhatsApp.`,
+    pageDescription(
+      `Browse ${collection.count} ${collection.title}. Compare listed PKR prices, durations, access and warranty terms. Confirm your selected offer on WhatsApp.`,
+      page
+    ),
     pagePath(`/plans/${slug}/`, page)
   );
 }

@@ -124,6 +124,45 @@ export default async function PlansPage({
           </p>
         </section>
       )}
+      {slug === 'elevenlabs' && page === 1 && (
+        <section
+          className="page-intro"
+          aria-labelledby="elevenlabs-credit-checklist"
+        >
+          <h2 id="elevenlabs-credit-checklist">
+            Compare ElevenLabs credits before choosing
+          </h2>
+          <p>
+            Credits are not a fixed number of audio minutes. ElevenLabs says
+            consumption varies by plan, model, product and whether you use its
+            website or API. For a voiceover budget, note your intended model,
+            script length and displayed credit estimate before comparing totals.
+          </p>
+          <ul>
+            <li>
+              Check the exact credit quantity and unit. A short label is not
+              enough to establish the balance you will receive.
+            </li>
+            <li>
+              Separate subscription quota from prepaid credits. ElevenLabs
+              documents monthly resets for self-serve subscription credits;
+              rollover has conditions, and cancellation or downgrade affects it.
+              Ask which credit type and expiry apply to the selected offer.
+            </li>
+            <li>
+              Match the plan and product to your task, not just the duration.
+              Vendor documentation does not verify any listed offer. Confirm
+              unresolved details using the <Link href="/how-to-order/">ordering checklist</Link>.
+            </li>
+          </ul>
+          <p>
+            Source checked <time dateTime="2026-10-27">27 October 2026</time>:{' '}
+            <a href="https://elevenlabs.io/docs/overview/administration/billing">
+              ElevenLabs billing documentation
+            </a>. Vendor rules can change; recheck before deciding.
+          </p>
+        </section>
+      )}
       <Catalog collection={slug} initialPage={page} />
       <JsonLd
         data={{

@@ -163,6 +163,61 @@ export default async function PlansPage({
           </p>
         </section>
       )}
+      {slug === 'api' && page === 1 && (
+        <section className="page-intro" aria-labelledby="api-credit-guide">
+          <h2 id="api-credit-guide">Compare API providers, units and expiry</h2>
+          <p>
+            An app subscription, a provider API balance and a gateway allowance
+            are different things. Before comparing these listings, identify the
+            provider or gateway, the billing account and the exact model endpoint.
+            A familiar model name alone does not establish who supplies access.
+          </p>
+          <ul>
+            <li>
+              <strong>Check what the unit means.</strong> Labels such as
+              &quot;10M Credit&quot; and &quot;15M Token&quot; are not directly
+              comparable without a documented conversion and usage rules. Ask
+              whether input, output and cached usage draw from the same balance,
+              and which model and rate limits apply.
+            </li>
+            <li>
+              <strong>Separate duration from balance expiry.</strong> A listed
+              access period does not establish when credits reset or expire.
+              Confirm the balance type, expiry, rollover and what happens when
+              the allowance runs out before deciding.
+            </li>
+            <li>
+              <strong>Check provider-specific exceptions.</strong> Claude
+              documents API credits for eligible Max and Team plans after linking
+              a Console organization; Pro is not eligible. Those included credits
+              expire each billing cycle, or monthly for annual plans, without
+              rollover. This does not establish eligibility for any local offer.
+            </li>
+            <li>
+              <strong>Match credits to the correct service.</strong> Google
+              documents separate Gemini API Prepay and Postpay billing. Its
+              purchased Prepay credits expire after 12 months and apply to Gemini
+              API usage, not other Google Cloud services. Do not treat that
+              provider rule as the expiry of a listed gateway allowance.
+            </li>
+          </ul>
+          <p>
+            Vendor documentation does not verify any listed offer. Request the
+            exact product ID, unit definition, provider or gateway and written
+            limits using the <Link href="/how-to-order/">ordering checklist</Link>.
+            Never send API keys or account credentials in an enquiry.
+          </p>
+          <p>
+            Sources checked <time dateTime="2026-10-28">28 October 2026</time>:{' '}
+            <a href="https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers">
+              Claude API credit eligibility
+            </a>{' '}and{' '}
+            <a href="https://ai.google.dev/gemini-api/docs/billing">
+              Gemini API billing documentation
+            </a>. Provider rules can change; recheck before deciding.
+          </p>
+        </section>
+      )}
       <Catalog collection={slug} initialPage={page} />
       <JsonLd
         data={{

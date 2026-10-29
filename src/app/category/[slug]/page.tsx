@@ -6,7 +6,12 @@ import { Catalog } from '@/components/catalog';
 import { metadata } from '@/lib/seo';
 import { products } from '@/lib/catalog';
 import { groupCollections } from '@/lib/collections';
-import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
+import {
+  pageCount,
+  pageDescription,
+  pageNumber,
+  pagePath,
+} from '@/lib/pagination';
 import { PAGE_SIZE } from '@/lib/pagination';
 import { CollectionSchema } from '@/components/collection-schema';
 export const dynamicParams = false;
@@ -24,8 +29,10 @@ export async function generateMetadata({
   return c
     ? metadata(
         `${c.name} tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
-        c.description +
-          ` Compare exact plans and PKR prices.${page > 1 ? ` Page ${page}.` : ''}`,
+        pageDescription(
+          c.description + ' Compare exact plans and PKR prices.',
+          page
+        ),
         pagePath(`/category/${slug}/`, page)
       )
     : {};

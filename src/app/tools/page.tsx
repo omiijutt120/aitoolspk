@@ -3,7 +3,12 @@ import { metadata as makeMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
 import { products } from '@/lib/catalog';
 import { groupCollections } from '@/lib/collections';
-import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
+import {
+  pageCount,
+  pageDescription,
+  pageNumber,
+  pagePath,
+} from '@/lib/pagination';
 import { PAGE_SIZE } from '@/lib/pagination';
 import { CollectionSchema } from '@/components/collection-schema';
 type Props = { params: Promise<{ page?: string }> };
@@ -11,7 +16,10 @@ export async function generateMetadata({ params }: Props) {
   const page = pageNumber((await params).page);
   return makeMetadata(
     `Explore all tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
-    `Search AI tools, compare exact subscriptions and retail PKR prices, and filter by brand, duration, warranty, access and availability.${page > 1 ? ` Page ${page}.` : ''}`,
+    pageDescription(
+      'Search AI tools, compare exact subscriptions and retail PKR prices, and filter by brand, duration, warranty, access and availability.',
+      page
+    ),
     pagePath('/tools/', page)
   );
 }

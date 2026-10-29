@@ -8,6 +8,7 @@ export const metadata = makeMetadata(
 export default function Privacy() {
   return (
     <Document
+      path="/privacy-policy/"
       policy
       eyebrow="YOUR INFORMATION"
       title="Privacy policy"

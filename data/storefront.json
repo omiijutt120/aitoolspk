@@ -20,5 +20,15 @@
     "PK-653CBE620D57",
     "PK-5A5C71A8C2C3"
   ],
-  "additionalBrands": ["chatgpt", "claude", "cursor", "perplexity", "grammarly"]
+  "additionalBrands": [
+    "chatgpt",
+    "claude",
+    "cursor",
+    "perplexity",
+    "grammarly",
+    "helium-10",
+    "midjourney",
+    "envato",
+    "vidiq"
+  ]
 }

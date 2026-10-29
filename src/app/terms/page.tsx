@@ -9,7 +9,9 @@ export const metadata = makeMetadata(
 export default function Terms() {
   return (
     <Document
+      path="/terms/"
       policy
+      effectiveDate="23 October 2026"
       eyebrow="KNOW WHAT TO EXPECT"
       title="Terms of service"
       lead="These terms explain how the AiToolsPk catalog and WhatsApp enquiry process work."
@@ -65,6 +67,40 @@ export default function Terms() {
         exclusions and available remedies in writing. A warranty for one offer
         does not extend to another. We do not promise lifetime or unlimited
         access without verified terms.
+      </p>
+      <h2 id="seller-warranty">Full-duration seller warranty</h2>
+      <p>
+        Offers explicitly marked “Full Duration Warranty” include AI Tools
+        PK&apos;s seller-provided warranty for the purchased subscription
+        duration. This warranty is provided by AI Tools PK, independently of the
+        original software company. It applies to the specific package and
+        included features agreed before payment, subject to these terms and the
+        fair usage policy below. Confirm the activation/start date, end date,
+        access method and any package-specific exclusions in WhatsApp before
+        paying. This section does not convert unverified source warranty labels
+        into seller warranty offers.
+      </p>
+      <p>
+        Report an access or supplied-feature issue on WhatsApp with your product
+        ID and order reference. Do not send passwords or security codes. We will
+        assess the issue against your agreed package and duration. Any remedy is
+        subject to the written order terms and our refund policy; this warranty
+        does not add a universal replacement or refund promise, instant
+        activation commitment or guarantee of uninterrupted third-party
+        services.
+      </p>
+      <h2 id="fair-usage">Fair usage policy</h2>
+      <p>
+        Use subscriptions within the supplied package&apos;s agreed limits and
+        the vendor&apos;s applicable terms. Do not automate abusive requests,
+        bypass limits, redistribute access or assume account sharing is
+        permitted. Helium 10 supports normal, practical research within the
+        package limits; unlimited searches are not offered. Cerebro and Magnet
+        are excluded from our Helium 10 Platinum package. Midjourney generation
+        allowances, Envato downloads/AI credits/licensing and vidIQ AI
+        allowances/channel eligibility must be confirmed for the actual access
+        supplied. No unspecified numeric allowance or unrestricted
+        commercial-use right is promised.
       </p>
       <h2>Refunds and issues</h2>
       <p>

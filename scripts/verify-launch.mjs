@@ -77,6 +77,7 @@ run('production dependency audit', [
 ]);
 run('build', [npmCli, 'run', 'build']);
 run('export routes and public fields', ['scripts/check-export.mjs']);
+run('HTML fragments and duplicate IDs', ['scripts/seo/check-fragments.mjs']);
 console.log(
   'Automated launch checkpoints passed. Complete owner and domain checkpoints in LAUNCH_CHECKLIST.md before claiming a public domain launch.'
 );

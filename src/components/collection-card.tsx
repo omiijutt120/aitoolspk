@@ -4,6 +4,7 @@ import { ArrowUpRight, Braces, Layers3, ArrowRight } from 'lucide-react';
 import type { PlanCollection } from '@/lib/collections';
 import { categoryName } from '@/lib/categories';
 import { money } from '@/lib/commerce.mjs';
+import { logoThumbnail } from '@/lib/logo-thumbnail';
 
 export function CollectionCard({
   collection: c,
@@ -32,7 +33,7 @@ export function CollectionCard({
             <Braces size={48} aria-hidden="true" />
           ) : c.logo ? (
             <Image
-              src={c.logo}
+              src={logoThumbnail(c.logo, 'card')}
               width={68}
               height={68}
               alt={`${c.brand} logo`}

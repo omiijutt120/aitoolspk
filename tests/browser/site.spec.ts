@@ -7,7 +7,7 @@ test('approved offers have exact order links and expire without a redeploy', asy
   page,
 }) => {
   const product: Product = {
-    ...catalog[1],
+    ...(catalog[1] as Product),
     approval: 'approved',
     purchasable: true,
     stock: 'in-stock',
@@ -17,7 +17,7 @@ test('approved offers have exact order links and expire without a redeploy', asy
   await page.route('**/catalog/index.json', (route) =>
     route.fulfill({ json: [product] })
   );
-  await page.goto(`/plans/${collectionSlug(product)}/`);
+  await page.goto(`/plans/${collectionSlug(product)}/?sort=relevance`);
   const buy = page.getByRole('link', {
     name: `Buy Now: ${product.name}`,
     exact: true,
@@ -60,7 +60,7 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .hover();
   await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'All your tools.'
+    'AI tools & subscriptions.'
   );
   await expect(page.locator('.collection-card').first()).toBeVisible();
   await page.locator('.collection-card').first().click();
@@ -210,10 +210,15 @@ test('homepage, catalog, policy and details pass automated WCAG AA checks', asyn
     ).toEqual([]);
   }
   await page.goto('/plans/chatgpt/');
+  const productName = (
+    await page.locator('.product-card h3').first().innerText()
+  ).trim();
   await page
     .getByRole('link', { name: 'View Details', exact: true })
     .first()
     .click();
+  await expect(page).toHaveURL(/\/tool\/[^/]+\/$/);
+  await expect.poll(() => page.title()).toContain(productName);
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
     .analyze();

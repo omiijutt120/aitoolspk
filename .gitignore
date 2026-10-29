@@ -8,6 +8,9 @@ test-results/
 playwright-report/
 *.tsbuildinfo
 public/logos/*.small.webp
+public/logos/*.card.webp
 public/brand/symbol-small.webp
+/public/og/
+/public/llms.txt
 .env*
 !.env.example

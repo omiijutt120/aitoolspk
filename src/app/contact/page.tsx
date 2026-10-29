@@ -10,6 +10,7 @@ export const metadata = makeMetadata(
 export default function Contact() {
   return (
     <Document
+      path="/contact/"
       eyebrow="A PERSON ON THE OTHER SIDE"
       title="Let’s find your fit."
       lead="Ask about a plan, check availability or get help with an existing order."

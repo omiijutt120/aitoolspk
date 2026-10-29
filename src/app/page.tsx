@@ -18,10 +18,11 @@ import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/icon';
 import { Steps } from '@/components/steps';
 import { FaqList } from '@/components/faq';
+import { logoThumbnail } from '@/lib/logo-thumbnail';
 
 export const metadata = makeMetadata(
-  'AI tools & subscriptions in Pakistan — selected plans',
-  'Explore selected AiToolsPk plans, compare PKR prices and browse the complete catalog with search and filters.',
+  'AI tools & subscriptions in Pakistan — PKR prices',
+  'Discover and compare AI tools and digital subscriptions in Pakistan. Explore exact plans, transparent PKR prices and warranty terms, then enquire on WhatsApp.',
   '/'
 );
 
@@ -39,12 +40,13 @@ export default function Home() {
             <span /> YOUR NEXT TOOLKIT STARTS HERE
           </p>
           <h1 id="store-title">
-            All your tools. <span>One place.</span>
+            AI tools & subscriptions. <span>In Pakistan.</span>
           </h1>
           <p>
-            Big ideas deserve better tools. Discover AI subscriptions, creative
-            software and everyday essentials—all in one place, with clear prices
-            in PKR.
+            AiToolsPk is an independent catalog of AI tools, creative software
+            and digital subscriptions for Pakistan. Compare listed PKR prices,
+            plan durations and seller warranty, then confirm your exact offer on
+            WhatsApp.
           </p>
           <div className="store-hero-actions">
             <Link className="button" href="#featured-tools">
@@ -83,7 +85,12 @@ export default function Home() {
                 prefetch={false}
               >
                 {p.logo ? (
-                  <Image src={p.logo} width={44} height={44} alt="" />
+                  <Image
+                    src={logoThumbnail(p.logo)}
+                    width={44}
+                    height={44}
+                    alt=""
+                  />
                 ) : (
                   <span className="tool-wall-text-logo" aria-hidden="true">
                     {p.brand}
@@ -271,7 +278,7 @@ export default function Home() {
             Read all FAQs <ArrowUpRight size={17} />
           </Link>
         </div>
-        <FaqList limit={4} />
+        <FaqList limit={4} headingLevel={3} />
       </section>
       <section className="container store-support">
         <div>

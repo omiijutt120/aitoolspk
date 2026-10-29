@@ -1,11 +1,14 @@
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { CategoryGuidance } from '@/components/category-guidance';
 import { categories } from '@/lib/categories';
 import { Catalog } from '@/components/catalog';
-import { metadata, JsonLd, origin } from '@/lib/seo';
+import { metadata } from '@/lib/seo';
 import { products } from '@/lib/catalog';
 import { groupCollections } from '@/lib/collections';
 import { pageCount, pageNumber, pagePath } from '@/lib/pagination';
+import { PAGE_SIZE } from '@/lib/pagination';
+import { CollectionSchema } from '@/components/collection-schema';
 export const dynamicParams = false;
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -21,7 +24,8 @@ export async function generateMetadata({
   return c
     ? metadata(
         `${c.name} tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
-        c.description + ' Compare exact plans and PKR prices.',
+        c.description +
+          ` Compare exact plans and PKR prices.${page > 1 ? ` Page ${page}.` : ''}`,
         pagePath(`/category/${slug}/`, page)
       )
     : {};
@@ -46,41 +50,39 @@ export default async function Category({
   return (
     <div className="container">
       <div className="page-intro">
-        <nav className="breadcrumbs" aria-label="Breadcrumb">
-          <Link href="/">Home</Link>
-          <span>/</span>
-          <Link href="/categories/">Categories</Link>
-          <span>/</span>
-          <span>{c.name}</span>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Categories', href: '/categories/' },
+            { name: c.name, href: `/category/${slug}/` },
+            ...(page > 1
+              ? [
+                  {
+                    name: `Page ${page}`,
+                    href: pagePath(`/category/${slug}/`, page),
+                  },
+                ]
+              : []),
+          ]}
+        />
         <p className="eyebrow">FIND YOUR FIT</p>
-        <h1>{c.name} tools, in PKR.</h1>
+        <h1>
+          {c.name} tools, in PKR.{page > 1 ? ` Page ${page}.` : ''}
+        </h1>
         <p>
           {c.description} Read each offer’s access method, duration and warranty
           before choosing a plan.
         </p>
       </div>
       <Catalog category={slug} initialPage={page} />
-      <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: origin },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: 'Categories',
-              item: `${origin}/categories/`,
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
-              name: c.name,
-              item: `${origin}/category/${slug}/`,
-            },
-          ],
-        }}
+      {page === 1 && <CategoryGuidance slug={slug} />}
+      <CollectionSchema
+        name={`${c.name}${page > 1 ? ` — Page ${page}` : ''}`}
+        description={c.description}
+        path={pagePath(`/category/${slug}/`, page)}
+        items={groupCollections(products.filter((p) => p.category === slug))
+          .slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+          .map((item) => ({ name: item.title, path: `/plans/${item.slug}/` }))}
       />
     </div>
   );

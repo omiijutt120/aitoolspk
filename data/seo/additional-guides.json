@@ -1,0 +1,420 @@
+[
+  {
+    "slug": "buy-ai-subscription-pakistan-payment-checklist",
+    "title": "Buying an AI subscription in Pakistan: payment checklist",
+    "description": "What to confirm about a PKR quote, payment method, order record and delivery before paying for an AI subscription.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "Can I enquire without an international card?",
+        "paragraphs": [
+          "You can compare listed PKR prices and send AiToolsPk a WhatsApp enquiry without entering card details on this website. The site has no checkout or payment gateway. That does not mean any particular local transfer service is accepted: ask which payment methods are currently available before sending money.",
+          "If you subscribe directly with a vendor instead, its supported countries, payment methods, taxes and renewal conditions apply. A vendor subscription and a seller-supplied package can have different terms; compare the exact entitlement rather than assuming the two offers are identical."
+        ],
+        "links": [{ "label": "How ordering works", "href": "/how-to-order/" }]
+      },
+      {
+        "heading": "Request one complete written quote",
+        "bullets": [
+          "Include the exact product ID, package, access method and duration.",
+          "Confirm the total PKR amount, any fees, when the quote expires and whether renewal is separate.",
+          "Ask when access starts, what delivery requires and which usage limits apply.",
+          "Agree the seller warranty and refund conditions before payment."
+        ],
+        "links": [{ "label": "Compare listed plans", "href": "/tools/" }]
+      },
+      {
+        "heading": "Keep a useful order record",
+        "paragraphs": [
+          "Save the agreed package, payment reference and delivery terms. A catalogue price or Buy Now click is not a completed order or a reservation. If details change during the conversation, request a revised quote before proceeding.",
+          "Do not enter payment credentials into a support chat or send account passwords, recovery codes, browser cookies or two-factor codes. Ask for a legitimate delivery method that does not require those secrets."
+        ],
+        "links": [
+          { "label": "Contact by WhatsApp", "href": "/contact/" },
+          { "label": "Refund policy", "href": "/refund-policy/" }
+        ]
+      }
+    ],
+    "sources": [
+      { "label": "AiToolsPk ordering process", "href": "/how-to-order/" },
+      { "label": "AiToolsPk terms", "href": "/terms/" },
+      { "label": "AiToolsPk refund policy", "href": "/refund-policy/" }
+    ]
+  },
+  {
+    "slug": "chatgpt-claude-gemini-plan-comparison-pakistan",
+    "title": "ChatGPT, Claude or Gemini: compare the exact plan in Pakistan",
+    "description": "A practical comparison method for ChatGPT, Claude and Gemini plans: tasks, PKR prices, account access, limits and duration.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "Which assistant should I choose?",
+        "paragraphs": [
+          "Start with a repeatable task from your own work, then compare the exact current plan. There is no universal winner established by this guide: AiToolsPk has not run a controlled benchmark of these assistants. A seller's brand label alone does not establish the models, tools or limits you receive.",
+          "For a writing task, compare factual accuracy, editing effort and your required language. For research, check source quality and verify important statements. For coding, test a small non-sensitive project and review the changes yourself. Record what worked before committing to a longer duration."
+        ],
+        "links": [
+          {
+            "label": "ChatGPT plans and PKR prices",
+            "href": "/plans/chatgpt/"
+          },
+          { "label": "Claude plans and PKR prices", "href": "/plans/claude/" },
+          { "label": "Gemini plans and PKR prices", "href": "/plans/gemini/" }
+        ]
+      },
+      {
+        "heading": "Compare equivalent offers",
+        "bullets": [
+          "Duration: compare the same coverage period and confirm when it begins.",
+          "Entitlement: request the exact vendor plan, features and eligible account requirements.",
+          "Access: establish whether it is an individual subscription, a workspace invitation or another legitimate arrangement.",
+          "Usage: check message, credit and tool limits rather than treating a subscription as unlimited.",
+          "Price: use the current collection price table and reconfirm the quote on WhatsApp; a low starting price may describe a very different package."
+        ]
+      },
+      {
+        "heading": "Do app plans include developer API usage?",
+        "paragraphs": [
+          "Do not infer API access from a consumer subscription name. OpenAI documents that ChatGPT Plus and API billing are separate. For other vendors, check their current developer billing terms and the seller's exact scope rather than extending that rule to every product.",
+          "The linked vendor documentation describes the provider's offering. It does not verify a reseller package or establish that a transfer is permitted. Ask about eligibility, renewal, seller warranty and the agreed delivery method before payment."
+        ],
+        "links": [
+          {
+            "label": "Subscriptions versus API credits",
+            "href": "/guides/subscriptions-vs-api-credits/"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenAI: ChatGPT Plus",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      },
+      {
+        "label": "Anthropic: Claude Pro",
+        "href": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan"
+      },
+      {
+        "label": "Google AI subscription plans",
+        "href": "https://one.google.com/about/google-ai-plans/"
+      }
+    ]
+  },
+  {
+    "slug": "canva-pro-pakistan-buying-checklist",
+    "title": "Canva plans in Pakistan: access and eligibility checklist",
+    "description": "Understand Canva plan labels, Education eligibility, workspace permissions and project licensing before choosing a seller-listed package.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "Is every Canva package the same?",
+        "paragraphs": [
+          "No. An individual plan, an organisation seat and an education arrangement can carry different eligibility and permissions. Compare the actual package in the Canva collection, then ask what your own account is entitled to use. A seller label containing Pro or Edu does not itself verify that entitlement.",
+          "Canva for Education has eligibility requirements. Do not buy on the assumption that an Education-labelled offer is interchangeable with a personal commercial subscription or that any buyer qualifies. Do not submit false academic details to obtain access."
+        ],
+        "links": [
+          { "label": "Canva plans and PKR prices", "href": "/plans/canva/" }
+        ]
+      },
+      {
+        "heading": "Check workspace control before joining",
+        "bullets": [
+          "Who administers the workspace, and can your access be removed?",
+          "Who can see or manage uploaded files, brand assets and shared designs?",
+          "Can you export the formats you need, and what happens to your work when access ends?",
+          "Does the invitation comply with the vendor's current terms and your actual eligibility?",
+          "What exact duration and seller warranty apply to this product ID?"
+        ]
+      },
+      {
+        "heading": "Review the intended use of your designs",
+        "paragraphs": [
+          "Opening a design tool is a different question from having rights to every included asset for every project. Check the current content license for the asset and intended use, especially client work, resale, templates and trademark-related projects. This checklist does not grant legal clearance or certify an offer.",
+          "Keep the agreed package and any applicable license evidence with your project record. If you cannot establish legitimate eligibility and delivery, ask for a suitable alternative before paying."
+        ],
+        "links": [
+          {
+            "label": "Creative project licensing checklist",
+            "href": "/guides/creative-tool-licenses-client-work/"
+          },
+          { "label": "Ask AiToolsPk about a package", "href": "/contact/" }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "Canva Education eligibility guidelines",
+        "href": "https://www.canva.com/education/eligibility-guidelines/"
+      },
+      {
+        "label": "Canva licensing explanation",
+        "href": "https://www.canva.com/licensing-explained/"
+      },
+      { "label": "AiToolsPk ordering terms", "href": "/terms/" }
+    ]
+  },
+  {
+    "slug": "seller-warranty-vs-vendor-warranty",
+    "title": "Seller warranty versus vendor warranty: what to confirm",
+    "description": "Separate the access period, seller warranty, provider support and refund terms when comparing digital subscription offers.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "What does a seller warranty mean?",
+        "paragraphs": [
+          "A seller warranty describes a commitment from the seller for the agreed offer. It is separate from a software provider's support, license and refund rules. A warranty label on a catalogue entry is not proof of vendor backing, reseller authorization or uninterrupted service.",
+          "AiToolsPk preserves the duration and warranty supplied for each package. Where terms are missing, the interface asks you to confirm them. Where a seller warranty is explicitly listed, ask for its full scope in writing; the word full does not define every possible failure or remedy."
+        ],
+        "links": [
+          {
+            "label": "Published seller warranty terms",
+            "href": "/terms/#seller-warranty"
+          }
+        ]
+      },
+      {
+        "heading": "What should be written down?",
+        "bullets": [
+          "The product ID and exact package covered.",
+          "The access start and end dates, and the warranty start and end dates.",
+          "Covered failures, exclusions, usage requirements and any reporting deadline.",
+          "The agreed remedy and conditions, including whether replacement, correction or refund is applicable.",
+          "Who to contact and what non-sensitive proof is needed if access fails."
+        ]
+      },
+      {
+        "heading": "Duration is not the same as coverage",
+        "paragraphs": [
+          "A twelve-month subscription description and a shorter seller warranty can refer to different periods. Neither period proves unlimited usage. Keep the access duration, credit expiry and warranty terms separate when comparing offers.",
+          "If an issue occurs, use the existing WhatsApp contact and provide the product ID, agreed terms and a description of the failure. Do not send passwords, recovery codes or session cookies. The refund policy and the specific agreed terms determine the next step; this guide does not promise a remedy for every case."
+        ],
+        "links": [
+          { "label": "Refund policy", "href": "/refund-policy/" },
+          { "label": "Contact AiToolsPk", "href": "/contact/" }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "AiToolsPk seller warranty terms",
+        "href": "/terms/#seller-warranty"
+      },
+      { "label": "AiToolsPk refund policy", "href": "/refund-policy/" }
+    ]
+  },
+  {
+    "slug": "private-shared-workspace-access",
+    "title": "Private, shared and workspace access: questions before buying",
+    "description": "Compare account control, workspace permissions, privacy, delivery and vendor eligibility without sharing credentials.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "What does an access label actually establish?",
+        "paragraphs": [
+          "A label is a starting point for a question, not proof of ownership or authorization. Private can describe different arrangements; shared can describe different permissions. Ask what will be delivered, who controls it, and whether that delivery is permitted under the provider's terms.",
+          "An individual subscription, an authorised team invitation and a software license are different products. Do not compare their prices as though their controls, privacy and rights are identical. If the listing does not specify access, resolve it before payment."
+        ],
+        "links": [{ "label": "Compare exact packages", "href": "/tools/" }]
+      },
+      {
+        "heading": "Use this workspace checklist",
+        "bullets": [
+          "Who is the account or workspace owner, and what administration powers do they retain?",
+          "Can administrators or other members access, retain or delete your work?",
+          "Can you export your files and remove your data when access ends?",
+          "Are device, region, concurrent-use or seat restrictions applicable?",
+          "Is the invitation legitimate, suitable for your eligibility and compatible with your employer or client requirements?"
+        ]
+      },
+      {
+        "heading": "Protect account secrets and client data",
+        "paragraphs": [
+          "Do not send passwords, two-factor codes, recovery keys, session cookies or sensitive client files to arrange access. AiToolsPk does not collect login credentials through this website. Ask for a legitimate delivery method with clear permissions instead.",
+          "Avoid testing a new arrangement with confidential information. Check the provider's current data handling terms and your workspace settings first. A seller warranty does not replace an access-control review or guarantee confidentiality."
+        ],
+        "links": [
+          { "label": "Privacy policy", "href": "/privacy-policy/" },
+          { "label": "Ordering checklist", "href": "/how-to-order/" }
+        ]
+      }
+    ],
+    "sources": [
+      { "label": "AiToolsPk privacy policy", "href": "/privacy-policy/" },
+      { "label": "AiToolsPk access and warranty terms", "href": "/terms/" }
+    ]
+  },
+  {
+    "slug": "subscriptions-vs-api-credits",
+    "title": "AI subscriptions versus API credits: compare the billing model",
+    "description": "Understand app access, API billing, credit expiry, model availability and usage controls before choosing an API package.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "Does an app subscription include API credits?",
+        "paragraphs": [
+          "Not automatically. OpenAI explicitly separates ChatGPT Plus from API billing. Other providers and packages need their own check: the presence of a model name does not establish which developer service, billing account or allowance you receive.",
+          "An app subscription is usually chosen for work inside an interface, while an API package needs a defined developer integration and usage model. Confirm the endpoint operator, included models, restrictions and legitimate provisioning before choosing either."
+        ],
+        "links": [
+          { "label": "All API plans", "href": "/plans/api/" },
+          {
+            "label": "Compare AI chat subscriptions",
+            "href": "/category/ai-chat/"
+          }
+        ]
+      },
+      {
+        "heading": "Read an API quote in usable units",
+        "bullets": [
+          "What does the quoted balance measure: money, tokens, requests, images, audio or a seller-defined credit?",
+          "Which models and features are actually available, and are different units charged differently?",
+          "When does the balance expire, and do unused credits carry over?",
+          "Are rate limits, concurrency, overages, spending caps and refund rules defined?",
+          "Is delivery through a legitimate account or invitation, and who can access request data?"
+        ]
+      },
+      {
+        "heading": "Keep integration security separate from price",
+        "paragraphs": [
+          "Do not paste API keys into WhatsApp or a public repository. Ask about the provisioning method without sharing secrets, and keep any legitimate keys in an appropriate secret store. Test with non-sensitive data and a controlled spend limit where the provider supports it.",
+          "The API collection groups offers from different sources; it is not a declaration that every package has identical billing, privacy or vendor authorization. A low credit price cannot establish whether an integration is safe or suitable for production."
+        ],
+        "links": [
+          {
+            "label": "Credits and duration explained",
+            "href": "/guides/understanding-credits-and-plan-duration/"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenAI: ChatGPT Plus and separate API billing",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      },
+      { "label": "AiToolsPk API buying guidance", "href": "/plans/api/" },
+      { "label": "AiToolsPk privacy policy", "href": "/privacy-policy/" }
+    ]
+  },
+  {
+    "slug": "creative-tool-licenses-client-work",
+    "title": "Creative tools for client work: a licensing checklist",
+    "description": "Check asset licenses, project registration, client delivery and subscription expiry before choosing creative software or stock media access.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "Access to a tool is not permission for every use",
+        "paragraphs": [
+          "A software subscription lets you use a particular service under its terms. An included font, photo, template, music track or generated output can have additional conditions. Check the current license for the exact asset and your intended project rather than inferring rights from a premium label.",
+          "This is a practical recordkeeping checklist, not a license grant or legal clearance. If the relevant terms are unclear, ask the rights holder before delivering a client project."
+        ],
+        "links": [
+          { "label": "Design tool collections", "href": "/category/design/" },
+          {
+            "label": "Creative resources",
+            "href": "/category/creative-resources/"
+          }
+        ]
+      },
+      {
+        "heading": "Record the project and permitted end use",
+        "bullets": [
+          "Identify the asset, source, license version and date you obtained it.",
+          "Check whether a project registration or a separate license for another use is required.",
+          "Review restrictions on standalone redistribution, templates, resale and trademark use.",
+          "Clarify what may be handed to the client and which source files or assets remain restricted.",
+          "Confirm what happens to existing projects and new uses when the subscription ends."
+        ]
+      },
+      {
+        "heading": "Use provider-specific rules",
+        "paragraphs": [
+          "Envato Elements describes a license tied to a specified project use; another project can require another registration. That is a provider-specific rule, not a universal rule for every creative service. Read the linked license in full for its conditions and exceptions.",
+          "For a seller-listed package, also establish who holds the subscription and who can legitimately register and evidence the license. A seller warranty cannot expand the rights granted by a provider or rights holder."
+        ],
+        "links": [
+          {
+            "label": "Envato plans and package notes",
+            "href": "/plans/envato/"
+          },
+          {
+            "label": "Canva eligibility checklist",
+            "href": "/guides/canva-pro-pakistan-buying-checklist/"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "Envato Elements license",
+        "href": "https://help.elements.envato.com/hc/en-us/articles/360000628966-Envato-Elements-License"
+      },
+      { "label": "AiToolsPk license and warranty terms", "href": "/terms/" }
+    ]
+  },
+  {
+    "slug": "compare-video-audio-ai-credits",
+    "title": "Video and audio AI credits: compare the work you can complete",
+    "description": "Compare video and voice packages by output requirements, credit rules, expiry and rights rather than treating all credits as equivalent.",
+    "checked": "2026-10-24",
+    "sections": [
+      {
+        "heading": "Are credits interchangeable between tools?",
+        "paragraphs": [
+          "No common conversion is established by this guide. A credit, character allowance, generation or processing minute can describe a different unit in each service. A larger displayed number is not evidence that a package produces more useful work.",
+          "Define the output first: length, resolution, voice or model, export format, number of revisions and project rights. Ask how the exact package charges for those settings. AiToolsPk has not benchmarked cost per finished video or audio file across these providers."
+        ],
+        "links": [
+          {
+            "label": "Video and audio collections",
+            "href": "/category/video/"
+          },
+          { "label": "ElevenLabs plans", "href": "/plans/elevenlabs/" },
+          {
+            "label": "Gemini and video-related packages",
+            "href": "/plans/gemini/"
+          }
+        ]
+      },
+      {
+        "heading": "Build a realistic project estimate",
+        "bullets": [
+          "Separate the intended final output from tests, failed attempts and revisions.",
+          "Ask whether the selected model, quality, duration or export settings change credit use.",
+          "Confirm the reset date, expiry, carry-over rules and any usage or queue limits.",
+          "Check whether retries, regenerations and other tools consume the same balance.",
+          "Do not translate unlimited into unlimited speed, features or commercial rights without the applicable terms."
+        ]
+      },
+      {
+        "heading": "Check rights and delivery independently",
+        "paragraphs": [
+          "Confirm permissions for the inputs you upload, including voices, music and identifiable people. Review the provider's current policies and the intended client or publication use. A paid plan is not blanket consent to use someone else's voice or copyrighted material.",
+          "Ask the seller to identify the exact entitlement and legitimate access method, then save the quote and usage terms with your project. If the package cannot meet your output requirements, compare a different plan before paying."
+        ],
+        "links": [
+          {
+            "label": "Understand subscription duration",
+            "href": "/guides/understanding-credits-and-plan-duration/"
+          },
+          {
+            "label": "Creative licensing checklist",
+            "href": "/guides/creative-tool-licenses-client-work/"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "label": "AiToolsPk video and audio inventory",
+        "href": "/category/video/"
+      },
+      { "label": "AiToolsPk usage and warranty terms", "href": "/terms/" },
+      {
+        "label": "AiToolsPk credit and duration guide",
+        "href": "/guides/understanding-credits-and-plan-duration/"
+      }
+    ]
+  }
+]

@@ -31,6 +31,11 @@ export function Catalog({
       }
       initialPage={initialPage}
       initialCollections={groupCollections(subset)}
+      singleCategoryCollections={Object.fromEntries(
+        groupCollections(eligible)
+          .filter((group) => group.categories.length === 1)
+          .map((group) => [group.slug, group.categories[0]])
+      )}
       collection={collection}
       continuous={continuous}
       category={category}

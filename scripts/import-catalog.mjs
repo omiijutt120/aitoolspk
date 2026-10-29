@@ -2,6 +2,12 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { pathToFileURL } from 'node:url';
 import { parse } from 'csv-parse/sync';
+import { applyCatalogUpdates } from './catalog-updates.mjs';
+import {
+  premiumProducts,
+  mergePremiumProducts,
+  preserveCommittedReviews,
+} from './premium-catalog.mjs';
 
 export function clean(value = '') {
   return String(value)
@@ -149,22 +155,49 @@ export function normalize(row, approvals = {}, brands = {}, inventory = {}) {
   // Prefer a term after “warranty”: in “30D warranty 24H”, 30D is the plan.
   const warrantyText =
     name.match(
-      /warranty\s*[:\-]?\s*\d+\s*(?:hours?|days?|months?|years?|h|d|m|y)\b/i
+      /warranty\s*[:\-]?\s*\d+(?:\s*[-–—]\s*\d+)?\s*-?\s*(?:hours?|days?|months?|years?|h|d|m|y)\b/i
     )?.[0] ||
     name.match(
-      /(?:no|full)\s+warranty|\d+\s*(?:hours?|days?|months?|years?|h|d|m|y)\s+warranty/i
+      /(?:no|full)\s+warranty|\d+(?:\s*[-–—]\s*\d+)?\s*-?\s*(?:hours?|days?|months?|years?|h|d|m|y)\s+warranty/i
     )?.[0];
   const warranty = warrantyText
     ? `${warrantyText} (listed; unverified)`
     : 'Not specified';
-  const durationText = warrantyText ? name.replace(warrantyText, '') : name;
+  const durationText = warrantyText
+    ? name.replace(
+        warrantyText,
+        /^warranty/i.test(warrantyText) ? 'warranty' : ''
+      )
+    : name;
   const durations = Array.from(
     durationText.matchAll(
-      /\b(\d+)\s*(months?|years?|days?|hours?|hrs?|d|m|y|h)\b(?!\s*(?:credits?|tokens?))/gi
-    ),
-    (m) =>
-      `${m[1]} ${{ d: 'days', m: 'months', y: 'years', h: 'hours' }[m[2].toLowerCase()] || m[2].toLowerCase()}`
-  );
+      /(?<![$\d])\b(\d+)(?:[-–—]\s*(\d+))?\s*-?\s*(months?|years?|days?|hours?|hrs?|d|m|y|h)\b(?![\s-]*(?:credits?|tokens?))/gi
+    )
+  )
+    // A hyphenated age/limit or contradictory warranty label is not a plan term.
+    .filter(
+      (m) =>
+        (!m[0].includes('-') ||
+          !/^\s*(?:warranty|limit)\b/i.test(
+            durationText.slice(m.index + m[0].length)
+          )) &&
+        !/^\s*(?:ago|old)\b/i.test(durationText.slice(m.index + m[0].length)) &&
+        !/(?:created|aged|age|soak(?:ed)?|dormant)\s*(?:for\s*)?$/i.test(
+          durationText.slice(0, m.index)
+        ) &&
+        !/(?:^|\s)\d+\s+$/.test(durationText.slice(0, m.index)) &&
+        (!m[2] || Number(m[1]) <= Number(m[2]))
+    )
+    .map((m) => {
+      let unit =
+        { d: 'days', m: 'months', y: 'years', h: 'hours' }[
+          m[3].toLowerCase()
+        ] || m[3].toLowerCase();
+      if (m[2] || m[0].includes('-'))
+        unit = unit.replace(/s$/, '') + (Number(m[1]) === 1 ? '' : 's');
+      if (m[2]) return `${m[1]}–${m[2]} ${unit.replace(/s$/, '')}s`;
+      return `${m[1]} ${unit}`;
+    });
   const duration = durations.length
     ? [...new Set(durations.map((x) => x.toLowerCase()))].join(' / ')
     : /lifetime/i.test(name)
@@ -278,6 +311,9 @@ if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(process.argv[1]).href
 ) {
+  const catalogUpdates = existsSync('data/catalog-updates.json')
+    ? JSON.parse(readFileSync('data/catalog-updates.json', 'utf8'))
+    : {};
   if (
     !existsSync('private/catalog.csv') &&
     process.argv.includes('--if-present')
@@ -289,6 +325,58 @@ if (
     console.log(
       'Private CSV absent. Using committed sanitized catalog; validation follows.'
     );
+    if (existsSync('data/premium-products.json')) {
+      const previous = JSON.parse(readFileSync('data/catalog.json', 'utf8'));
+      const brands = JSON.parse(readFileSync('data/brands.json', 'utf8'));
+      const explicitApprovals = existsSync('private/approvals.json')
+        ? JSON.parse(
+            readFileSync('private/approvals.json', 'utf8').replace(
+              /^\uFEFF/,
+              ''
+            )
+          )
+        : {};
+      const additions = preserveCommittedReviews(
+        previous,
+        premiumProducts(
+          JSON.parse(readFileSync('data/premium-products.json', 'utf8')),
+          brands,
+          existsSync('data/inventory.json')
+            ? JSON.parse(readFileSync('data/inventory.json', 'utf8'))
+            : {},
+          explicitApprovals
+        ),
+        explicitApprovals
+      );
+      const products = applyCatalogUpdates(
+        mergePremiumProducts(
+          previous.filter((p) => p.sourceType !== 'seller-listed'),
+          additions
+        ),
+        catalogUpdates
+      );
+      writeFileSync(
+        'data/catalog.json',
+        JSON.stringify(products, null, 2) + '\n'
+      );
+      writeFileSync(
+        'public/catalog/index.json',
+        JSON.stringify(products.filter((p) => p.approval !== 'excluded'))
+      );
+    } else {
+      const products = applyCatalogUpdates(
+        JSON.parse(readFileSync('data/catalog.json', 'utf8')),
+        catalogUpdates
+      );
+      writeFileSync(
+        'data/catalog.json',
+        JSON.stringify(products, null, 2) + '\n'
+      );
+      writeFileSync(
+        'public/catalog/index.json',
+        JSON.stringify(products.filter((p) => p.approval !== 'excluded'))
+      );
+    }
   } else {
     const rows = parse(readFileSync('private/catalog.csv', 'utf8'), {
       columns: true,
@@ -308,9 +396,21 @@ if (
       ? JSON.parse(readFileSync('data/catalog.json', 'utf8'))
       : [];
     const priorSlugs = new Map(previous.map((p) => [p.id, p.slug]));
-    const products = rows
+    const imported = rows
       .map((row) => normalize(row, approvals, brands, inventory))
       .map((p) => ({ ...p, slug: priorSlugs.get(p.id) || p.slug }));
+    const additions = existsSync('data/premium-products.json')
+      ? premiumProducts(
+          JSON.parse(readFileSync('data/premium-products.json', 'utf8')),
+          brands,
+          inventory,
+          approvals
+        )
+      : [];
+    const products = applyCatalogUpdates(
+      mergePremiumProducts(imported, additions),
+      catalogUpdates
+    );
     if (new Set(products.map((p) => p.id)).size !== products.length)
       throw new Error('Duplicate product identity');
     if (new Set(products.map((p) => p.slug)).size !== products.length)

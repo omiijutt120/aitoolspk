@@ -507,5 +507,41 @@
     "urls": [
       "https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca"
     ]
+  },
+  "helium-10": {
+    "name": "Helium 10",
+    "domain": "www.helium10.com",
+    "urls": [
+      "https://www.helium10.com/favicon.ico",
+      "https://www.helium10.com/wp-content/uploads/2022/09/cropped-favicon-192x192.png"
+    ]
+  },
+  "midjourney": {
+    "name": "Midjourney",
+    "domain": "www.midjourney.com",
+    "page": "https://docs.midjourney.com/hc/en-us/articles/32084281102349-Midjourney-Trademark-Policy",
+    "urls": [
+      "https://docs.midjourney.com/hc/article_attachments/32084281099149",
+      "https://docs.midjourney.com/hc/theming_assets/01JKC02DQ6GK34RZNHWBRSDN2G",
+      "https://www.midjourney.com/apple-touch-icon.png",
+      "https://www.midjourney.com/favicon.ico",
+      "https://docs.midjourney.com/favicon.ico"
+    ]
+  },
+  "envato": {
+    "name": "Envato Elements",
+    "domain": "elements.envato.com",
+    "urls": [
+      "https://elements.envato.com/favicon.svg",
+      "https://elements.envato.com/apple-touch-icon.png?v=2"
+    ]
+  },
+  "vidiq": {
+    "name": "vidIQ",
+    "domain": "vidiq.com",
+    "urls": [
+      "https://vidiq.com/favicons/android-icon-192x192.png",
+      "https://vidiq.com/favicons/apple-icon-180x180.png"
+    ]
   }
 }

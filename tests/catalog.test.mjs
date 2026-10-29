@@ -27,10 +27,14 @@ const sample = {
   RateDate: '2026-10-19',
 };
 const catalog = JSON.parse(readFileSync('data/catalog.json', 'utf8'));
+const originalCatalog = catalog.filter((p) => p.sourceType !== 'seller-listed');
+const catalogUpdates = JSON.parse(
+  readFileSync('data/catalog-updates.json', 'utf8')
+);
 test('all 811 offers retain exact integer retail prices and unique identities', () => {
-  assert.equal(catalog.length, 811);
-  assert.equal(new Set(catalog.map((p) => p.id)).size, 811);
-  assert.equal(new Set(catalog.map((p) => p.slug)).size, 811);
+  assert.equal(originalCatalog.length, 811);
+  assert.equal(new Set(catalog.map((p) => p.id)).size, catalog.length);
+  assert.equal(new Set(catalog.map((p) => p.slug)).size, catalog.length);
   assert.ok(catalog.every((p) => Number.isSafeInteger(p.price) && p.price > 0));
 });
 test(
@@ -41,17 +45,21 @@ test(
       'Private CSV is intentionally absent from GitHub; public catalog checks still run',
   },
   () => {
-    assert.equal(source.length, catalog.length);
+    assert.equal(source.length, originalCatalog.length);
     source.forEach((row, i) => {
-      assert.equal(catalog[i].price, Number(row.SellingPricePKR));
-      assert.equal(normalize(row).id, catalog[i].id);
+      assert.equal(
+        originalCatalog[i].price,
+        catalogUpdates.products[originalCatalog[i].id]?.price ??
+          Number(row.SellingPricePKR)
+      );
+      assert.equal(normalize(row).id, originalCatalog[i].id);
     });
   }
 );
 test('owner-confirmed inventory survives imports without approving unverified offers', () => {
   const inventory = JSON.parse(readFileSync('data/inventory.json', 'utf8'));
-  assert.equal(Object.keys(inventory).length, catalog.length);
-  for (const p of catalog) {
+  assert.equal(Object.keys(inventory).length, originalCatalog.length);
+  for (const p of originalCatalog) {
     assert.equal(p.stock, inventory[p.id].stock);
     assert.equal(whatsappIntent(p), 'confirm');
   }
@@ -239,5 +247,63 @@ test('sanitization and variant distinctions', () => {
   assert.equal(
     normalize({ ...sample, Name: 'Example ZAPI 1B Credit 1 Day' }).credits,
     '1B Credit'
+  );
+});
+
+test('hyphenated terms retain plan duration separately from a listed warranty', () => {
+  for (const [name, duration, warranty] of [
+    ['Example VIP 30-day full warranty', '30 days', 'full warranty'],
+    [
+      'Example Music 5 months with 1-day warranty',
+      '5 months',
+      '1-day warranty',
+    ],
+    ['Example Pro 1-month 12-hour warranty', '1 month', '12-hour warranty'],
+    [
+      'Example Pro 30-day warranty 24-hour',
+      'Not specified',
+      'warranty 24-hour',
+    ],
+    ['Example API 10M-credit 1-day full warranty', '1 day', 'full warranty'],
+  ]) {
+    const product = normalize({ ...sample, Name: name });
+    assert.equal(product.duration, duration);
+    assert.equal(product.warranty, `${warranty} (listed; unverified)`);
+    assert.equal(product.approval, 'pending');
+    assert.equal(product.price, 1000);
+  }
+  assert.equal(
+    normalize({ ...sample, Name: 'Example licence 100-year warranty 7 days' })
+      .duration,
+    'Not specified'
+  );
+  assert.equal(
+    normalize({
+      ...sample,
+      Name: 'Example account created 1 month ago, 365-day limit, no warranty',
+    }).duration,
+    'Not specified'
+  );
+});
+
+test('duration ranges remain ranges and account age is not subscription length', () => {
+  for (const [name, expected] of [
+    ['Example VPN Random 5-7 Days full warranty', '5–7 days'],
+    ['Example key 20–30 DAYS', '20–30 days'],
+    ['Example 1-3 months, warranty 1-2 days', '1–3 months'],
+    ['Example dormant 1-8 Months Login Warranty', 'Not specified'],
+    ['Example account soak for 1-8 months, warranty login', 'Not specified'],
+    ['Example 20 30 Days full warranty', 'Not specified'],
+    ['Example 30-20 Days full warranty', 'Not specified'],
+    ['Example account aged 6 months, subscription 30 days', '30 days'],
+    ['Example Pro $500 1 month full warranty', '1 month'],
+    ['Example Office 365 - 2 Years full warranty', '2 years'],
+    ['Example X20 3 months full warranty', '3 months'],
+  ])
+    assert.equal(normalize({ ...sample, Name: name }).duration, expected, name);
+  assert.equal(
+    normalize({ ...sample, Name: 'Example 1-3 months, warranty 1-2 days' })
+      .warranty,
+    'warranty 1-2 days (listed; unverified)'
   );
 });

@@ -39,7 +39,9 @@ export function StatusBadge({ product, now }: { product: Product; now: Date }) {
       ? 'Out of stock'
       : product.stock === 'unconfirmed'
         ? 'Stock unconfirmed'
-        : product.approval === 'approved' && isStale(product, now)
+        : product.approval === 'approved' &&
+            now.getTime() > 0 &&
+            isStale(product, now)
           ? 'Quote needs refresh'
           : 'Available';
   return (

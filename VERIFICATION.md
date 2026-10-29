@@ -1,6 +1,18 @@
 # Storefront verification
 
-## Pre-GitHub audit — 2026-10-23
+## Latest audit handoff — 2026-10-30
+
+The [29 October full audit](docs/seo/FULL_AUDIT_2026-10-29.md), finalized 30 October, supersedes older counts and conclusions below. It records 947 live HTML URLs with zero fetch errors; 51 sampled assets/verification resources passing; 159 local sitemap URLs; 65 corrected duration/warranty records; 36 passing unit tests; and 56 browser cases verified across the full run and successful corrected-test retest. Final source build, lint, TypeScript, dependency and export checks passed. Mobile lab performance was 96/98/99 for homepage/collection/guide; homepage lab LCP was 2.69 seconds, so field CWV is not claimed as passed. The source batch is still local and needs explicit release authorization. Google indexing/traffic and AI citations are not verified outcomes.
+
+## Enterprise SEO engine — 2026-10-23
+
+The newest catalog-wide audit and release evidence is [docs/seo/IMPLEMENTATION_SUMMARY.md](docs/seo/IMPLEMENTATION_SUMMARY.md). It covers 817/817 local offers, 108 primary collections, the shared commercial/editorial publication gate, full rendered export checks, live 949-page/165-asset evidence, current browser/unit checks and actual lab measurements. Older dated sections below are historical. Production DNS/HTTPS work; this local batch is not published. Private reports and research remain ignored.
+
+## Current SEO / premium-products audit — 2026-10-23
+
+The existing **public** release was verified separately: important routes and assets load over HTTPS, HTTP/www redirect to the apex, and no `/aitoolspk/` prefix was reproduced. DNS now returns GitHub's four correct addresses; the earlier loopback/DNS observations below are historical and resolved. This batch's local source changes have **not** been published. Current executed-check evidence, performance measurements and limitations are maintained in [docs/SEO_IMPLEMENTATION_SUMMARY.md](docs/SEO_IMPLEMENTATION_SUMMARY.md) and [docs/SEO_AUDIT_REPORT.md](docs/SEO_AUDIT_REPORT.md). The older evidence below describes earlier exports, not current test counts or performance.
+
+## Historical pre-GitHub audit — 2026-10-23
 
 The final production export passed all **26 Playwright cases**, including nine viewport widths from 320 to 1440px, keyboard dialogs, touch/restock popups, native purchase links without JavaScript, grouped search/filter behavior, exact ChatGPT variants and API partitioning. The sampled home, directory, collections, policy and detail pages passed automated WCAG AA checks. No console errors were observed in the covered navigation flow. This is Chrome emulation, not physical-device or Safari certification.
 

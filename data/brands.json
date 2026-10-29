@@ -666,5 +666,45 @@
     "verified_date": "2026-10-19",
     "guidelines": "https://docs.leonardo.ai/",
     "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "envato": {
+    "official_domain": "elements.envato.com",
+    "logo_source": "https://elements.envato.com/favicon.svg",
+    "asset_path": "/logos/envato.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-23",
+    "guidelines": "https://elements.envato.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "vidiq": {
+    "official_domain": "vidiq.com",
+    "logo_source": "https://vidiq.com/favicons/android-icon-192x192.png",
+    "asset_path": "/logos/vidiq.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-23",
+    "guidelines": "https://vidiq.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "helium-10": {
+    "official_domain": "www.helium10.com",
+    "logo_source": "https://www.helium10.com/favicon.ico",
+    "asset_path": "/logos/helium-10.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-23",
+    "guidelines": "https://www.helium10.com/",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
+  },
+  "midjourney": {
+    "official_domain": "www.midjourney.com",
+    "logo_source": "https://docs.midjourney.com/hc/article_attachments/32084281099149",
+    "asset_path": "/logos/midjourney.webp",
+    "license_review_status": "official-identification",
+    "source_verified": true,
+    "verified_date": "2026-10-23",
+    "guidelines": "https://docs.midjourney.com/hc/en-us/articles/32084281102349-Midjourney-Trademark-Policy",
+    "usage_notes": "Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed."
   }
 }

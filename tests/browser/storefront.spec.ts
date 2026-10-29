@@ -10,7 +10,9 @@ import {
 } from '../../src/lib/collections';
 import type { Product } from '../../src/lib/types';
 
-const products = catalog as Product[];
+const products = (catalog as Product[]).filter(
+  (p) => p.approval !== 'excluded'
+);
 const groups = groupCollections(products);
 const home = homeCollections(products);
 const chatgpt = collectionProducts(products, 'chatgpt');
@@ -117,7 +119,7 @@ test('ChatGPT parent exposes every exact variant across pages with correct detai
     .locator('.home-collection-grid [data-collection="chatgpt"]')
     .click();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-    'ChatGPT plans'
+    'ChatGPT plans & prices in Pakistan'
   );
   await expect(page.locator('.result-count strong')).toHaveText(
     String(chatgpt.length)
@@ -183,7 +185,9 @@ test('API collection includes every API plan and allows provider search', async 
 }) => {
   await page.goto('/');
   await page.locator('.home-collection-grid [data-collection="api"]').click();
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('API plans');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'API plans & prices in Pakistan'
+  );
   await expect(page.locator('.result-count strong')).toHaveText(
     String(api.length)
   );
@@ -281,6 +285,8 @@ test.describe('phone touch flow', () => {
       .tap();
     await expect(page).toHaveURL(/\/tools\/$/);
     await page.locator('[data-collection="chatgpt"]').tap();
+    await expect(page).toHaveURL(/\/plans\/chatgpt\/$/);
+    await expect(page.locator('h1')).toContainText('ChatGPT plans');
     await page.getByRole('button', { name: /Filters/ }).tap();
     const drawer = page.getByRole('dialog', { name: 'Filter tools' });
     await drawer
@@ -317,7 +323,7 @@ test.describe('native links without JavaScript', () => {
     await page.goto('/');
     await page.locator('[data-collection="chatgpt"]').click();
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-      'ChatGPT plans'
+      'ChatGPT plans & prices in Pakistan'
     );
     const buy = page.locator('.product-card .buy-button').first();
     await expect(buy).toHaveAttribute(

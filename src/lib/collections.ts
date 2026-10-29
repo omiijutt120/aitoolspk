@@ -1,5 +1,7 @@
 import type { Product } from './types';
-import { homeSelection, isApiProduct, orderCatalog } from './catalog-order';
+import { homeSelection, orderCatalog } from './catalog-order';
+import { collectionSlug } from './catalog-identity.mjs';
+export { collectionSlug } from './catalog-identity.mjs';
 
 export type PlanCollection = {
   slug: string;
@@ -12,9 +14,6 @@ export type PlanCollection = {
   categories: string[];
   isApi: boolean;
 };
-
-export const collectionSlug = (product: Product) =>
-  isApiProduct(product) ? 'api' : product.brandSlug;
 
 export function collectionProducts(input: Product[], slug: string): Product[] {
   return orderCatalog(

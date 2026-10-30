@@ -159,7 +159,10 @@ for (const p of catalog) {
     throw new Error(`Missing offer ${p.id}`);
   const html = readFileSync(file, 'utf8');
   if (!html.includes(p.id)) throw new Error(`Wrong offer ID ${p.id}`);
-  if (p.approval !== 'approved' && !html.includes('noindex'))
+  if (
+    p.approval !== 'approved' &&
+    !canonicals.get(`${origin}/tool/${p.slug}/`)?.noindex
+  )
     throw new Error(`Unapproved offer indexable ${p.id}`);
 }
 if (broken.length)

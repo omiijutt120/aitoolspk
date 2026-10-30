@@ -125,6 +125,22 @@ export default async function PlansPage({
           . A shorter duration or different allowance can explain a lower price;
           confirm the selected plan before payment.
         </p>
+        <nav aria-label="Related categories" className="mt-6">
+          <p>Explore related categories</p>
+          <ul className="flex flex-wrap gap-x-6">
+            {c.categories.map((category) => (
+              <li key={category}>
+                <Link
+                  href={`/category/${category}/`}
+                  className="text-link"
+                  prefetch={false}
+                >
+                  {categoryName(category)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
       {slug === 'chatgpt' && page === 1 && (
         <section className="page-intro" aria-labelledby="chatgpt-buyer-clarity">

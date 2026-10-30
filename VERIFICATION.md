@@ -1,5 +1,7 @@
 # Storefront verification
 
+Latest follow-up: [30 October Search Console exports and authorized release](docs/seo/GSC_EXPORT_RECONCILIATION_2026-10-30.md). It supersedes the earlier unpublished status below; use its measured deployment result, not these historical snapshots, to determine what is live.
+
 ## Latest audit handoff — 2026-10-30
 
 The [29 October full audit](docs/seo/FULL_AUDIT_2026-10-29.md), finalized 30 October, supersedes older counts and conclusions below. It records 947 live HTML URLs with zero fetch errors; 51 sampled assets/verification resources passing; 159 local sitemap URLs; 65 corrected duration/warranty records; 36 passing unit tests; and 56 browser cases verified across the full run and successful corrected-test retest. Final source build, lint, TypeScript, dependency and export checks passed. Mobile lab performance was 96/98/99 for homepage/collection/guide; homepage lab LCP was 2.69 seconds, so field CWV is not claimed as passed. The source batch is still local and needs explicit release authorization. Google indexing/traffic and AI citations are not verified outcomes.

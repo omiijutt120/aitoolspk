@@ -1,5 +1,7 @@
 # AiToolsPk launch checkpoints
 
+Current release follow-up: [30 October Search Console reconciliation](docs/seo/GSC_EXPORT_RECONCILIATION_2026-10-30.md). The owner has explicitly authorized publishing the tested batch. That report supersedes earlier local-only handoff status and records the actual release outcome once verified.
+
 Latest handoff: **30 October 2026**, based on checks performed 29 October. See the [full audit and release evidence](docs/seo/FULL_AUDIT_2026-10-29.md): 947 live HTML URLs, 159 local sitemap URLs, 36 passing unit tests, 56 browser cases verified across the full run and corrected-test retest, zero dependency advisories and zero broken exported targets. The broader source batch remains unpublished pending the owner's explicit release instruction. Commercial holds and unavailable Google indexing evidence remain separate from technical checks.
 
 **Historical checkpoint snapshot — 23 October 2026:** the tables and older measurements below retain the earlier release evidence. The full audit above supersedes their counts, dependency findings and performance measurements. Existing production HTTPS/redirects were rechecked successfully on 29 October.

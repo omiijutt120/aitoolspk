@@ -8,6 +8,7 @@ export const metadata = makeMetadata(
 export default function Refund() {
   return (
     <Document
+      path="/refund-policy/"
       policy
       eyebrow="CLEAR TERMS BEFORE PAYMENT"
       title="Refund & resolution policy"

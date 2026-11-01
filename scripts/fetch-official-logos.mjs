@@ -138,7 +138,9 @@ async function prepare(slug, source) {
         asset_path: `/logos/${slug}.webp`,
         license_review_status: 'official-identification',
         source_verified: true,
-        verified_date: '2026-10-19',
+        verified_date: new Intl.DateTimeFormat('en-CA', {
+          timeZone: 'Asia/Karachi',
+        }).format(new Date()),
         guidelines: source.page || `https://${source.domain}/`,
         usage_notes:
           'Vendor-owned identity asset used only to identify the named product. No partnership, endorsement or permission to resell is claimed.',

@@ -1,0 +1,901 @@
+{
+  "suno": {
+    "checked": "2026-10-30",
+    "heading": "Compare Suno credits, downloads and music-use rights",
+    "intro": "The Suno listings here include Pro and Premier labels, one-month terms and different seller warranty periods. Some specify 2,500 credits; others do not state an allowance. Compare the actual package before choosing music generation for a client video, podcast or release.",
+    "choose": [
+      "Confirm the exact plan and credit balance available to your own permitted use, including when credits reset.",
+      "Check the current download and commercial-use conditions in Suno's help. A credit quantity alone does not establish usage rights.",
+      "Separate the month of access from the one-, three-, five- or seven-day warranty labels in these listings. Ask what happens if delivery fails."
+    ],
+    "questions": [
+      {
+        "question": "Does buying a credit package establish commercial music rights?",
+        "answer": "No. Suno's current paid-subscription help connects commercial-use rights with downloads while subscribed. Verify the subscription, download conditions and your intended use directly; the seller's credit label does not prove that those conditions are met."
+      },
+      {
+        "question": "Are all Suno Pro offers the same?",
+        "answer": "They share a plan label but have different quoted amounts and warranty labels. Compare the public product ID, supplied credit balance and start date. This catalog does not establish that every listing supplies identical account access."
+      }
+    ],
+    "related": [
+      { "label": "ElevenLabs plans", "href": "/plans/elevenlabs/" },
+      { "label": "Video and audio tools", "href": "/category/video/" }
+    ],
+    "sources": [
+      {
+        "label": "Suno: rights with a paid subscription",
+        "href": "https://help.suno.com/en/articles/9601665"
+      }
+    ]
+  },
+  "runway": {
+    "checked": "2026-10-30",
+    "heading": "Compare a Runway credit package with a subscription redemption",
+    "intro": "This collection contains a 9,500-credit one-month listing and a Pro redemption labelled one year. These describe different purchase units. Compare the tools, credit allowance and redemption eligibility you need for a video project rather than dividing both prices by an assumed unlimited allowance.",
+    "choose": [
+      "For the credit listing, confirm which models consume the balance and when unused credits expire.",
+      "For the annual redemption, confirm who can redeem it, the account region and the recurring allowance. A one-year label does not establish a year of unlimited generation.",
+      "Check Runway's current plan documentation: its help distinguishes credits from Explore Mode, and legacy Unlimited subscriptions have separate transition conditions."
+    ],
+    "questions": [
+      {
+        "question": "Does the annual Pro listing mean unlimited video generation?",
+        "answer": "That entitlement is not established. Runway distinguishes model and tool access, generation modes and credit use. Ask for the actual plan and allowances shown in the supplied subscription before agreeing to the package."
+      },
+      {
+        "question": "Which warranty applies to these Runway listings?",
+        "answer": "The one-month credit listing names a three-day warranty; the annual redemption does not specify one. Confirm the coverage and remedy against the exact product ID instead of treating the subscription duration as a warranty."
+      }
+    ],
+    "related": [
+      { "label": "AKOOL plans", "href": "/plans/akool/" },
+      { "label": "Video and audio tools", "href": "/category/video/" }
+    ],
+    "sources": [
+      {
+        "label": "Runway: credits and Explore Mode",
+        "href": "https://help.runwayml.com/hc/en-us/articles/37309724921747-Why-does-the-Unlimited-plan-have-credits"
+      }
+    ]
+  },
+  "coursera": {
+    "checked": "2026-10-30",
+    "heading": "Identify the Coursera subscription and course you need",
+    "intro": "Both listings use the label Coursera Premium and state twelve months, with different quoted amounts and warranty periods. Coursera's own subscription is named Coursera Plus. The catalog label alone does not establish that an offer is Plus or that it covers your selected course or certificate.",
+    "choose": [
+      "Name the exact course or Professional Certificate you want and verify its inclusion before paying.",
+      "Confirm whether access is through your own eligible learner account and whether the subscription name matches the written offer.",
+      "Compare twelve months of listed access separately from the seven-day or 24-hour warranty. Confirm renewal and cancellation responsibility."
+    ],
+    "questions": [
+      {
+        "question": "Is Coursera Premium the same as Coursera Plus?",
+        "answer": "That is not confirmed by these listings. Ask for the exact subscription name and included learning content. Use Coursera's Plus page to compare the official offering with the seller's written package."
+      },
+      {
+        "question": "Does a subscription purchase guarantee a certificate?",
+        "answer": "This catalog promises no completed qualification. Confirm whether your chosen course includes a certificate and what study, assessment and identity requirements apply; buying access is separate from completing them."
+      }
+    ],
+    "related": [
+      { "label": "Productivity tools", "href": "/category/productivity/" },
+      { "label": "How to order", "href": "/how-to-order/" }
+    ],
+    "sources": [
+      {
+        "label": "Coursera Plus subscription",
+        "href": "https://www.coursera.org/courseraplus/"
+      }
+    ]
+  },
+  "spotify": {
+    "checked": "2026-10-30",
+    "heading": "Check Spotify eligibility before comparing a link or Family slot",
+    "intro": "The Spotify offers include a three-month activation link and Family slot listings for different durations. They are not interchangeable. Spotify Family is for family members living together, with separate accounts; an available slot does not establish that you qualify to join.",
+    "choose": [
+      "For a Family listing, confirm that your actual household and account meet Spotify's rules. Do not use an invented address to qualify.",
+      "For the activation link, confirm account eligibility, country, prior-trial restrictions and redemption deadline before payment.",
+      "Read the exact warranty: the activation-link listing says no warranty, while the Family listings carry unverified full-warranty labels."
+    ],
+    "questions": [
+      {
+        "question": "Can anyone buy a Spotify Family slot?",
+        "answer": "Spotify says Family members must live with the plan manager. A seller listing cannot waive that requirement. Use a plan for which you qualify and confirm permitted delivery before paying."
+      },
+      {
+        "question": "Will I need to share my Spotify password?",
+        "answer": "Spotify's Family guidance uses separate member accounts and an invitation. Keep your own sign-in details private. AiToolsPk does not collect passwords, recovery codes or payment details on this website."
+      }
+    ],
+    "related": [
+      { "label": "Apple music listings", "href": "/plans/apple/" },
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Spotify Family plan eligibility and accounts",
+        "href": "https://support.spotify.com/us/article/family-plan/"
+      }
+    ]
+  },
+  "icloud": {
+    "checked": "2026-10-30",
+    "heading": "Understand shared iCloud storage before buying a 2 TB slot",
+    "intro": "These offers use 2 TB and slot labels with terms from one to twelve months. Apple describes Family Sharing as access to a shared storage plan while members retain their own Apple Accounts. A 2 TB slot label does not establish a dedicated 2 TB allowance for every buyer.",
+    "choose": [
+      "Confirm whether the advertised capacity is a shared pool or an individual allocation, and how much space is available to you.",
+      "Keep your own Apple Account and sign-in details. Confirm a permitted sharing arrangement rather than handing over passwords or recovery codes.",
+      "Before relying on it for backups, agree what happens when access ends and how you will move to your own storage plan."
+    ],
+    "questions": [
+      {
+        "question": "Does a shared 2 TB plan give each member 2 TB?",
+        "answer": "Apple describes sharing the space available in one iCloud+ plan. Do not assume that each member receives a separate 2 TB. Ask about the shared capacity and your actual allocation before choosing this listing."
+      },
+      {
+        "question": "Do shared-storage members use the same Apple Account?",
+        "answer": "Apple's documented Family Sharing setup keeps each person's own Apple Account and private photos and documents. Confirm that the proposed delivery follows the appropriate account and eligibility rules."
+      }
+    ],
+    "related": [
+      { "label": "Apple listings", "href": "/plans/apple/" },
+      { "label": "Productivity tools", "href": "/category/productivity/" }
+    ],
+    "sources": [
+      {
+        "label": "Apple: share iCloud+ with Family Sharing",
+        "href": "https://support.apple.com/en-us/108783"
+      }
+    ]
+  },
+  "amazon-prime": {
+    "checked": "2026-10-27",
+    "heading": "Identify the Amazon membership before comparing its price",
+    "intro": "The catalog labels this offer Amazon Prime for six months. That name alone does not establish which benefits are supplied. If your aim is streaming, identify the actual Prime Video membership, account region and content access before comparing it with Netflix or another service.",
+    "choose": [
+      "Ask for the exact service and account region: the listing does not confirm shopping, delivery or other Amazon benefits.",
+      "Check the films or channels you want through Prime Video's own service; its help separates add-on subscriptions from other viewing options.",
+      "Compare the six-month access label with the separate 24-hour warranty label. Confirm activation dates and the remedy for a delivery failure."
+    ],
+    "questions": [
+      {
+        "question": "Does this offer include every Prime Video channel?",
+        "answer": "The listing does not establish that. Prime Video has separate guidance for add-on subscriptions. Ask about the specific channel or title you need instead of assuming that a Prime label includes every paid option."
+      },
+      {
+        "question": "Is the six-month duration also the warranty period?",
+        "answer": "No such coverage is established by this listing. It names six months of access and a separate 24-hour warranty. Confirm both in writing for the product ID before payment."
+      }
+    ],
+    "related": [
+      { "label": "Netflix plans", "href": "/plans/netflix/" },
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Prime Video help and add-on subscriptions",
+        "href": "https://www.primevideo.com/help"
+      }
+    ]
+  },
+  "galaxy-play": {
+    "checked": "2026-10-27",
+    "heading": "Compare Galaxy Play packages with the films you want to watch",
+    "intro": "These listings use Premium, VIP and Super Vietnamese package labels. Compare the named package with the viewing library and device you need. Galaxy Play distinguishes subscription viewing from individual film rentals; a subscription label should not be treated as access to every rental.",
+    "choose": [
+      "Check whether your chosen title is in the package or requires a separate rental.",
+      "Confirm permitted playback from Pakistan, subtitle options and your television or mobile device before paying.",
+      "Ask the seller to resolve the exact 30-day or 90-day term and package name against the selected product ID."
+    ],
+    "questions": [
+      {
+        "question": "Does a Galaxy Play subscription include individually rented films?",
+        "answer": "Do not assume so. Galaxy Play presents subscription films and film rentals separately. Check the specific title's viewing option on the official service."
+      },
+      {
+        "question": "Are the Premium, VIP and Super Vietnamese listings interchangeable?",
+        "answer": "The catalog does not establish equivalent benefits. Choose by the actual package, content, supported device and duration supplied, with eligibility confirmed for your location."
+      }
+    ],
+    "related": [
+      { "label": "TV360 plans", "href": "/plans/tv360/" },
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Galaxy Play subscription and rental options",
+        "href": "https://galaxyplay.vn/"
+      },
+      {
+        "label": "Galaxy Play customer help",
+        "href": "https://galaxyplay.vn/help"
+      }
+    ]
+  },
+  "akool": {
+    "checked": "2026-10-27",
+    "heading": "Choose AKOOL by credits, output requirements and licence",
+    "intro": "The catalog contains Starter offers labelled 200 credits and Pro offers labelled 600 credits, each for one month. AKOOL's official pricing distinguishes credit allowances, model access, output settings and licences. Match the supplied package to the work you plan to create, then compare the seller's warranty separately.",
+    "choose": [
+      "Describe your intended video length, model and resolution; ask how much of the supplied credit balance that workload consumes.",
+      "Confirm the current licence for your intended use, especially client or commercial work. A Pro label alone is not permission for every use.",
+      "Compare the listed 12-hour and one-day warranty variants by product ID; those periods differ from the one-month subscription."
+    ],
+    "questions": [
+      {
+        "question": "Do 600 credits guarantee a fixed number of finished videos?",
+        "answer": "No fixed output count is established by this catalog. Generation settings and the chosen model matter. Confirm the current credit consumption for your workflow using AKOOL's pricing details."
+      },
+      {
+        "question": "Are the similarly named AKOOL offers duplicates?",
+        "answer": "Some names and credit amounts overlap, but the listed warranty periods differ. Compare the exact product IDs and confirmed delivery terms rather than assuming the lowest price has identical coverage."
+      }
+    ],
+    "related": [
+      { "label": "Video and audio tools", "href": "/category/video/" },
+      { "label": "ElevenLabs plans", "href": "/plans/elevenlabs/" }
+    ],
+    "sources": [
+      {
+        "label": "AKOOL official credits, features and licence details",
+        "href": "https://akool.com/pricing"
+      }
+    ]
+  },
+  "railway": {
+    "checked": "2026-10-27",
+    "heading": "Separate Railway subscription access from hosting usage costs",
+    "intro": "This catalog's Railway offer is labelled Hobby Redeem for one year. Railway's billing combines a plan subscription with resource usage. Before choosing it for an application, establish exactly what the redemption supplies and who pays for resource consumption beyond any included allowance.",
+    "choose": [
+      "Confirm the redemption's eligibility, expiry date and the Railway workspace that receives it.",
+      "Estimate your application's compute, memory, storage and network needs against Railway's current pricing.",
+      "Ask who owns the workspace, manages usage limits and handles additional charges or renewal after the listed period."
+    ],
+    "questions": [
+      {
+        "question": "Does a one-year Railway listing mean unlimited hosting for a year?",
+        "answer": "No. Railway documents separate usage costs and included allowances. The catalog's duration label does not establish unlimited resources or payment of every hosting bill."
+      },
+      {
+        "question": "Can I compare this PKR price directly with my total hosting budget?",
+        "answer": "Treat it as the seller's package quote, not a complete operating-cost estimate. Confirm its exact credit or subscription entitlement and budget separately for any additional usage."
+      }
+    ],
+    "related": [
+      { "label": "Coding tools", "href": "/category/coding/" },
+      { "label": "API plans", "href": "/plans/api/" }
+    ],
+    "sources": [
+      {
+        "label": "Railway plan and resource pricing",
+        "href": "https://docs.railway.com/pricing/plans"
+      },
+      {
+        "label": "Understanding a Railway bill",
+        "href": "https://docs.railway.com/pricing/understanding-your-bill"
+      }
+    ]
+  },
+  "tv360": {
+    "checked": "2026-10-27",
+    "heading": "Match TV360 Standard or VIP access to your viewing needs",
+    "intro": "TV360 listings here use both Standard and VIP labels, with one-month or three-month equivalents. Start with the actual package and the channels or programmes you want. A seller's upgrade label does not establish the service's current package contents or eligibility for playback in Pakistan.",
+    "choose": [
+      "Check the named package against TV360's official package page and ask whether your target channel or programme is included.",
+      "Confirm supported devices, account requirements and permitted access from your location.",
+      "For upgrade listings, agree which eligible account receives the upgrade and when the 30-day or 90-day period begins."
+    ],
+    "questions": [
+      {
+        "question": "Does a VIP label prove that every TV360 channel is included?",
+        "answer": "No. Confirm the actual package and the specific channel's availability. These catalog labels are insufficient to promise particular sports, films or third-party subscriptions."
+      },
+      {
+        "question": "Is an upgrade listing the same as a new membership?",
+        "answer": "The access arrangements can differ. Ask whether an existing eligible account is required and what the seller will deliver. Keep passwords and verification codes private."
+      }
+    ],
+    "related": [
+      { "label": "Galaxy Play plans", "href": "/plans/galaxy-play/" },
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "TV360 official packages",
+        "href": "https://tv360.vn/packages"
+      }
+    ]
+  },
+  "youku": {
+    "checked": "2026-10-27",
+    "heading": "Check the Youku service, membership term and devices",
+    "intro": "The Youku listings use a VIP label with 30-day or three-month access. Identify the exact application and membership supplied before comparing prices. Youku's international VIP agreement covers its international service; the catalog name alone does not establish compatibility with another Youku service or account.",
+    "choose": [
+      "Confirm the exact app or website and account that will receive the membership.",
+      "Check your intended programme, subtitles and device against that service's current VIP privileges.",
+      "Agree activation and expiry dates, whether renewal is automatic, and how cancellation is handled."
+    ],
+    "questions": [
+      {
+        "question": "Can I assume every Youku membership works in the same app?",
+        "answer": "No. Establish the exact service first. Youku publishes a dedicated agreement for its international VIP service; a shortened seller label does not prove eligibility for your account or device."
+      },
+      {
+        "question": "Does a 30-day VIP listing automatically renew?",
+        "answer": "The listing's duration alone does not establish recurring billing. Confirm whether the offer is a fixed term, what happens at expiry and where any renewal can be managed."
+      }
+    ],
+    "related": [
+      { "label": "iQIYI plans", "href": "/plans/iqiyi/" },
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Youku international VIP service agreement",
+        "href": "https://terms.alicdn.com/legal-agreement/terms/product/20220531191524167/20220531191524167.html"
+      }
+    ]
+  },
+  "iqiyi": {
+    "checked": "2026-10-27",
+    "heading": "Choose iQIYI access for the right account and platform",
+    "intro": "Compare these one-month and three-month Premium listings by the membership actually supplied. iQIYI's international help explains that VIP is attached to the account used for purchase and cannot be transferred afterward. Account selection matters as much as the advertised duration.",
+    "choose": [
+      "Confirm the service, membership tier and account that receives access before purchase or voucher redemption.",
+      "Check the desired programme and the membership privileges available on your television, browser or mobile app.",
+      "Establish whether this is a fixed term or an automatically renewing subscription, and where renewal is managed."
+    ],
+    "questions": [
+      {
+        "question": "Can VIP be moved to another iQIYI account after purchase?",
+        "answer": "iQIYI's international help says the purchased membership is linked to the account used and cannot be transferred. Verify the correct account before activating any eligible offer."
+      },
+      {
+        "question": "Does a three-month label automatically mean recurring billing?",
+        "answer": "No. iQIYI distinguishes subscriptions with automatic renewal from non-subscription purchases. Confirm which arrangement applies and review the renewal setting in the actual purchase channel."
+      }
+    ],
+    "related": [
+      { "label": "Youku plans", "href": "/plans/youku/" },
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "iQIYI international membership, redemption and renewal help",
+        "href": "https://intl-help.iq.com/m/?agentType=426&entry=pc&lang=en_us&mod=my"
+      }
+    ]
+  },
+  "apple": {
+    "checked": "2026-10-27",
+    "heading": "Check Apple Music redemption eligibility before choosing an offer",
+    "intro": "The Apple collection currently contains Apple Music listings labelled five months. These are not a promise of Apple One, iCloud storage or other Apple subscriptions. For a redemption offer, establish whether your account qualifies before comparing the quote with a regular membership.",
+    "choose": [
+      "Confirm whether eligibility depends on subscription history, account country, device or a redemption deadline.",
+      "Check the exact term displayed by Apple during redemption and the renewal charge that applies afterward.",
+      "Compare the separate warranty labels for the two product IDs; a five-month access label does not imply five months of seller coverage."
+    ],
+    "questions": [
+      {
+        "question": "Can an existing Apple Music subscriber redeem any promotional offer?",
+        "answer": "Not necessarily. Apple's promotion guidance says prior subscriptions or family-plan participation can affect eligibility. Confirm the terms of the exact offer for your account before paying."
+      },
+      {
+        "question": "Where do I manage renewal after redeeming Apple Music?",
+        "answer": "Check the subscription in your Apple account. Apple documents cancellation through the web or device subscription settings. Verify the renewal date and terms displayed for your own membership."
+      }
+    ],
+    "related": [
+      { "label": "YouTube and music plans", "href": "/plans/youtube/" },
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Apple subscription promotion eligibility",
+        "href": "https://support.apple.com/en-us/118222"
+      },
+      {
+        "label": "Managing and cancelling Apple subscriptions",
+        "href": "https://support.apple.com/en-us/118428"
+      }
+    ]
+  },
+  "netflix": {
+    "checked": "2026-10-24",
+    "heading": "Choose Netflix access by household, devices and actual plan",
+    "intro": "A Netflix listing needs more context than a resolution label. Compare the named plan, household eligibility, supported devices and the exact access arrangement. Netflix documents monthly billing and household rules; a seller’s longer duration or profile label should not be mistaken for a separate official membership type.",
+    "choose": [
+      "Ask whether the offer is an eligible individual membership or another arrangement permitted for your household and region.",
+      "Identify the actual plan and supported playback setup; a 4K label alone does not confirm your device, connection or supplied access.",
+      "Confirm who controls the membership, how the purchased period is supplied and what happens if access fails. Do not share a password or verification code."
+    ],
+    "questions": [
+      {
+        "question": "Is a profile the same as an independently owned Netflix account?",
+        "answer": "Do not assume that it is. A profile can sit inside a membership controlled by someone else. Establish the actual ownership and household rules before considering an offer; a seller label does not override Netflix’s terms."
+      },
+      {
+        "question": "Does a multi-month listing mean Netflix sells that membership duration directly?",
+        "answer": "Not necessarily. Netflix’s official help describes monthly billing rather than annual, multi-month or lifetime memberships. Ask how a seller-supplied duration is provided and renewed, with the terms recorded for that exact product ID."
+      }
+    ],
+    "related": [
+      {
+        "label": "Entertainment subscriptions",
+        "href": "/category/entertainment/"
+      },
+      {
+        "label": "YouTube plans",
+        "href": "/plans/youtube/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Netflix plans, billing and household information",
+        "href": "https://help.netflix.com/en/node/24926"
+      }
+    ]
+  },
+  "youtube": {
+    "checked": "2026-10-24",
+    "heading": "Compare YouTube Premium, Music and membership eligibility",
+    "intro": "Start by checking whether you need YouTube Premium or YouTube Music Premium. The service, account eligibility and membership arrangement matter alongside duration. Official benefits explain the products; they do not verify that a particular seller’s invitation or package is eligible for your account.",
+    "choose": [
+      "Name the actual membership and the Google account that should receive it; confirm regional eligibility before payment.",
+      "For a family or student-labelled offer, establish the provider’s actual eligibility rules rather than treating it as interchangeable with an individual plan.",
+      "Ask whether the purchased term starts on activation, what renewal requires and how to report an access problem. Keep sign-in credentials private."
+    ],
+    "questions": [
+      {
+        "question": "Are YouTube Premium and Music Premium identical?",
+        "answer": "No. They are related memberships with different scopes. YouTube documents Premium benefits across its video and music services, while Music Premium is focused on the music experience. Confirm the exact membership supplied rather than inferring it from a shortened listing name."
+      },
+      {
+        "question": "Does a family label guarantee that I can join?",
+        "answer": "No. Membership type, household and regional eligibility need to be checked against the provider’s current rules. Confirm that the actual invitation is permitted for your circumstances; a low price does not establish eligibility."
+      }
+    ],
+    "related": [
+      {
+        "label": "Entertainment tools",
+        "href": "/category/entertainment/"
+      },
+      {
+        "label": "Netflix plans",
+        "href": "/plans/netflix/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "YouTube Premium and Music Premium official guidance",
+        "href": "https://support.google.com/youtube/answer/6305537?hl=en"
+      }
+    ]
+  },
+  "cursor": {
+    "checked": "2026-10-24",
+    "heading": "Compare Cursor access, current plan names and model usage",
+    "intro": "For coding work, distinguish editor access, team permissions and model usage. Product packaging changes over time, so a legacy plan name in a catalog is not enough to establish the current allowance. Confirm the actual subscription and billing arrangement shown in the supplied account before choosing a duration.",
+    "choose": [
+      "Describe the coding tasks and repository access you need, then confirm the actual tools and models included in the offered package.",
+      "Ask which usage is included, which model usage is billed separately and whether a spending limit can be set.",
+      "For a team arrangement, identify the seat, administrator, repository permissions and how access is removed at the end of the purchased period."
+    ],
+    "questions": [
+      {
+        "question": "Does a Cursor plan label establish unlimited model usage?",
+        "answer": "No. Current packaging can distinguish included pools and separately billed model usage. Read the actual supplied plan and usage controls; a legacy Pro label or a longer duration does not itself establish an unlimited allowance."
+      },
+      {
+        "question": "Is team membership the same as control of my repositories?",
+        "answer": "No. Confirm account, team and repository permissions independently. Keep ownership of your code and authorized repository access clear, especially for client work; a paid seat alone does not answer those questions."
+      }
+    ],
+    "related": [
+      {
+        "label": "Coding and automation tools",
+        "href": "/category/coding/"
+      },
+      {
+        "label": "Lovable plans",
+        "href": "/plans/lovable/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Cursor current models and pricing",
+        "href": "https://cursor.com/docs/models-and-pricing"
+      },
+      {
+        "label": "Cursor membership and seat types",
+        "href": "https://cursor.com/docs/account/teams/members"
+      }
+    ]
+  },
+  "perplexity": {
+    "checked": "2026-10-24",
+    "heading": "Choose Perplexity for a defined research workload",
+    "intro": "Compare a Perplexity offer against the research tasks you actually need to complete: finding sources, examining documents or organizing a topic. Check the actual subscription, model/tool access and usage limits. A research-app membership and developer API billing should be compared separately.",
+    "choose": [
+      "Identify the research workflow, required file handling and the specific plan currently attached to the offered account.",
+      "Confirm usage limits and which services are included, rather than assuming every model or research feature is available without limits.",
+      "If your goal is a software integration, ask specifically about API access and billing instead of buying a consumer app plan by name."
+    ],
+    "questions": [
+      {
+        "question": "Does a Perplexity subscription automatically include API credits?",
+        "answer": "Do not assume that it does. Subscription entitlements and API billing can differ, and current plan documentation distinguishes them. Confirm an actual API allowance, expiry and billing account separately if that is the service you need."
+      },
+      {
+        "question": "Can a cited answer replace checking the original source?",
+        "answer": "No. For an important decision, open the cited source, check its date and read the relevant context. A generated answer is a useful research starting point, not a guarantee that every claim is current or correct."
+      }
+    ],
+    "related": [
+      {
+        "label": "AI chat and research tools",
+        "href": "/category/ai-chat/"
+      },
+      {
+        "label": "ChatGPT plans",
+        "href": "/plans/chatgpt/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Perplexity subscription comparison",
+        "href": "https://www.perplexity.ai/help-center/en/articles/11187416-which-perplexity-subscription-plan-is-right-for-you"
+      }
+    ]
+  },
+  "manus": {
+    "checked": "2026-10-24",
+    "heading": "Compare Manus by task scope, usage and project control",
+    "intro": "For an agent-based workflow, define the task before choosing a package. A subscription duration alone does not tell you how many tasks a supplied balance can complete. Establish the actual plan, included usage, renewal and control of your project artifacts before starting client or business work.",
+    "choose": [
+      "Describe a representative task and ask how the actual package accounts for its usage; do not compare credit totals across unrelated tools as equivalent work.",
+      "Confirm access to the account/workspace, project files and outputs, including what you can retain when the subscription ends.",
+      "Ask about expiry, resets, additional usage charges and any package-specific fair usage limits in writing."
+    ],
+    "questions": [
+      {
+        "question": "Can an annual duration tell me how many tasks I can run?",
+        "answer": "No. Duration and usage allowance describe different parts of a package. Ask for the allowance, counting rules, reset period and overage policy that apply to the exact offer; an annual label alone does not answer them."
+      },
+      {
+        "question": "What should I check before using an agent for client work?",
+        "answer": "Check project ownership, authorized tool connections, file handling and the actions the agent may take. Use only accounts and data you are allowed to access, and review important outputs before relying on them."
+      }
+    ],
+    "related": [
+      {
+        "label": "AI chat tools",
+        "href": "/category/ai-chat/"
+      },
+      {
+        "label": "Credit and duration guide",
+        "href": "/guides/understanding-credits-and-plan-duration/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Manus: credits and usage",
+        "href": "https://manus.im/help/credits"
+      }
+    ]
+  },
+  "nordvpn": {
+    "checked": "2026-10-24",
+    "heading": "Compare NordVPN duration, device needs and account control",
+    "intro": "Choose a VPN package by your devices and intended use, then check the actual plan and access method. A VPN brand name does not verify that an account can be transferred, that a seller is authorized, or that a service will meet a particular regional access requirement.",
+    "choose": [
+      "Check support for your operating systems and the devices you intend to use with the supplied package.",
+      "Confirm who owns and controls the subscription, the legitimate activation method and the purchased start/end dates.",
+      "Separate the seller’s warranty and refund terms from the provider’s direct-purchase terms; do not assume either guarantees access to every website."
+    ],
+    "questions": [
+      {
+        "question": "Does a VPN subscription guarantee access to a particular service?",
+        "answer": "No universal access promise should be assumed. A website or service can have its own restrictions, and availability can change. Compare the documented VPN features with your intended use and comply with the applicable service rules."
+      },
+      {
+        "question": "Are seller refund terms identical to NordVPN’s direct-purchase terms?",
+        "answer": "Do not assume so. Confirm the seller’s written terms for the exact product ID and distinguish them from conditions that apply when buying directly from the provider."
+      }
+    ],
+    "related": [
+      {
+        "label": "Security and privacy tools",
+        "href": "/category/security/"
+      },
+      {
+        "label": "Surfshark plans",
+        "href": "/plans/surfshark/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "NordVPN: plans and prices",
+        "href": "https://support.nordvpn.com/hc/en-us/articles/19744251757841-How-to-check-the-plans-and-prices-of-NordVPN"
+      }
+    ]
+  },
+  "surfshark": {
+    "checked": "2026-10-24",
+    "heading": "Distinguish Surfshark VPN access from bundled services",
+    "intro": "Before comparing prices, identify whether a listing describes VPN access or a broader Surfshark package. Check device requirements, the supplied subscription, its activation dates and who controls it. Product-family names and a long duration should not be treated as proof that every bundled feature is included.",
+    "choose": [
+      "List the devices and specific VPN or security features you need, and ask which are included in the exact package.",
+      "Confirm the legitimate account/activation arrangement and whether you retain control throughout the purchased period.",
+      "Read seller warranty, renewal and refund conditions separately from the provider’s current direct-purchase offers."
+    ],
+    "questions": [
+      {
+        "question": "Does every Surfshark listing include the same feature bundle?",
+        "answer": "Do not assume equivalence from the brand name. Confirm the actual package and its documented included services; a VPN-only offer and a broader bundle may serve different needs."
+      },
+      {
+        "question": "What should I compare when one VPN quote is much cheaper?",
+        "answer": "Compare equal durations, package scope, account control and written support terms. A low total price for a short or different access arrangement is not a like-for-like saving on an annual subscription."
+      }
+    ],
+    "related": [
+      {
+        "label": "Security tools",
+        "href": "/category/security/"
+      },
+      {
+        "label": "NordVPN plans",
+        "href": "/plans/nordvpn/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Surfshark official package comparison",
+        "href": "https://surfshark.com/pricing"
+      }
+    ]
+  },
+  "linkedin": {
+    "checked": "2026-10-24",
+    "heading": "Match LinkedIn Premium to career, business or sales needs",
+    "intro": "LinkedIn uses different subscriptions for different professional tasks. Career, business, recruiting and sales workflows should not be treated as one interchangeable Premium product. Identify the actual subscription and account eligibility before comparing a seller’s duration or quote.",
+    "choose": [
+      "Decide whether your main task is job seeking, professional networking, sales prospecting, hiring or learning, then verify the matching product.",
+      "Confirm the exact subscription and features on the account rather than relying on Premium as a complete plan description.",
+      "Establish a legitimate activation route that keeps your account credentials private, and ask what happens when the purchased term ends."
+    ],
+    "questions": [
+      {
+        "question": "Is LinkedIn Premium the same as Sales Navigator?",
+        "answer": "No. LinkedIn documents separate professional subscriptions with different purposes and features. Confirm the actual named product; a Premium listing alone does not establish access to the sales-focused tools you need."
+      },
+      {
+        "question": "Does a paid plan guarantee a job, leads or replies?",
+        "answer": "No. Access to paid features is separate from outcomes. Choose a plan around specific tools and eligible usage, without treating a subscription as a promise of hiring, revenue or response rates."
+      }
+    ],
+    "related": [
+      {
+        "label": "Productivity tools",
+        "href": "/category/productivity/"
+      },
+      {
+        "label": "Safe buying guide",
+        "href": "/guides/choosing-ai-subscriptions-pakistan/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "LinkedIn Premium product introduction",
+        "href": "https://www.linkedin.com/help/linkedin/answer/a7472638"
+      },
+      {
+        "label": "Premium and Sales Navigator comparison",
+        "href": "https://business.linkedin.com/sell/sales-navigator/premium-versus-sales-navigator"
+      }
+    ]
+  },
+  "microsoft": {
+    "checked": "2026-10-24",
+    "heading": "Check Microsoft edition, licensing and activation separately",
+    "intro": "A Windows edition, a Microsoft 365 subscription and another software license are different products. Before paying, verify the actual edition, supported device, license channel and permitted activation method. A product key being delivered does not by itself establish a legitimate or transferable software license.",
+    "choose": [
+      "Match the exact edition and device requirements to your existing installation; do not buy an edition solely because the title says Pro.",
+      "Ask what license or subscription is supplied, who owns it, which device/user limits apply and whether transfer or renewal is permitted.",
+      "Confirm legitimate activation and keep passwords, recovery information and security codes private. Record the seller’s support and warranty terms."
+    ],
+    "questions": [
+      {
+        "question": "Is a Windows license key the same as a Microsoft 365 subscription?",
+        "answer": "No. They describe different products and licensing arrangements. Identify the software, edition, device/user scope and subscription duration that the exact listing supplies."
+      },
+      {
+        "question": "Does successful activation prove that a license can be resold or transferred?",
+        "answer": "Do not use activation alone as that proof. Verify the applicable license terms and legitimate delivery channel for your actual use. A seller title or a working key is not enough to establish those rights."
+      }
+    ],
+    "related": [
+      {
+        "label": "Software and licenses",
+        "href": "/category/software/"
+      },
+      {
+        "label": "Order confirmation checklist",
+        "href": "/how-to-order/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Microsoft Windows support and activation guidance",
+        "href": "https://support.microsoft.com/windows"
+      }
+    ]
+  },
+  "helium-10": {
+    "checked": "2026-10-24",
+    "heading": "Compare Helium 10 packages against your actual research tasks",
+    "intro": "Amazon sellers should identify the research workflow before comparing a Helium 10 package. A familiar tier name does not establish every included module or allowance. In this catalog, the seller’s Platinum package expressly excludes Cerebro and Magnet; compare the listed package, not an assumed official tier equivalence.",
+    "choose": [
+      "Name the product, keyword or competitor research tasks you need, and confirm each required module for the supplied package.",
+      "Check marketplace eligibility, fair usage and the practical limits of the actual account/workspace.",
+      "Compare the package exclusions and seller warranty alongside the duration and PKR quote; no unlimited-search promise is made."
+    ],
+    "questions": [
+      {
+        "question": "Does this Platinum package include Cerebro and Magnet?",
+        "answer": "No. The owner-supplied package description excludes Cerebro and Magnet. If either module is essential, do not infer access from the Platinum name; confirm a different eligible package before payment."
+      },
+      {
+        "question": "Can a research subscription guarantee a profitable Amazon product?",
+        "answer": "No. Research tools provide inputs to your decisions, not a profit guarantee. Check the underlying data, marketplace context, fees and practical package limits yourself."
+      }
+    ],
+    "related": [
+      {
+        "label": "Amazon FBA tools",
+        "href": "/category/amazon-fba/"
+      },
+      {
+        "label": "How to compare subscriptions",
+        "href": "/guides/choosing-ai-subscriptions-pakistan/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Helium 10 official product context",
+        "href": "https://www.helium10.com/pricing/"
+      }
+    ]
+  },
+  "midjourney": {
+    "checked": "2026-10-24",
+    "heading": "Compare Midjourney duration, generation needs and project use",
+    "intro": "For image work, compare the actual generation allowance, account arrangement and intended project use before looking at duration alone. The catalog’s one- and three-month packages are distinct quotes. Neither the plan name nor a reference price proves that a supplied package includes every current vendor feature.",
+    "choose": [
+      "Describe the type and volume of images you need, then confirm the actual generation and usage terms.",
+      "Establish legitimate account access and the rights needed for your particular commercial or personal project.",
+      "Compare the total PKR cost for the purchased duration, seller warranty and any package-specific restrictions."
+    ],
+    "questions": [
+      {
+        "question": "Does a longer Midjourney duration mean more monthly generation?",
+        "answer": "Not by itself. Duration and the recurring usage allowance are separate terms. Confirm the allowance, mode, reset rules and expiry for the supplied package."
+      },
+      {
+        "question": "Can I assume every generated image is suitable for any commercial project?",
+        "answer": "No. Review the provider’s applicable terms and any rights or restrictions relevant to your content and project. A subscription label alone does not answer every licensing or third-party-rights question."
+      }
+    ],
+    "related": [
+      {
+        "label": "AI image generation tools",
+        "href": "/category/ai-image-generation/"
+      },
+      {
+        "label": "Canva plans",
+        "href": "/plans/canva/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Midjourney official plan information",
+        "href": "https://docs.midjourney.com/hc/en-us/articles/27870484040333-Comparing-Midjourney-Plans"
+      }
+    ]
+  },
+  "envato": {
+    "checked": "2026-10-24",
+    "heading": "Check Envato resource access and project licensing together",
+    "intro": "A creative-resource subscription should be compared by the assets and project rights you need. Templates, stock media, fonts and AI-related allowances can have different rules. Confirm the actual package and licensing process rather than treating a download as automatic permission for every reuse.",
+    "choose": [
+      "Identify the asset types and project workflow you need, then confirm access to them in the supplied package.",
+      "Read the applicable project licensing, registration and redistribution rules before using resources in client work.",
+      "Ask about download and AI-credit allowances, account control, duration and seller warranty separately."
+    ],
+    "questions": [
+      {
+        "question": "Does downloading an Envato asset establish every reuse right?",
+        "answer": "No. The applicable license and your project use determine the rights. Check the licensing steps and restrictions for the actual resource; access to a download is not a blanket redistribution license."
+      },
+      {
+        "question": "Are AI credits and stock-resource access the same allowance?",
+        "answer": "Do not assume they are interchangeable. Ask which services and allowances the supplied package includes, how they reset and what remains usable when the subscription ends."
+      }
+    ],
+    "related": [
+      {
+        "label": "Creative resources",
+        "href": "/category/creative-resources/"
+      },
+      {
+        "label": "Adobe plans",
+        "href": "/plans/adobe/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "Envato official licensing overview",
+        "href": "https://elements.envato.com/license-terms"
+      }
+    ]
+  },
+  "vidiq": {
+    "checked": "2026-10-24",
+    "heading": "Compare vidIQ by channel needs and actual optimization tools",
+    "intro": "For a YouTube channel, identify the research and planning tasks you need before choosing a vidIQ package. Confirm the actual connected-channel eligibility, tool access and AI allowances. A Max label or a paid optimization tool is not a promise of views, monetization or a particular search position.",
+    "choose": [
+      "List the keyword, idea and channel-review tasks you need, then confirm the actual tools supplied.",
+      "Establish the permitted channel connection and account ownership without handing over passwords or security codes.",
+      "Check AI allowances, duration, reset rules and seller warranty for the exact package."
+    ],
+    "questions": [
+      {
+        "question": "Does vidIQ guarantee YouTube views or monetization?",
+        "answer": "No. Research and optimization tools support planning, while audience response, content quality and platform decisions remain separate. Do not buy an offer on an unsupported views or earnings promise."
+      },
+      {
+        "question": "What should I confirm before connecting a channel?",
+        "answer": "Check account ownership, authorized permissions, channel eligibility and how access can be revoked. Confirm the exact package and use only a legitimate connection method that keeps credentials private."
+      }
+    ],
+    "related": [
+      {
+        "label": "YouTube SEO tools",
+        "href": "/category/youtube-seo/"
+      },
+      {
+        "label": "Video and audio tools",
+        "href": "/category/video/"
+      }
+    ],
+    "sources": [
+      {
+        "label": "vidIQ official plans and features",
+        "href": "https://vidiq.com/plans/"
+      }
+    ]
+  }
+}

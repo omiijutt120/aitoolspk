@@ -20,6 +20,16 @@ const allowed = [
   'purchasable',
   'risk',
   'renewal',
+  'sourceType',
+  'sellerWarranty',
+  'summary',
+  'features',
+  'exclusions',
+  'fairUsage',
+  'notes',
+  'variantGroup',
+  'durationMonths',
+  'referencePrice',
 ];
 if (!Array.isArray(catalog) || !catalog.length)
   throw new Error('Catalog is empty');

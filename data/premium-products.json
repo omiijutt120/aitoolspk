@@ -1,0 +1,139 @@
+{
+  "updatedAt": "2026-10-23",
+  "products": [
+    {
+      "key": "helium-10-platinum",
+      "name": "Helium 10 Platinum – Amazon Seller Research Tools",
+      "brand": "Helium 10",
+      "brandSlug": "helium-10",
+      "category": "amazon-fba",
+      "summary": "Research Amazon products with Xray and Black Box, explore opportunities and improve your FBA selling strategy.",
+      "description": "Helium 10 Platinum is an Amazon seller research package for beginners and growing e-commerce businesses. Research potential products, analyze competitors, explore market opportunities and make informed product-selling decisions. This seller-supplied package includes the tools listed below; Cerebro and Magnet are excluded.",
+      "features": [
+        "Helium 10 Web Access",
+        "Helium 10 Chrome Extension",
+        "Xray Product Research",
+        "Black Box Product Discovery",
+        "Available Listing Support Tools",
+        "Product Research Assistance",
+        "Setup Support"
+      ],
+      "exclusions": [
+        "Cerebro is not included in this Platinum package.",
+        "Magnet is not included in this Platinum package."
+      ],
+      "fairUsage": "Fair usage limits apply. Confirm the practical research allowance for this seller-supplied package before payment; unlimited searches are not offered.",
+      "notes": [],
+      "referencePrice": {
+        "amount": 129,
+        "currency": "USD",
+        "interval": "month",
+        "url": "https://www.helium10.com/pricing/",
+        "checkedAt": "2026-10-23"
+      },
+      "plans": [{ "slug": "helium-10-platinum", "months": 1, "price": 2500 }]
+    },
+    {
+      "key": "helium-10-diamond",
+      "name": "Helium 10 Diamond – Advanced Amazon FBA Toolkit",
+      "brand": "Helium 10",
+      "brandSlug": "helium-10",
+      "category": "amazon-fba",
+      "summary": "Advanced Amazon FBA product and keyword research with Xray, Black Box, Cerebro and Magnet.",
+      "description": "Unlock advanced Amazon product and keyword research capabilities with Helium 10 Diamond. Analyze competitive listings, discover keyword opportunities, explore product demand and support your Amazon selling strategy with this seller-supplied research toolkit.",
+      "features": [
+        "Helium 10 Web Access",
+        "Helium 10 Chrome Extension",
+        "Xray",
+        "Cerebro",
+        "Magnet",
+        "Black Box",
+        "Competitor Research",
+        "Keyword Research",
+        "Advanced Product Analysis",
+        "Setup Support"
+      ],
+      "exclusions": [],
+      "fairUsage": "Unlimited searches are not offered. Normal, practical research usage is supported within the applicable package limits. Confirm the allowance for your intended workflow before payment.",
+      "notes": [],
+      "referencePrice": {
+        "amount": 359,
+        "currency": "USD",
+        "interval": "month",
+        "url": "https://www.helium10.com/pricing/",
+        "checkedAt": "2026-10-23"
+      },
+      "plans": [{ "slug": "helium-10-diamond", "months": 1, "price": 4800 }]
+    },
+    {
+      "key": "midjourney-standard",
+      "name": "Midjourney Standard – Premium AI Image Generator",
+      "brand": "Midjourney",
+      "brandSlug": "midjourney",
+      "category": "ai-image-generation",
+      "summary": "Create AI-generated images, realistic artwork, illustrations and cinematic visuals with Midjourney Standard.",
+      "description": "Bring creative ideas to life with Midjourney Standard, an AI image generation platform for designers, marketers, creators and businesses. Use natural language prompts to create photorealistic images, digital artwork, product concepts, social media visuals, illustrations and marketing designs. Choose a one-month or three-month subscription below.",
+      "features": [
+        "AI Image Generation",
+        "Photorealistic Artwork",
+        "Digital Illustrations",
+        "Creative Image Variations",
+        "Text-to-Image Generation",
+        "Standard Plan Capabilities"
+      ],
+      "exclusions": [],
+      "fairUsage": "Use is subject to the supplied Standard plan and the vendor's applicable usage terms. Image-generation allowances and the access method must be confirmed before payment; no account-sharing capability or numeric generation limit is promised here.",
+      "notes": [
+        "Midjourney is a trademark of Midjourney, Inc. We are not endorsed by or affiliated with Midjourney, Inc."
+      ],
+      "plans": [
+        { "slug": "midjourney-standard", "months": 1, "price": 4000 },
+        { "slug": "midjourney-standard-3-months", "months": 3, "price": 8000 }
+      ]
+    },
+    {
+      "key": "envato-elements",
+      "name": "Envato Elements – Premium Creative Assets",
+      "brand": "Envato Elements",
+      "brandSlug": "envato",
+      "category": "creative-resources",
+      "summary": "Explore design templates, stock video, graphics, fonts, music, presentations and creative resources.",
+      "description": "Envato Elements provides a creative resource library for designers, video editors, content creators, marketers and website developers. Explore professional resources for video production, presentations, websites, social posts and branding projects, subject to the entitlements and licensing of the actual access supplied.",
+      "features": [
+        "Graphic Design Resources",
+        "Video Templates",
+        "Stock Videos",
+        "Fonts",
+        "Presentation Templates",
+        "Music & Sound Effects",
+        "Creative Resources"
+      ],
+      "exclusions": [],
+      "fairUsage": "Download allowances, AI credits and licensing rights must be confirmed for the actual access supplied before payment. Unrestricted commercial use is not promised. Follow the applicable asset license and project-use conditions.",
+      "notes": [],
+      "plans": [{ "slug": "envato-elements", "months": 1, "price": 2000 }]
+    },
+    {
+      "key": "vidiq-max",
+      "name": "vidIQ Max – YouTube SEO & Channel Growth Tools",
+      "brand": "vidIQ",
+      "brandSlug": "vidiq",
+      "category": "youtube-seo",
+      "summary": "Research YouTube keywords, explore video ideas, analyze competitors and improve your content strategy.",
+      "description": "vidIQ Max supports YouTubers, video creators, content managers and digital marketers with YouTube research and content strategy. Discover keyword opportunities, analyze competing channels, research trending topics, generate ideas and optimize content using supported AI-assisted tools. Specific entitlements depend on the Max access supplied.",
+      "features": [
+        "YouTube Keyword Research",
+        "YouTube SEO Assistance",
+        "Competitor Analysis",
+        "AI-Assisted Video Ideas",
+        "Content Research",
+        "Video Optimization Support",
+        "Eligible vidIQ Max Tools"
+      ],
+      "exclusions": [],
+      "fairUsage": "Confirm the supported Max tools, AI allowances and eligible channels before payment. No numeric AI credit limit, channel count, ranking or channel-growth result is guaranteed.",
+      "notes": [],
+      "plans": [{ "slug": "vidiq-max", "months": 1, "price": 3000 }]
+    }
+  ]
+}

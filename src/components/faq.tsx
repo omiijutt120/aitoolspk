@@ -13,7 +13,7 @@ export const faqs = [
   ],
   [
     'What does the warranty cover?',
-    'Warranty terms differ by offer. Source warranty labels on pending listings are unverified and do not create a guarantee. Before payment, ask for written coverage, exclusions, start date, duration and the remedy if the plan stops working.',
+    'Warranty terms differ by offer. Offers explicitly marked Full Duration Warranty include AI Tools PK’s seller-provided warranty for the purchased duration, subject to the seller warranty terms and fair usage policy. Source warranty labels on other pending listings are unverified. Confirm coverage, exclusions, dates and the agreed remedy before payment.',
   ],
   [
     'Will you ask for my account password?',
@@ -24,13 +24,20 @@ export const faqs = [
     'If an accepted order cannot be delivered, you may cancel for a full refund of the amount paid for that undelivered order. Activated subscriptions and license keys have product-specific limits. Read the refund policy and confirm the exact terms before paying.',
   ],
 ];
-export function FaqList({ limit = 6 }: { limit?: number }) {
+export function FaqList({
+  limit = faqs.length,
+  headingLevel = 2,
+}: {
+  limit?: number;
+  headingLevel?: 2 | 3;
+}) {
+  const Heading = headingLevel === 2 ? 'h2' : 'h3';
   return (
     <div className="faq-list">
       {faqs.slice(0, limit).map(([q, a]) => (
         <details key={q}>
           <summary>
-            {q}
+            <Heading className="faq-question">{q}</Heading>
             <span aria-hidden="true">+</span>
           </summary>
           <p>{a}</p>

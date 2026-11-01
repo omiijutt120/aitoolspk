@@ -37,6 +37,9 @@ export function Footer() {
             <Link href="/tools/">All tools</Link>
             <Link href="/categories/">Categories</Link>
             <Link href="/how-to-order/">How to order</Link>
+            <Link href="/guides/" prefetch={false}>
+              Buying guides
+            </Link>
           </div>
           <div>
             <p className="footer-label">HERE TO HELP</p>
@@ -46,6 +49,8 @@ export function Footer() {
           </div>
           <div>
             <p className="footer-label">THE DETAILS</p>
+            <Link href="/about/">About AiToolsPk</Link>
+            <Link href="/editorial-policy/">How we compare plans</Link>
             <Link href="/privacy-policy/">Privacy policy</Link>
             <Link href="/terms/">Terms of service</Link>
             <span className="muted text-sm">Pakistan · Prices in PKR</span>

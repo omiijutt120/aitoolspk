@@ -1,14 +1,7 @@
 import type { Product } from './types';
 import selection from '../../data/storefront.json';
-
-export function isApiProduct(product: Product): boolean {
-  return (
-    product.brandSlug === 'apigpt' ||
-    /\b(?:z?api)(?:\b|(?=key|token|credit))/i.test(
-      `${product.name} ${product.access}`
-    )
-  );
-}
+import { isApiProduct } from './catalog-identity.mjs';
+export { isApiProduct } from './catalog-identity.mjs';
 
 function compareOffers(a: Product, b: Product): number {
   return (

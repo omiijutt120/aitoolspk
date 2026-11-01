@@ -1,0 +1,132 @@
+{
+  "ai-chat": {
+    "heading": "Choose an assistant around your actual task",
+    "intro": "For writing, research or coding support, compare the exact app plan, account eligibility and tool access. A familiar model name does not prove which features are included in a seller-listed package.",
+    "checks": [
+      "Try the same non-sensitive task and verify factual answers yourself.",
+      "Ask about message limits, file handling, reset periods and account control.",
+      "Keep consumer subscriptions separate from developer API billing."
+    ],
+    "guide": "chatgpt-claude-gemini-plan-comparison-pakistan"
+  },
+  "video": {
+    "heading": "Compare output requirements before credit counts",
+    "intro": "Video generation, editing and voice services charge for different units. Define the length, resolution, voice permissions and export formats you need before comparing packages.",
+    "checks": [
+      "Ask how revisions, failed generations and quality settings affect usage.",
+      "Confirm credit expiry, queue limits and the exact included app.",
+      "Check permission for uploaded voices, music and client content."
+    ],
+    "guide": "compare-video-audio-ai-credits"
+  },
+  "design": {
+    "heading": "Check workspace control and design rights",
+    "intro": "Design subscriptions can differ in editing seats, asset libraries, export formats and workspace permissions. A low starting price may describe an access arrangement that does not suit independent client work.",
+    "checks": [
+      "Identify the exact product, edition and editing permissions.",
+      "Ask who administers the workspace and can access your designs.",
+      "Check asset licensing and any Education eligibility requirements."
+    ],
+    "guide": "canva-pro-pakistan-buying-checklist"
+  },
+  "writing": {
+    "heading": "Choose writing support for your workflow",
+    "intro": "Compare the languages, document formats and editing tasks you actually use. A subscription is not a guarantee of original, accurate or publication-ready output; review the work and verify sources.",
+    "checks": [
+      "Confirm word, document or generation limits and their reset period.",
+      "Check export formats and integrations before selecting a longer term.",
+      "Avoid uploading confidential drafts before reviewing the provider's data terms."
+    ],
+    "guide": "choosing-ai-subscriptions-pakistan"
+  },
+  "coding": {
+    "heading": "Separate developer seats from usage budgets",
+    "intro": "Coding assistants, app builders and automation tools solve different problems. Define whether you need an editor, deployment, workflow execution or a model API, then check the exact seller package.",
+    "checks": [
+      "Ask whether model usage, hosting and execution quotas are separate charges.",
+      "Review repository permissions and keep keys out of chat and source control.",
+      "Test changes on a small project and review generated code before release."
+    ],
+    "guide": "subscriptions-vs-api-credits"
+  },
+  "productivity": {
+    "heading": "Match permissions to your working group",
+    "intro": "Productivity offers may describe a personal plan, organisation seat or a specialist business product. Compare storage, collaboration permissions and the ability to export your work before choosing by duration alone.",
+    "checks": [
+      "Identify who owns the workspace and who can remove access.",
+      "Confirm guest, member and administrator permissions for your tasks.",
+      "Ask what happens to documents and shared links when the plan ends."
+    ],
+    "guide": "private-shared-workspace-access"
+  },
+  "security": {
+    "heading": "Review privacy features and device terms separately",
+    "intro": "Security subscriptions are not interchangeable. Establish the exact service tier, supported devices, renewal terms and legitimate account access; a paid plan does not guarantee anonymity or protection against every threat.",
+    "checks": [
+      "Ask which VPN, security or identity features the package actually includes.",
+      "Confirm device and simultaneous-connection restrictions for your use.",
+      "Read the provider's privacy terms before sending sensitive traffic."
+    ],
+    "guide": "private-shared-workspace-access"
+  },
+  "entertainment": {
+    "heading": "Confirm household, region and profile rules",
+    "intro": "Streaming subscriptions differ in household eligibility, geographic availability, devices and quality. A seller's duration or profile label does not override the streaming provider's membership terms.",
+    "checks": [
+      "Check whether the exact account arrangement is permitted for you.",
+      "Confirm regional availability, supported devices and simultaneous use.",
+      "Separate access duration from warranty and avoid relying on promised permanent access."
+    ],
+    "guide": "seller-warranty-vs-vendor-warranty"
+  },
+  "software": {
+    "heading": "Verify the license as well as the edition",
+    "intro": "A software key, subscription and digital entitlement are different things. Confirm the edition, device requirements and legitimate license basis rather than treating successful activation as proof of every usage right.",
+    "checks": [
+      "Ask about device count, transfer restrictions and the license channel.",
+      "Check compatibility and whether renewal or an existing qualifying license is required.",
+      "Obtain the agreed package and seller warranty in writing before payment."
+    ],
+    "guide": "seller-warranty-vs-vendor-warranty"
+  },
+  "amazon-fba": {
+    "heading": "Compare research access, not promised sales",
+    "intro": "Amazon seller tools can have different marketplace coverage, research modules and daily allowances. Choose the data and workflows you need; a research subscription does not guarantee rankings, product demand or revenue.",
+    "checks": [
+      "List the specific keyword and product-research modules required.",
+      "Check exclusions, history depth and usage limits in the exact package.",
+      "Confirm legitimate delivery and whether connecting a seller account is necessary."
+    ],
+    "guide": "private-shared-workspace-access"
+  },
+  "ai-image-generation": {
+    "heading": "Check generation mode, privacy and output rights",
+    "intro": "Image plans can differ in processing time, generation modes and visibility. A private access label is not the same as a provider's private-generation feature; ask about both separately.",
+    "checks": [
+      "Confirm the actual tier, generation allowance and queue behaviour.",
+      "Ask whether outputs are publicly visible and which privacy features apply.",
+      "Review commercial-use conditions and rights in uploaded reference material."
+    ],
+    "guide": "creative-tool-licenses-client-work"
+  },
+  "creative-resources": {
+    "heading": "Keep asset licensing with each project",
+    "intro": "Stock media, fonts and templates require attention to the intended end use. Library access does not establish unrestricted redistribution rights or automatically provide a license for every client project.",
+    "checks": [
+      "Check whether the project needs a separate registration or license record.",
+      "Clarify client delivery, template resale and source-file restrictions.",
+      "Establish how the license is obtained legitimately and what expiry changes."
+    ],
+    "guide": "creative-tool-licenses-client-work"
+  },
+  "youtube-seo": {
+    "heading": "Use creator tools as research aids",
+    "intro": "YouTube research tools can help organise keyword ideas and content planning. Their estimates and recommendations do not guarantee views, subscribers, monetisation or search rankings.",
+    "checks": [
+      "Check channel count, research allowances and the exact tier.",
+      "Review required channel permissions and connect accounts only through a legitimate provider flow.",
+      "Measure results against your own channel data instead of treating a tool score as a promise."
+    ],
+    "guide": "choosing-ai-subscriptions-pakistan"
+  }
+}

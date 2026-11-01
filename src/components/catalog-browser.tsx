@@ -34,6 +34,23 @@ import { CollectionCard } from './collection-card';
 import { CategoryIcon } from './icon';
 import { emitCatalogEvent } from '@/lib/events';
 import { PAGE_SIZE, pageCount, pagePath } from '@/lib/pagination';
+import { logoThumbnail } from '@/lib/logo-thumbnail';
+import { parseCatalogResponse } from '@/lib/catalog-response';
+
+const catalogParameters = new Set([
+  'q',
+  'category',
+  'brand',
+  'duration',
+  'warranty',
+  'access',
+  'stock',
+  'approval',
+  'min',
+  'max',
+  'sort',
+  'focus',
+]);
 
 const subscribe = (cb: () => void) => {
   window.addEventListener('popstate', cb);
@@ -74,6 +91,7 @@ function Select({ label, param, values, params, update }: SelectProps) {
 type CatalogProps = {
   initial: Product[];
   initialCollections: PlanCollection[];
+  singleCategoryCollections: Record<string, string>;
   collection?: string;
   category?: string;
   continuous?: boolean;
@@ -90,6 +108,7 @@ type CatalogProps = {
 export function CatalogBrowser({
   initial,
   initialCollections,
+  singleCategoryCollections,
   collection,
   category,
   continuous = false,
@@ -115,11 +134,24 @@ export function CatalogBrowser({
     getSnapshot,
     getServerSnapshot
   );
-  const params = useMemo(() => new URLSearchParams(queryString), [queryString]);
+  const params = useMemo(
+    () =>
+      new URLSearchParams(
+        [...new URLSearchParams(queryString)].filter(
+          ([key, value]) => catalogParameters.has(key) && value !== ''
+        )
+      ),
+    [queryString]
+  );
   const q = params.get('q') || '';
   const [debounced, setDebounced] = useState(q);
   const [all, setAll] = useState<Product[] | null>(null);
+  // Native static pages already contain their complete visible inventory.
+  // Download and re-index the full catalog only for enhanced filtering/search.
+  const enhancedRequested =
+    continuous || [...params.keys()].some((key) => key !== 'focus');
   const [error, setError] = useState(false);
+  const [attempt, setAttempt] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [suggestOpen, setSuggestOpen] = useState(false);
   const [loaded, setLoaded] = useState({ key: '', count: 32 });
@@ -136,18 +168,33 @@ export function CatalogBrowser({
     return () => clearTimeout(timer);
   }, [q]);
   useEffect(() => {
+    if (!enhancedRequested || all) return;
     const controller = new AbortController();
+    let cancelled = false;
+    const timeout = setTimeout(() => controller.abort(), 15000);
     fetch('/catalog/index.json', { signal: controller.signal, priority: 'low' })
       .then((r) => {
         if (!r.ok) throw new Error('Catalog unavailable');
         return r.json();
       })
-      .then((data) => startTransition(() => setAll(data)))
-      .catch((e) => {
-        if (e.name !== 'AbortError') setError(true);
-      });
-    return () => controller.abort();
-  }, []);
+      .then(parseCatalogResponse)
+      .then((data) => {
+        if (!cancelled)
+          startTransition(() => {
+            setAll(data);
+            setError(false);
+          });
+      })
+      .catch(() => {
+        if (!cancelled) setError(true);
+      })
+      .finally(() => clearTimeout(timeout));
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, [enhancedRequested, all, attempt]);
   useEffect(() => {
     if (mobileOpen) {
       dialog.current?.showModal();
@@ -187,6 +234,7 @@ export function CatalogBrowser({
     window.dispatchEvent(new Event('catalog-query'));
   }
   function clear() {
+    setError(false);
     if (navigationTimer.current) clearTimeout(navigationTimer.current);
     if (initialPage > 1) {
       router.replace(basePath, { scroll: false });
@@ -213,25 +261,29 @@ export function CatalogBrowser({
         : initial,
     [all, category, collection, initial]
   );
+  const searchRequested = Boolean(debounced.trim());
   const fuse = useMemo(
     () =>
-      new Fuse(source, {
-        keys: [
-          { name: 'name', weight: 3 },
-          { name: 'brand', weight: 2 },
-          'category',
-          'description',
-        ],
-        threshold: 0.34,
-        ignoreDiacritics: true,
-        ignoreLocation: true,
-      }),
-    [source]
+      searchRequested
+        ? new Fuse(source, {
+            keys: [
+              { name: 'name', weight: 3 },
+              { name: 'brand', weight: 2 },
+              'category',
+              'description',
+            ],
+            threshold: 0.34,
+            ignoreDiacritics: true,
+            ignoreLocation: true,
+          })
+        : null,
+    [source, searchRequested]
   );
   const filtered = useMemo(() => {
-    const found = debounced.trim()
-      ? fuse.search(debounced.trim()).map((r) => r.item)
-      : source;
+    const found =
+      debounced.trim() && fuse
+        ? fuse.search(debounced.trim()).map((r) => r.item)
+        : source;
     const result = found.filter(
       (p) =>
         (!params.get('category') || p.category === params.get('category')) &&
@@ -272,7 +324,17 @@ export function CatalogBrowser({
   collectionQuery.delete('page');
   collectionQuery.delete('focus');
   if (category) collectionQuery.set('category', category);
+  const queryForCollection = (slug: string) => {
+    const query = new URLSearchParams(collectionQuery);
+    // Use full-catalog membership, not the already-filtered card's categories.
+    // A category that includes every plan adds no useful state to the link.
+    if (query.get('category') === singleCategoryCollections[slug])
+      query.delete('category');
+    return query.toString();
+  };
   const pageSize = PAGE_SIZE;
+  const waitingForCatalog = enhancedRequested && !all;
+  const waitingForResults = waitingForCatalog || q !== debounced;
   const pages = pageCount(itemCount);
   const page = Math.min(pages, initialPage);
   const paginationHref = (number: number) => {
@@ -284,7 +346,7 @@ export function CatalogBrowser({
     );
   };
   useEffect(() => {
-    if (all && params.get('focus') === 'search' && !searchFocused.current) {
+    if (params.get('focus') === 'search' && !searchFocused.current) {
       searchRef.current?.focus();
       searchFocused.current = true;
     }
@@ -319,7 +381,7 @@ export function CatalogBrowser({
     ([key]) => !['focus', 'page', 'sort'].includes(key)
   );
   const suggestions =
-    q.trim().length > 1 && q === debounced
+    q.trim().length > 1 && q === debounced && fuse
       ? groupCollections(fuse.search(q).map((r) => r.item)).slice(0, 4)
       : [];
   const shortcuts = [
@@ -524,7 +586,12 @@ export function CatalogBrowser({
                   prefetch={false}
                 >
                   {p.logo && (
-                    <Image src={p.logo} width={24} height={24} alt="" />
+                    <Image
+                      src={logoThumbnail(p.logo)}
+                      width={24}
+                      height={24}
+                      alt=""
+                    />
                   )}
                   <span>
                     {p.title} · {p.count} {p.count === 1 ? 'match' : 'matches'}
@@ -580,12 +647,19 @@ export function CatalogBrowser({
         <div className="catalog-results">
           <div className="catalog-toolbar">
             <p className="result-count" role="status" aria-live="polite">
-              <strong>{all ? filtered.length : total}</strong>{' '}
-              {all && filtered.length === 1 ? 'plan' : 'plans'}{' '}
-              {active.length ? 'matching your filters' : 'to explore'}
-              {grouped && <> · {collections.length} collections</>}
-              {!all && (
-                <span className="loading-label"> · Loading filters…</span>
+              {waitingForResults ? (
+                <span>
+                  {error
+                    ? 'Search and filters are unavailable. Showing the unfiltered catalog.'
+                    : 'Loading matching plans…'}
+                </span>
+              ) : (
+                <>
+                  <strong>{all ? filtered.length : total}</strong>{' '}
+                  {all && filtered.length === 1 ? 'plan' : 'plans'}{' '}
+                  {active.length ? 'matching your filters' : 'to explore'}
+                  {grouped && <> · {collections.length} collections</>}
+                </>
               )}
             </p>
             <button
@@ -622,7 +696,14 @@ export function CatalogBrowser({
                   )
                 }
               >
-                {p.logo && <Image src={p.logo} width={18} height={18} alt="" />}
+                {p.logo && (
+                  <Image
+                    src={logoThumbnail(p.logo)}
+                    width={18}
+                    height={18}
+                    alt=""
+                  />
+                )}
                 {p.brand}
               </button>
             ))}
@@ -653,12 +734,15 @@ export function CatalogBrowser({
               current price and terms on WhatsApp before payment.
             </p>
           </div>
-          {error && (
+          {error && waitingForCatalog && (
             <p role="alert" className="catalog-notice">
               The catalog could not load.{' '}
               <button
                 className="filter-clear"
-                onClick={() => window.location.reload()}
+                onClick={() => {
+                  setError(false);
+                  setAttempt((value) => value + 1);
+                }}
               >
                 Try again
               </button>
@@ -673,7 +757,7 @@ export function CatalogBrowser({
                 <CollectionCard
                   key={c.slug}
                   collection={c}
-                  query={collectionQuery.toString()}
+                  query={queryForCollection(c.slug)}
                 />
               ))}
             </div>
@@ -788,7 +872,9 @@ export function CatalogBrowser({
         </div>
         {filters}
         <button className="button w-full" onClick={close}>
-          Show {filtered.length} offers
+          {waitingForCatalog
+            ? 'View unfiltered catalog'
+            : `Show ${all ? filtered.length : total} offers`}
         </button>
       </dialog>
     </div>

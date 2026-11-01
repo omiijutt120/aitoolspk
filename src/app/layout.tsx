@@ -57,9 +57,18 @@ export default function RootLayout({
           data={{
             '@context': 'https://schema.org',
             '@type': 'Organization',
+            '@id': `${origin}/#organization`,
             name: 'AiToolsPk',
             url: origin,
             logo: `${origin}/brand/logo.png`,
+            description:
+              'Independent AI tools and digital subscription catalog for Pakistan, with listed PKR prices and WhatsApp enquiries.',
+            areaServed: { '@type': 'Country', name: 'Pakistan' },
+            knowsAbout: [
+              'AI tools',
+              'Digital subscription comparisons',
+              'PKR plan pricing',
+            ],
             contactPoint: {
               '@type': 'ContactPoint',
               telephone: '+923714549245',
@@ -72,6 +81,8 @@ export default function RootLayout({
           data={{
             '@context': 'https://schema.org',
             '@type': 'WebSite',
+            '@id': `${origin}/#website`,
+            publisher: { '@id': `${origin}/#organization` },
             name: 'AiToolsPk',
             url: origin,
             potentialAction: {

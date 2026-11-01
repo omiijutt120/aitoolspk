@@ -2160,3 +2160,215 @@ body {
     transform: none;
   }
 }
+.product-summary {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #626871;
+  margin: -3px 0 16px;
+}
+.premium-product .category-mini {
+  max-width: 52%;
+  white-space: normal;
+  text-align: right;
+  line-height: 1.4;
+}
+.product-terms > .seller-warranty-badge,
+.seller-warranty-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  border: 1px solid #dfe1e5;
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: #25272a;
+  background: #f8f9fa;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.seller-warranty-badge svg {
+  flex-shrink: 0;
+}
+.detail-warranty-badge {
+  margin-left: 12px;
+}
+.detail-product-summary {
+  color: #626871;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 18px 0;
+}
+.duration-selector {
+  margin: 22px 0 14px;
+}
+.duration-selector label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.duration-selector select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+  border: 1px solid #c9cdd3;
+  border-radius: 8px;
+  background: #fff;
+  color: #17191d;
+  font: inherit;
+  font-size: 13px;
+}
+.duration-selector select:focus-visible {
+  outline: 2px solid #17191d;
+  outline-offset: 3px;
+}
+.duration-saving {
+  color: #35383d;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 8px;
+}
+.official-price-reference {
+  margin-top: 14px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #626871;
+}
+.official-price-reference a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.official-price-reference p {
+  margin-top: 5px;
+}
+@media (max-width: 800px) {
+  .premium-detail-layout .detail-purchase-column {
+    grid-row: 1;
+  }
+}
+.guide-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin: 16px 0;
+}
+.guide-links a {
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.buying-guide ul {
+  list-style: disc;
+  padding-left: 22px;
+}
+.buying-guide li {
+  color: #626871;
+  line-height: 1.9;
+  margin-bottom: 10px;
+}
+.collection-buying-guide {
+  margin: 35px auto 60px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.collection-buying-guide h3 {
+  font-size: 18px;
+  margin: 24px 0 10px;
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.breadcrumbs {
+  flex-wrap: wrap;
+}
+.collection-price-context {
+  font-size: 13px !important;
+  line-height: 1.8;
+  color: #626871;
+}
+.collection-price-context strong {
+  color: #24272b;
+}
+.plan-comparison {
+  border: 1px solid #dedfe2;
+  border-radius: 14px;
+  margin: 28px 0 34px;
+  padding: 18px 22px;
+  min-width: 0;
+}
+.plan-comparison summary {
+  cursor: pointer;
+  font-weight: 650;
+  min-height: 44px;
+  display: list-item;
+  align-content: center;
+}
+.plan-comparison > p {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 12px 0;
+}
+.comparison-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+.comparison-scroll:focus-visible {
+  outline: 2px solid #15171a;
+  outline-offset: 3px;
+}
+.comparison-scroll table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+.comparison-scroll caption {
+  text-align: left;
+  font-weight: 650;
+  padding: 12px 10px;
+}
+.comparison-scroll th,
+.comparison-scroll td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e5e6e8;
+  vertical-align: top;
+  line-height: 1.6;
+}
+.comparison-scroll thead {
+  background: #f6f6f7;
+}
+.comparison-scroll th[scope='row'] {
+  font-weight: 550;
+  min-width: 240px;
+}
+.comparison-scroll th a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.comparison-id {
+  display: block;
+  color: #626871;
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.comparison-price {
+  white-space: nowrap;
+  font-weight: 650;
+}
+.faq-list summary .faq-question {
+  font: inherit;
+  margin: 0;
+  line-height: inherit;
+  color: inherit;
+}
+@media (max-width: 600px) {
+  .plan-comparison {
+    padding: 12px 14px;
+  }
+}

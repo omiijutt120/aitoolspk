@@ -6,6 +6,7 @@ import { ArrowUpRight, Clock3, ShieldCheck, MessageCircle } from 'lucide-react';
 import type { Product } from '@/lib/types';
 import { money, whatsappUrl } from '@/lib/commerce.mjs';
 import { categoryName } from '@/lib/categories';
+import { logoThumbnail } from '@/lib/logo-thumbnail';
 export function BrandLogo({
   product,
   large = false,
@@ -17,11 +18,7 @@ export function BrandLogo({
     <div className={`product-logo ${large ? 'large' : ''}`}>
       {product.logo ? (
         <Image
-          src={
-            large
-              ? product.logo
-              : product.logo.replace(/\.webp$/, '.small.webp')
-          }
+          src={logoThumbnail(product.logo, large ? 'card' : 'small')}
           alt={`${product.brand} logo`}
           width={large ? 58 : 34}
           height={large ? 58 : 34}
@@ -34,7 +31,9 @@ export function BrandLogo({
 }
 export function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="product-card">
+    <article
+      className={`product-card${product.sellerWarranty ? ' premium-product' : ''}`}
+    >
       <div className="product-card-top">
         <div className="product-identity">
           <BrandLogo product={product} />
@@ -52,16 +51,31 @@ export function ProductCard({ product }: { product: Product }) {
           {product.name}
         </Link>
       </h3>
+      {product.summary && <p className="product-summary">{product.summary}</p>}
       <div className="product-terms">
         <span>
           <Clock3 size={13} />
-          <span>{product.duration}</span>
-          <span className="term-divider">·</span>
-          <span>{product.access}</span>
+          <span>
+            {product.duration === 'Not specified'
+              ? 'Confirm duration'
+              : product.duration}
+          </span>
+          {product.access !== 'Not specified' && (
+            <>
+              <span className="term-divider">·</span>
+              <span>{product.access}</span>
+            </>
+          )}
         </span>
-        <span>
+        <span
+          className={
+            product.sellerWarranty ? 'seller-warranty-badge' : undefined
+          }
+        >
           <ShieldCheck size={13} />
-          {product.warranty}
+          {product.warranty === 'Not specified'
+            ? 'Confirm warranty terms'
+            : product.warranty}
         </span>
       </div>
       <div className="product-card-price">

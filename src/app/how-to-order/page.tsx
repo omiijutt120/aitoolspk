@@ -10,6 +10,7 @@ export const metadata = makeMetadata(
 export default function HowToOrder() {
   return (
     <Document
+      path="/how-to-order/"
       eyebrow="A SIMPLE WAY TO ORDER"
       title="Clarity before commitment."
       lead="Find an exact offer, understand its terms, and confirm your order with a person on WhatsApp."

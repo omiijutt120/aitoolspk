@@ -18,4 +18,20 @@ export type Product = {
   purchasable: boolean;
   risk: boolean;
   renewal: string;
+  sourceType?: 'seller-listed';
+  sellerWarranty?: boolean;
+  summary?: string;
+  features?: string[];
+  exclusions?: string[];
+  fairUsage?: string;
+  notes?: string[];
+  variantGroup?: string;
+  durationMonths?: number;
+  referencePrice?: {
+    amount: number;
+    currency: 'USD';
+    interval: 'month';
+    url: string;
+    checkedAt: string;
+  };
 };

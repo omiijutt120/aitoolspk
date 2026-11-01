@@ -7,7 +7,7 @@ test('approved offers have exact order links and expire without a redeploy', asy
   page,
 }) => {
   const product: Product = {
-    ...catalog[1],
+    ...(catalog[1] as Product),
     approval: 'approved',
     purchasable: true,
     stock: 'in-stock',
@@ -17,7 +17,7 @@ test('approved offers have exact order links and expire without a redeploy', asy
   await page.route('**/catalog/index.json', (route) =>
     route.fulfill({ json: [product] })
   );
-  await page.goto(`/plans/${collectionSlug(product)}/`);
+  await page.goto(`/plans/${collectionSlug(product)}/?sort=relevance`);
   const buy = page.getByRole('link', {
     name: `Buy Now: ${product.name}`,
     exact: true,
@@ -60,7 +60,7 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .hover();
   await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'All your tools.'
+    'AI tools & subscriptions.'
   );
   await expect(page.locator('.collection-card').first()).toBeVisible();
   await page.locator('.collection-card').first().click();

@@ -61,6 +61,34 @@ export const categories = [
     description:
       'Compare software editions and licenses. Verify licensing before ordering.',
   },
+  {
+    slug: 'amazon-fba',
+    name: 'Amazon FBA & E-commerce Tools',
+    icon: 'grid',
+    description:
+      'Amazon product, keyword and competitor research tools for e-commerce sellers in Pakistan.',
+  },
+  {
+    slug: 'ai-image-generation',
+    name: 'AI Image Generation',
+    icon: 'sparkles',
+    description:
+      'AI image generation subscriptions for artwork, illustrations and creative concepts.',
+  },
+  {
+    slug: 'creative-resources',
+    name: 'Design & Creative Resources',
+    icon: 'pen',
+    description:
+      'Compare subscriptions for templates, stock media, graphics, fonts and creative resources.',
+  },
+  {
+    slug: 'youtube-seo',
+    name: 'YouTube SEO & Creator Tools',
+    icon: 'play',
+    description:
+      'Keyword research, video ideas and optimization tools for YouTube creators.',
+  },
 ] as const;
 export function categoryName(slug: string) {
   return categories.find((c) => c.slug === slug)?.name ?? 'Software';

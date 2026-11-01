@@ -4,6 +4,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { contentFingerprint } from '../src/lib/seo-publication.mjs';
 
 const checker = resolve('scripts/check-export.mjs');
 const origin = 'https://aitoolspk.tech';
@@ -14,11 +15,16 @@ const url = `${origin}/tool/synthetic-export-fixture/`;
 function checkFixture({ approval, noindex, inSitemap, body = '' }) {
   const dir = mkdtempSync(join(tmpdir(), 'aitoolspk-export-test-'));
   try {
-    mkdirSync(join(dir, 'data'));
+    mkdirSync(join(dir, 'data/seo'), { recursive: true });
     mkdirSync(join(dir, 'out/tool/synthetic-export-fixture'), { recursive: true });
-    writeFileSync(join(dir, 'data/catalog.json'), JSON.stringify([
-      { id: 'SYNTHETIC-EXPORT-FIXTURE', slug: 'synthetic-export-fixture', approval },
-    ]));
+    const product = { id: 'SYNTHETIC-EXPORT-FIXTURE', slug: 'synthetic-export-fixture', approval,
+      description: 'Synthetic verified fixture', duration: 'One month', warranty: 'One month',
+      access: 'Synthetic dedicated access', renewal: 'Manual renewal' };
+    writeFileSync(join(dir, 'data/catalog.json'), JSON.stringify([product]));
+    writeFileSync(join(dir, 'data/seo/editorial.json'), JSON.stringify({ [product.id]: {
+      publication: 'ready', reviewedAt: '2026-01-01', distinctIntent: true, usefulContent: true,
+      contentFingerprint: contentFingerprint(product),
+    } }));
     writeFileSync(join(dir, 'out/tool/synthetic-export-fixture/index.html'),
       `<html><head><title>Synthetic fixture</title><meta name="description" content="Synthetic fixture only"><link rel="canonical" href="${url}"><meta property="og:url" content="${url}"><meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow'}"></head><body><h1>Synthetic fixture</h1>SYNTHETIC-EXPORT-FIXTURE${body}</body></html>`);
     writeFileSync(join(dir, 'out/sitemap.xml'),
@@ -56,5 +62,5 @@ test('body noindex text cannot satisfy the pending offer head directive gate', (
     body: '<p>The word noindex here is not a robots directive.</p>',
   });
   assert.notEqual(result.status, 0, 'Unapproved offer with indexable head passed export gate');
-  assert.match(result.stderr, /Unapproved offer indexable/);
+  assert.match(result.stderr, /Offer has not passed publication review/);
 });

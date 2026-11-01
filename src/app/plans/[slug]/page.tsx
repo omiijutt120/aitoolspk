@@ -1,13 +1,25 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Braces, ArrowLeft } from 'lucide-react';
+import { Braces } from 'lucide-react';
 import { Catalog } from '@/components/catalog';
 import { products } from '@/lib/catalog';
 import { categoryName } from '@/lib/categories';
 import { collectionProducts, groupCollections } from '@/lib/collections';
-import { pageCount, pageDescription, pageNumber, pagePath } from '@/lib/pagination';
-import { metadata, JsonLd, origin } from '@/lib/seo';
+import {
+  pageCount,
+  pageDescription,
+  pageNumber,
+  pagePath,
+} from '@/lib/pagination';
+import { metadata } from '@/lib/seo';
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { PlanComparison } from '@/components/plan-comparison';
+import { money } from '@/lib/commerce.mjs';
+import { CollectionGuide } from '@/components/collection-guide';
+import { CollectionSchema } from '@/components/collection-schema';
+import { PAGE_SIZE } from '@/lib/pagination';
+import { logoThumbnail } from '@/lib/logo-thumbnail';
 
 const collections = groupCollections(products);
 export const dynamicParams = false;
@@ -24,12 +36,13 @@ export async function generateMetadata({
   const collection = collections.find((c) => c.slug === slug);
   if (!collection) return {};
   return metadata(
-    `${collection.title} in Pakistan — compare ${collection.count} options${page > 1 ? ` — Page ${page}` : ''}`,
+    `${collection.title} & PKR prices in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
     pageDescription(
-      `Browse ${collection.count} ${collection.title}. Compare listed PKR prices, durations, access and warranty terms. Confirm your selected offer on WhatsApp.`,
+      `Compare ${collection.count} listed ${collection.brand} plans by PKR price, duration, access and seller warranty. Confirm your exact package on WhatsApp.`,
       page
     ),
-    pagePath(`/plans/${slug}/`, page)
+    pagePath(`/plans/${slug}/`, page),
+    `/og/collections/${slug}.png`
   );
 }
 export default async function PlansPage({
@@ -46,20 +59,34 @@ export default async function PlansPage({
     page > pageCount(collectionProducts(products, slug).length)
   )
     notFound();
+  const plans = collectionProducts(products, slug);
+  const pagePlans = plans.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  const quoteDates = [...new Set(plans.map((p) => p.date))].sort();
   return (
     <div className="container">
       <div className="page-intro collection-intro">
-        <Link href="/tools/" className="text-link" prefetch={false}>
-          <ArrowLeft size={15} />
-          All tools & collections
-        </Link>
+        <Breadcrumbs
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Tools', href: '/tools/' },
+            { name: c.title, href: `/plans/${slug}/` },
+            ...(page > 1
+              ? [
+                  {
+                    name: `Page ${page}`,
+                    href: pagePath(`/plans/${slug}/`, page),
+                  },
+                ]
+              : []),
+          ]}
+        />
         <div className="collection-intro-heading">
           <div className="collection-logo">
             {c.isApi ? (
               <Braces size={30} />
             ) : c.logo ? (
               <Image
-                src={c.logo}
+                src={logoThumbnail(c.logo)}
                 width={40}
                 height={40}
                 alt={`${c.brand} logo`}
@@ -72,13 +99,31 @@ export default async function PlansPage({
             <p className="store-eyebrow">
               {c.count} {c.count === 1 ? 'PLAN' : 'PLANS'} · ONE COLLECTION
             </p>
-            <h1>{c.title}</h1>
+            <h1>
+              {c.title} & prices in Pakistan
+              {page > 1 ? ` — Page ${page}` : ''}
+            </h1>
           </div>
         </div>
         <p>
           {c.isApi
             ? 'Every API offer, together. Search providers and compare credits, durations and access before choosing a plan.'
             : `All ${c.brand} subscriptions and variants, together. Compare the exact duration, access and warranty before choosing your plan.`}
+        </p>
+        <p className="collection-price-context">
+          Listed range:{' '}
+          <strong>
+            {money(c.minPrice)}–{money(c.maxPrice)}
+          </strong>{' '}
+          across different packages. Quote dates:{' '}
+          <time dateTime={quoteDates[0]}>{quoteDates[0]}</time>
+          {quoteDates.length > 1 && (
+            <>
+              –<time dateTime={quoteDates.at(-1)}>{quoteDates.at(-1)}</time>
+            </>
+          )}
+          . A shorter duration or different allowance can explain a lower price;
+          confirm the selected plan before payment.
         </p>
         <nav aria-label="Related categories" className="mt-6">
           <p>Explore related categories</p>
@@ -98,10 +143,7 @@ export default async function PlansPage({
         </nav>
       </div>
       {slug === 'chatgpt' && page === 1 && (
-        <section
-          className="page-intro"
-          aria-labelledby="chatgpt-buyer-clarity"
-        >
+        <section className="page-intro" aria-labelledby="chatgpt-buyer-clarity">
           <h2 id="chatgpt-buyer-clarity">Before comparing ChatGPT plans</h2>
           <p>
             Compare the exact edition, duration, access method and warranty
@@ -111,9 +153,9 @@ export default async function PlansPage({
           </p>
           <p>
             Stock availability does not confirm access approval or resale
-            eligibility. Check the individual offer&apos;s review status. Pending
-            offers require availability and eligibility confirmation first; an
-            enquiry is not a purchase or reservation.
+            eligibility. Check the individual offer&apos;s review status.
+            Pending offers require availability and eligibility confirmation
+            first; an enquiry is not a purchase or reservation.
           </p>
           <p>
             Use the product ID to confirm the final PKR price, safe delivery
@@ -152,14 +194,16 @@ export default async function PlansPage({
             <li>
               Match the plan and product to your task, not just the duration.
               Vendor documentation does not verify any listed offer. Confirm
-              unresolved details using the <Link href="/how-to-order/">ordering checklist</Link>.
+              unresolved details using the{' '}
+              <Link href="/how-to-order/">ordering checklist</Link>.
             </li>
           </ul>
           <p>
             Source checked <time dateTime="2026-10-27">27 October 2026</time>:{' '}
             <a href="https://elevenlabs.io/docs/overview/administration/billing">
               ElevenLabs billing documentation
-            </a>. Vendor rules can change; recheck before deciding.
+            </a>
+            . Vendor rules can change; recheck before deciding.
           </p>
         </section>
       )}
@@ -169,8 +213,9 @@ export default async function PlansPage({
           <p>
             An app subscription, a provider API balance and a gateway allowance
             are different things. Before comparing these listings, identify the
-            provider or gateway, the billing account and the exact model endpoint.
-            A familiar model name alone does not establish who supplies access.
+            provider or gateway, the billing account and the exact model
+            endpoint. A familiar model name alone does not establish who
+            supplies access.
           </p>
           <ul>
             <li>
@@ -188,62 +233,51 @@ export default async function PlansPage({
             </li>
             <li>
               <strong>Check provider-specific exceptions.</strong> Claude
-              documents API credits for eligible Max and Team plans after linking
-              a Console organization; Pro is not eligible. Those included credits
-              expire each billing cycle, or monthly for annual plans, without
-              rollover. This does not establish eligibility for any local offer.
+              documents API credits for eligible Max and Team plans after
+              linking a Console organization; Pro is not eligible. Those
+              included credits expire each billing cycle, or monthly for annual
+              plans, without rollover. This does not establish eligibility for
+              any local offer.
             </li>
             <li>
               <strong>Match credits to the correct service.</strong> Google
               documents separate Gemini API Prepay and Postpay billing. Its
-              purchased Prepay credits expire after 12 months and apply to Gemini
-              API usage, not other Google Cloud services. Do not treat that
-              provider rule as the expiry of a listed gateway allowance.
+              purchased Prepay credits expire after 12 months and apply to
+              Gemini API usage, not other Google Cloud services. Do not treat
+              that provider rule as the expiry of a listed gateway allowance.
             </li>
           </ul>
           <p>
             Vendor documentation does not verify any listed offer. Request the
             exact product ID, unit definition, provider or gateway and written
-            limits using the <Link href="/how-to-order/">ordering checklist</Link>.
-            Never send API keys or account credentials in an enquiry.
+            limits using the{' '}
+            <Link href="/how-to-order/">ordering checklist</Link>. Never send
+            API keys or account credentials in an enquiry.
           </p>
           <p>
             Sources checked <time dateTime="2026-10-28">28 October 2026</time>:{' '}
             <a href="https://platform.claude.com/docs/en/about-claude/api-credits-for-subscribers">
               Claude API credit eligibility
-            </a>{' '}and{' '}
+            </a>{' '}
+            and{' '}
             <a href="https://ai.google.dev/gemini-api/docs/billing">
               Gemini API billing documentation
-            </a>. Provider rules can change; recheck before deciding.
+            </a>
+            . Provider rules can change; recheck before deciding.
           </p>
         </section>
       )}
       <Catalog collection={slug} initialPage={page} />
-      <JsonLd
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              name: 'Home',
-              item: `${origin}/`,
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: 'Tools',
-              item: `${origin}/tools/`,
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
-              name: c.title,
-              item: `${origin}/plans/${slug}/`,
-            },
-          ],
-        }}
+      <PlanComparison plans={pagePlans} brand={c.brand} page={page} />
+      {page === 1 && <CollectionGuide slug={slug} plans={plans} />}
+      <CollectionSchema
+        name={`${c.title}${page > 1 ? ` — Page ${page}` : ''}`}
+        description={`Compare exact ${c.brand} offer variants and terms.`}
+        path={pagePath(`/plans/${slug}/`, page)}
+        items={pagePlans.map((p) => ({
+          name: `${p.name} — ${p.duration}`,
+          path: `/tool/${p.slug}/`,
+        }))}
       />
     </div>
   );

@@ -1,5 +1,10 @@
 name: Read-only production browser smoke
 on:
+  workflow_call:
+    inputs:
+      expected_production_sha:
+        required: true
+        type: string
   workflow_dispatch:
     inputs:
       expected_production_sha:

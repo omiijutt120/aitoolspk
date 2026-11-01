@@ -3,12 +3,22 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      expected_production_sha:
+        description: 'Optional verified live Pages SHA for independent read-only smoke'
+        required: false
+        type: string
 permissions:
   contents: read
 concurrency:
   group: checks-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  production-smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.expected_production_sha != ''
+    uses: ./.github/workflows/production-smoke.yml
+    with:
+      expected_production_sha: ${{ inputs.expected_production_sha }}
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 30

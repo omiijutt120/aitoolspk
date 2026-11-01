@@ -16,8 +16,10 @@ const routes = ['/', '/tools/', '/guides/', '/how-to-order/', '/contact/', `/too
 const summary = { origin, expectedProductionSHA: expected, harnessSHA: process.env.GITHUB_SHA || null,
   shaBasis: 'GitHub successful Pages deployment independently verified by operator; response hashes retained, no embedded site SHA claim',
   observedAt: new Date().toISOString(), sandbox: true, readonly: true, pages: [], errors: [] };
-const browser = await chromium.launch({ chromiumSandbox: true });
+let browser;
 try {
+  // Use the hosted runner's distro-installed Chrome and its supported sandbox profile.
+  browser = await chromium.launch({ channel: 'chrome', chromiumSandbox: true });
   for (const [device, settings] of [['desktop', { viewport: { width: 1440, height: 1000 } }], ['mobile', devices['iPhone 13']]]) {
     const context = await browser.newContext({ ...settings, ignoreHTTPSErrors: false,
       recordHar: { path: `${dir}/${device}.har`, mode: 'minimal', content: 'omit' } });
@@ -68,6 +70,6 @@ try {
   summary.status = 'FAIL'; summary.failure = error.message;
   throw error;
 } finally {
-  await browser.close();
+  if (browser) await browser.close();
   writeFileSync(`${dir}/summary.json`, JSON.stringify(summary, null, 2));
 }

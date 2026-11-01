@@ -1,3 +1,7 @@
+export function hasNoindexDirective(content) {
+  return (content || '').toLowerCase().split(/[\s,]+/).includes('noindex');
+}
+
 export function productionRequestAllowed(value, method) {
   try {
     const url = new URL(value);

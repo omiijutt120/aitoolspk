@@ -2,7 +2,7 @@ import { chromium, devices } from '@playwright/test';
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { productionRequestAllowed } from './production-policy.mjs';
+import { productionRequestAllowed, hasNoindexDirective } from './production-policy.mjs';
 
 const origin = 'https://aitoolspk.tech';
 const expected = process.env.EXPECTED_PRODUCTION_SHA;
@@ -41,8 +41,8 @@ try {
       assert.deepEqual(canonical, [origin + route]);
       const description = await page.locator('head meta[name="description"]').getAttribute('content');
       assert.ok(description && description.length > 20, route);
-      const robots = await page.locator('head meta[name="robots"]').getAttribute('content');
-      const noindex = (robots || '').toLowerCase().split(/[\s,]+/).includes('noindex');
+      const robots = await page.locator('head meta[name="robots"]').evaluateAll((els) => els.map((el) => el.content).join(','));
+      const noindex = hasNoindexDirective(robots);
       assert.equal(noindex, route.startsWith('/tool/'), route);
       const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
       assert.ok(schemas.length > 0, route);

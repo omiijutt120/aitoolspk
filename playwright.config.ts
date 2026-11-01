@@ -14,7 +14,10 @@ export default defineConfig({
   workers: 1,
   use: {
     baseURL,
-    launchOptions: executablePath ? { executablePath } : {},
+    launchOptions: {
+      ...(executablePath ? { executablePath } : process.env.CI ? { channel: 'chrome' } : {}),
+      chromiumSandbox: true,
+    },
     screenshot: 'only-on-failure',
   },
   webServer: {

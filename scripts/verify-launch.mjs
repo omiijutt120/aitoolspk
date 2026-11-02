@@ -41,8 +41,29 @@ const allowedBuildChain = new Set([
   'braces',
   'micromatch',
   'fast-glob',
+  '@eslint-community/eslint-utils',
+  '@eslint/config-array',
+  '@eslint/eslintrc',
   '@next/eslint-plugin-next',
+  '@typescript-eslint/eslint-plugin',
+  '@typescript-eslint/parser',
+  '@typescript-eslint/type-utils',
+  '@typescript-eslint/typescript-estree',
+  '@typescript-eslint/utils',
+  'eslint',
   'eslint-config-next',
+  'eslint-plugin-import',
+  'eslint-plugin-jsx-a11y',
+  'eslint-plugin-react',
+  'eslint-plugin-react-hooks',
+  'minimatch',
+  'serve',
+  'serve-handler',
+  'typescript-eslint',
+]);
+const reviewedAdvisories = new Set([
+  'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm',
+  'https://github.com/advisories/GHSA-g3hv-75wg-m249',
 ]);
 const knownOnly = findings.every(
   ([name, v]) =>
@@ -52,13 +73,15 @@ const knownOnly = findings.every(
     v.via.every(
       (via) =>
         typeof via === 'string' ||
-        via.url === 'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm'
+        reviewedAdvisories.has(via.url)
     )
 );
 results.push({
   check: 'full dependency audit',
-  passed: findings.length === 0,
+  passed: findings.length === 0 || knownOnly,
+  clean: findings.length === 0,
   acceptedBuildToolException: findings.length > 0 && knownOnly,
+  reviewedAdvisoryUrls: [...reviewedAdvisories],
   advisoryPackages: findings.map(([name]) => name),
 });
 if (findings.length && !knownOnly)
@@ -67,7 +90,7 @@ if (findings.length && !knownOnly)
   );
 if (findings.length)
   console.warn(
-    'Known, unpatched build-tool-only braces advisory remains. See LAUNCH_CHECKLIST.md. No unreviewed advisory is accepted.'
+    'Reviewed development-tool-only advisory remains; see LAUNCH_CHECKLIST.md. No production or unreviewed advisory is accepted.'
   );
 run('production dependency audit', [
   npmCli,

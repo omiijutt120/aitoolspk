@@ -14,7 +14,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const g = guides.find((item) => item.slug === slug);
   if (!g) return {};
-  const meta = metadata(g.title, g.description, `/guides/${slug}/`);
+  const meta = metadata(g.seoTitle ?? g.title, g.description, `/guides/${slug}/`);
   return {
     ...meta,
     openGraph: { ...meta.openGraph, type: 'article', modifiedTime: g.checked },

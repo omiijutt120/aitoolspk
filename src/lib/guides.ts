@@ -3,6 +3,7 @@ import additionalGuides from '../../data/seo/additional-guides.json';
 export type BuyingGuide = {
   slug: string;
   title: string;
+  seoTitle?: string;
   description: string;
   checked: string;
   sections: {
@@ -111,6 +112,7 @@ const originalGuides: BuyingGuide[] = [
   {
     slug: 'understanding-credits-and-plan-duration',
     title: 'Credits, usage limits and subscription duration explained',
+    seoTitle: 'AI Credits and Subscription Duration Explained',
     description:
       'Understand the difference between access duration, consumption credits, API billing, fair usage and seller warranty when comparing digital subscriptions.',
     checked: '2026-10-23',

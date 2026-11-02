@@ -15,7 +15,7 @@ type Props = { params: Promise<{ page?: string }> };
 export async function generateMetadata({ params }: Props) {
   const page = pageNumber((await params).page);
   return makeMetadata(
-    `Explore all tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
+    `AI Tools & Subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
     pageDescription(
       'Search AI tools, compare exact subscriptions and retail PKR prices, and filter by brand, duration, warranty, access and availability.',
       page

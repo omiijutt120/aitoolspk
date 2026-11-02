@@ -36,7 +36,7 @@ export async function generateMetadata({
   const collection = collections.find((c) => c.slug === slug);
   if (!collection) return {};
   return metadata(
-    `${collection.title} & PKR prices in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
+    `${slug === 'canva' ? 'Canva Pro Prices & Plans in Pakistan' : `${collection.brand} Plans in Pakistan`}${page > 1 ? ` — Page ${page}` : ''}`,
     pageDescription(
       `Compare ${collection.count} listed ${collection.brand} plans by PKR price, duration, access and seller warranty. Confirm your exact package on WhatsApp.`,
       page
@@ -100,7 +100,9 @@ export default async function PlansPage({
               {c.count} {c.count === 1 ? 'PLAN' : 'PLANS'} · ONE COLLECTION
             </p>
             <h1>
-              {c.title} & prices in Pakistan
+              {slug === 'canva'
+                ? 'Canva Pro prices & plan options in Pakistan'
+                : `${c.title} & prices in Pakistan`}
               {page > 1 ? ` — Page ${page}` : ''}
             </h1>
           </div>

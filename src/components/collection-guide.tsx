@@ -129,6 +129,15 @@ export function CollectionGuide({
       <p>{orderAnswer}</p>
       <h3>{warrantyQuestion}</h3>
       <p>{warrantyAnswer}</p>
+      <h3 lang="ur-Latn">
+        {brand} ka plan lene se pehle kya confirm karna chahiye?
+      </h3>
+      <p lang="ur-Latn">
+        Exact plan ka product ID, muddat, PKR price, access ka tareeqa aur
+        warranty likhwa kar confirm karein. Sirf brand name ya Available label
+        se tamam features confirm nahi hote. Password, OTP ya recovery code
+        share na karein.
+      </p>
       {disclaimer}
       <div className="guide-links">
         {guide.related.map((link) => (

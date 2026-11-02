@@ -30,6 +30,20 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
 };
+
+/**
+ * Profiles that unambiguously identify this business elsewhere on the web.
+ *
+ * Set NEXT_PUBLIC_SOCIAL_PROFILES to a comma-separated list of real, verified
+ * profile URLs, e.g. "https://www.facebook.com/x,https://www.instagram.com/x".
+ * Nothing is emitted while the list is empty — a placeholder URL would be a
+ * false identity claim, which is worse than a missing one.
+ */
+const sameAs = (process.env.NEXT_PUBLIC_SOCIAL_PROFILES || '')
+  .split(',')
+  .map((url) => url.trim())
+  .filter((url) => /^https:\/\//.test(url));
+
 export default function RootLayout({
   children,
 }: {
@@ -69,6 +83,7 @@ export default function RootLayout({
               'Digital subscription comparisons',
               'PKR plan pricing',
             ],
+            ...(sameAs.length > 0 ? { sameAs } : {}),
             contactPoint: {
               '@type': 'ContactPoint',
               telephone: '+923714549245',

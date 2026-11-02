@@ -276,6 +276,7 @@ export default async function PlansPage({
         name={`${c.title}${page > 1 ? ` — Page ${page}` : ''}`}
         description={`Compare exact ${c.brand} offer variants and terms.`}
         path={pagePath(`/plans/${slug}/`, page)}
+        dateModified={quoteDates.at(-1)}
         items={pagePlans.map((p) => ({
           name: `${p.name} — ${p.duration}`,
           path: `/tool/${p.slug}/`,

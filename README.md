@@ -164,7 +164,13 @@ To roll back, prepare a reviewed revert commit on `main`, pass the checks, and p
 
 `npm run test:browser` uses the production export at port 3000. Install Chromium with `npx playwright install chromium` on a new machine; Linux CI uses `npx playwright install --with-deps chromium`. Screenshots go to ignored `reports/`. Tests cover 320/375/390/600/768/820/1024/1280/1440px, touch, keyboard dialogs, query/filter behavior, console errors and automated WCAG AA scanning. These are emulated Chrome checks; physical devices, Safari, a real WhatsApp handoff and a manual screen-reader review remain separate checks.
 
+If port 3000 is already used, set `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3100` for the test command. Playwright will serve this repository's `out/` export on that port; existing local servers are left alone.
+
 ## SEO maintenance and owner setup
+
+The blog is at `/blog/`. Its searchable product library covers every active collection, with native pagination and links to exact catalog variants. Original workflow articles live in `data/blog/posts.json`; add a unique slug, existing collection slug, specific useful content, FAQs, official sources and real publication/review dates. `src/lib/blog.ts` derives routes and reading estimates, while `src/app/blog/` renders static pages. Prices and plan terms come directly from the sanitized catalog, not manually copied article text. Updating an article's facts requires reviewing its cited sources; do not bump dates simply to appear fresh. Vendor capabilities do not verify a seller package.
+
+Blog routes are automatically included in the sitemap and optional discovery navigation. Add or update an article, then run `npm run launch:check` and `npm run test:browser` before release. The blog tests check complete collection coverage without JavaScript, search/reset/pagination, exact plan details, article metadata, official image assets, mobile navigation, accessibility and overflow at mobile/tablet/desktop widths. Avoid publishing near-identical articles for every warranty variant: the existing parent comparison pages remain the destination for those variants.
 
 The existing metadata, canonical, robots and static-pagination implementation is retained. Collection buying guidance lives in `src/lib/collection-guides.ts`; reviewed editorial content lives in `src/lib/guides.ts`. Guides are static HTML with source links, actual review dates and Article markup. Update facts and dates only after reviewing sources. Offer price dates do not become sitemap modification dates. Do not remove commercially pending offer restrictions to improve an indexing count.
 

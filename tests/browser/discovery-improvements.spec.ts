@@ -88,9 +88,14 @@ test('expanded collections have distinct guidance, local social previews and acc
   await page.locator('.plan-comparison summary').click();
   await expect(row).toContainText('PKR 1,200');
   await expect(row).toContainText('Full seller warranty (18 months)');
-  expect(await row.locator('a').getAttribute('href')).toBe(
+  // The first link in the row is the exact plan; the price cell additionally
+  // carries an outbound link to the vendor's own site.
+  expect(await row.locator('a').first().getAttribute('href')).toBe(
     `/tool/${plan.slug}/`
   );
+  const vendor = row.locator('td.comparison-price a[href^="https://"]');
+  if ((await vendor.count()) > 0)
+    await expect(vendor.first()).toHaveAttribute('rel', /noopener/);
 });
 
 test('all ten buying guides are discoverable with factual dates, schema and native cross-links', async ({
@@ -140,7 +145,13 @@ test('About, editorial policy and contact publish only supplied business contact
     const org = schema.find((s) => s['@type'] === 'Organization');
     expect(org.contactPoint.telephone).toBe('+923714549245');
     expect(org.address).toBeUndefined();
-    expect(org.sameAs).toBeUndefined();
+    // Only profiles that resolve are declared. A social placeholder would be a
+    // false identity claim, so nothing beyond the two public GitHub records the
+    // site actually owns may appear here.
+    expect(org.sameAs).toEqual([
+      'https://github.com/omiijutt120/aitoolspk',
+      'https://github.com/omiijutt120',
+    ]);
     expect(schema.filter((s) => s['@type'] === 'BreadcrumbList')).toHaveLength(
       1
     );

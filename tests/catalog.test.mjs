@@ -2,7 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { parse } from 'csv-parse/sync';
-import { normalize, clean } from '../scripts/import-catalog.mjs';
+import {
+  normalize,
+  clean,
+  publicProductName,
+} from '../scripts/import-catalog.mjs';
 import {
   canBuy,
   whatsappUrl,
@@ -28,6 +32,21 @@ const sample = {
 };
 const catalog = JSON.parse(readFileSync('data/catalog.json', 'utf8'));
 const originalCatalog = catalog.filter((p) => p.sourceType !== 'seller-listed');
+test('public names omit unsupported monetization notes without changing stable source slugs', () => {
+  const sourceName =
+    '(can be monetized) Upgrade X Premium 3 months full warranty';
+  assert.equal(
+    publicProductName(sourceName),
+    'Upgrade X Premium 3 months full warranty'
+  );
+  const product = normalize({ ...sample, Name: sourceName });
+  assert.equal(product.name, 'Upgrade X Premium 3 months full warranty');
+  assert.match(
+    product.slug,
+    /^can-be-monetized-upgrade-x-premium-3-months-full-warranty-/
+  );
+  assert.equal(product.price, 1000);
+});
 const catalogUpdates = JSON.parse(
   readFileSync('data/catalog-updates.json', 'utf8')
 );

@@ -4,7 +4,9 @@ import { Footer } from '@/components/footer';
 import { JsonLd, origin } from '@/lib/seo';
 import './globals.css';
 import './storefront.css';
+import './blog.css';
 import { EventBridge } from '@/components/event-bridge';
+import { CanonicalGuard } from '@/components/canonical-guard';
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
   title: {
@@ -34,15 +36,20 @@ export const viewport: Viewport = {
 /**
  * Profiles that unambiguously identify this business elsewhere on the web.
  *
- * Set NEXT_PUBLIC_SOCIAL_PROFILES to a comma-separated list of real, verified
- * profile URLs, e.g. "https://www.facebook.com/x,https://www.instagram.com/x".
- * Nothing is emitted while the list is empty — a placeholder URL would be a
- * false identity claim, which is worse than a missing one.
+ * The GitHub repository and its owner account are public and resolve, so they
+ * are declared unconditionally. Add real, verified social profiles with
+ * NEXT_PUBLIC_SOCIAL_PROFILES as a comma-separated list, e.g.
+ * "https://www.facebook.com/x,https://www.instagram.com/x". Nothing else is
+ * emitted — a placeholder URL would be a false identity claim.
  */
-const sameAs = (process.env.NEXT_PUBLIC_SOCIAL_PROFILES || '')
-  .split(',')
-  .map((url) => url.trim())
-  .filter((url) => /^https:\/\//.test(url));
+const sameAs = [
+  'https://github.com/omiijutt120/aitoolspk',
+  'https://github.com/omiijutt120',
+  ...(process.env.NEXT_PUBLIC_SOCIAL_PROFILES || '')
+    .split(',')
+    .map((url) => url.trim())
+    .filter((url) => /^https:\/\//.test(url)),
+];
 
 export default function RootLayout({
   children,
@@ -67,6 +74,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <EventBridge />
+        <CanonicalGuard />
         <JsonLd
           data={{
             '@context': 'https://schema.org',

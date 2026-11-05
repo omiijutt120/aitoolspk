@@ -19,6 +19,10 @@ export function clean(value = '') {
     .replace(/\s+/g, ' ')
     .trim();
 }
+/** Keep unsupported supplier marketing notes out of public display names. */
+export function publicProductName(value) {
+  return clean(value).replace(/^\(can be monetized\)\s*/i, '');
+}
 const slug = (s) =>
   s
     .toLowerCase()
@@ -282,7 +286,7 @@ export function normalize(row, approvals = {}, brands = {}, inventory = {}) {
   return {
     id,
     slug: `${slug(review.name || name).slice(0, 100)}-${id.toLowerCase()}`,
-    name: clean(review.name || name),
+    name: publicProductName(review.name || name),
     brand,
     brandSlug,
     category,

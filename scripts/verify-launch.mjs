@@ -37,7 +37,9 @@ writeFileSync(
 );
 const findings = Object.entries(full.vulnerabilities || {});
 const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
-const allowedBuildChain = new Set([
+// These packages are used only by linting or the local export server.
+// Revisit this narrow exception when their upstream dependency chains update.
+const allowedDevChain = new Set([
   'braces',
   'micromatch',
   'fast-glob',
@@ -67,7 +69,7 @@ const reviewedAdvisories = new Set([
 ]);
 const knownOnly = findings.every(
   ([name, v]) =>
-    allowedBuildChain.has(name) &&
+    allowedDevChain.has(name) &&
     v.severity !== 'critical' &&
     v.nodes.every((node) => lock.packages[node]?.dev === true) &&
     v.via.every(

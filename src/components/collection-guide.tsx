@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { Product } from '@/lib/types';
 import { collectionGuides } from '@/lib/collection-guides';
 import { money } from '@/lib/commerce.mjs';
+import { author, authorPath } from '@/lib/author';
+import { PriceSource } from './price-source';
 
 const DEFAULT_CHECKED = '2026-10-23';
 
@@ -36,7 +38,26 @@ export function CollectionGuide({
   const minPrice = Math.min(...plans.map((p) => p.price));
   const maxPrice = Math.max(...plans.map((p) => p.price));
   const priceQuestion = `How much do ${brand} plans cost in Pakistan?`;
-  const priceAnswer = `This collection lists ${plans.length} exact offer variants priced from ${money(minPrice)} to ${money(maxPrice)}. These are seller-listed quotes for different packages, not one standard monthly vendor price. Confirm your selected product ID, duration, current amount and delivery terms before paying.`;
+  const priceAnswer = (
+    <>
+      This collection lists {plans.length} exact offer variants priced from{' '}
+      {money(minPrice)} to {money(maxPrice)}.{' '}
+      <PriceSource brand={plans[0]?.brand || brand} brandSlug={slug} /> These
+      are seller-listed quotes for different packages, not one standard monthly
+      vendor price. Confirm your selected product ID, duration, current amount
+      and delivery terms before paying.
+    </>
+  );
+  const byline = (
+    <p className="guide-byline">
+      By{' '}
+      <Link href={authorPath} prefetch={false}>
+        {author.name}
+      </Link>
+      , {author.role.toLowerCase()}. Reviewed{' '}
+      <time dateTime={checked}>{checked}</time>.
+    </p>
+  );
 
   const durationQuestion =
     durations.length > 0 ? `What durations are listed for ${brand} plans?` : null;
@@ -81,6 +102,7 @@ export function CollectionGuide({
       >
         <h2>{priceQuestion}</h2>
         <p>{priceAnswer}</p>
+        {byline}
         {durationQuestion && durationAnswer && (
           <>
             <h2>{durationQuestion}</h2>
@@ -110,6 +132,7 @@ export function CollectionGuide({
     >
       <h2>{priceQuestion}</h2>
       <p>{priceAnswer}</p>
+      {byline}
       <h2>{guide.heading}</h2>
       <p>{guide.intro}</p>
       {durationAnswer && <p>{durationAnswer}</p>}

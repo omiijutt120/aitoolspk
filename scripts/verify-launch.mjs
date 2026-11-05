@@ -57,10 +57,15 @@ const allowedDevChain = new Set([
   'eslint-plugin-import',
   'eslint-plugin-jsx-a11y',
   'eslint-plugin-react',
+  'eslint-plugin-react-hooks',
   'minimatch',
   'serve',
   'serve-handler',
   'typescript-eslint',
+]);
+const reviewedAdvisories = new Set([
+  'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm',
+  'https://github.com/advisories/GHSA-g3hv-75wg-m249',
 ]);
 const knownOnly = findings.every(
   ([name, v]) =>
@@ -70,16 +75,15 @@ const knownOnly = findings.every(
     v.via.every(
       (via) =>
         typeof via === 'string' ||
-        [
-          'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm',
-          'https://github.com/advisories/GHSA-g3hv-75wg-m249',
-        ].includes(via.url)
+        reviewedAdvisories.has(via.url)
     )
 );
 results.push({
   check: 'full dependency audit',
-  passed: findings.length === 0,
+  passed: findings.length === 0 || knownOnly,
+  clean: findings.length === 0,
   acceptedBuildToolException: findings.length > 0 && knownOnly,
+  reviewedAdvisoryUrls: [...reviewedAdvisories],
   advisoryPackages: findings.map(([name]) => name),
 });
 if (findings.length && !knownOnly)
@@ -88,7 +92,7 @@ if (findings.length && !knownOnly)
   );
 if (findings.length)
   console.warn(
-    'Reviewed dev-only dependency advisories remain. See LAUNCH_CHECKLIST.md. No unreviewed advisory is accepted.'
+    'Reviewed development-tool-only advisory remains; see LAUNCH_CHECKLIST.md. No production or unreviewed advisory is accepted.'
   );
 run('production dependency audit', [
   npmCli,

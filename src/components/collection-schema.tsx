@@ -5,11 +5,14 @@ export function CollectionSchema({
   description,
   path,
   items,
+  dateModified,
 }: {
   name: string;
   description: string;
   path: string;
   items: { name: string; path: string }[];
+  /** ISO date of the newest quote in the collection, not a build date. */
+  dateModified?: string;
 }) {
   return (
     <JsonLd
@@ -20,6 +23,7 @@ export function CollectionSchema({
         url: `${origin}${path}`,
         name,
         description,
+        ...(dateModified ? { dateModified } : {}),
         isPartOf: { '@id': `${origin}/#website` },
         mainEntity: {
           '@type': 'ItemList',

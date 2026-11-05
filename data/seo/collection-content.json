@@ -827,7 +827,7 @@
     ]
   },
   "envato": {
-    "checked": "2026-10-24",
+    "checked": "2026-11-02",
     "heading": "Check Envato resource access and project licensing together",
     "intro": "A creative-resource subscription should be compared by the assets and project rights you need. Templates, stock media, fonts and AI-related allowances can have different rules. Confirm the actual package and licensing process rather than treating a download as automatic permission for every reuse.",
     "choose": [
@@ -858,7 +858,7 @@
     "sources": [
       {
         "label": "Envato official licensing overview",
-        "href": "https://elements.envato.com/license-terms"
+        "href": "https://help.elements.envato.com/hc/en-us/articles/360000628966-Envato-Elements-License"
       }
     ]
   },

@@ -3,7 +3,7 @@ import { Document } from '@/components/document';
 import { JsonLd, metadata as makeMetadata, origin } from '@/lib/seo';
 
 export const metadata = makeMetadata(
-  'About AiToolsPk — AI subscription comparisons in Pakistan',
+  'About Our AI Tools Catalog',
   'Learn how AiToolsPk compares AI tools and digital subscriptions using listed PKR prices, exact variants, clear limitations and WhatsApp enquiries.',
   '/about/'
 );

@@ -19,6 +19,8 @@ import { CategoryIcon } from '@/components/icon';
 import { Steps } from '@/components/steps';
 import { FaqList } from '@/components/faq';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
+import { BlogCard } from '@/components/blog-card';
+import { blogPosts } from '@/lib/blog';
 
 export const metadata = makeMetadata(
   'AI tools & subscriptions in Pakistan — PKR prices',
@@ -279,6 +281,29 @@ export default function Home() {
           </Link>
         </div>
         <FaqList limit={4} headingLevel={3} />
+      </section>
+      <section
+        className="container blog-section"
+        aria-labelledby="home-blog-heading"
+      >
+        <div className="blog-section-heading">
+          <div>
+            <p className="store-eyebrow">FROM THE JOURNAL</p>
+            <h2 id="home-blog-heading">Put your tools to work.</h2>
+          </div>
+          <Link className="text-link" href="/blog/">
+            Explore the blog <ArrowUpRight size={17} />
+          </Link>
+        </div>
+        <div className="blog-grid blog-grid-related">
+          {blogPosts
+            .filter((post) =>
+              ['chatgpt', 'canva', 'elevenlabs'].includes(post.collection)
+            )
+            .map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+        </div>
       </section>
       <section className="container store-support">
         <div>

@@ -8,9 +8,18 @@ import { guides } from '@/lib/guides';
 import { productPublication } from '@/lib/seo-editorial';
 import { collectionGuides } from '@/lib/collection-guides';
 import collectionModified from '../../data/seo/collection-modified.json';
+import { blogDirectoryPaths, blogPosts, blogReviewed } from '@/lib/blog';
 export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
+    ...blogDirectoryPaths().map((path) => ({
+      url: `${origin}${path}`,
+      lastModified: blogReviewed,
+    })),
+    ...blogPosts.map((post) => ({
+      url: `${origin}/blog/${post.slug}/`,
+      lastModified: post.checked,
+    })),
     ...paginatedSitemapUrls().map((path) => ({
       url: `${origin}${path}`,
       lastModified: '2026-10-24',

@@ -36,6 +36,7 @@ export function Footer() {
             <p className="footer-label">EXPLORE</p>
             <Link href="/tools/">All tools</Link>
             <Link href="/categories/">Categories</Link>
+            <Link href="/blog/">Blog & product guides</Link>
             <Link href="/how-to-order/">How to order</Link>
             <Link href="/guides/" prefetch={false}>
               Buying guides

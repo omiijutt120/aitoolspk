@@ -37,22 +37,43 @@ writeFileSync(
 );
 const findings = Object.entries(full.vulnerabilities || {});
 const lock = JSON.parse(readFileSync('package-lock.json', 'utf8'));
-const allowedBuildChain = new Set([
+// These packages are used only by linting or the local export server.
+// Revisit this narrow exception when their upstream dependency chains update.
+const allowedDevChain = new Set([
   'braces',
   'micromatch',
   'fast-glob',
+  '@eslint-community/eslint-utils',
+  '@eslint/config-array',
+  '@eslint/eslintrc',
   '@next/eslint-plugin-next',
+  '@typescript-eslint/eslint-plugin',
+  '@typescript-eslint/parser',
+  '@typescript-eslint/type-utils',
+  '@typescript-eslint/typescript-estree',
+  '@typescript-eslint/utils',
+  'eslint',
   'eslint-config-next',
+  'eslint-plugin-import',
+  'eslint-plugin-jsx-a11y',
+  'eslint-plugin-react',
+  'minimatch',
+  'serve',
+  'serve-handler',
+  'typescript-eslint',
 ]);
 const knownOnly = findings.every(
   ([name, v]) =>
-    allowedBuildChain.has(name) &&
+    allowedDevChain.has(name) &&
     v.severity !== 'critical' &&
     v.nodes.every((node) => lock.packages[node]?.dev === true) &&
     v.via.every(
       (via) =>
         typeof via === 'string' ||
-        via.url === 'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm'
+        [
+          'https://github.com/advisories/GHSA-vfj7-8cjw-p6xm',
+          'https://github.com/advisories/GHSA-g3hv-75wg-m249',
+        ].includes(via.url)
     )
 );
 results.push({
@@ -67,7 +88,7 @@ if (findings.length && !knownOnly)
   );
 if (findings.length)
   console.warn(
-    'Known, unpatched build-tool-only braces advisory remains. See LAUNCH_CHECKLIST.md. No unreviewed advisory is accepted.'
+    'Reviewed dev-only dependency advisories remain. See LAUNCH_CHECKLIST.md. No unreviewed advisory is accepted.'
   );
 run('production dependency audit', [
   npmCli,

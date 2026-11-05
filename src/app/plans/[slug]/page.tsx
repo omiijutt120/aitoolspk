@@ -20,6 +20,7 @@ import { CollectionGuide } from '@/components/collection-guide';
 import { CollectionSchema } from '@/components/collection-schema';
 import { PAGE_SIZE } from '@/lib/pagination';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
+import { blogPostForCollection } from '@/lib/blog';
 
 const collections = groupCollections(products);
 export const dynamicParams = false;
@@ -62,6 +63,7 @@ export default async function PlansPage({
   const plans = collectionProducts(products, slug);
   const pagePlans = plans.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
   const quoteDates = [...new Set(plans.map((p) => p.date))].sort();
+  const article = blogPostForCollection(slug);
   return (
     <div className="container">
       <div className="page-intro collection-intro">
@@ -270,6 +272,24 @@ export default async function PlansPage({
       <Catalog collection={slug} initialPage={page} />
       <PlanComparison plans={pagePlans} brand={c.brand} page={page} />
       {page === 1 && <CollectionGuide slug={slug} plans={plans} />}
+      {page === 1 && article && (
+        <aside className="blog-collection-link">
+          <p className="store-eyebrow">A PRACTICAL PRODUCT GUIDE</p>
+          <h2>
+            <Link href={`/blog/${article.slug}/`} prefetch={false}>
+              {article.title}
+            </Link>
+          </h2>
+          <p>{article.description}</p>
+          <Link
+            className="text-link"
+            href={`/blog/${article.slug}/`}
+            prefetch={false}
+          >
+            Read the article →
+          </Link>
+        </aside>
+      )}
       <CollectionSchema
         name={`${c.title}${page > 1 ? ` — Page ${page}` : ''}`}
         description={`Compare exact ${c.brand} offer variants and terms.`}

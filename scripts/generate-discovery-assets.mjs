@@ -100,6 +100,7 @@ const lines = [
   ...[
     ['About', '/about/'],
     ['All tools', '/tools/'],
+    ['Blog and complete product library', '/blog/'],
     ['Categories', '/categories/'],
     ['How to order', '/how-to-order/'],
     ['Contact: WhatsApp +923714549245', '/contact/'],
@@ -114,6 +115,12 @@ const lines = [
   '',
   ...guideLinks.map(
     ([name, slug]) => `- [${name}](https://aitoolspk.tech/guides/${slug}/)`
+  ),
+  '',
+  '## Product workflows',
+  '',
+  ...JSON.parse(await readFile('data/blog/posts.json', 'utf8')).map(
+    (post) => `- [${post.title}](https://aitoolspk.tech/blog/${post.slug}/)`
   ),
   '',
   '## Plan collections',

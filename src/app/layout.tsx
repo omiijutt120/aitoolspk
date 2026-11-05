@@ -4,6 +4,7 @@ import { Footer } from '@/components/footer';
 import { JsonLd, origin } from '@/lib/seo';
 import './globals.css';
 import './storefront.css';
+import './blog.css';
 import { EventBridge } from '@/components/event-bridge';
 export const metadata: Metadata = {
   metadataBase: new URL(origin),

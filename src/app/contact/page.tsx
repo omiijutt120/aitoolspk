@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'Contact AiToolsPk',
+  'Contact and order support',
   'Contact AiToolsPk on WhatsApp at +92 371 4549245 for plan questions, current availability, order support or refund requests.',
   '/contact/'
 );

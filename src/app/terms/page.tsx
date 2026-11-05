@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'Terms of service',
+  'Terms of service and warranties',
   'AiToolsPk catalog terms covering indicative PKR prices, independent seller status, eligibility, safe delivery, warranties and WhatsApp order confirmation.',
   '/terms/'
 );

@@ -143,7 +143,6 @@ export default async function Blog({ params }: Props) {
                 brand: c.brand,
                 logo: c.logo,
                 count: c.count,
-                minPrice: c.minPrice,
                 category: c.categories.map(categoryName).join(' · '),
                 ...(article
                   ? { article: { slug: article.slug, title: article.title } }

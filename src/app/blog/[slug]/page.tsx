@@ -46,6 +46,16 @@ export default async function BlogArticle({ params }: Props) {
   if (!post) notFound();
   const collection = blogCollections.find((c) => c.slug === post.collection)!;
   const plans = collectionProducts(products, post.collection);
+  const explicitTermPlans = plans.filter(
+    (plan) =>
+      plan.duration !== 'Not specified' &&
+      plan.warranty !== 'Not specified' &&
+      !/no warranty/i.test(plan.warranty) &&
+      !/\bfree\b|\$0\b/i.test(plan.name)
+  );
+  const samplePlans = (
+    explicitTermPlans.length ? explicitTermPlans : plans
+  ).slice(0, 3);
   const related = blogPosts
     .filter((p) => p.slug !== post.slug)
     .sort(
@@ -141,7 +151,7 @@ export default async function BlogArticle({ params }: Props) {
                   features before ordering.
                 </p>
                 <div className="blog-plan-samples">
-                  {plans.slice(0, 3).map((plan) => (
+                  {samplePlans.map((plan) => (
                     <div className="blog-plan-sample" key={plan.id}>
                       <h3>
                         <Link href={`/tool/${plan.slug}/`} prefetch={false}>
@@ -177,7 +187,7 @@ export default async function BlogArticle({ params }: Props) {
                   ))}
                 </div>
                 <p className="blog-plan-note">
-                  Showing {Math.min(plans.length, 3)} sample listings. A listed
+                  Showing {samplePlans.length} sample listings. A listed
                   warranty is a seller term; it does not establish vendor
                   coverage or an automatic refund.
                 </p>

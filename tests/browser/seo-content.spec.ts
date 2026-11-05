@@ -53,10 +53,11 @@ test('offer buyer-guide links are native and operational intelligence is never p
 
 test('root-domain HTML, scripts, styles and hydrated internal links never use the repository prefix', async ({
   page,
+  baseURL,
 }) => {
   const failed: string[] = [];
   page.on('response', (r) => {
-    if (r.url().startsWith('http://127.0.0.1:3000/') && r.status() >= 400)
+    if (r.url().startsWith(`${baseURL}/`) && r.status() >= 400)
       failed.push(r.url());
   });
   for (const path of [

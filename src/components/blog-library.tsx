@@ -9,7 +9,7 @@ import { PAGE_SIZE, pageCount, pagePath } from '@/lib/pagination';
 
 type LibraryCollection = Pick<
   PlanCollection,
-  'slug' | 'brand' | 'logo' | 'count' | 'minPrice'
+  'slug' | 'brand' | 'logo' | 'count'
 > & {
   category: string;
   article?: { slug: string; title: string };
@@ -95,7 +95,7 @@ export function BlogLibrary({
             </div>
             <p>
               {collection.count} {collection.count === 1 ? 'plan' : 'plans'} ·
-              Listed from PKR {collection.minPrice.toLocaleString('en-PK')}
+              Compare listed PKR prices
             </p>
             <Link
               className="text-link"

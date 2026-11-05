@@ -164,6 +164,8 @@ To roll back, prepare a reviewed revert commit on `main`, pass the checks, and p
 
 `npm run test:browser` uses the production export at port 3000. Install Chromium with `npx playwright install chromium` on a new machine; Linux CI uses `npx playwright install --with-deps chromium`. Screenshots go to ignored `reports/`. Tests cover 320/375/390/600/768/820/1024/1280/1440px, touch, keyboard dialogs, query/filter behavior, console errors and automated WCAG AA scanning. These are emulated Chrome checks; physical devices, Safari, a real WhatsApp handoff and a manual screen-reader review remain separate checks.
 
+If port 3000 is already used, set `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3100` for the test command. Playwright will serve this repository's `out/` export on that port; existing local servers are left alone.
+
 ## SEO maintenance and owner setup
 
 The blog is at `/blog/`. Its searchable product library covers every active collection, with native pagination and links to exact catalog variants. Original workflow articles live in `data/blog/posts.json`; add a unique slug, existing collection slug, specific useful content, FAQs, official sources and real publication/review dates. `src/lib/blog.ts` derives routes and reading estimates, while `src/app/blog/` renders static pages. Prices and plan terms come directly from the sanitized catalog, not manually copied article text. Updating an article's facts requires reviewing its cited sources; do not bump dates simply to appear fresh. Vendor capabilities do not verify a seller package.

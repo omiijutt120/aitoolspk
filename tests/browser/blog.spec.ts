@@ -11,14 +11,18 @@ const origin = 'https://aitoolspk.tech';
 
 test('product library covers every active collection through native pagination without JavaScript', async ({
   browser,
+  baseURL,
 }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    baseURL,
+  });
   const page = await context.newPage();
   const found = new Set<string>();
   const count = Math.ceil(collections.size / 24);
   for (let number = 1; number <= count; number++) {
     const path = number === 1 ? '/blog/' : `/blog/page/${number}/`;
-    await page.goto(`http://127.0.0.1:3000${path}`);
+    await page.goto(path);
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',

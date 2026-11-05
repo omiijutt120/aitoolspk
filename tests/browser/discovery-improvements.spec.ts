@@ -108,7 +108,10 @@ test('all ten buying guides are discoverable with factual dates, schema and nati
   const robots = await (await request.get('/robots.txt')).text();
   expect(robots).not.toMatch(/^Host:/im);
   expect(robots).toContain('Sitemap: https://aitoolspk.tech/sitemap.xml');
-  expect(sitemap).toContain('<lastmod>2026-10-24</lastmod>');
+  const sitemapEntries = sitemap.match(/<url>[\s\S]*?<\/url>/g) || [];
+  expect(sitemapEntries.length).toBeGreaterThan(100);
+  for (const entry of sitemapEntries)
+    expect(entry).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
   const navigation = await (await request.get('/llms.txt')).text();
   expect(navigation).not.toContain('/tool/');
   for (const guide of extraGuides) {

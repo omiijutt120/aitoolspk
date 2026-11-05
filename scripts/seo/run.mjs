@@ -249,9 +249,13 @@ if (['report', 'audit', 'validate'].includes(mode)) {
   if (!existsSync('out/index.html'))
     throw new Error('Build the static export first: npm run build');
   const pages = await inspectExport('out', ORIGIN);
-  const sitemap = [
-    ...readFileSync('out/sitemap.xml', 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g),
-  ].map((m) => m[1]);
+  const sitemapXml = readFileSync('out/sitemap.xml', 'utf8');
+  const sitemapBlocks = [
+    ...sitemapXml.matchAll(/<url>([\s\S]*?)<\/url>/g),
+  ].map((match) => match[1]);
+  const sitemap = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+    (m) => m[1]
+  );
   const sitemapSet = new Set(sitemap);
   const pageMap = new Map(pages.map((p) => [p.url, p]));
   const incoming = new Map();
@@ -326,6 +330,23 @@ if (['report', 'audit', 'validate'].includes(mode)) {
   }
   for (const url of sitemap)
     if (!pageMap.has(url)) errors.push(`Sitemap route absent: ${url}`);
+  // `lastmod` is a crawl hint: Google discards it when it is missing, invalid
+  // or implausible. Eight URLs once shipped without one, so treat a regression
+  // as a build failure rather than silent crawl-budget waste.
+  if (sitemapBlocks.length !== sitemap.length)
+    errors.push('Sitemap contains malformed <url> entries');
+  const latestAllowed = Date.now() + 86400000;
+  for (const block of sitemapBlocks) {
+    const loc = /<loc>([^<]+)<\/loc>/.exec(block)?.[1];
+    const lastmod = /<lastmod>([^<]+)<\/lastmod>/.exec(block)?.[1];
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod || '')) {
+      errors.push(`${loc}: sitemap lastmod missing or not an ISO date`);
+      continue;
+    }
+    const stamp = Date.parse(`${lastmod}T00:00:00Z`);
+    if (!Number.isFinite(stamp) || stamp > latestAllowed)
+      errors.push(`${loc}: sitemap lastmod is invalid or in the future`);
+  }
   for (const p of model.products) {
     const page = pageMap.get(p.canonical);
     if (p.publication.state === 'EXCLUDED') {

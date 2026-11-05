@@ -3,12 +3,54 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      run_remaining_gates:
+        description: 'Independent build/export/browser diagnostics; mandatory audit still applies'
+        required: false
+        type: boolean
+        default: false
+      expected_production_sha:
+        description: 'Optional verified live Pages SHA for independent read-only smoke'
+        required: false
+        type: string
 permissions:
   contents: read
 concurrency:
   group: checks-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  production-smoke:
+    if: github.event_name == 'workflow_dispatch' && inputs.expected_production_sha != ''
+    uses: ./.github/workflows/production-smoke.yml
+    with:
+      expected_production_sha: ${{ inputs.expected_production_sha }}
+  diagnostic-build-browser:
+    # Independent evidence only. The mandatory verify/audit gate still blocks merge/release.
+    if: github.event_name == 'workflow_dispatch' && inputs.run_remaining_gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check:export
+      - run: npm run check:fragments
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        if: always()
+        with:
+          name: diagnostic-build-browser
+          path: |
+            reports/export-check.json
+            test-results/
+          retention-days: 7
   verify:
     runs-on: ubuntu-latest
     timeout-minutes: 30

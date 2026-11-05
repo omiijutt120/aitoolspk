@@ -99,8 +99,14 @@ function walk(dir) {
           throw new Error(`Non-clean canonical: ${file}`);
         if (!head.includes(`<meta property="og:url" content="${canonical}"`))
           throw new Error(`Open Graph disagrees with canonical: ${file}`);
-        const noindex =
-          /<meta\b[^>]*name="robots"[^>]*content="[^"]*noindex/.test(head);
+        const noindex = [...head.matchAll(/<meta\b[^>]*>/gi)].some(
+          ([tag]) =>
+            /\bname="robots"/i.test(tag) &&
+            (/\bcontent="([^"]*)"/i.exec(tag)?.[1] || '')
+              .toLowerCase()
+              .split(/[\s,]+/)
+              .includes('noindex')
+        );
         if (!noindex) {
           const title = /<title>([^<]+)<\/title>/.exec(head)?.[1];
           const description = /<meta name="description" content="([^"]+)"/.exec(
@@ -209,7 +215,10 @@ for (const p of catalog) {
   const html = readFileSync(file, 'utf8');
   if (!html.includes(p.id)) throw new Error(`Wrong offer ID ${p.id}`);
   const publication = publicationDecision(p, editorial[p.id]);
-  if (!publication.indexable && !html.includes('noindex'))
+  if (
+    !publication.indexable &&
+    !canonicals.get(`${origin}/tool/${p.slug}/`)?.noindex
+  )
     throw new Error(`Offer has not passed publication review ${p.id}`);
   if (
     !publication.productSchemaEligible &&

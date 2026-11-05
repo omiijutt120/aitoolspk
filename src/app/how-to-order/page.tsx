@@ -3,7 +3,7 @@ import { Document } from '@/components/document';
 import { Steps } from '@/components/steps';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'How to order',
+  'How to order digital tools',
   'Learn how to compare exact plans and order approved, in-stock digital tools on WhatsApp. No signup, cart or payment collection on the website.',
   '/how-to-order/'
 );

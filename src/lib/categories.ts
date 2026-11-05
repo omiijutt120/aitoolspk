@@ -11,20 +11,21 @@ export const categories = [
     name: 'Video & Audio',
     icon: 'video',
     description:
-      'Compare video editing, generation and audio subscription plans.',
+      'Compare video editing, generation, voiceover and audio subscription plans.',
   },
   {
     slug: 'design',
     name: 'Design',
     icon: 'pen',
     description:
-      'Find creative tools for visuals, layouts and design workflows.',
+      'Find creative tools for visuals, layouts, branding and design workflows.',
   },
   {
     slug: 'writing',
     name: 'Writing',
     icon: 'text',
-    description: 'Explore writing, editing and language tools.',
+    description:
+      'Explore writing, editing, grammar and language tools for client work and study.',
   },
   {
     slug: 'coding',

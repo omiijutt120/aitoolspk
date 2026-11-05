@@ -29,7 +29,7 @@ npm run build
 npm start
 ```
 
-For the complete release gate, run `npm run launch:check`, then `npx playwright install chromium` and `npm run test:browser`. The gate checks repository privacy, lint, types, data, dependency advisories, a production build and all exported routes. See [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) for technical results, the narrowly scoped unpatched development-tool advisory and owner-side launch requirements. Do not treat passing checks as commercial authorization or proof that the custom domain is live.
+For the complete release gate, run `npm run launch:check`, then `npx playwright install chromium` and `npm run test:browser`. The gate checks repository privacy, lint, types, data, dependency advisories, a production build and all exported routes. See [LAUNCH_CHECKLIST.md](LAUNCH_CHECKLIST.md) for technical results, narrowly scoped and documented development-tool advisory exceptions and owner-side launch requirements. Do not treat passing checks as commercial authorization or proof that the custom domain is live.
 
 `npm start` serves the production export in `out/`. The bundled workspace-only runtime, if needed on this PC, lives in `.tools/node-v24.22.0-win-x64/`; it is ignored by Git. In PowerShell, prepend it for the current terminal only:
 

@@ -20,6 +20,7 @@
     "check:repo": "node scripts/check-repository.mjs",
     "check:export": "node scripts/check-export.mjs",
     "check:fragments": "node scripts/seo/check-fragments.mjs",
+    "seo:check-outbound": "node scripts/seo/check-outbound-links.mjs",
     "seo:products": "node scripts/seo/run.mjs products",
     "seo:keywords": "node scripts/seo/run.mjs keywords",
     "seo:audit": "node scripts/seo/run.mjs audit",
@@ -55,6 +56,9 @@
   },
   "overrides": {
     "sharp": "$sharp",
-    "compression": "^1.8.2"
+    "compression": "^1.8.2",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.3"
+    }
   }
 }

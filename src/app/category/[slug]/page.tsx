@@ -28,7 +28,7 @@ export async function generateMetadata({
   const c = categories.find((c) => c.slug === slug);
   return c
     ? metadata(
-        `${c.name} tools & subscriptions in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
+        `${c.name} in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
         pageDescription(
           c.description + ' Compare exact plans and PKR prices.',
           page

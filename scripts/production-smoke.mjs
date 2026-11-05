@@ -2,7 +2,7 @@ import { chromium, devices } from '@playwright/test';
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { productionRequestAllowed, hasNoindexDirective } from './production-policy.mjs';
+import { guardProductionRoute, fetchProductionSitemap, hasNoindexDirective } from './production-policy.mjs';
 
 const origin = 'https://aitoolspk.tech';
 const expected = process.env.EXPECTED_PRODUCTION_SHA;
@@ -23,7 +23,7 @@ try {
   for (const [device, settings] of [['desktop', { viewport: { width: 1440, height: 1000 } }], ['mobile', devices['iPhone 13']]]) {
     const context = await browser.newContext({ ...settings, ignoreHTTPSErrors: false,
       recordHar: { path: `${dir}/${device}.har`, mode: 'minimal', content: 'omit' } });
-    await context.route('**/*', (route) => productionRequestAllowed(route.request().url(), route.request().method()) ? route.continue() : route.abort());
+    await context.route('**/*', guardProductionRoute);
     const page = await context.newPage();
     let current;
     page.on('pageerror', (error) => summary.errors.push({ path: current, device, type: 'pageerror', message: error.message }));
@@ -59,7 +59,7 @@ try {
     }
     await context.close();
   }
-  const sitemap = await fetch(origin + '/sitemap.xml');
+  const sitemap = await fetchProductionSitemap(origin + '/sitemap.xml');
   assert.equal(sitemap.status, 200);
   const xml = await sitemap.text();
   assert.ok(!xml.includes(origin + `/tool/${pending.slug}/`));

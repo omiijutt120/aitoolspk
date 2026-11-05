@@ -15,6 +15,7 @@ export default function HowToOrder() {
       title="Clarity before commitment."
       lead="Find an exact offer, understand its terms, and confirm your order with a person on WhatsApp."
     >
+      <h2>How ordering works</h2>
       <Steps />
       <h2 id="before-you-order">Your before-you-order checklist</h2>
       <ul>

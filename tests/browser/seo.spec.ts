@@ -61,6 +61,57 @@ test('canonical tags are present once in server head, including pagination and t
   );
 });
 
+test('audited landing-page titles fit their search intent without boilerplate repetition', async ({
+  request,
+}) => {
+  const paths = [
+    '/about/',
+    '/category/amazon-fba/',
+    '/category/ai-image-generation/',
+    '/category/creative-resources/',
+    '/category/youtube-seo/',
+    '/category/software/page/2/',
+    '/tools/page/2/',
+    '/tools/page/3/',
+    '/tools/page/4/',
+    '/tools/page/5/',
+    '/plans/microsoft/page/2/',
+    '/plans/canva/',
+    '/guides/understanding-credits-and-plan-duration/',
+    '/guides/buy-ai-subscription-pakistan-payment-checklist/',
+    '/guides/chatgpt-claude-gemini-plan-comparison-pakistan/',
+    '/guides/canva-pro-pakistan-buying-checklist/',
+    '/guides/seller-warranty-vs-vendor-warranty/',
+    '/guides/private-shared-workspace-access/',
+    '/guides/subscriptions-vs-api-credits/',
+    '/guides/creative-tool-licenses-client-work/',
+  ];
+  for (const path of paths) {
+    const response = await request.get(path);
+    expect(response.status(), path).toBe(200);
+    const html = await response.text();
+    const rawTitle = html.match(/<title>([^<]+)<\/title>/)?.[1] ?? '';
+    const title = rawTitle
+      .replaceAll('&amp;', '&')
+      .replaceAll('&quot;', '"')
+      .replaceAll('&#x27;', "'");
+    expect(title.length, `${path}: ${title}`).toBeLessThanOrEqual(60);
+    expect(title, path).not.toMatch(/tools tools|AiToolsPk.*AiToolsPk/i);
+  }
+});
+
+test('ordering instructions introduce an H2 before step H3s', async ({
+  page,
+}) => {
+  await page.goto('/how-to-order/');
+  const levels = await page.locator('main h1, main h2, main h3').evaluateAll(
+    (nodes) => nodes.map((node) => Number(node.tagName.slice(1)))
+  );
+  expect(levels[0]).toBe(1);
+  expect(levels[1]).toBe(2);
+  expect(levels[2]).toBe(3);
+});
+
 test.describe('crawlable pagination without JavaScript', () => {
   test.use({ javaScriptEnabled: false });
   test('page two contains its actual plans and native links reach page three', async ({

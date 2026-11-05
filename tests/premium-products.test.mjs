@@ -119,10 +119,12 @@ test('legacy records retain the reviewed baseline after term-parser corrections'
   const unchanged = original.filter((p) => !changedIds.has(p.id));
   assert.equal(unchanged.length, 808);
   // Reviewed 29 October: 65 term corrections; 30 October: 16 range/age corrections.
-  // Prices, identities, slugs, quote dates and approval states stayed unchanged.
+  // 2 November: 2 display-name corrections on /plans/x (leaked internal
+  // "(can be monetized)" note stripped). Prices, identities, slugs, quote
+  // dates and approval states stayed unchanged.
   assert.equal(
     createHash('sha256').update(JSON.stringify(unchanged)).digest('hex'),
-    'd40630cb5c361a42210f029e7b15a400d74ce78805a6f771472504d97a842d2a'
+    '61c45ba6edb66f08318d5cc7d875c94ffc3fe3a217d5160a6343d0a8f733a9c9'
   );
 });
 

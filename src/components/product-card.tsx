@@ -7,6 +7,7 @@ import type { Product } from '@/lib/types';
 import { money, whatsappUrl } from '@/lib/commerce.mjs';
 import { categoryName } from '@/lib/categories';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
+import { PriceSource } from './price-source';
 export function BrandLogo({
   product,
   large = false,
@@ -81,6 +82,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="product-card-price">
         <strong>{money(product.price)}</strong>
         <StockBadge product={product} />
+        <PriceSource brand={product.brand} brandSlug={product.brandSlug} />
       </div>
       <div className="product-buttons">
         <Link

@@ -13,7 +13,8 @@ import {
 import { CollectionCard } from '@/components/collection-card';
 import { products } from '@/lib/catalog';
 import { homeCollections, groupCollections } from '@/lib/collections';
-import { metadata as makeMetadata } from '@/lib/seo';
+import type { Metadata } from 'next';
+import { metadata as makeMetadata, origin } from '@/lib/seo';
 import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/icon';
 import { Steps } from '@/components/steps';
@@ -22,11 +23,21 @@ import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { BlogCard } from '@/components/blog-card';
 import { blogPosts } from '@/lib/blog';
 
-export const metadata = makeMetadata(
-  'AI tools & subscriptions in Pakistan — PKR prices',
-  'Discover and compare AI tools and digital subscriptions in Pakistan. Explore exact plans, transparent PKR prices and warranty terms, then enquire on WhatsApp.',
-  '/'
-);
+export const metadata: Metadata = {
+  ...makeMetadata(
+    'AI tools & subscriptions in Pakistan — PKR prices',
+    'Discover and compare AI tools and digital subscriptions in Pakistan. Explore exact plans, transparent PKR prices and warranty terms, then enquire on WhatsApp.',
+    '/'
+  ),
+  // The homepage advertises the plain-text site summary beside its canonical
+  // URL, so a crawler or an answer engine does not have to guess that it
+  // exists. Kept on this route only: every other page already points at it
+  // through /llms.txt and the sitemap.
+  alternates: {
+    canonical: `${origin}/`,
+    types: { 'text/plain': `${origin}/llms.txt` },
+  },
+};
 
 export default function Home() {
   const selected = homeCollections(products);

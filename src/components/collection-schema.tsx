@@ -1,4 +1,5 @@
 import { JsonLd, origin } from '@/lib/seo';
+import { author, authorPath } from '@/lib/author';
 
 export function CollectionSchema({
   name,
@@ -24,6 +25,17 @@ export function CollectionSchema({
         name,
         description,
         ...(dateModified ? { dateModified } : {}),
+        inLanguage: 'en-PK',
+        author: {
+          '@type': 'Person',
+          '@id': `${origin}#author-${author.slug}`,
+          name: author.name,
+          url: `${origin}${authorPath}`,
+        },
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', '.collection-price-context'],
+        },
         isPartOf: { '@id': `${origin}/#website` },
         mainEntity: {
           '@type': 'ItemList',

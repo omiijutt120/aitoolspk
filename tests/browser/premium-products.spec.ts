@@ -154,8 +154,9 @@ for (const width of [390, 768, 1440]) {
     await expect(page.locator('.duration-saving')).toContainText(
       'Save PKR 4,000'
     );
-    // React reconciles route metadata after the new page content commits.
-    // Assert it settles to one canonical before reading a strict locator.
+    // React reconciles route metadata after the new page content commits, and
+    // the stale server-rendered canonical is dropped by CanonicalGuard. Both
+    // durations must end up pointing at exactly one canonical URL.
     await expect(page.locator('link[rel=canonical]')).toHaveCount(1);
     await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
       'href',

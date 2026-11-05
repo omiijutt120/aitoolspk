@@ -12,5 +12,7 @@ public/logos/*.card.webp
 public/brand/symbol-small.webp
 /public/og/
 /public/llms.txt
+/public/llms-full.txt
+/public/ai.txt
 .env*
 !.env.example

@@ -37,6 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       '/guides',
       '/about',
       '/editorial-policy',
+      '/author/muhammad-umar',
     ].map((path) => ({
       url: `${origin}${path}/`,
       ...(['', '/tools', '/guides', '/about', '/editorial-policy'].includes(

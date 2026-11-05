@@ -12,12 +12,13 @@ import {
   pageNumber,
   pagePath,
 } from '@/lib/pagination';
-import { metadata } from '@/lib/seo';
+import { JsonLd, metadata, origin } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PlanComparison } from '@/components/plan-comparison';
 import { money } from '@/lib/commerce.mjs';
 import { CollectionGuide } from '@/components/collection-guide';
 import { CollectionSchema } from '@/components/collection-schema';
+import { PriceSource } from '@/components/price-source';
 import { PAGE_SIZE } from '@/lib/pagination';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { blogPostForCollection } from '@/lib/blog';
@@ -119,7 +120,9 @@ export default async function PlansPage({
           <strong>
             {money(c.minPrice)}–{money(c.maxPrice)}
           </strong>{' '}
-          across different packages. Quote dates:{' '}
+          across different packages; these are seller quotes, not vendor list
+          prices.{' '}
+          <PriceSource brand={c.brand} brandSlug={c.slug} /> Quote dates:{' '}
           <time dateTime={quoteDates[0]}>{quoteDates[0]}</time>
           {quoteDates.length > 1 && (
             <>
@@ -301,6 +304,26 @@ export default async function PlansPage({
           name: `${p.name} — ${p.duration}`,
           path: `/tool/${p.slug}/`,
         }))}
+      />
+      {/*
+        A separate, flat SoftwareApplication node rather than one nested inside
+        the CollectionPage. It states what the collection is about — the
+        software the listed plans give access to — and carries nothing it cannot
+        back up: no rating, no price, no vendor affiliation.
+      */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          '@id': `${origin}${pagePath(`/plans/${slug}/`, page)}#software`,
+          name: c.title,
+          applicationCategory: c.isApi
+            ? 'DeveloperApplication'
+            : 'BusinessApplication',
+          operatingSystem: 'Any (web browser)',
+          url: `${origin}${pagePath(`/plans/${slug}/`, page)}`,
+          isPartOf: { '@id': `${origin}/#website` },
+        }}
       />
     </div>
   );

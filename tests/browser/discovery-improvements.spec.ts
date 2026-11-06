@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import catalog from '../../data/catalog.json';
 import collectionContent from '../../data/seo/collection-content.json';
 import extraGuides from '../../data/seo/additional-guides.json';
+import { collectionSlug } from '../../src/lib/catalog-identity.mjs';
 
 test.setTimeout(120000);
 
@@ -172,6 +173,7 @@ test('new content fits phone, tablet and desktop with a keyboard-operable compar
     await page.setViewportSize({ width, height: 900 });
     for (const path of [
       '/',
+      '/price-index/',
       '/plans/chatgpt/',
       '/category/design/',
       '/about/',
@@ -182,6 +184,8 @@ test('new content fits phone, tablet and desktop with a keyboard-operable compar
         await page.locator('.plan-comparison summary').focus();
         await page.keyboard.press('Enter');
         await expect(page.locator('.plan-comparison table')).toBeVisible();
+      }
+      if (path === '/plans/chatgpt/' || path === '/price-index/') {
         const results = await new AxeBuilder({ page })
           .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
           .analyze();
@@ -195,4 +199,35 @@ test('new content fits phone, tablet and desktop with a keyboard-operable compar
       ).toBe(true);
     }
   }
+});
+
+test('the price index lists every collection once with a starting price and a plans link', async ({
+  page,
+}) => {
+  const slugs = new Set(
+    catalog.filter((p) => p.approval !== 'excluded').map(collectionSlug)
+  );
+  await page.goto('/price-index/');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://aitoolspk.tech/price-index/'
+  );
+  await expect(page.locator('h1')).toHaveCount(1);
+  const rows = page.locator('#all-tools ~ .comparison-scroll tbody tr');
+  await expect(rows).toHaveCount(slugs.size);
+  const hrefs = await rows
+    .locator('th a')
+    .evaluateAll((links) => links.map((link) => link.getAttribute('href')));
+  expect(new Set(hrefs).size).toBe(slugs.size);
+  for (const href of hrefs) {
+    expect(href).toMatch(/^\/plans\/[a-z0-9-]+\/$/);
+    expect(slugs.has(href!.split('/')[2])).toBe(true);
+  }
+  const schema = (
+    await page.locator('script[type="application/ld+json"]').allTextContents()
+  )
+    .map((text) => JSON.parse(text))
+    .find((item) => item['@type'] === 'CollectionPage');
+  expect(schema.mainEntity.numberOfItems).toBe(slugs.size);
+  expect(schema.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
 });

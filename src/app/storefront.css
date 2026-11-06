@@ -2407,3 +2407,39 @@ body {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+/*
+ * /price-index/ - a data page rather than a guide. The section jump list keeps a
+ * long table navigable, and the notes list carries the caveats that stop a
+ * starting price being read as a total.
+ */
+.price-index-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 22px;
+  margin: 26px 0 10px;
+  padding: 6px 18px;
+  border: 1px solid var(--store-border);
+  border-radius: 12px;
+  font-size: 13px;
+}
+.price-index-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.price-index-notes {
+  margin: 16px 0 10px;
+  padding-left: 20px;
+  list-style: disc;
+}
+.price-index-notes li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #535a63;
+}
+.price-index-notes strong {
+  color: var(--ink, #15171a);
+}

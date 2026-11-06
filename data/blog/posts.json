@@ -457,5 +457,331 @@
         "href": "https://cursor.com/docs/agent/agent-review"
       }
     ]
+  },
+  {
+    "slug": "chatgpt-vs-claude-plans-pakistan",
+    "collection": "chatgpt",
+    "topic": "AI & research",
+    "title": "ChatGPT vs Claude: plans for Pakistan",
+    "description": "ChatGPT and Claude compared for Pakistani buyers: documented strengths, how plan limits differ and what to check in a PKR listing before paying.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "Both assistants can draft, analyse and support coding work, but they are sold in different shapes. OpenAI publishes the ChatGPT plan ladder and documents Projects as a place for related conversations and files. Anthropic publishes Claude plans and documents Artifacts as a way to render substantial output beside the chat. Choose by the task you repeat most, then compare the exact package in PKR, because the same brand appears at several durations and access types.",
+    "sections": [
+      {
+        "id": "strengths",
+        "heading": "What each assistant is documented to do",
+        "paragraphs": [
+          "OpenAI documents Projects in ChatGPT as a space where related conversations, files and instructions stay together. That is useful when work keeps returning to the same reference material: a client account, a course, a codebase or a set of product facts.",
+          "Anthropic documents Artifacts as a way to render a substantial result, such as a document, a piece of code or a diagram, next to the conversation so you can inspect it. For review-heavy work, that changes how quickly you can check what the model produced rather than scrolling through chat text.",
+          "Neither capability is a promise about a seller package. A listing can be a private subscription, a shared account, an invitation into a workspace or a licence, and features can be restricted by that arrangement. Read the access text before you assume the documented feature is available to you."
+        ]
+      },
+      {
+        "id": "limits",
+        "heading": "Usage limits and what \"unlimited\" means",
+        "paragraphs": [
+          "Every paid assistant has a ceiling somewhere: message caps, model access, file size, file count, or a separate credit balance for advanced tools. Vendors revise these limits more often than they revise prices, so a limit described in a review from last year may already be wrong.",
+          "Treat any listing that promises unlimited access as a question rather than a feature. Ask which model, which tool, what fair-use clause applies and what happens when you reach the ceiling. Our plan pages list the duration, access method and warranty label the seller supplied, and mark everything else for confirmation."
+        ]
+      },
+      {
+        "id": "price",
+        "heading": "Comparing PKR quotes without comparing the wrong things",
+        "paragraphs": [
+          "A ChatGPT quote and a Claude quote are rarely the same product. One may be a one-month private plan, another a seven-day shared slot, and a third an API credit balance that is not a chat subscription at all. The number only means something once the package behind it is clear."
+        ],
+        "bullets": [
+          "Match duration first: a seven-day quote is not a monthly price divided by four.",
+          "Check access type, because private, shared, workspace invitation and licence change what you can actually do.",
+          "Read the warranty label as a seller term rather than vendor coverage, and ask for the remedy in writing.",
+          "Confirm account region, eligibility and renewal terms before paying."
+        ]
+      },
+      {
+        "id": "choose",
+        "heading": "A short shortlist method",
+        "paragraphs": [
+          "Pick the one task you will repeat this month. If it needs long PDFs and careful review, test a Claude listing with a real document and check whether the output is easier to inspect. If it needs projects, files and a broad toolset, test ChatGPT with the same task.",
+          "Run both on real material, keep the outputs, and judge the cost of revising them rather than the quality of the first draft. Only then compare price. The cheapest quote is usually the shortest or most restricted package, not the best value for repeated work."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Can I use a ChatGPT or Claude subscription for client work?",
+        "answer": "Check the vendor terms and the access type in the listing. A shared or resold account may not be permitted for commercial use, and a licence may restrict seats or named users. Confirm both before you bill a client for work produced with it."
+      },
+      {
+        "question": "Why is the same assistant listed at very different PKR prices?",
+        "answer": "Because the listings are different packages. Duration, access method, model access and warranty all change the price. Compare the product ID, duration and access text instead of the brand name alone."
+      },
+      {
+        "question": "Does a chat subscription include API credit?",
+        "answer": "No. A chat plan and an API balance are separate products with separate billing. If you need an integration, ask for the API listing and its credit terms rather than assuming the chat plan covers it."
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenAI: Projects in ChatGPT",
+        "href": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+      },
+      {
+        "label": "OpenAI: What is ChatGPT Plus",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      },
+      {
+        "label": "Anthropic: plans and pricing",
+        "href": "https://www.anthropic.com/pricing"
+      },
+      {
+        "label": "Anthropic: what are Artifacts",
+        "href": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+      }
+    ]
+  },
+  {
+    "slug": "canva-pro-vs-capcut-pro-pakistan",
+    "collection": "canva",
+    "topic": "Design & video",
+    "title": "Canva Pro vs CapCut Pro in Pakistan",
+    "description": "Canva Pro and CapCut Pro compared for Pakistani creators: design versus editing work, what each plan covers and how to compare PKR quotes safely.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "They cover different halves of the same job. Canva is a design and layout tool with documented brand controls; CapCut is a video editor built around cutting, captions and short-form export. Many creators eventually need both, but the subscriptions are separate products with separate limits, so compare each listing on its own terms instead of buying a bundle you cannot verify.",
+    "sections": [
+      {
+        "id": "what-each-does",
+        "heading": "What each tool actually covers",
+        "paragraphs": [
+          "Canva documents Brand Kits as a place to store colours, fonts and logos so a client brand stays consistent across layouts. That matters when you produce many assets from one visual system: carousels, decks, thumbnails and simple landing graphics.",
+          "CapCut is an editing environment. Its work is the timeline: cuts, transitions, captions, audio and export presets for vertical video. The paid tier is mainly about editing and export features rather than brand assets.",
+          "If your month is mostly layouts and graphics, Canva carries more of the work. If it is mostly filmed footage that needs cutting and captions, CapCut does. Buying the wrong one first is common, and it is usually cheaper to fix that than to buy both at once."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "A workflow that uses both without duplicating work",
+        "paragraphs": [
+          "Design the still assets in Canva, export them at the sizes you need, then assemble the video in CapCut and use those exports as frames, lower thirds or an end card. One folder per client keeps the rebuild path short when a project returns months later."
+        ],
+        "bullets": [
+          "Name exports with the client, project and date so the newest file is obvious.",
+          "Keep one brand kit per client rather than one mixed kit for everything.",
+          "Export a master at the highest quality available to you, then compress for each platform.",
+          "Note which plan produced which file, because access can change when a subscription expires."
+        ]
+      },
+      {
+        "id": "price",
+        "heading": "Comparing the PKR listings",
+        "paragraphs": [
+          "Both tools appear in our catalogue in several forms: one-month, multi-month, shared and private arrangements, and occasional education or long-duration slots. The lowest starting price is usually a short or restricted option rather than the monthly cost of a full plan."
+        ],
+        "bullets": [
+          "Duration: a three-day or seven-day quote is a trial-like purchase, not a monthly rate.",
+          "Access: shared slots and private accounts have different privacy and eligibility limits.",
+          "Seats: a licence sold per seat changes the real cost if a small team needs access.",
+          "Warranty and renewal: both are seller terms, and neither is automatic vendor coverage."
+        ]
+      },
+      {
+        "id": "choose",
+        "heading": "Which one to buy first",
+        "paragraphs": [
+          "Buy the tool that removes the step you currently do by hand. If you are rebuilding the same layout for every post, start with Canva. If you are editing on a phone and fighting export limits, start with CapCut. Add the second only when paid work actually arrives for it.",
+          "Before upgrading, test the specific paid feature on a real project. A subscription is worth its price when it saves a repeatable hour, not when it adds a tool you open once."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Do I need Pro on both Canva and CapCut?",
+        "answer": "Only if both workflows produce paid work. The free tiers are enough to test whether a paid feature changes your output, so run a real project on each before committing to a longer duration."
+      },
+      {
+        "question": "Can I use Canva or CapCut assets for client work?",
+        "answer": "Check the licence attached to the plan you buy and the vendor terms for the specific asset. A subscription does not automatically grant every usage right, and stock elements can carry their own conditions."
+      },
+      {
+        "question": "Why is a long-duration Canva listing cheaper than a short one?",
+        "answer": "Usually because it is a different product: an education slot, a shared arrangement or a resold invitation rather than a private monthly plan. Read the access type and warranty before comparing the number."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Canva: Brand Kits help",
+        "href": "https://www.canva.com/help/brand-kit/"
+      },
+      {
+        "label": "Canva: plans and pricing",
+        "href": "https://www.canva.com/pricing/"
+      },
+      {
+        "label": "CapCut: plans and pricing",
+        "href": "https://www.capcut.com/pricing"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-vs-chatgpt-research-pakistan",
+    "collection": "gemini",
+    "topic": "AI & research",
+    "title": "Gemini vs ChatGPT for research work",
+    "description": "Gemini and ChatGPT compared for research in Pakistan: how research modes work, document checks, plan limits and how to verify an answer before using it.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "Both can summarise, compare and draft from material you supply, and both can be wrong with confidence. The practical difference is the workflow around the model: how documents are attached, whether a research mode is included on your plan, and how easily a statement can be traced back to a source. Test that before choosing a brand.",
+    "sections": [
+      {
+        "id": "research-mode",
+        "heading": "What a research mode actually changes",
+        "paragraphs": [
+          "Google documents Deep Research in the Gemini apps as a way to gather material and produce a longer report with links. OpenAI offers comparable deep-research style tools on supported ChatGPT plans. The output is a structured draft with citations, not a finished answer.",
+          "Check each citation three ways: it exists, it says what the draft claims, and it is current. A link that opens but does not support the sentence is worse than no link, because it looks like evidence."
+        ]
+      },
+      {
+        "id": "documents",
+        "heading": "Working with long documents",
+        "paragraphs": [
+          "Attach one document at a time and ask for a structured extraction: names, dates, amounts and obligations. Then ask a second question that requires combining two parts of the document. If the answer survives both, the model is reading the material rather than guessing from the prompt.",
+          "Keep client material out of any tool the client has not approved. Uploading a document is a disclosure decision, not just a convenience, and retention rules differ between plans."
+        ]
+      },
+      {
+        "id": "limits",
+        "heading": "Plans, limits and the PKR question",
+        "paragraphs": [
+          "Research features, file sizes, message caps and model access vary by tier and change with little notice. That is why our listings describe duration, access type and warranty instead of promising a feature the vendor may move to another tier."
+        ],
+        "bullets": [
+          "Match the feature you need to the plan the vendor documents it on, then check the listing access type.",
+          "Ask how many documents a plan accepts before you plan a workflow around uploads.",
+          "Confirm whether the quote covers one month, several months or a short trial-like duration.",
+          "Treat any warranty as a seller term and ask what happens if access stops mid-term."
+        ]
+      },
+      {
+        "id": "verify",
+        "heading": "A verification checklist before you send the work",
+        "paragraphs": [
+          "Research drafts fail in predictable ways: a real source cited for the wrong claim, a number that belongs to a different year, or a confident summary of a document that was never attached. A short checklist catches most of it."
+        ],
+        "bullets": [
+          "Open every link and confirm the page supports the sentence it is attached to.",
+          "Check numbers against the primary document, not against another summary.",
+          "Ask what the answer would look like if the premise were false, then look for that alternative.",
+          "Date the draft and note the model or plan used, so a later revision is traceable."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Is a research report from Gemini or ChatGPT safe to send to a client?",
+        "answer": "Only after you have checked the sources and removed anything you cannot verify. Treat it as a fast structured first draft, not a finished research product, and say which parts you verified yourself."
+      },
+      {
+        "question": "Which plan do I need for research features?",
+        "answer": "It depends on the vendor current tier rules, which change. Check the vendor documentation for the feature, then match it to the access type described in the listing you are considering."
+      },
+      {
+        "question": "Can these tools read a PDF I upload?",
+        "answer": "Supported plans can accept documents, but size, count and retention rules differ. Confirm the current limits and avoid uploading material you are not allowed to share."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Google: use Deep Research in Gemini Apps",
+        "href": "https://support.google.com/gemini/answer/15719111?hl=en"
+      },
+      {
+        "label": "OpenAI: Projects in ChatGPT",
+        "href": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+      },
+      {
+        "label": "OpenAI: What is ChatGPT Plus",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      }
+    ]
+  },
+  {
+    "slug": "streaming-plans-pakistan-netflix-prime-spotify",
+    "collection": "netflix",
+    "topic": "Entertainment",
+    "title": "Streaming plans in Pakistan: what to compare",
+    "description": "Netflix, Prime Video and Spotify plans for Pakistan compared: tiers, household rules, regional catalogues and how to check a PKR quote before paying.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "The three services are not interchangeable. Netflix and Prime Video sell video libraries; Spotify sells music. Within each one, the tier decides resolution, screens and downloads, while the household or family rule decides who can legally share it. Compare the tier and the sharing rule before you compare the price.",
+    "sections": [
+      {
+        "id": "tiers",
+        "heading": "What a tier actually changes",
+        "paragraphs": [
+          "Netflix documents its plans by resolution, number of simultaneous screens and download limits. Prime Video separates a subscription from rentals and purchases, so a cheap listing may not be a subscription at all. Spotify documents individual, duo, family and student plans, each with its own eligibility rule.",
+          "A PKR quote in a marketplace rarely names the tier. Ask which tier it is, how many screens it allows, and whether it is a new account, an upgrade applied to your own account, or a shared profile inside someone else’s plan. Those three answers change the product more than the price does."
+        ]
+      },
+      {
+        "id": "household",
+        "heading": "Household, family and sharing rules",
+        "paragraphs": [
+          "This is where most shared purchases fail. Netflix applies household rules to determine which devices count as part of one home. Spotify requires family members to live at the same address and verifies it. Prime Video has its own household settings. A listing that ignores these rules can stop working weeks after it starts.",
+          "If a seller describes a plan as shared, ask what happens when the service runs its check, whether you keep the profile and history, and what the warranty covers in that case. A short warranty on a shared plan is a different risk from a short warranty on a private one."
+        ]
+      },
+      {
+        "id": "catalogue",
+        "heading": "Catalogues and languages differ by region",
+        "paragraphs": [
+          "What you can watch depends on the country set on the account, and libraries change month to month. A plan advertised around a foreign catalogue may not show the same titles once the account region is Pakistan. Check a few titles you actually want before committing to a long duration.",
+          "Music catalogues are closer across regions, but individual releases still vary. If one album matters to you, confirm it is available on the account you are buying rather than assuming the global catalogue is identical."
+        ]
+      },
+      {
+        "id": "price",
+        "heading": "Comparing PKR quotes line by line",
+        "paragraphs": [
+          "Convert every quote to a monthly figure only after the package is clear. A six-month listing and a one-month listing are not the same product, and a shared profile is not the same as a private account. The comparison is only fair when duration, tier and access match."
+        ],
+        "bullets": [
+          "Tier and screens: resolution and simultaneous streams are part of what you are buying.",
+          "Duration and renewal: check whether the price renews or ends, and at what rate.",
+          "Access type: new account, upgrade on your account, or a shared profile.",
+          "Household rule: does the service allow the arrangement the seller describes?",
+          "Warranty: what remedy applies if access stops mid-term, and for how long.",
+          "Payment path: confirm who holds the account and how the price is collected."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Can I share a Netflix or Spotify plan with family in another city?",
+        "answer": "That depends on the service household rules, not on the seller. Netflix applies household checks and Spotify requires family members at the same address. Ask the seller how the plan is set up before paying, and assume a shared plan can be interrupted."
+      },
+      {
+        "question": "Why is a six-month streaming listing cheaper than a one-month one?",
+        "answer": "Usually because it is a different product: a longer commitment, a lower tier, a shared profile or a promotional batch. Compare the monthly figure only after confirming the tier, screens and access type."
+      },
+      {
+        "question": "Do I need a foreign card to subscribe directly?",
+        "answer": "Many services accept international cards, but some require a card issued in the account country. Confirm the payment path before you rely on it, and remember that buying through a reseller raises a separate question about who owns the account."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Netflix: how many people can watch at once",
+        "href": "https://help.netflix.com/en/node/24926"
+      },
+      {
+        "label": "Prime Video: help and subscription options",
+        "href": "https://www.primevideo.com/help"
+      },
+      {
+        "label": "Spotify: Premium Family requirements",
+        "href": "https://support.spotify.com/us/article/family-plan/"
+      }
+    ]
   }
 ]

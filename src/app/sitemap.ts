@@ -37,6 +37,14 @@ const staticRoutes: { path: string; sources: string[] }[] = [
   { path: '/refund-policy', sources: ['src/app/refund-policy/page.tsx'] },
   { path: '/privacy-policy', sources: ['src/app/privacy-policy/page.tsx'] },
   { path: '/guides', sources: ['src/app/guides/page.tsx', 'src/lib/guides.ts'] },
+  {
+    path: '/price-index',
+    sources: [
+      'src/app/price-index/page.tsx',
+      'src/lib/price-index.ts',
+      'data/catalog.json',
+    ],
+  },
   { path: '/about', sources: ['src/app/about/page.tsx'] },
   {
     path: '/editorial-policy',

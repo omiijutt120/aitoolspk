@@ -101,6 +101,7 @@ const lines = [
     ['About', '/about/'],
     ['All tools', '/tools/'],
     ['Blog and complete product library', '/blog/'],
+    ['Price index: every listed PKR starting price', '/price-index/'],
     ['Categories', '/categories/'],
     ['How to order', '/how-to-order/'],
     ['Contact: WhatsApp +923714549245', '/contact/'],
@@ -230,6 +231,7 @@ authorization to resell.
 The most useful machine-readable entry points:
 - https://aitoolspk.tech/llms.txt — navigation
 - https://aitoolspk.tech/llms-full.txt — every collection with its PKR range
+- https://aitoolspk.tech/price-index/ — every tool with its listed starting price
 - https://aitoolspk.tech/sitemap.xml — canonical page list
 
 Ignored by design: no prices behind a login, no account data, no customer

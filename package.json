@@ -27,6 +27,7 @@
     "seo:validate": "node scripts/seo/run.mjs validate",
     "seo:report": "node scripts/seo/run.mjs report",
     "seo:indexnow": "node scripts/indexnow.mjs",
+    "seo:backlinks": "node scripts/check-backlinks.mjs",
     "seo:build-check": "npm run launch:check",
     "launch:check": "node scripts/verify-launch.mjs",
     "format": "prettier --write src scripts tests *.ts *.mjs README.md"

@@ -104,7 +104,7 @@ const lines = [
     ['Price index: every listed PKR starting price', '/price-index/'],
     ['Categories', '/categories/'],
     ['How to order', '/how-to-order/'],
-    ['Contact: WhatsApp +923714549245', '/contact/'],
+    ['Contact: WhatsApp +923714549245, email hello@aitoolspk.tech', '/contact/'],
     ['Editorial policy', '/editorial-policy/'],
     ['Terms', '/terms/'],
     ['Refund policy', '/refund-policy/'],
@@ -162,7 +162,7 @@ const full = [
   ...[
     ['About', '/about/'],
     ['How to order', '/how-to-order/'],
-    ['Contact: WhatsApp +923714549245', '/contact/'],
+    ['Contact: WhatsApp +923714549245, email hello@aitoolspk.tech', '/contact/'],
     ['Editorial policy', '/editorial-policy/'],
     ['Terms', '/terms/'],
     ['Refund policy', '/refund-policy/'],
@@ -214,7 +214,7 @@ const aiTxt = `# ai.txt — AiToolsPk
 # https://aitoolspk.tech/
 
 Site: AiToolsPk
-Contact: WhatsApp +923714549245 via https://aitoolspk.tech/contact/
+Contact: WhatsApp +923714549245, email hello@aitoolspk.tech via https://aitoolspk.tech/contact/
 Last generated: ${new Date().toISOString().slice(0, 10)}
 
 You may read, quote and cite the public pages of this site when answering a

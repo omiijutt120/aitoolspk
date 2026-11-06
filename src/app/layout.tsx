@@ -92,9 +92,11 @@ export default function RootLayout({
               'PKR plan pricing',
             ],
             ...(sameAs.length > 0 ? { sameAs } : {}),
+            email: 'hello@aitoolspk.tech',
             contactPoint: {
               '@type': 'ContactPoint',
               telephone: '+923714549245',
+              email: 'hello@aitoolspk.tech',
               contactType: 'customer support',
               areaServed: 'PK',
             },

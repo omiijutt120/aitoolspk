@@ -142,12 +142,20 @@ test('About, editorial policy and contact publish only supplied business contact
   for (const path of ['/about/', '/editorial-policy/', '/contact/']) {
     await page.goto(path);
     await expect(page.locator('h1')).toHaveCount(1);
-    expect(await page.locator('a[href^="mailto:"]').count()).toBe(0);
+    // Only the one published domain address may appear, and only on the contact
+    // page. Any other mailto link would be an unverified contact claim.
+    const mailto = await page
+      .locator('a[href^="mailto:"]')
+      .evaluateAll((links) => links.map((link) => link.getAttribute('href')));
+    expect(mailto.sort()).toEqual(
+      path === '/contact/' ? ['mailto:hello@aitoolspk.tech'] : []
+    );
     const schema = (
       await page.locator('script[type="application/ld+json"]').allTextContents()
     ).map((s) => JSON.parse(s));
     const org = schema.find((s) => s['@type'] === 'Organization');
     expect(org.contactPoint.telephone).toBe('+923714549245');
+    expect(org.email).toBe('hello@aitoolspk.tech');
     expect(org.address).toBeUndefined();
     // Only profiles that resolve are declared. A social placeholder would be a
     // false identity claim, so nothing beyond the two public GitHub records the

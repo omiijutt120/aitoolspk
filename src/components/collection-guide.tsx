@@ -218,7 +218,8 @@ export function CollectionGuide({
           <>{listingSentence('The highest is', facts.dearest.plan)} </>
         )}
         Both sit under one brand because the rows describe different durations
-        and access levels, not two prices for the same package.
+        and access levels, not two prices for the same package.{' '}
+        <PriceSource brand={plans[0]?.brand || brand} brandSlug={slug} />
       </p>
 
       <h2>How many {brand} listings state a duration?</h2>

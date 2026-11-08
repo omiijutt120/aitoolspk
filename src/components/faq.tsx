@@ -13,7 +13,7 @@ export const faqs = [
   ],
   [
     'What does the warranty cover?',
-    'Warranty terms differ by offer. Offers explicitly marked Full Duration Warranty include AI Tools PK’s seller-provided warranty for the purchased duration, subject to the seller warranty terms and fair usage policy. Source warranty labels on other pending listings are unverified. Confirm coverage, exclusions, dates and the agreed remedy before payment.',
+    'Warranty terms differ by offer. Offers explicitly marked Full Duration Warranty include AiToolsPk’s seller-provided warranty for the purchased duration, subject to the seller warranty terms and fair usage policy. Source warranty labels on other pending listings are unverified. Confirm coverage, exclusions, dates and the agreed remedy before payment.',
   ],
   [
     'Will you ask for my account password?',

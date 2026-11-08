@@ -1,6 +1,7 @@
 import { defineConfig } from '@playwright/test';
 import { existsSync } from 'node:fs';
 const baseURL = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:3000';
+const serverPort = new URL(baseURL).port || '3000';
 const localChrome = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const executablePath =
   process.env.CHROME_PATH ||
@@ -14,11 +15,17 @@ export default defineConfig({
   workers: 1,
   use: {
     baseURL,
-    launchOptions: executablePath ? { executablePath } : {},
+    launchOptions: {
+      ...(executablePath ? { executablePath } : process.env.CI ? { channel: 'chrome' } : {}),
+      chromiumSandbox: true,
+    },
     screenshot: 'only-on-failure',
   },
   webServer: {
-    command: 'npm run start',
+    command:
+      serverPort === '3000'
+        ? 'npm run start'
+        : `node node_modules/serve/build/main.js out -l ${serverPort}`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 30000,

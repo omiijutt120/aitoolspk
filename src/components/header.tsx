@@ -71,6 +71,7 @@ export function Header() {
             Browse tools
           </Link>
           <Link href="/how-to-order/">How to order</Link>
+          <Link href="/blog/">Blog</Link>
           <Link href="/contact/">Contact</Link>
         </nav>
         <div className="header-actions">
@@ -116,6 +117,7 @@ export function Header() {
             {[
               ['All tools', '/tools/'],
               ['Categories', '/categories/'],
+              ['Blog', '/blog/'],
               ['How to order', '/how-to-order/'],
               ['Contact', '/contact/'],
             ].map(([label, href]) => (

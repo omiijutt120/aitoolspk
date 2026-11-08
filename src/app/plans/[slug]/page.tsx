@@ -12,14 +12,16 @@ import {
   pageNumber,
   pagePath,
 } from '@/lib/pagination';
-import { metadata } from '@/lib/seo';
+import { JsonLd, metadata, origin } from '@/lib/seo';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PlanComparison } from '@/components/plan-comparison';
 import { money } from '@/lib/commerce.mjs';
 import { CollectionGuide } from '@/components/collection-guide';
 import { CollectionSchema } from '@/components/collection-schema';
+import { PriceSource } from '@/components/price-source';
 import { PAGE_SIZE } from '@/lib/pagination';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
+import { blogPostForCollection } from '@/lib/blog';
 
 const collections = groupCollections(products);
 export const dynamicParams = false;
@@ -35,10 +37,22 @@ export async function generateMetadata({
   const page = pageNumber(value);
   const collection = collections.find((c) => c.slug === slug);
   if (!collection) return {};
+  const name = collection.isApi ? 'API' : collection.brand;
+  // Buy-intent phrasing that still fits beside the 13-character " | AiToolsPk"
+  // suffix, so the rendered title stays inside the 65-character limit.
+  const withCount = `${name} price in Pakistan 2026: ${collection.count} plans`;
+  const base =
+    page > 1
+      ? `${name} prices in Pakistan — page ${page}`
+      : withCount.length <= 52
+        ? withCount
+        : `${name} price in Pakistan 2026`.length <= 52
+          ? `${name} price in Pakistan 2026`
+          : `${name} prices in Pakistan`;
   return metadata(
-    `${slug === 'canva' ? 'Canva Pro Prices & Plans in Pakistan' : `${collection.brand} Plans in Pakistan`}${page > 1 ? ` — Page ${page}` : ''}`,
+    base,
     pageDescription(
-      `Compare ${collection.count} listed ${collection.brand} plans by PKR price, duration, access and seller warranty. Confirm your exact package on WhatsApp.`,
+      `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} plans. Compare duration, access and warranty before paying.`,
       page
     ),
     pagePath(`/plans/${slug}/`, page),
@@ -62,6 +76,7 @@ export default async function PlansPage({
   const plans = collectionProducts(products, slug);
   const pagePlans = plans.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
   const quoteDates = [...new Set(plans.map((p) => p.date))].sort();
+  const article = blogPostForCollection(slug);
   return (
     <div className="container">
       <div className="page-intro collection-intro">
@@ -117,7 +132,9 @@ export default async function PlansPage({
           <strong>
             {money(c.minPrice)}–{money(c.maxPrice)}
           </strong>{' '}
-          across different packages. Quote dates:{' '}
+          across different packages; these are seller quotes, not vendor list
+          prices.{' '}
+          <PriceSource brand={c.brand} brandSlug={c.slug} /> Quote dates:{' '}
           <time dateTime={quoteDates[0]}>{quoteDates[0]}</time>
           {quoteDates.length > 1 && (
             <>
@@ -272,6 +289,24 @@ export default async function PlansPage({
       <Catalog collection={slug} initialPage={page} />
       <PlanComparison plans={pagePlans} brand={c.brand} page={page} />
       {page === 1 && <CollectionGuide slug={slug} plans={plans} />}
+      {page === 1 && article && (
+        <aside className="blog-collection-link">
+          <p className="store-eyebrow">A PRACTICAL PRODUCT GUIDE</p>
+          <h2>
+            <Link href={`/blog/${article.slug}/`} prefetch={false}>
+              {article.title}
+            </Link>
+          </h2>
+          <p>{article.description}</p>
+          <Link
+            className="text-link"
+            href={`/blog/${article.slug}/`}
+            prefetch={false}
+          >
+            Read the article →
+          </Link>
+        </aside>
+      )}
       <CollectionSchema
         name={`${c.title}${page > 1 ? ` — Page ${page}` : ''}`}
         description={`Compare exact ${c.brand} offer variants and terms.`}
@@ -281,6 +316,26 @@ export default async function PlansPage({
           name: `${p.name} — ${p.duration}`,
           path: `/tool/${p.slug}/`,
         }))}
+      />
+      {/*
+        A separate, flat SoftwareApplication node rather than one nested inside
+        the CollectionPage. It states what the collection is about — the
+        software the listed plans give access to — and carries nothing it cannot
+        back up: no rating, no price, no vendor affiliation.
+      */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          '@id': `${origin}${pagePath(`/plans/${slug}/`, page)}#software`,
+          name: c.title,
+          applicationCategory: c.isApi
+            ? 'DeveloperApplication'
+            : 'BusinessApplication',
+          operatingSystem: 'Any (web browser)',
+          url: `${origin}${pagePath(`/plans/${slug}/`, page)}`,
+          isPartOf: { '@id': `${origin}/#website` },
+        }}
       />
     </div>
   );

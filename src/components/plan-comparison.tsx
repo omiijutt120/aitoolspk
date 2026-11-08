@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
 import { money } from '@/lib/commerce.mjs';
+import { PriceSource } from './price-source';
 
 export function PlanComparison({
   plans,
@@ -54,7 +55,10 @@ export function PlanComparison({
                     ? 'Confirm duration'
                     : plan.duration}
                 </td>
-                <td className="comparison-price">{money(plan.price)}</td>
+                <td className="comparison-price">
+                  {money(plan.price)}
+                  <PriceSource brand={plan.brand} brandSlug={plan.brandSlug} />
+                </td>
                 <td>
                   {plan.access === 'Not specified'
                     ? 'Confirm before payment'

@@ -61,7 +61,7 @@ const originalGuides: BuyingGuide[] = [
         bullets: [
           'Features: identify the exact app, tools and permissions included in the seller-supplied package.',
           'Usage: ask about credits, rate limits, resets, expiry, overages and fair usage. A full subscription duration is not an unlimited-use promise.',
-          'Warranty: distinguish an unverified source label from an explicit AI Tools PK seller warranty. Ask for its coverage, dates, exclusions and agreed remedy.',
+          'Warranty: distinguish an unverified source label from an explicit AiToolsPk seller warranty. Ask for its coverage, dates, exclusions and agreed remedy.',
           'Licensing: confirm the rights needed for your actual project. Brand logos and a plan name do not prove commercial-use rights or reseller authorization.',
         ],
         links: [
@@ -149,7 +149,7 @@ const originalGuides: BuyingGuide[] = [
         heading: 'Full-duration warranty does not mean unlimited consumption',
         paragraphs: [
           'A seller warranty concerns the agreed package and purchased period, subject to its written scope and fair usage terms. It does not automatically remove vendor limits or create an uninterrupted-service, replacement or refund guarantee.',
-          'For an explicitly marked AI Tools PK seller-warranty offer, confirm the agreed dates and coverage. Source warranty labels on unverified listings are not the same promise. Read the applicable terms before payment.',
+          'For an explicitly marked AiToolsPk seller-warranty offer, confirm the agreed dates and coverage. Source warranty labels on unverified listings are not the same promise. Read the applicable terms before payment.',
         ],
         links: [
           { label: 'Warranty and fair usage', href: '/terms/#seller-warranty' },

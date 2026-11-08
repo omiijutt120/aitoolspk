@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import catalog from '../../data/catalog.json';
 import collectionContent from '../../data/seo/collection-content.json';
 import extraGuides from '../../data/seo/additional-guides.json';
+import { collectionSlug } from '../../src/lib/catalog-identity.mjs';
 
 test.setTimeout(120000);
 
@@ -58,11 +59,16 @@ test('expanded collections have distinct guidance, local social previews and acc
       page.getByRole('region', { name: `${slug} buying guide`, exact: true })
     ).toBeVisible();
     await expect(
-      page.locator('.collection-buying-guide h3[lang="ur-Latn"]')
-    ).toContainText('confirm karna chahiye');
+      page
+        .locator('.collection-buying-guide h3[lang="ur-Latn"]')
+        .filter({ hasText: 'confirm karna chahiye' })
+    ).toBeVisible();
     await expect(
-      page.locator('.collection-buying-guide p[lang="ur-Latn"]')
-    ).toContainText('PKR price');
+      page
+        .locator('.collection-buying-guide p[lang="ur-Latn"]')
+        .filter({ hasText: 'PKR price' })
+        .first()
+    ).toBeVisible();
     await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
       'href',
       `https://aitoolspk.tech/plans/${slug}/`
@@ -88,9 +94,14 @@ test('expanded collections have distinct guidance, local social previews and acc
   await page.locator('.plan-comparison summary').click();
   await expect(row).toContainText('PKR 1,200');
   await expect(row).toContainText('Full seller warranty (18 months)');
-  expect(await row.locator('a').getAttribute('href')).toBe(
+  // The first link in the row is the exact plan; the price cell additionally
+  // carries an outbound link to the vendor's own site.
+  expect(await row.locator('a').first().getAttribute('href')).toBe(
     `/tool/${plan.slug}/`
   );
+  const vendor = row.locator('td.comparison-price a[href^="https://"]');
+  if ((await vendor.count()) > 0)
+    await expect(vendor.first()).toHaveAttribute('rel', /noopener/);
 });
 
 test('all ten buying guides are discoverable with factual dates, schema and native cross-links', async ({
@@ -103,7 +114,10 @@ test('all ten buying guides are discoverable with factual dates, schema and nati
   const robots = await (await request.get('/robots.txt')).text();
   expect(robots).not.toMatch(/^Host:/im);
   expect(robots).toContain('Sitemap: https://aitoolspk.tech/sitemap.xml');
-  expect(sitemap).toContain('<lastmod>2026-10-24</lastmod>');
+  const sitemapEntries = sitemap.match(/<url>[\s\S]*?<\/url>/g) || [];
+  expect(sitemapEntries.length).toBeGreaterThan(100);
+  for (const entry of sitemapEntries)
+    expect(entry).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/);
   const navigation = await (await request.get('/llms.txt')).text();
   expect(navigation).not.toContain('/tool/');
   for (const guide of extraGuides) {
@@ -116,9 +130,11 @@ test('all ten buying guides are discoverable with factual dates, schema and nati
     const schema = (
       await page.locator('script[type="application/ld+json"]').allTextContents()
     ).map((s) => JSON.parse(s));
-    expect(schema.find((s) => s['@type'] === 'Article').dateModified).toBe(
-      guide.checked
-    );
+    const article = schema.find((s) => s['@type'] === 'Article');
+    // `dateModified` is the newer of the recorded check date and the last
+    // commit, so it must be a real ISO date no older than the check date.
+    expect(article.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(article.dateModified >= guide.checked).toBe(true);
     expect(
       schema.some((s) =>
         ['FAQPage', 'HowTo', 'AggregateRating'].includes(s['@type'])
@@ -133,14 +149,28 @@ test('About, editorial policy and contact publish only supplied business contact
   for (const path of ['/about/', '/editorial-policy/', '/contact/']) {
     await page.goto(path);
     await expect(page.locator('h1')).toHaveCount(1);
-    expect(await page.locator('a[href^="mailto:"]').count()).toBe(0);
+    // Only the one published domain address may appear, and only on the contact
+    // page. Any other mailto link would be an unverified contact claim.
+    const mailto = await page
+      .locator('a[href^="mailto:"]')
+      .evaluateAll((links) => links.map((link) => link.getAttribute('href')));
+    expect(mailto.sort()).toEqual(
+      path === '/contact/' ? ['mailto:hello@aitoolspk.tech'] : []
+    );
     const schema = (
       await page.locator('script[type="application/ld+json"]').allTextContents()
     ).map((s) => JSON.parse(s));
     const org = schema.find((s) => s['@type'] === 'Organization');
     expect(org.contactPoint.telephone).toBe('+923714549245');
+    expect(org.email).toBe('hello@aitoolspk.tech');
     expect(org.address).toBeUndefined();
-    expect(org.sameAs).toBeUndefined();
+    // Only profiles that resolve are declared. A social placeholder would be a
+    // false identity claim, so nothing beyond the two public GitHub records the
+    // site actually owns may appear here.
+    expect(org.sameAs).toEqual([
+      'https://github.com/omiijutt120/aitoolspk',
+      'https://github.com/omiijutt120',
+    ]);
     expect(schema.filter((s) => s['@type'] === 'BreadcrumbList')).toHaveLength(
       1
     );
@@ -158,6 +188,7 @@ test('new content fits phone, tablet and desktop with a keyboard-operable compar
     await page.setViewportSize({ width, height: 900 });
     for (const path of [
       '/',
+      '/price-index/',
       '/plans/chatgpt/',
       '/category/design/',
       '/about/',
@@ -168,6 +199,8 @@ test('new content fits phone, tablet and desktop with a keyboard-operable compar
         await page.locator('.plan-comparison summary').focus();
         await page.keyboard.press('Enter');
         await expect(page.locator('.plan-comparison table')).toBeVisible();
+      }
+      if (path === '/plans/chatgpt/' || path === '/price-index/') {
         const results = await new AxeBuilder({ page })
           .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
           .analyze();
@@ -181,4 +214,35 @@ test('new content fits phone, tablet and desktop with a keyboard-operable compar
       ).toBe(true);
     }
   }
+});
+
+test('the price index lists every collection once with a starting price and a plans link', async ({
+  page,
+}) => {
+  const slugs = new Set(
+    catalog.filter((p) => p.approval !== 'excluded').map(collectionSlug)
+  );
+  await page.goto('/price-index/');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    'href',
+    'https://aitoolspk.tech/price-index/'
+  );
+  await expect(page.locator('h1')).toHaveCount(1);
+  const rows = page.locator('#all-tools ~ .comparison-scroll tbody tr');
+  await expect(rows).toHaveCount(slugs.size);
+  const hrefs = await rows
+    .locator('th a')
+    .evaluateAll((links) => links.map((link) => link.getAttribute('href')));
+  expect(new Set(hrefs).size).toBe(slugs.size);
+  for (const href of hrefs) {
+    expect(href).toMatch(/^\/plans\/[a-z0-9-]+\/$/);
+    expect(slugs.has(href!.split('/')[2])).toBe(true);
+  }
+  const schema = (
+    await page.locator('script[type="application/ld+json"]').allTextContents()
+  )
+    .map((text) => JSON.parse(text))
+    .find((item) => item['@type'] === 'CollectionPage');
+  expect(schema.mainEntity.numberOfItems).toBe(slugs.size);
+  expect(schema.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
 });

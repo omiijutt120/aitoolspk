@@ -7,6 +7,8 @@ import type { Product } from '@/lib/types';
 import { money, whatsappUrl } from '@/lib/commerce.mjs';
 import { categoryName } from '@/lib/categories';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
+import { displayName } from '@/lib/product-name';
+import { PriceSource } from './price-source';
 export function BrandLogo({
   product,
   large = false,
@@ -48,7 +50,7 @@ export function ProductCard({ product }: { product: Product }) {
           data-catalog-event="product_open"
           data-product-id={product.id}
         >
-          {product.name}
+          {displayName(product.name, product.warranty, product.brand)}
         </Link>
       </h3>
       {product.summary && <p className="product-summary">{product.summary}</p>}
@@ -81,6 +83,7 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="product-card-price">
         <strong>{money(product.price)}</strong>
         <StockBadge product={product} />
+        <PriceSource brand={product.brand} brandSlug={product.brandSlug} />
       </div>
       <div className="product-buttons">
         <Link

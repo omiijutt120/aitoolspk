@@ -3,10 +3,12 @@ import AxeBuilder from '@axe-core/playwright';
 import catalog from '../../data/catalog.json';
 import type { Product } from '../../src/lib/types';
 import { isStale } from '../../src/lib/commerce.mjs';
+import { displayName } from '../../src/lib/product-name';
 
 const added = (catalog as Product[]).filter(
   (p) => p.sourceType === 'seller-listed'
 );
+const shown = (p: Product) => displayName(p.name, p.warranty, p.brand);
 
 test('all six new offers retain exact prices, honest eligibility, canonical, warranty and official images', async ({
   page,
@@ -37,7 +39,7 @@ test('all six new offers retain exact prices, honest eligibility, canonical, war
     ).toBeVisible();
     await expect(
       page.getByText(
-        "Your subscription includes AI Tools PK's seller-provided warranty",
+        "Your subscription includes AiToolsPk's seller-provided warranty",
         { exact: false }
       )
     ).toBeVisible();
@@ -95,7 +97,7 @@ test('all six new offers retain exact prices, honest eligibility, canonical, war
       p.duration,
       p.price.toLocaleString('en-PK'),
       'Full Duration Warranty',
-      'AI Tools PK (seller warranty)',
+      'AiToolsPk (seller warranty)',
     ])
       expect(message).toContain(expected);
   }
@@ -113,7 +115,9 @@ test('new collection cards keep descriptions, warranty badges, details and Buy N
     for (const p of plans) {
       const card = page
         .locator('.product-card')
-        .filter({ has: page.getByRole('link', { name: p.name, exact: true }) });
+        .filter({
+          has: page.getByRole('link', { name: shown(p), exact: true }),
+        });
       // The two Midjourney durations share a product title; their detail URLs identify them.
       const exactCard =
         p.brandSlug === 'midjourney'
@@ -154,8 +158,9 @@ for (const width of [390, 768, 1440]) {
     await expect(page.locator('.duration-saving')).toContainText(
       'Save PKR 4,000'
     );
-    // React reconciles route metadata after the new page content commits.
-    // Assert it settles to one canonical before reading a strict locator.
+    // React reconciles route metadata after the new page content commits, and
+    // the stale server-rendered canonical is dropped by CanonicalGuard. Both
+    // durations must end up pointing at exactly one canonical URL.
     await expect(page.locator('link[rel=canonical]')).toHaveCount(1);
     await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
       'href',

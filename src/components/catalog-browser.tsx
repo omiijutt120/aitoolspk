@@ -307,10 +307,9 @@ export function CatalogBrowser({
   const grouped = !collection;
   const collections = useMemo(() => {
     const result = all ? groupCollections(filtered) : [...initialCollections];
-    if (params.get('sort') === 'price-asc')
-      result.sort((a, b) => a.minPrice - b.minPrice);
+    if (params.get('sort') === 'price-asc') result.sort((a, b) => a.medianPrice - b.medianPrice);
     else if (params.get('sort') === 'price-desc')
-      result.sort((a, b) => b.minPrice - a.minPrice);
+      result.sort((a, b) => b.medianPrice - a.medianPrice);
     else if (params.get('sort') === 'name')
       result.sort((a, b) => a.title.localeCompare(b.title));
     return result;

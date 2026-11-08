@@ -1,7 +1,7 @@
 import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'Privacy policy',
+  'Privacy policy and data handling',
   'How AiToolsPk handles website visits, WhatsApp enquiries, technical logs and privacy requests. No customer accounts or on-site payment collection.',
   '/privacy-policy/'
 );

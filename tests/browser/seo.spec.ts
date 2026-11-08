@@ -2,6 +2,9 @@ import { test, expect } from '@playwright/test';
 import catalog from '../../data/catalog.json';
 import { collectionProducts } from '../../src/lib/collections';
 import type { Product } from '../../src/lib/types';
+import { displayName } from '../../src/lib/product-name';
+
+const shown = (p: Product) => displayName(p.name, p.warranty, p.brand);
 
 test('every sitemap URL serves an indexable self-canonical page without a redirect', async ({
   request,
@@ -109,7 +112,12 @@ test('ordering instructions introduce an H2 before step H3s', async ({
   );
   expect(levels[0]).toBe(1);
   expect(levels[1]).toBe(2);
-  expect(levels[2]).toBe(3);
+  // The page now opens with a written answer before the steps, so the first
+  // H3 is no longer the third heading. What must still hold is that the steps
+  // are introduced by an H2 and no heading level is skipped on the way down.
+  const firstH3 = levels.indexOf(3);
+  expect(firstH3).toBeGreaterThan(0);
+  expect(Math.max(...levels.slice(0, firstH3))).toBe(2);
 });
 
 test.describe('crawlable pagination without JavaScript', () => {
@@ -120,7 +128,7 @@ test.describe('crawlable pagination without JavaScript', () => {
     const plans = collectionProducts(catalog as Product[], 'chatgpt');
     await page.goto('/plans/chatgpt/page/2/');
     await expect(page.locator('.product-card h3')).toHaveText(
-      plans.slice(24, 48).map((p) => p.name)
+      plans.slice(24, 48).map(shown)
     );
     await expect(
       page.getByRole('link', { name: 'Page 2', exact: true })
@@ -128,7 +136,7 @@ test.describe('crawlable pagination without JavaScript', () => {
     await page.getByRole('link', { name: 'Next page', exact: true }).click();
     await expect(page).toHaveURL(/\/plans\/chatgpt\/page\/3\/$/);
     await expect(page.locator('.product-card h3')).toHaveText(
-      plans.slice(48, 72).map((p) => p.name)
+      plans.slice(48, 72).map(shown)
     );
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',

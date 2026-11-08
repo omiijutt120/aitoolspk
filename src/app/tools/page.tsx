@@ -1,5 +1,6 @@
 import { Catalog } from '@/components/catalog';
 import { metadata as makeMetadata } from '@/lib/seo';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { products } from '@/lib/catalog';
 import { groupCollections } from '@/lib/collections';
@@ -37,7 +38,12 @@ export default async function Tools({ params }: Props) {
         <h1>One tool. All its plans.{page > 1 ? ` Page ${page}.` : ''}</h1>
         <p>
           Browse by tool, then compare its subscriptions, durations and warranty
-          options. All API offers live in one collection.
+          options. All API offers live in one collection. Prefer a price-first
+          view? Open the{' '}
+          <Link href="/price-index/" prefetch={false}>
+            price index
+          </Link>{' '}
+          to see every tool&apos;s listed starting price on one page.
         </p>
       </div>
       <Catalog initialPage={page} />

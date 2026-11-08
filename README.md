@@ -117,7 +117,7 @@ reports/                 Private QA/audit output (ignored)
 tests/                   Data/commerce tests and browser accessibility checks
 ```
 
-## Deploy to your purchased AItoolsPK.tech domain
+## Deploy to your purchased aitoolspk.tech domain
 
 This repository does **not** itself configure domain ownership, DNS, HTTPS, Search Console or hosting. Deployment is complete only after a host is serving the export and DNS/SSL have been checked. Keep the launch catalog under review until resale evidence and exact offer terms are available.
 
@@ -154,7 +154,7 @@ To roll back, prepare a reviewed revert commit on `main`, pass the checks, and p
 
 - Check homepage, catalog queries, every approved detail page, sitemap.xml, robots.txt and 404 responses on the real domain.
 - Verify WhatsApp on Android, iOS and WhatsApp Web; a click is enquiry intent, not a completed order.
-- Operate according to the published privacy, terms and refund policies. Per the owner's preference, contact details use AItoolsPK and the supplied WhatsApp number; no legal seller name or business address is added. No operating hours were invented.
+- Operate according to the published privacy, terms and refund policies. Per the owner's preference, contact details use AiToolsPk and the supplied WhatsApp number; no legal seller name or business address is added. No operating hours were invented.
 - Finish review of logo usage and all products you wish to sell. Unsupported offers stay pending or are excluded.
 - Add the verified domain to Google Search Console, submit `https://aitoolspk.tech/sitemap.xml`, and test approved Product structured data using the Rich Results Test. WhatsApp fulfilment does not guarantee merchant-listing eligibility.
 - Measure representative mobile Lighthouse and real-device performance after deployment. Target LCP ≤2.5s, INP ≤200ms, CLS ≤0.1; field metrics require real traffic and are not guaranteed by a local build.
@@ -164,7 +164,13 @@ To roll back, prepare a reviewed revert commit on `main`, pass the checks, and p
 
 `npm run test:browser` uses the production export at port 3000. Install Chromium with `npx playwright install chromium` on a new machine; Linux CI uses `npx playwright install --with-deps chromium`. Screenshots go to ignored `reports/`. Tests cover 320/375/390/600/768/820/1024/1280/1440px, touch, keyboard dialogs, query/filter behavior, console errors and automated WCAG AA scanning. These are emulated Chrome checks; physical devices, Safari, a real WhatsApp handoff and a manual screen-reader review remain separate checks.
 
+If port 3000 is already used, set `PLAYWRIGHT_BASE_URL=http://127.0.0.1:3100` for the test command. Playwright will serve this repository's `out/` export on that port; existing local servers are left alone.
+
 ## SEO maintenance and owner setup
+
+The blog is at `/blog/`. Its searchable product library covers every active collection, with native pagination and links to exact catalog variants. Original workflow articles live in `data/blog/posts.json`; add a unique slug, existing collection slug, specific useful content, FAQs, official sources and real publication/review dates. `src/lib/blog.ts` derives routes and reading estimates, while `src/app/blog/` renders static pages. Prices and plan terms come directly from the sanitized catalog, not manually copied article text. Updating an article's facts requires reviewing its cited sources; do not bump dates simply to appear fresh. Vendor capabilities do not verify a seller package.
+
+Blog routes are automatically included in the sitemap and optional discovery navigation. Add or update an article, then run `npm run launch:check` and `npm run test:browser` before release. The blog tests check complete collection coverage without JavaScript, search/reset/pagination, exact plan details, article metadata, official image assets, mobile navigation, accessibility and overflow at mobile/tablet/desktop widths. Avoid publishing near-identical articles for every warranty variant: the existing parent comparison pages remain the destination for those variants.
 
 The existing metadata, canonical, robots and static-pagination implementation is retained. Collection buying guidance lives in `src/lib/collection-guides.ts`; reviewed editorial content lives in `src/lib/guides.ts`. Guides are static HTML with source links, actual review dates and Article markup. Update facts and dates only after reviewing sources. Offer price dates do not become sitemap modification dates. Do not remove commercially pending offer restrictions to improve an indexing count.
 

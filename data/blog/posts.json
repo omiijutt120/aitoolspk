@@ -1,0 +1,787 @@
+[
+  {
+    "slug": "chatgpt-freelancer-project-workflow",
+    "collection": "chatgpt",
+    "topic": "AI & research",
+    "title": "ChatGPT for freelancers: brief to workflow",
+    "description": "A practical ChatGPT project workflow for Pakistani freelancers: organize a brief, draft deliverables, review facts and compare the right subscription.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "Use a ChatGPT project to keep a client's approved reference files, instructions and related conversations together. Start with a clear deliverable, ask for a structured draft and review it against the original brief. Choose a plan around the tools and limits you actually need, rather than assuming every paid listing gives identical access.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "Which ChatGPT features help with repeat client work?",
+        "paragraphs": [
+          "OpenAI documents Projects as a place for related conversations, files and project instructions. This makes them relevant when work returns to the same background material. File limits, sharing and additional tools depend on the available plan and workspace settings.",
+          "For a freelancer, the useful question is whether the tool can work with the material your client permits you to provide. Keep unrelated clients separate and check sharing settings before adding private documents. A project is a working context; it is not an approval record from your client."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: prepare a product-page writing brief",
+        "paragraphs": [
+          "This is an illustrative workflow, not a measured performance test. Create a project for one client, add their approved product facts and supply a short instruction describing audience, tone and facts that must not be invented."
+        ],
+        "bullets": [
+          "Ask for an outline with sections for customer problem, supported features, limitations and unanswered questions.",
+          "Draft one section first. Check product names, quantities and claims against the approved source before continuing.",
+          "Ask for a final checklist of statements requiring client confirmation. Keep the original source beside the draft during review."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "What should you verify before delivering the result?",
+        "paragraphs": [
+          "Read links and quotations yourself, check numerical claims and remove invented evidence. A polished answer can still misunderstand a product or omit a restriction. For a Pakistani audience, specify the required language and currency rather than assuming the assistant will choose them consistently.",
+          "Assess the result using a small real task you can review: does it follow the brief, preserve the facts and make revision easier? That is more useful than treating a subscription name as a promise of better client outcomes."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Do I need the most expensive ChatGPT listing for this workflow?",
+        "answer": "Not necessarily. Check whether your eligible account already provides the project, file and collaboration functions you need. Compare limits and the actual supplied access before paying for an upgrade."
+      },
+      {
+        "question": "Does a ChatGPT subscription also supply API credit?",
+        "answer": "A subscription listing alone does not establish an API balance. If you need an integration, request the provider, billing arrangement and exact credit entitlement separately."
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenAI: Projects in ChatGPT",
+        "href": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-deep-research-source-checking",
+    "collection": "gemini",
+    "topic": "AI & research",
+    "title": "Gemini Deep Research: source-checked brief",
+    "description": "Learn a practical Gemini research workflow: define a question, choose sources, check citations and separate research features from Google AI plan claims.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "Use Gemini Deep Research for a defined research question, then inspect the underlying sources before making a decision. Google documents web sources, uploaded files and supported connected sources. Account access and feature availability vary, so confirm the specific Gemini capabilities included in your selected package.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "What does Deep Research use as evidence?",
+        "paragraphs": [
+          "Google's help describes Google Search as a default research source and allows other supported sources, including uploaded files and connected personal sources. The choice of source matters: a supplier's marketing page, a dated price list and an independent specification answer different questions.",
+          "Use only files and connections that you are permitted to access. A generated report is a starting point for review, not a replacement for checking the information that matters to your decision."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: compare software for a small business",
+        "paragraphs": [
+          "Frame the task around requirements instead of asking for the best tool. For example, a small business in Pakistan might need a shared content calendar, exportable assets and a defined monthly budget. This is an example evaluation approach, not a claim that we tested the products."
+        ],
+        "bullets": [
+          "Specify the required capabilities, intended users and information cutoff date.",
+          "Ask for a comparison separating documented features, price observations and unresolved questions, with a source for each material claim.",
+          "Open the most important sources and check whether the report has confused a vendor plan with a third-party package.",
+          "Keep currencies and billing periods explicit. Compare total cost over the same period only after the final quote is confirmed."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "Keep Gemini research separate from video and storage promises",
+        "paragraphs": [
+          "The Gemini collection also contains listings with different app, video, credit and storage labels. A Google AI plan name does not establish identical access to every Google service. Before purchasing, name the specific research function and account arrangement you need.",
+          "When a report includes an unsupported conclusion, return to the source and revise the claim. Do not treat the presence of a citation as proof that its linked page actually supports the sentence."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Will every Gemini listing include the same Deep Research limits?",
+        "answer": "That is not established by the catalog. Check the exact account plan, applicable limits and delivery terms for your chosen product ID."
+      },
+      {
+        "question": "Can I use a generated report without opening its sources?",
+        "answer": "For decisions that depend on accuracy, inspect the supporting pages and their dates. Check exclusions and contradictory evidence before relying on the report."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Google: use Deep Research in Gemini Apps",
+        "href": "https://support.google.com/gemini/answer/15719111?hl=en"
+      }
+    ]
+  },
+  {
+    "slug": "claude-artifacts-prototype-review",
+    "collection": "claude",
+    "topic": "AI & research",
+    "title": "Claude Artifacts: plan and review a prototype",
+    "description": "Use Claude Artifacts for a clearly scoped prototype, with example inputs, review checks and guidance for comparing Claude access in Pakistan.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "Claude Artifacts can present work such as documents, dashboards and small interactive tools beside a conversation. For a useful prototype, define its inputs, expected output and limitations first. Review the result with known examples before sharing it, and confirm the account capabilities required by the specific artifact you want to create.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "Where do Artifacts fit in a project?",
+        "paragraphs": [
+          "Anthropic describes artifacts as editable work that can be revisited and shared, including documents, designs and interactive tools. They are useful for communicating an idea in a form someone can inspect. Available templates and capabilities can vary with the account and workspace.",
+          "A prototype helps clarify requirements. It does not establish production hosting, security, accessibility or correctness. Decide which of those concerns matter before treating a generated interface as ready for a real customer."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: sketch a project-cost estimator",
+        "paragraphs": [
+          "For an illustrative freelancer estimator, define three inputs: hours, an agreed PKR hourly rate and optional expenses. State the calculation and what is excluded, such as tax or payment-processing fees. Use invented sample values rather than private client information."
+        ],
+        "bullets": [
+          "Describe the calculation before asking for the interface, and label every unit.",
+          "Check a known example manually: 10 hours at PKR 2,000 plus PKR 500 expenses should total PKR 20,500 under this simple formula.",
+          "Test empty input, zero values and negative amounts. Decide what the interface should accept or explain.",
+          "Ask another person to review the labels and limitations before sharing the prototype more widely."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "Review the artifact and the account arrangement separately",
+        "paragraphs": [
+          "Check keyboard interaction, narrow-screen layout and whether the result communicates its assumptions. If the prototype handles real information or integrates with another system, those requirements need a separate implementation review.",
+          "For a Claude purchase, identify the actual product and permitted account access. A conversational plan label, an artifact capability and developer API usage are different questions; confirm each relevant entitlement rather than inferring it from the name."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Is a Claude artifact automatically a production website?",
+        "answer": "No. A usable prototype still needs appropriate correctness, accessibility, security and deployment checks for its intended purpose."
+      },
+      {
+        "question": "What should I ask before choosing a Claude plan?",
+        "answer": "Name the artifact or workflow you need, then confirm account capability, usage limits, permitted delivery, duration and the exact seller warranty terms."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Anthropic: what artifacts are and how to use them",
+        "href": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+      }
+    ]
+  },
+  {
+    "slug": "canva-client-brand-kit-workflow",
+    "collection": "canva",
+    "topic": "Design & content",
+    "title": "Canva Brand Kits: a consistent client workflow",
+    "description": "A practical Canva workflow for client logos, colors, templates and final checks, with exact PKR plan links and questions to ask before purchasing.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "A Canva Brand Kit organizes brand assets such as logos, colors and fonts so a team can reuse the approved material. For client work, establish the asset source and workspace permissions first, then build a small set of templates. Confirm that your account's actual plan and role provide the functions you need.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "What does a Brand Kit help organize?",
+        "paragraphs": [
+          "Canva documents Brand Kits for storing logos, fonts, colors and other assets. Its help distinguishes team or organization kits from personal kits and describes permissions for managing them. The ability to use a design does not necessarily mean you can administer the team's brand settings.",
+          "Collect approved assets before making templates. Keep a clear source version for each logo and ask the client which fonts and imagery you may use. A subscription purchase does not establish the rights to a client's identity or third-party content."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: a reusable social campaign kit",
+        "paragraphs": [
+          "For a small Pakistani business, start with three illustrative layouts: a product announcement, a customer-information post and a campaign reminder. This is a suggested workflow rather than a measured result from client work."
+        ],
+        "bullets": [
+          "Define the intended channel, canvas size and safe text area before styling.",
+          "Apply approved logos, colors and type choices consistently across the three layouts.",
+          "Separate editable copy from fixed brand elements and agree who can update the master templates.",
+          "Preview exported files on a phone, check Urdu or English text where applicable, and verify the offer's dates and prices."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "Check permissions and handover before selecting a package",
+        "paragraphs": [
+          "Decide whether the client must own the workspace or simply receive exported assets. Check the required editing role, access to source templates and what happens when a team membership ends.",
+          "The Canva catalog includes different plan and education-related labels. Confirm eligibility and the actual workspace arrangement for your selected offer. Do not assume that a long subscription label supplies every brand-management or commercial-use entitlement."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Does a Canva team invitation make me the workspace owner?",
+        "answer": "No such ownership is established by an invitation label. Confirm your role, editing permissions and handover arrangements before choosing a package."
+      },
+      {
+        "question": "Should I choose a plan just for its duration?",
+        "answer": "First confirm the Brand Kit and template functions you need, then compare equivalent access and duration. Read the warranty separately from the subscription term."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Canva: set up Brand Kits",
+        "href": "https://www.canva.com/help/brand-kit/"
+      }
+    ]
+  },
+  {
+    "slug": "figma-design-developer-handoff",
+    "collection": "figma",
+    "topic": "Design & content",
+    "title": "Figma handoff: a design developers can inspect",
+    "description": "Prepare a Figma handoff with component states, layout notes and assets. Understand Dev Mode's role and compare the appropriate Figma seat and plan.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "A useful Figma handoff communicates layout rules, reusable components, states and assets, as well as the finished screen. Figma's Dev Mode supports design inspection and handoff. Confirm the seat and plan needed for your actual role; a general Pro label does not establish every developer or editing capability.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "What does Dev Mode add to a handoff?",
+        "paragraphs": [
+          "Figma describes Dev Mode as a developer-focused space for inspecting properties, viewing generated code, downloading assets and comparing changes. Those functions help a developer interpret the design; they do not establish that the final application has been implemented or tested.",
+          "Identify who will design, review and implement the work. Make sure the intended recipient can access the relevant file and the inspection features needed for the handoff."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: hand off a subscription comparison screen",
+        "paragraphs": [
+          "Use a small, illustrative screen containing a plan card, price, duration and action button. Make the underlying decisions visible so the developer does not need to guess how it should behave."
+        ],
+        "bullets": [
+          "Show the default card plus long-name, missing-information and unavailable states.",
+          "Specify layout behavior on narrow and wide screens instead of supplying only one fixed-width image.",
+          "Name reusable components and document text, spacing and interaction states.",
+          "List exportable assets, label the reviewed version and record remaining questions next to the relevant component."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "Validate the implementation against the design",
+        "paragraphs": [
+          "After implementation, compare the real page at mobile and desktop widths. Test keyboard focus, text wrapping and links. Inspecting a design or copying a generated code snippet does not replace this review.",
+          "For a Figma offer, confirm seat type, ownership of files and workspace, invitation permissions and the actual duration. Keep editing access, inspection capabilities and seller warranty as separate parts of the purchasing decision."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Does Dev Mode automatically build my finished website?",
+        "answer": "It provides inspection and handoff capabilities. The application's behavior, accessibility and production deployment still require implementation and testing."
+      },
+      {
+        "question": "What Figma access should a developer ask for?",
+        "answer": "Specify the file access and Dev Mode capabilities required for the project, then confirm the appropriate seat and plan. Do not infer these from a generic subscription label."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Figma: guide to Dev Mode",
+        "href": "https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode-in-Figma"
+      }
+    ]
+  },
+  {
+    "slug": "notion-client-project-workspace",
+    "collection": "notion",
+    "topic": "Work & productivity",
+    "title": "Notion for client projects: workspace setup",
+    "description": "Organize a client project in Notion with tasks, decisions, deliverables and permissions. Compare workspace needs before selecting a subscription.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "Use a Notion project workspace to connect a brief, task list, decision log and deliverables. Choose views that help people understand ownership and progress. Start with a simple structure, verify sharing permissions and only select paid features when they solve an identified requirement.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "Which Notion capabilities matter for project coordination?",
+        "paragraphs": [
+          "Notion's project documentation describes databases, task properties, different views and linked project information. These capabilities can organize work around status, ownership and dates. Availability of specific permissions, automations or AI functions depends on the actual workspace plan.",
+          "A workspace should make the next action clear. A complicated dashboard with no maintained tasks is less useful than a simple page whose owners keep the information current."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: organize a small website project",
+        "paragraphs": [
+          "This example structure is a starting point you can adapt. Create a project home containing the agreed scope, then link four sections: tasks, decisions, assets and delivery checks."
+        ],
+        "bullets": [
+          "Give every task an owner, status and due date; link it to the relevant brief or asset.",
+          "Record decisions with their date and approver so old instructions are not mistaken for current requirements.",
+          "Separate internal notes from material the client should see and inspect the resulting permissions.",
+          "Use a review checklist for launch items such as content approval, mobile layout and working contact links."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "Plan the handover and ongoing ownership",
+        "paragraphs": [
+          "Decide who maintains the workspace after the project ends and how important material will be retained or exported. Check guest access and the ownership of pages before a subscription or team arrangement changes.",
+          "When comparing the Notion listings, confirm whether the quoted amount covers your required seats, workspace and functions. A Business label or a multi-month term does not establish unlimited AI usage or ownership of a particular workspace."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Do I need a complex template to start using Notion?",
+        "answer": "No. Start with the brief, tasks, decisions and deliverables your project actually needs. Add structure only when it helps someone find information or take action."
+      },
+      {
+        "question": "What should I confirm about a Notion subscription offer?",
+        "answer": "Confirm workspace ownership, seats, guest permissions, the functions you need, duration and renewal. Ask separately about any AI allowance rather than assuming it is included."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Notion: project management features",
+        "href": "https://www.notion.com/product/projects"
+      }
+    ]
+  },
+  {
+    "slug": "elevenlabs-voiceover-script-budget",
+    "collection": "elevenlabs",
+    "topic": "Video & audio",
+    "title": "ElevenLabs voiceovers: script and credit budget",
+    "description": "A practical ElevenLabs voiceover workflow: prepare a script, test pronunciation, budget revisions and check plan-specific credit and usage terms.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "For an ElevenLabs voiceover, prepare and approve the script before generating the full recording. Test a short sample with the intended voice and model, review pronunciation and reserve capacity for revisions. Credit use varies, so estimate with your actual settings instead of converting a package label into a guaranteed number of audio minutes.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "Understand the text-to-speech and billing choices",
+        "paragraphs": [
+          "ElevenLabs offers text-to-speech with selectable voices. Its billing documentation explains that consumption depends on the plan, product, model and whether generation occurs through the website or API. The same credit quantity can therefore support different workloads.",
+          "Confirm the rights needed for your intended use and the voice you select. A seller's credit listing does not itself establish commercial-use permission, consent to clone a voice or access to every audio product."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: a short product explainer",
+        "paragraphs": [
+          "For an illustrative explainer aimed at Pakistani customers, finalize product facts, pronunciation notes and the intended language before generating audio. Do not claim that a tool supports the desired result solely because its name appears in a plan listing."
+        ],
+        "bullets": [
+          "Read the script aloud and remove sentences that are difficult to follow without seeing the screen.",
+          "Generate a short sample containing the brand name, numbers and any mixed-language phrases that matter.",
+          "Review pacing, pronunciation and the selected voice; adjust the text before producing the full version.",
+          "Keep the approved script and settings, and budget additional generation for factual changes or client revisions."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "Compare usable credit, expiry and renewal",
+        "paragraphs": [
+          "Ask whether the offer supplies subscription quota or another credit arrangement, when it resets or expires, and which product can use it. ElevenLabs documents different allocation and rollover conditions; confirm the ones that apply to your actual account.",
+          "Estimate from the usage shown for your sample under the intended model, then allow for revisions. This is a planning method rather than a promise of a particular output length or a fixed saving."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "How many minutes will a credit package generate?",
+        "answer": "There is no single conversion established by these listings. Check usage under the selected product, model, account plan and generation method, then estimate from a representative sample."
+      },
+      {
+        "question": "Does every package allow commercial client voiceovers?",
+        "answer": "Do not assume so. Confirm current usage rights, the chosen voice and your account's entitlement before using generated audio for a client."
+      }
+    ],
+    "sources": [
+      {
+        "label": "ElevenLabs: text to speech",
+        "href": "https://elevenlabs.io/text-to-speech"
+      },
+      {
+        "label": "ElevenLabs: billing and credit allocation",
+        "href": "https://elevenlabs.io/docs/overview/administration/billing"
+      }
+    ]
+  },
+  {
+    "slug": "cursor-ai-code-review-workflow",
+    "collection": "cursor",
+    "topic": "Coding",
+    "title": "Cursor for coding: small-change review workflow",
+    "description": "Use Cursor with scoped coding tasks, explicit acceptance checks and human review. Compare the relevant account access and plan before purchasing.",
+    "published": "2026-10-30",
+    "checked": "2026-10-30",
+    "answer": "Give Cursor one clearly scoped coding task, inspect the proposed changes and run checks that verify the intended behavior. Keep changes small enough to review. An AI-generated implementation or automated review is evidence to examine, not a substitute for testing or responsibility for what you deploy.",
+    "sections": [
+      {
+        "id": "features",
+        "heading": "Use review as part of the coding task",
+        "paragraphs": [
+          "Cursor documents an Agent Review workflow for examining work produced with its agent. The practical goal is to understand the changes and resolve problems before accepting them. Confirm which capabilities are available in your actual account instead of assuming every listed package has identical model or usage access.",
+          "Before editing, establish the current behavior and the files involved. Preserve unrelated work and keep a recoverable version of the project so you can inspect or undo a change."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "An example: fix a search empty state",
+        "paragraphs": [
+          "Use an illustrative task with an observable result: when a search returns no products, show a clear message and a working reset control. Define expected behavior before asking the assistant to implement it."
+        ],
+        "bullets": [
+          "Describe the existing behavior and the exact outcome, including keyboard and mobile use.",
+          "Ask for the smallest appropriate change in the relevant component and review every modified file.",
+          "Test a matching search, a search with no results and clearing the query. Check that the reset control actually restores the list.",
+          "Run the project's required checks and examine warnings or failures before committing the result."
+        ]
+      },
+      {
+        "id": "quality",
+        "heading": "Separate a working change from a subscription claim",
+        "paragraphs": [
+          "A useful review checks logic, errors, permissions and whether the implementation meets the task. Generated code can still mishandle edge cases even when the main screen appears correct. Do not include credentials or private client data in an example that does not require them.",
+          "Before buying Cursor access, confirm the legitimate account arrangement, usage terms, duration and renewal. A Pro label does not establish unlimited model usage or guarantee that a particular project will be completed successfully."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Can I deploy a change immediately after an AI review?",
+        "answer": "First inspect the result and run the appropriate project tests. Review assistance does not establish that the application works correctly or is ready for your users."
+      },
+      {
+        "question": "What should a beginner compare between Cursor offers?",
+        "answer": "Compare the actual account access, supported workflow, usage allowance, duration and renewal. Keep the stated seller warranty separate from the software's capabilities."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Cursor: Agent Review",
+        "href": "https://cursor.com/docs/agent/agent-review"
+      }
+    ]
+  },
+  {
+    "slug": "chatgpt-vs-claude-plans-pakistan",
+    "collection": "chatgpt",
+    "topic": "AI & research",
+    "title": "ChatGPT vs Claude: plans for Pakistan",
+    "description": "ChatGPT and Claude compared for Pakistani buyers: documented strengths, how plan limits differ and what to check in a PKR listing before paying.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "Both assistants draft, analyse and support coding, but they are sold in different shapes: OpenAI documents Projects for gathering related files, Anthropic documents Artifacts for rendering output beside the chat. Choose by the task you repeat most, then compare the exact PKR package, because the same brand appears at several durations and access types.",
+    "sections": [
+      {
+        "id": "strengths",
+        "heading": "What each assistant is documented to do",
+        "paragraphs": [
+          "OpenAI documents Projects in ChatGPT as a space where related conversations, files and instructions stay together. That is useful when work keeps returning to the same reference material: a client account, a course, a codebase or a set of product facts.",
+          "Anthropic documents Artifacts as a way to render a substantial result, such as a document, a piece of code or a diagram, next to the conversation so you can inspect it. For review-heavy work, that changes how quickly you can check what the model produced rather than scrolling through chat text.",
+          "Neither capability is a promise about a seller package. A listing can be a private subscription, a shared account, an invitation into a workspace or a licence, and features can be restricted by that arrangement. Read the access text before you assume the documented feature is available to you."
+        ]
+      },
+      {
+        "id": "limits",
+        "heading": "Usage limits and what \"unlimited\" means",
+        "paragraphs": [
+          "Every paid assistant has a ceiling somewhere: message caps, model access, file size, file count, or a separate credit balance for advanced tools. Vendors revise these limits more often than they revise prices, so a limit described in a review from last year may already be wrong.",
+          "Treat any listing that promises unlimited access as a question rather than a feature. Ask which model, which tool, what fair-use clause applies and what happens when you reach the ceiling. Our plan pages list the duration, access method and warranty label the seller supplied, and mark everything else for confirmation."
+        ]
+      },
+      {
+        "id": "price",
+        "heading": "Comparing PKR quotes without comparing the wrong things",
+        "paragraphs": [
+          "A ChatGPT quote and a Claude quote are rarely the same product. One may be a one-month private plan, another a seven-day shared slot, and a third an API credit balance that is not a chat subscription at all. The number only means something once the package behind it is clear."
+        ],
+        "bullets": [
+          "Match duration first: a seven-day quote is not a monthly price divided by four.",
+          "Check access type, because private, shared, workspace invitation and licence change what you can actually do.",
+          "Read the warranty label as a seller term rather than vendor coverage, and ask for the remedy in writing.",
+          "Confirm account region, eligibility and renewal terms before paying."
+        ]
+      },
+      {
+        "id": "choose",
+        "heading": "A short shortlist method",
+        "paragraphs": [
+          "Pick the one task you will repeat this month. If it needs long PDFs and careful review, test a Claude listing with a real document and check whether the output is easier to inspect. If it needs projects, files and a broad toolset, test ChatGPT with the same task.",
+          "Run both on real material, keep the outputs, and judge the cost of revising them rather than the quality of the first draft. Only then compare price. The cheapest quote is usually the shortest or most restricted package, not the best value for repeated work."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Can I use a ChatGPT or Claude subscription for client work?",
+        "answer": "Check the vendor terms and the access type in the listing. A shared or resold account may not be permitted for commercial use, and a licence may restrict seats or named users. Confirm both before you bill a client for work produced with it."
+      },
+      {
+        "question": "Why is the same assistant listed at very different PKR prices?",
+        "answer": "Because the listings are different packages. Duration, access method, model access and warranty all change the price. Compare the product ID, duration and access text instead of the brand name alone."
+      },
+      {
+        "question": "Does a chat subscription include API credit?",
+        "answer": "No. A chat plan and an API balance are separate products with separate billing. If you need an integration, ask for the API listing and its credit terms rather than assuming the chat plan covers it."
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenAI: Projects in ChatGPT",
+        "href": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+      },
+      {
+        "label": "OpenAI: What is ChatGPT Plus",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      },
+      {
+        "label": "Anthropic: plans and pricing",
+        "href": "https://www.anthropic.com/pricing"
+      },
+      {
+        "label": "Anthropic: what are Artifacts",
+        "href": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+      }
+    ]
+  },
+  {
+    "slug": "canva-pro-vs-capcut-pro-pakistan",
+    "collection": "canva",
+    "topic": "Design & video",
+    "title": "Canva Pro vs CapCut Pro in Pakistan",
+    "description": "Canva Pro and CapCut Pro compared for Pakistani creators: design versus editing work, what each plan covers and how to compare PKR quotes safely.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "They cover different halves of the same job. Canva is a design and layout tool with documented brand controls; CapCut is a video editor built around cutting, captions and short-form export. The subscriptions are separate products with separate limits, so compare each listing on its own terms instead of buying a bundle you cannot verify.",
+    "sections": [
+      {
+        "id": "what-each-does",
+        "heading": "What each tool actually covers",
+        "paragraphs": [
+          "Canva documents Brand Kits as a place to store colours, fonts and logos so a client brand stays consistent across layouts. That matters when you produce many assets from one visual system: carousels, decks, thumbnails and simple landing graphics.",
+          "CapCut is an editing environment. Its work is the timeline: cuts, transitions, captions, audio and export presets for vertical video. The paid tier is mainly about editing and export features rather than brand assets.",
+          "If your month is mostly layouts and graphics, Canva carries more of the work. If it is mostly filmed footage that needs cutting and captions, CapCut does. Buying the wrong one first is common, and it is usually cheaper to fix that than to buy both at once."
+        ]
+      },
+      {
+        "id": "workflow",
+        "heading": "A workflow that uses both without duplicating work",
+        "paragraphs": [
+          "Design the still assets in Canva, export them at the sizes you need, then assemble the video in CapCut and use those exports as frames, lower thirds or an end card. One folder per client keeps the rebuild path short when a project returns months later."
+        ],
+        "bullets": [
+          "Name exports with the client, project and date so the newest file is obvious.",
+          "Keep one brand kit per client rather than one mixed kit for everything.",
+          "Export a master at the highest quality available to you, then compress for each platform.",
+          "Note which plan produced which file, because access can change when a subscription expires."
+        ]
+      },
+      {
+        "id": "price",
+        "heading": "Comparing the PKR listings",
+        "paragraphs": [
+          "Both tools appear in our catalogue in several forms: one-month, multi-month, shared and private arrangements, and occasional education or long-duration slots. The lowest starting price is usually a short or restricted option rather than the monthly cost of a full plan."
+        ],
+        "bullets": [
+          "Duration: a three-day or seven-day quote is a trial-like purchase, not a monthly rate.",
+          "Access: shared slots and private accounts have different privacy and eligibility limits.",
+          "Seats: a licence sold per seat changes the real cost if a small team needs access.",
+          "Warranty and renewal: both are seller terms, and neither is automatic vendor coverage."
+        ]
+      },
+      {
+        "id": "choose",
+        "heading": "Which one to buy first",
+        "paragraphs": [
+          "Buy the tool that removes the step you currently do by hand. If you are rebuilding the same layout for every post, start with Canva. If you are editing on a phone and fighting export limits, start with CapCut. Add the second only when paid work actually arrives for it.",
+          "Before upgrading, test the specific paid feature on a real project. A subscription is worth its price when it saves a repeatable hour, not when it adds a tool you open once."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Do I need Pro on both Canva and CapCut?",
+        "answer": "Only if both workflows produce paid work. The free tiers are enough to test whether a paid feature changes your output, so run a real project on each before committing to a longer duration."
+      },
+      {
+        "question": "Can I use Canva or CapCut assets for client work?",
+        "answer": "Check the licence attached to the plan you buy and the vendor terms for the specific asset. A subscription does not automatically grant every usage right, and stock elements can carry their own conditions."
+      },
+      {
+        "question": "Why is a long-duration Canva listing cheaper than a short one?",
+        "answer": "Usually because it is a different product: an education slot, a shared arrangement or a resold invitation rather than a private monthly plan. Read the access type and warranty before comparing the number."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Canva: Brand Kits help",
+        "href": "https://www.canva.com/help/brand-kit/"
+      },
+      {
+        "label": "Canva: plans and pricing",
+        "href": "https://www.canva.com/pricing/"
+      },
+      {
+        "label": "CapCut: plans and pricing",
+        "href": "https://www.capcut.com/pricing"
+      }
+    ]
+  },
+  {
+    "slug": "gemini-vs-chatgpt-research-pakistan",
+    "collection": "gemini",
+    "topic": "AI & research",
+    "title": "Gemini vs ChatGPT for research work",
+    "description": "Gemini and ChatGPT compared for research in Pakistan: how research modes work, document checks, plan limits and how to verify an answer before using it.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "Both can summarise, compare and draft from material you supply, and both can be wrong with confidence. The practical difference is the workflow around the model: how documents are attached, whether a research mode is included on your plan, and how easily a statement can be traced back to a source. Test that before choosing a brand.",
+    "sections": [
+      {
+        "id": "research-mode",
+        "heading": "What a research mode actually changes",
+        "paragraphs": [
+          "Google documents Deep Research in the Gemini apps as a way to gather material and produce a longer report with links. OpenAI offers comparable deep-research style tools on supported ChatGPT plans. The output is a structured draft with citations, not a finished answer.",
+          "Check each citation three ways: it exists, it says what the draft claims, and it is current. A link that opens but does not support the sentence is worse than no link, because it looks like evidence."
+        ]
+      },
+      {
+        "id": "documents",
+        "heading": "Working with long documents",
+        "paragraphs": [
+          "Attach one document at a time and ask for a structured extraction: names, dates, amounts and obligations. Then ask a second question that requires combining two parts of the document. If the answer survives both, the model is reading the material rather than guessing from the prompt.",
+          "Keep client material out of any tool the client has not approved. Uploading a document is a disclosure decision, not just a convenience, and retention rules differ between plans."
+        ]
+      },
+      {
+        "id": "limits",
+        "heading": "Plans, limits and the PKR question",
+        "paragraphs": [
+          "Research features, file sizes, message caps and model access vary by tier and change with little notice. That is why our listings describe duration, access type and warranty instead of promising a feature the vendor may move to another tier."
+        ],
+        "bullets": [
+          "Match the feature you need to the plan the vendor documents it on, then check the listing access type.",
+          "Ask how many documents a plan accepts before you plan a workflow around uploads.",
+          "Confirm whether the quote covers one month, several months or a short trial-like duration.",
+          "Treat any warranty as a seller term and ask what happens if access stops mid-term."
+        ]
+      },
+      {
+        "id": "verify",
+        "heading": "A verification checklist before you send the work",
+        "paragraphs": [
+          "Research drafts fail in predictable ways: a real source cited for the wrong claim, a number that belongs to a different year, or a confident summary of a document that was never attached. A short checklist catches most of it."
+        ],
+        "bullets": [
+          "Open every link and confirm the page supports the sentence it is attached to.",
+          "Check numbers against the primary document, not against another summary.",
+          "Ask what the answer would look like if the premise were false, then look for that alternative.",
+          "Date the draft and note the model or plan used, so a later revision is traceable."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Is a research report from Gemini or ChatGPT safe to send to a client?",
+        "answer": "Only after you have checked the sources and removed anything you cannot verify. Treat it as a fast structured first draft, not a finished research product, and say which parts you verified yourself."
+      },
+      {
+        "question": "Which plan do I need for research features?",
+        "answer": "It depends on the vendor current tier rules, which change. Check the vendor documentation for the feature, then match it to the access type described in the listing you are considering."
+      },
+      {
+        "question": "Can these tools read a PDF I upload?",
+        "answer": "Supported plans can accept documents, but size, count and retention rules differ. Confirm the current limits and avoid uploading material you are not allowed to share."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Google: use Deep Research in Gemini Apps",
+        "href": "https://support.google.com/gemini/answer/15719111?hl=en"
+      },
+      {
+        "label": "OpenAI: Projects in ChatGPT",
+        "href": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+      },
+      {
+        "label": "OpenAI: What is ChatGPT Plus",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      }
+    ]
+  },
+  {
+    "slug": "streaming-plans-pakistan-netflix-prime-spotify",
+    "collection": "netflix",
+    "topic": "Entertainment",
+    "title": "Streaming plans in Pakistan: what to compare",
+    "description": "Netflix, Prime Video and Spotify plans for Pakistan compared: tiers, household rules, regional catalogues and how to check a PKR quote before paying.",
+    "published": "2026-11-06",
+    "checked": "2026-11-06",
+    "answer": "The three services are not interchangeable. Netflix and Prime Video sell video libraries; Spotify sells music. Within each one, the tier decides resolution, screens and downloads, while the household or family rule decides who can legally share it. Compare the tier and the sharing rule before you compare the price.",
+    "sections": [
+      {
+        "id": "tiers",
+        "heading": "What a tier actually changes",
+        "paragraphs": [
+          "Netflix documents its plans by resolution, number of simultaneous screens and download limits. Prime Video separates a subscription from rentals and purchases, so a cheap listing may not be a subscription at all. Spotify documents individual, duo, family and student plans, each with its own eligibility rule.",
+          "A PKR quote in a marketplace rarely names the tier. Ask which tier it is, how many screens it allows, and whether it is a new account, an upgrade applied to your own account, or a shared profile inside someone else’s plan. Those three answers change the product more than the price does."
+        ]
+      },
+      {
+        "id": "household",
+        "heading": "Household, family and sharing rules",
+        "paragraphs": [
+          "This is where most shared purchases fail. Netflix applies household rules to determine which devices count as part of one home. Spotify requires family members to live at the same address and verifies it. Prime Video has its own household settings. A listing that ignores these rules can stop working weeks after it starts.",
+          "If a seller describes a plan as shared, ask what happens when the service runs its check, whether you keep the profile and history, and what the warranty covers in that case. A short warranty on a shared plan is a different risk from a short warranty on a private one."
+        ]
+      },
+      {
+        "id": "catalogue",
+        "heading": "Catalogues and languages differ by region",
+        "paragraphs": [
+          "What you can watch depends on the country set on the account, and libraries change month to month. A plan advertised around a foreign catalogue may not show the same titles once the account region is Pakistan. Check a few titles you actually want before committing to a long duration.",
+          "Music catalogues are closer across regions, but individual releases still vary. If one album matters to you, confirm it is available on the account you are buying rather than assuming the global catalogue is identical."
+        ]
+      },
+      {
+        "id": "price",
+        "heading": "Comparing PKR quotes line by line",
+        "paragraphs": [
+          "Convert every quote to a monthly figure only after the package is clear. A six-month listing and a one-month listing are not the same product, and a shared profile is not the same as a private account. The comparison is only fair when duration, tier and access match."
+        ],
+        "bullets": [
+          "Tier and screens: resolution and simultaneous streams are part of what you are buying.",
+          "Duration and renewal: check whether the price renews or ends, and at what rate.",
+          "Access type: new account, upgrade on your account, or a shared profile.",
+          "Household rule: does the service allow the arrangement the seller describes?",
+          "Warranty: what remedy applies if access stops mid-term, and for how long.",
+          "Payment path: confirm who holds the account and how the price is collected."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Can I share a Netflix or Spotify plan with family in another city?",
+        "answer": "That depends on the service household rules, not on the seller. Netflix applies household checks and Spotify requires family members at the same address. Ask the seller how the plan is set up before paying, and assume a shared plan can be interrupted."
+      },
+      {
+        "question": "Why is a six-month streaming listing cheaper than a one-month one?",
+        "answer": "Usually because it is a different product: a longer commitment, a lower tier, a shared profile or a promotional batch. Compare the monthly figure only after confirming the tier, screens and access type."
+      },
+      {
+        "question": "Do I need a foreign card to subscribe directly?",
+        "answer": "Many services accept international cards, but some require a card issued in the account country. Confirm the payment path before you rely on it, and remember that buying through a reseller raises a separate question about who owns the account."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Netflix: how many people can watch at once",
+        "href": "https://help.netflix.com/en/node/24926"
+      },
+      {
+        "label": "Prime Video: help and subscription options",
+        "href": "https://www.primevideo.com/help"
+      },
+      {
+        "label": "Spotify: Premium Family requirements",
+        "href": "https://support.spotify.com/us/article/family-plan/"
+      }
+    ]
+  }
+]

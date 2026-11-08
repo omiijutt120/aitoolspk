@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Document } from '@/components/document';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'Terms of service',
+  'Terms of service and warranties',
   'AiToolsPk catalog terms covering indicative PKR prices, independent seller status, eligibility, safe delivery, warranties and WhatsApp order confirmation.',
   '/terms/'
 );
@@ -72,7 +72,7 @@ export default function Terms() {
       <p>
         Offers explicitly marked “Full Duration Warranty” include AI Tools
         PK&apos;s seller-provided warranty for the purchased subscription
-        duration. This warranty is provided by AI Tools PK, independently of the
+        duration. This warranty is provided by AiToolsPk, independently of the
         original software company. It applies to the specific package and
         included features agreed before payment, subject to these terms and the
         fair usage policy below. Confirm the activation/start date, end date,

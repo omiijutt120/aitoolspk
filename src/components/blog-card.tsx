@@ -35,7 +35,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
           className="text-link"
           href={`/blog/${post.slug}/`}
           prefetch={false}
-          aria-label={`Read: ${post.title}`}
+          aria-label={`Read article: ${post.title}`}
         >
           Read article <ArrowUpRight size={16} aria-hidden="true" />
         </Link>

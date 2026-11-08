@@ -1,32 +1,35 @@
 tier,platform,submit_url,listing_url,expected_rel,status,checked,notes
-1,Google Business Profile,https://business.google.com/en-all/business-profile/,,nofollow,,,Service-area business; hide address; video verification
-1,Bing Places,https://www.bing.com/forbusiness/,,nofollow,,,Imports from GBP; Bing feeds ChatGPT search
-1,Apple Business Connect,https://business.apple.com/,,nofollow,,,Needs Apple ID
-1,Facebook Page,https://www.facebook.com/business,,nofollow,,,Works in browser; set WhatsApp CTA
-1,LinkedIn Company Page,https://www.linkedin.com/company/setup/new/,,nofollow,,,Works in browser; needs personal profile
-1,Trustpilot Business,https://business.trustpilot.com/,,nofollow,,,Claim only; never seed reviews
-2,BusinessList.pk,https://www.businesslist.pk/,,nofollow,,,Closest IT/software category
-2,FindPK,https://findpk.com/,,nofollow,,,Blank address if allowed
-2,PakBiz,https://pakbiz.com/,,nofollow,,,
-2,Pakistan Pages,https://pakistanpages.com/,,nofollow,,,
-2,OLX Pakistan,https://www.olx.com.pk/,,nofollow,,,One ad per service; real buying intent
-2,Foursquare for Business,https://business.foursquare.com/,,nofollow,,,POI listing
-3,TechJuice pitch,https://www.techjuice.pk/,,dofollow,,,Data-story pitch on the price index
-3,ProPakistani pitch,https://propakistani.pk/,,dofollow,,,Same dataset; price-comparison angle
-3,Startup Pakistan pitch,https://startuppakistan.com.pk/,,dofollow,,,Verify in browser
-3,Featured,https://featured.com/,,nofollow/dofollow,,,Quote-based editorial links
-3,Qwoted,https://www.qwoted.com/,,nofollow/dofollow,,,Free tier
-3,SourceBottle,https://www.sourcebottle.com/,,nofollow/dofollow,,,Email-based journalist requests
-3,Dev.to,https://dev.to/,,dofollow,,,Original technical post only
-3,Hashnode,https://hashnode.com/,,dofollow,,,Original post; not a repost
-3,Medium,https://medium.com/,,nofollow,,,Only with rel=canonical to your original
-4,Product Hunt,https://www.producthunt.com/,,nofollow,,,Launch the price index as a free resource
-4,BetaList,https://betalist.com/submissions/new,,nofollow,,,Startup framing
-4,Uneed,https://www.uneed.best/submit-a-tool,,nofollow,,,Free tier; queue can be slow
-4,Microlaunch,https://microlaunch.net/,,nofollow,,,
-4,SaaSHub,https://www.saashub.com/,,nofollow,,,Accepts catalogue-style entries more readily
-4,DevHunt,https://devhunt.org/,,nofollow,,,Developer audience
-4,Peerlist,https://peerlist.io/,,nofollow,,,Free project launch
-4,StartupStash,https://startupstash.com/,,nofollow,,,Free resource listing
-4,Aixploria,https://www.aixploria.com/en/featured-on-aixploria/,,nofollow,,,Free AI directory
-4,GitHub repository,https://github.com/omiijutt120/aitoolspk,https://github.com/omiijutt120/aitoolspk,nofollow,,,Homepage field set to https://aitoolspk.tech/ plus 5 topics
+1,Google Business Profile,https://business.google.com/en-all/business-profile/,,nofollow,,,verified 2026-11-08 HTTP 200 free - service-area business - hide address - video verification
+1,Bing Places,https://www.bing.com/forbusiness/,,nofollow,,,verified 2026-11-08 HTTP 200 free - imports from GBP - Bing feeds ChatGPT search
+1,Apple Business Connect,https://business.apple.com/,,nofollow,,,verified 2026-11-08 HTTP 200 free - needs an existing Apple ID
+1,Facebook Page,https://www.facebook.com/pages/create,,nofollow,,,verified 2026-11-08 - /business returns 400 - use pages/create in a browser - set WhatsApp CTA
+1,LinkedIn Company Page,https://www.linkedin.com/company/setup/new/,,nofollow,,,verified 2026-11-08 HTTP 403 bot-gated - opens in a browser - needs a personal profile first
+1,Trustpilot Business,https://business.trustpilot.com/,,nofollow,,,verified 2026-11-08 HTTP 200 free claim - never seed reviews
+2,BusinessList.pk,https://www.businesslist.pk/,,nofollow,,,verified 2026-11-08 HTTP 200 - free listing tier - closest IT/software category
+2,OLX Pakistan,https://www.olx.com.pk/,,nofollow,,,verified 2026-11-08 HTTP 200 - one ad per service - real buying intent
+2,Foursquare for Business,https://business.foursquare.com/,,nofollow,,,verified 2026-11-08 HTTP 200 - POI listing - leave the street address blank
+2,Cybo Pakistan,https://www.cybo.com/PK/,,nofollow,,,verified 2026-11-08 HTTP 403 bot-gated - opens in a browser - free listing
+2,GoodFirms,https://www.goodfirms.co/,,nofollow,,,verified 2026-11-08 HTTP 403 bot-gated - free listing tier exists - do not buy placement
+3,TechJuice pitch,https://www.techjuice.pk/,,dofollow,,,verified 2026-11-08 HTTP 200 - pitch the /price-index/ dataset not the shop
+3,ProPakistani pitch,https://propakistani.pk/,,dofollow,,,verified 2026-11-08 HTTP 200 - same dataset - price-comparison angle
+3,Startup Pakistan pitch,https://startuppakistan.com.pk/,,dofollow,,,verified 2026-11-08 HTTP 403 bot-gated - opens in a browser
+3,Featured,https://featured.com/,,nofollow/dofollow,,,verified 2026-11-08 HTTP 200 - free tier is limited - quote requests only
+3,Qwoted,https://www.qwoted.com/,,nofollow/dofollow,,,verified 2026-11-08 HTTP 200 - free tier
+3,SourceBottle,https://www.sourcebottle.com/,,nofollow/dofollow,,,verified 2026-11-08 HTTP 200 - free - email-based journalist requests
+3,Dev.to,https://dev.to/,,nofollow,,,verified 2026-11-08 HTTP 200 - GitHub login - external links are nofollow so the value is referral traffic
+3,Hashnode,https://hashnode.com/,,nofollow/dofollow,,,verified 2026-11-08 HTTP 200 - GitHub login - write an original post not a repost
+3,Medium,https://medium.com/,,nofollow,,,verified 2026-11-08 HTTP 403 bot-gated - only worth it with rel=canonical back to the original
+4,Product Hunt,https://www.producthunt.com/,,nofollow,,,verified 2026-11-08 HTTP 403 bot-gated - GitHub login - one launch only so prepare assets first
+4,BetaList,https://betalist.com/submissions/new,,nofollow,,,verified 2026-11-08 HTTP 200 - startup framing - may reject a catalogue
+4,Uneed,https://www.uneed.best/submit-a-tool,,nofollow,,,verified 2026-11-08 HTTP 200 - free tier - queue can be slow
+4,Microlaunch,https://microlaunch.net/,,nofollow,,,verified 2026-11-08 HTTP 200 - free submission
+4,SaaSHub,https://www.saashub.com/,,nofollow,,,verified 2026-11-08 HTTP 200 - free entry - accepts catalogue-style listings
+4,DevHunt,https://devhunt.org/,,nofollow,,,verified 2026-11-08 HTTP 200 - GitHub login - free
+4,Peerlist,https://peerlist.io/,,nofollow,,,verified 2026-11-08 HTTP 403 bot-gated - free project launch
+4,StartupStash,https://startupstash.com/,,nofollow,,,verified 2026-11-08 HTTP 200 - free resource listing - review queue
+4,Aixploria,https://www.aixploria.com/en/featured-on-aixploria/,,nofollow,,,verified 2026-11-08 HTTP 200 - free submission form
+4,Submit AI Tools,https://submitaitools.org/,,nofollow,,,verified 2026-11-08 HTTP 200 - free submission form - no login
+4,Future Tools,https://www.futuretools.io/submit-a-tool,,nofollow,,,verified 2026-11-08 HTTP 200 - free submission form
+4,AI Tools Directory,https://aitoolsdirectory.com/submit,,nofollow,,,verified 2026-11-08 HTTP 200 - free form - paid review optional - do not pay
+4,Insidr AI,https://insidr.ai/submit-tool/,,nofollow,,,verified 2026-11-08 HTTP 200 - free form
+4,GitHub repository,https://github.com/omiijutt120/aitoolspk,https://github.com/omiijutt120/aitoolspk,nofollow,,2026-11-08,Homepage field set to https://aitoolspk.tech/ plus 5 topics - verified live

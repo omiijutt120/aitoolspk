@@ -1251,8 +1251,8 @@
     "title": "ChatGPT Plus kitne ka hai Pakistan mein?",
     "description": "ChatGPT Plus ki qeemat Pakistan mein: typical quote, range, duration aur warranty ka farq, aur pay karne se pehle kya confirm karein.",
     "published": "2026-11-08",
-    "checked": "2026-11-08",
-    "answer": "Is catalog mein ChatGPT ke 52 plans listed hain. Typical (median) quote PKR 4,001 hai, sab se kam PKR 29 aur sab se zyada PKR 96,936. Ye range is liye itni chori hai ke durations 24 ghante se 2 saal tak hain aur access types bhi alag hain, is liye ek number ko monthly price na samjhein.",
+    "checked": "2026-11-09",
+    "answer": "Do alag numbers hain aur inhe milana nahi chahiye. OpenAI khud ChatGPT Plus ko $20/month par list karta hai (help.openai.com, checked 2026-11-09). Is catalog mein ChatGPT ke 52 plans listed hain: typical (median) quote PKR 4,001, sab se kam PKR 29 aur sab se zyada PKR 96,936. Dollar wali vendor ki monthly list price hai; PKR wale local sellers ke quotes hain jo alag muddat aur access type bechte hain, is liye ek number ko doosre ka jawab na samjhein.",
     "sections": [
       {
         "id": "numbers",
@@ -1288,7 +1288,7 @@
         "id": "rupee",
         "heading": "Dollar ke hisab se mehnga ya sasta?",
         "paragraphs": [
-          "Direct vendor price dollar mein hoti hai aur us par card ka exchange rate aur international transaction charges lagte hain. Local quote PKR mein hoti hai, is liye dono ko ek hi maqam par compare karna mushkil hai. Behtar tareeqa ye hai ke aap apne bank ke actual charge se compare karein, na ke kisi website ke \"official price\" se.",
+          "OpenAI ki apni help page Plus ko $20/month (billed monthly) par list karti hai, aur usi page par likha hai ke account credentials share karna ya access resell karna is permission mein shamil nahi. Us dollar price par card ka exchange rate aur international transaction charges bhi lagte hain, is liye apne bank ke actual charge se compare karein, na ke kisi website ke andaze se. Local quote PKR mein hoti hai aur alag muddat aur access batati hai, is liye dono ko ek hi maqam par compare karna mushkil hai.",
           "Agar aap ke paas international card nahi hai, to local quote hi amal ka raasta hai — lekin tab warranty aur access ki ahmiyat aur barh jati hai, kyunki chargeback ka option aam tor par nahi hota."
         ]
       }
@@ -1309,12 +1309,12 @@
     ],
     "sources": [
       {
-        "label": "OpenAI: what is ChatGPT Plus",
+        "label": "OpenAI help: ChatGPT Plus is $20/month",
         "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
       },
       {
-        "label": "AiToolsPk price index",
-        "href": "https://aitoolspk.tech/price-index/"
+        "label": "AiToolsPk price index: ChatGPT row",
+        "href": "https://aitoolspk.tech/price-index/#tool-chatgpt"
       }
     ]
   },
@@ -1495,9 +1495,7 @@
       {
         "id": "checks",
         "heading": "Char sawalat jo farq tay karte hain",
-        "paragraphs": [
-          "In ke jawab likh kar lein:"
-        ],
+        "paragraphs": ["In ke jawab likh kar lein:"],
         "bullets": [
           "Account kis email par banega?",
           "Password badalne ka haq kis ke paas hoga?",
@@ -1634,9 +1632,7 @@
       {
         "id": "check",
         "heading": "Eligibility khud kaise check karein",
-        "paragraphs": [
-          "Vendor ki official page par ye cheezein dekhein:"
-        ],
+        "paragraphs": ["Vendor ki official page par ye cheezein dekhein:"],
         "bullets": [
           "Offer kis mulk ke liye available hai.",
           "Kaun se idaraat ya email domains qabool hote hain.",
@@ -1774,9 +1770,7 @@
       {
         "id": "waste",
         "heading": "Paisa kahan zaya hota hai",
-        "paragraphs": [
-          "Teen aam ghaltiyan:"
-        ],
+        "paragraphs": ["Teen aam ghaltiyan:"],
         "bullets": [
           "Aik hi kaam ke liye do tools, kyunki dono ke features achhe lagte hain.",
           "Saal ka plan lena bina aik mahina test kiye.",
@@ -1911,9 +1905,7 @@
       {
         "id": "compare",
         "heading": "Sahi comparison kaise karein",
-        "paragraphs": [
-          "Aik page par teen columns banayein:"
-        ],
+        "paragraphs": ["Aik page par teen columns banayein:"],
         "bullets": [
           "Total price PKR mein.",
           "Duration dinon mein.",

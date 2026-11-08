@@ -23,10 +23,12 @@ import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { BlogCard } from '@/components/blog-card';
 import { blogPosts } from '@/lib/blog';
 
+const collectionTotal = groupCollections(products).length;
+
 export const metadata: Metadata = {
   ...makeMetadata(
-    'AI tools & subscriptions in Pakistan — PKR prices',
-    'Discover and compare AI tools and digital subscriptions in Pakistan. Explore exact plans, transparent PKR prices and warranty terms, then enquire on WhatsApp.',
+    `AI tool prices in Pakistan 2026: ${collectionTotal} collections`,
+    `Compare ${products.length} AI tool and subscription plans in Pakistan: listed PKR quotes, exact durations and seller warranty. Browse ${collectionTotal} collections, then confirm on WhatsApp.`,
     '/'
   ),
   // The homepage advertises the plain-text site summary beside its canonical
@@ -53,7 +55,7 @@ export default function Home() {
             <span /> YOUR NEXT TOOLKIT STARTS HERE
           </p>
           <h1 id="store-title">
-            AI tools & subscriptions. <span>In Pakistan.</span>
+            AI tool prices in Pakistan. <span>Compare every plan.</span>
           </h1>
           <p>
             AiToolsPk is an independent catalog of AI tools, creative software
@@ -102,7 +104,7 @@ export default function Home() {
                     src={logoThumbnail(p.logo)}
                     width={44}
                     height={44}
-                    alt=""
+                    alt={`${p.brand} logo`}
                   />
                 ) : (
                   <span className="tool-wall-text-logo" aria-hidden="true">
@@ -258,6 +260,45 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+      <section
+        id="pricing-method"
+        className="container home-method"
+        aria-labelledby="method-heading"
+      >
+        <div className="home-section-heading">
+          <div>
+            <p className="store-eyebrow">NO INVENTED PRICES</p>
+            <h2 id="method-heading">How these PKR prices are collected</h2>
+          </div>
+          <Link className="text-link" href="/price-index/" prefetch={false}>
+            Open the price index <ArrowUpRight size={17} />
+          </Link>
+        </div>
+        <p>
+          Every figure is a seller quote taken from the current list, with the
+          date it was recorded. Cards show the typical (median) quote, so a
+          single one-day trial does not stand in for a whole collection. No
+          figure here is a vendor list price or a promise of today&apos;s
+          amount: confirm the exact product ID and the current price in WhatsApp
+          before paying.
+        </p>
+        <ul>
+          <li>
+            <strong>Quote date on every page.</strong> A quote dated last month
+            is still shown as dated, not quietly refreshed.
+          </li>
+          <li>
+            <strong>Range, not a bait price.</strong> Each collection lists the
+            typical quote and the lowest to highest quote, because a cheaper row
+            usually means a shorter duration or a smaller allowance.
+          </li>
+          <li>
+            <strong>Unverified means unverified.</strong> Listings that the
+            seller has not confirmed carry a pending label, and those detail
+            pages stay out of search results on purpose.
+          </li>
+        </ul>
       </section>
       <section
         id="ordering"

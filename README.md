@@ -117,7 +117,7 @@ reports/                 Private QA/audit output (ignored)
 tests/                   Data/commerce tests and browser accessibility checks
 ```
 
-## Deploy to your purchased AItoolsPK.tech domain
+## Deploy to your purchased aitoolspk.tech domain
 
 This repository does **not** itself configure domain ownership, DNS, HTTPS, Search Console or hosting. Deployment is complete only after a host is serving the export and DNS/SSL have been checked. Keep the launch catalog under review until resale evidence and exact offer terms are available.
 
@@ -154,7 +154,7 @@ To roll back, prepare a reviewed revert commit on `main`, pass the checks, and p
 
 - Check homepage, catalog queries, every approved detail page, sitemap.xml, robots.txt and 404 responses on the real domain.
 - Verify WhatsApp on Android, iOS and WhatsApp Web; a click is enquiry intent, not a completed order.
-- Operate according to the published privacy, terms and refund policies. Per the owner's preference, contact details use AItoolsPK and the supplied WhatsApp number; no legal seller name or business address is added. No operating hours were invented.
+- Operate according to the published privacy, terms and refund policies. Per the owner's preference, contact details use AiToolsPk and the supplied WhatsApp number; no legal seller name or business address is added. No operating hours were invented.
 - Finish review of logo usage and all products you wish to sell. Unsupported offers stay pending or are excluded.
 - Add the verified domain to Google Search Console, submit `https://aitoolspk.tech/sitemap.xml`, and test approved Product structured data using the Rich Results Test. WhatsApp fulfilment does not guarantee merchant-listing eligibility.
 - Measure representative mobile Lighthouse and real-device performance after deployment. Target LCP ≤2.5s, INP ≤200ms, CLS ≤0.1; field metrics require real traffic and are not guaranteed by a local build.

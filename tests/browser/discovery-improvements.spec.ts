@@ -59,11 +59,16 @@ test('expanded collections have distinct guidance, local social previews and acc
       page.getByRole('region', { name: `${slug} buying guide`, exact: true })
     ).toBeVisible();
     await expect(
-      page.locator('.collection-buying-guide h3[lang="ur-Latn"]')
-    ).toContainText('confirm karna chahiye');
+      page
+        .locator('.collection-buying-guide h3[lang="ur-Latn"]')
+        .filter({ hasText: 'confirm karna chahiye' })
+    ).toBeVisible();
     await expect(
-      page.locator('.collection-buying-guide p[lang="ur-Latn"]')
-    ).toContainText('PKR price');
+      page
+        .locator('.collection-buying-guide p[lang="ur-Latn"]')
+        .filter({ hasText: 'PKR price' })
+        .first()
+    ).toBeVisible();
     await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
       'href',
       `https://aitoolspk.tech/plans/${slug}/`
@@ -125,9 +130,11 @@ test('all ten buying guides are discoverable with factual dates, schema and nati
     const schema = (
       await page.locator('script[type="application/ld+json"]').allTextContents()
     ).map((s) => JSON.parse(s));
-    expect(schema.find((s) => s['@type'] === 'Article').dateModified).toBe(
-      guide.checked
-    );
+    const article = schema.find((s) => s['@type'] === 'Article');
+    // `dateModified` is the newer of the recorded check date and the last
+    // commit, so it must be a real ISO date no older than the check date.
+    expect(article.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(article.dateModified >= guide.checked).toBe(true);
     expect(
       schema.some((s) =>
         ['FAQPage', 'HowTo', 'AggregateRating'].includes(s['@type'])

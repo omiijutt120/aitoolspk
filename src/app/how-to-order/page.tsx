@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Document } from '@/components/document';
 import { Steps } from '@/components/steps';
-import { metadata as makeMetadata } from '@/lib/seo';
+import { JsonLd, metadata as makeMetadata, origin } from '@/lib/seo';
 export const metadata = makeMetadata(
   'How to order digital tools',
   'Learn how to compare exact plans and order approved, in-stock digital tools on WhatsApp. No signup, cart or payment collection on the website.',
@@ -9,12 +9,21 @@ export const metadata = makeMetadata(
 );
 export default function HowToOrder() {
   return (
+    <>
     <Document
       path="/how-to-order/"
       eyebrow="A SIMPLE WAY TO ORDER"
       title="Clarity before commitment."
       lead="Find an exact offer, understand its terms, and confirm your order with a person on WhatsApp."
     >
+      <h2>How do you order an AI subscription in Pakistan?</h2>
+      <p>
+        Pick one exact listing, check its product ID, duration, access method and
+        warranty, then tap Buy Now. WhatsApp opens with those details already
+        written out. The seller confirms availability, the current PKR amount and
+        the delivery method before any payment. An enquiry is not a purchase, and
+        this site takes no payment.
+      </p>
       <h2>How ordering works</h2>
       <Steps />
       <h2 id="before-you-order">Your before-you-order checklist</h2>
@@ -40,13 +49,13 @@ export default function HowToOrder() {
           can be refunded.
         </li>
       </ul>
-      <h2>1. Find the right plan</h2>
+      <h2 id="step-1">1. Find the right plan</h2>
       <p>
         Use search and filters to compare duration, access type and warranty.
         Different plans have separate product IDs. A low price does not mean the
         access method or resale eligibility has been approved.
       </p>
-      <h2>2. Open WhatsApp</h2>
+      <h2 id="step-2">2. Open WhatsApp</h2>
       <p>
         Buy Now opens +92 371 4549245 in a new tab with the selected product,
         plan, warranty, price and public ID. Review the message before sending
@@ -55,7 +64,7 @@ export default function HowToOrder() {
         confirmation first. Out-of-stock offers show Restock and open a restock
         enquiry.
       </p>
-      <h2>3. Confirm, then decide</h2>
+      <h2 id="step-3">3. Confirm, then decide</h2>
       <p>
         Discuss availability and exact terms with the seller before paying.
         Payment arrangements happen directly in WhatsApp; this website does not
@@ -82,5 +91,41 @@ export default function HowToOrder() {
         <Link href="/refund-policy/">refund policy</Link>.
       </p>
     </Document>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'HowTo',
+          '@id': `${origin}/how-to-order/#howto`,
+          name: 'How to order an AI subscription in Pakistan',
+          description:
+            'Choose one exact listing, open the prefilled WhatsApp enquiry, and confirm availability, price and delivery before paying.',
+          inLanguage: 'en-PK',
+          mainEntityOfPage: `${origin}/how-to-order/`,
+          step: [
+            {
+              '@type': 'HowToStep',
+              position: 1,
+              name: 'Find the right plan',
+              text: 'Compare duration, access type and warranty on one exact listing and note its product ID. A low price does not mean the access method has been approved.',
+              url: `${origin}/how-to-order/#step-1`,
+            },
+            {
+              '@type': 'HowToStep',
+              position: 2,
+              name: 'Open WhatsApp',
+              text: 'Tap Buy Now to open WhatsApp with the selected product, plan, warranty, price and public ID already written into the message. Review it before sending.',
+              url: `${origin}/how-to-order/#step-2`,
+            },
+            {
+              '@type': 'HowToStep',
+              position: 3,
+              name: 'Confirm, then decide',
+              text: 'Ask the seller to confirm availability, the current PKR amount, delivery method and warranty in writing before paying. The website takes no payment and records no order.',
+              url: `${origin}/how-to-order/#step-3`,
+            },
+          ],
+        }}
+      />
+    </>
   );
 }

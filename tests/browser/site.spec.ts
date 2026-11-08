@@ -60,7 +60,7 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .hover();
   await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'AI tools & subscriptions.'
+    'AI tool prices in Pakistan.'
   );
   await expect(page.locator('.collection-card').first()).toBeVisible();
   await page.locator('.collection-card').first().click();
@@ -210,9 +210,15 @@ test('homepage, catalog, policy and details pass automated WCAG AA checks', asyn
     ).toEqual([]);
   }
   await page.goto('/plans/chatgpt/');
-  const productName = (
-    await page.locator('.product-card h3').first().innerText()
-  ).trim();
+  const detailHref = await page
+    .getByRole('link', { name: 'View Details', exact: true })
+    .first()
+    .getAttribute('href');
+  // Cards show the tidied title; the detail page keeps the supplied name, so
+  // resolve the raw catalogue name from the link the card points at.
+  const productName = (catalog as Product[]).find(
+    (p) => `/tool/${p.slug}/` === detailHref
+  )!.name;
   await page
     .getByRole('link', { name: 'View Details', exact: true })
     .first()

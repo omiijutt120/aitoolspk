@@ -60,8 +60,13 @@ export function CollectionCard({
       </div>
       <div className="collection-card-bottom">
         <div>
-          <span>Listed from</span>
-          <strong>{money(c.minPrice)}</strong>
+          <span>Typical listed price</span>
+          <strong>{money(c.medianPrice)}</strong>
+          {c.maxPrice > c.minPrice && (
+            <small className="collection-range">
+              Range {money(c.minPrice)}–{money(c.maxPrice).replace('PKR ', '')}
+            </small>
+          )}
         </div>
         <span className="collection-cta">
           Explore plans <ArrowRight size={17} aria-hidden="true" />

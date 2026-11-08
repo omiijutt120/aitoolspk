@@ -86,6 +86,8 @@ export default function RootLayout({
             description:
               'Independent AI tools and digital subscription catalog for Pakistan, with listed PKR prices and WhatsApp enquiries.',
             areaServed: { '@type': 'Country', name: 'Pakistan' },
+            foundingDate: '2026-10-19',
+            founder: { '@id': `${origin}/#author-muhammad-umar` },
             knowsAbout: [
               'AI tools',
               'Digital subscription comparisons',

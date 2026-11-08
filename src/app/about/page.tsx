@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { Document } from '@/components/document';
 import { JsonLd, metadata as makeMetadata, origin } from '@/lib/seo';
+import { author, authorPath, authorSchema } from '@/lib/author';
 
 export const metadata = makeMetadata(
-  'About Our AI Tools Catalog',
-  'Learn how AiToolsPk compares AI tools and digital subscriptions using listed PKR prices, exact variants, clear limitations and WhatsApp enquiries.',
+  'Price sources and who runs this catalog',
+  'Who runs AiToolsPk, where the listed PKR quotes come from, how a quote is dated and how to reach the editor by email or WhatsApp before paying.',
   '/about/'
 );
 
@@ -17,6 +18,40 @@ export default function About() {
         title="About AiToolsPk"
         lead="AiToolsPk is an independent digital-tools catalog for people comparing AI subscriptions, creative software and everyday digital plans in Pakistan."
       >
+        <h2>Who runs AiToolsPk?</h2>
+        <p>
+          AiToolsPk is run by {author.name}, a {author.role.toLowerCase()} based
+          in {author.basedIn}. The catalogue has been edited from Pakistan since{' '}
+          {author.since}. {author.name} keeps the listings, records each quote
+          date and writes the buying guides; the same name appears on every
+          collection page and article, and links to a{' '}
+          <Link href={authorPath} prefetch={false}>
+            public editor profile
+          </Link>
+          .
+        </p>
+        <p>
+          This is a one-person independent catalogue, not a marketplace with
+          hundreds of sellers. That is why the site shows what it cannot verify
+          instead of filling the gap: no invented customer counts, no invented
+          reviews, no claimed vendor partnership and no payment method that the
+          seller has not confirmed.
+        </p>
+        <h2>Where do the prices come from?</h2>
+        <p>
+          Every PKR amount is a seller quote taken from the current supplier
+          list, stored with the date it was quoted and the exact product ID.
+          Collection cards show the typical (median) quote and the lowest to
+          highest range, because the cheapest row is usually a shorter duration
+          or a smaller allowance. None of these figures is a vendor list price,
+          and none of them is a promise of today&apos;s amount.
+        </p>
+        <p>
+          When a quote is older than the review window the page says so and the
+          WhatsApp message asks for confirmation before you pay. Product pages
+          for offers the seller has not confirmed carry a pending label and stay
+          out of search results until they are reviewed.
+        </p>
         <h2>What can you compare here?</h2>
         <p>
           Our collections bring a tool’s listed plans together so you can
@@ -83,6 +118,7 @@ export default function About() {
           about: { '@id': `${origin}/#organization` },
           isPartOf: { '@id': `${origin}/#website` },
           inLanguage: 'en-PK',
+          mainEntity: authorSchema(origin),
         }}
       />
     </>

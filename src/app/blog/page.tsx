@@ -4,6 +4,7 @@ import { ArrowUpRight, BookOpen } from 'lucide-react';
 import { BlogCard } from '@/components/blog-card';
 import { BlogLibrary } from '@/components/blog-library';
 import { blogPosts, blogCollections, blogPostForCollection } from '@/lib/blog';
+import { authorSchema } from '@/lib/author';
 import { categoryName } from '@/lib/categories';
 import {
   PAGE_SIZE,
@@ -197,10 +198,14 @@ export default async function Blog({ params }: Props) {
             },
             blogPost: blogPosts.map((post) => ({
               '@type': 'BlogPosting',
+              '@id': `${origin}/blog/${post.slug}/#article`,
               headline: post.title,
               url: `${origin}/blog/${post.slug}/`,
-              datePublished: post.published,
-              dateModified: post.checked,
+              image: [`${origin}/og/blog/${post.slug}.png`],
+              datePublished: `${post.published}T00:00:00+05:00`,
+              dateModified: `${post.checked}T00:00:00+05:00`,
+              author: authorSchema(origin),
+              publisher: { '@id': `${origin}/#organization` },
             })),
           }}
         />

@@ -37,10 +37,22 @@ export async function generateMetadata({
   const page = pageNumber(value);
   const collection = collections.find((c) => c.slug === slug);
   if (!collection) return {};
+  const name = collection.isApi ? 'API' : collection.brand;
+  // Buy-intent phrasing that still fits beside the 13-character " | AiToolsPk"
+  // suffix, so the rendered title stays inside the 65-character limit.
+  const withCount = `${name} price in Pakistan 2026: ${collection.count} plans`;
+  const base =
+    page > 1
+      ? `${name} prices in Pakistan — page ${page}`
+      : withCount.length <= 52
+        ? withCount
+        : `${name} price in Pakistan 2026`.length <= 52
+          ? `${name} price in Pakistan 2026`
+          : `${name} prices in Pakistan`;
   return metadata(
-    `${slug === 'canva' ? 'Canva Pro Prices & Plans in Pakistan' : `${collection.brand} Plans in Pakistan`}${page > 1 ? ` — Page ${page}` : ''}`,
+    base,
     pageDescription(
-      `Compare ${collection.count} listed ${collection.brand} plans by PKR price, duration, access and seller warranty. Confirm your exact package on WhatsApp.`,
+      `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} plans. Compare duration, access and warranty before paying.`,
       page
     ),
     pagePath(`/plans/${slug}/`, page),

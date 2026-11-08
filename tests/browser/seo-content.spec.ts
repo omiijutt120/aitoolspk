@@ -156,9 +156,20 @@ test('original guides have sourced visible text, one canonical, truthful Article
     )
       .map((t) => JSON.parse(t))
       .find((s) => s['@type'] === 'Article');
-    expect(article.dateModified).toBe('2026-10-23');
-    expect(article.datePublished).toBeUndefined();
-    expect(article.author.name).toBe('AiToolsPk');
+    // `dateModified` is the newer of the recorded check date and the last
+    // commit; `datePublished` is derived from the first commit that touched the
+    // guide sources, so it can never postdate the review.
+    expect(article.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(article.dateModified >= '2026-10-23').toBe(true);
+    expect(article.datePublished).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(article.datePublished <= article.dateModified).toBe(true);
+    expect(article.image[0]).toBe(
+      `https://aitoolspk.tech/og/guides/${slug}.png`
+    );
+    expect((await request.get(new URL(article.image[0]).pathname)).ok()).toBe(
+      true
+    );
+    expect(article.author.name).toBe('Muhammad Umar');
     expect(
       await page.locator('.buying-guide a[href^="https:"]').count()
     ).toBeGreaterThan(0);

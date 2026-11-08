@@ -9,10 +9,12 @@ import {
   homeCollections,
 } from '../../src/lib/collections';
 import type { Product } from '../../src/lib/types';
+import { displayName } from '../../src/lib/product-name';
 
 const products = (catalog as Product[]).filter(
   (p) => p.approval !== 'excluded'
 );
+const shown = (p: Product) => displayName(p.name, p.warranty, p.brand);
 const groups = groupCollections(products);
 const home = homeCollections(products);
 const chatgpt = collectionProducts(products, 'chatgpt');
@@ -71,8 +73,13 @@ test('homepage has one parent per tool, exact counts, starting prices and workin
       String(g.count)
     );
     await expect(cards.nth(i).locator('strong')).toHaveText(
-      `PKR ${g.minPrice.toLocaleString('en-PK')}`
+      `PKR ${g.medianPrice.toLocaleString('en-PK')}`
     );
+    if (g.maxPrice > g.minPrice) {
+      await expect(cards.nth(i).locator('.collection-range')).toContainText(
+        `Range PKR ${g.minPrice.toLocaleString('en-PK')}`
+      );
+    }
     expect((await request.get(`/plans/${g.slug}/`)).status()).toBe(200);
   }
   await expect(cards.last()).toHaveAttribute('data-collection', 'api');
@@ -133,7 +140,7 @@ test('ChatGPT parent exposes every exact variant across pages with correct detai
     await expect(cards).toHaveCount(slice.length);
     for (let i = 0; i < slice.length; i++) {
       const p = slice[i];
-      await expect(cards.nth(i).locator('h3')).toHaveText(p.name);
+      await expect(cards.nth(i).locator('h3')).toHaveText(shown(p));
       await expect(
         cards.nth(i).locator('.product-card-price strong')
       ).toHaveText(`PKR ${p.price.toLocaleString('en-PK')}`);
@@ -195,7 +202,7 @@ test('API collection includes every API plan and allows provider search', async 
     if (n > 1)
       await page.getByRole('link', { name: `Page ${n}`, exact: true }).click();
     await expect(page.locator('.product-card h3')).toHaveText(
-      api.slice((n - 1) * 24, n * 24).map((p) => p.name)
+      api.slice((n - 1) * 24, n * 24).map(shown)
     );
   }
   await page.locator('#catalog-search').fill('ZAPI');

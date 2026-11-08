@@ -106,11 +106,9 @@ test('articles are indexable, use truthful BlogPosting metadata and show exact c
           .find((item) => item['@type'] === 'BlogPosting')
       );
     expect(schema.headline).toBe(post.title);
-    expect(schema.author.name).toBe('AiToolsPk');
+    expect(schema.author.name).toBe('Muhammad Umar');
     expect(schema.citation).toEqual(post.sources.map((source) => source.href));
-    expect(schema.image[0]).toBe(
-      `${origin}/og/collections/${post.collection}.png`
-    );
+    expect(schema.image[0]).toBe(`${origin}/og/blog/${post.slug}.png`);
     const image = await request.get(new URL(schema.image[0]).pathname);
     expect(image.ok()).toBe(true);
     const links = page.locator('.blog-plan-sample');

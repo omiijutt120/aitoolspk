@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { guides } from '@/lib/guides';
 import { metadata, JsonLd, origin } from '@/lib/seo';
+import { authorSchema } from '@/lib/author';
+import { published, latest, modified } from '@/lib/content-freshness';
+const SOURCE_PATHS = ['data/seo/additional-guides.json', 'src/lib/guides.ts'];
 export const dynamicParams = false;
 export function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -14,13 +17,21 @@ export async function generateMetadata({
   const { slug } = await params;
   const g = guides.find((item) => item.slug === slug);
   if (!g) return {};
-  const meta = metadata(g.seoTitle ?? g.title, g.description, `/guides/${slug}/`);
+  const meta = metadata(
+    g.seoTitle ?? g.title,
+    g.description,
+    `/guides/${slug}/`,
+    `/og/guides/${slug}.png`
+  );
   return {
     ...meta,
-    openGraph: { ...meta.openGraph, type: 'article', modifiedTime: g.checked },
+    openGraph: {
+      ...meta.openGraph,
+      type: 'article',
+      modifiedTime: latest(g.checked, modified(...SOURCE_PATHS)),
+    },
   };
-}
-export default async function Guide({
+}export default async function Guide({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -28,6 +39,11 @@ export default async function Guide({
   const { slug } = await params;
   const g = guides.find((item) => item.slug === slug);
   if (!g) notFound();
+  // The hand-recorded `checked` date says when the sources were last read; the
+  // commit history says when the text last changed. `dateModified` is the newer
+  // of the two so it cannot understate the edit, and `datePublished` is derived
+  // from the first commit rather than invented.
+  const lastReviewed = latest(g.checked, modified(...SOURCE_PATHS));
   return (
     <>
       <article className="container document buying-guide">
@@ -105,10 +121,12 @@ export default async function Guide({
           '@id': `${origin}/guides/${slug}/#article`,
           headline: g.title,
           description: g.description,
-          dateModified: g.checked,
+          image: [`${origin}/og/guides/${slug}.png`],
+          datePublished: published(...SOURCE_PATHS),
+          dateModified: lastReviewed,
           inLanguage: 'en-PK',
           mainEntityOfPage: `${origin}/guides/${slug}/`,
-          author: { '@type': 'Organization', name: 'AiToolsPk', url: origin },
+          author: authorSchema(origin),
           publisher: { '@id': `${origin}/#organization` },
         }}
       />

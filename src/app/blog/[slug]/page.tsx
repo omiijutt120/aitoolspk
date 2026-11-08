@@ -14,6 +14,7 @@ import { products } from '@/lib/catalog';
 import { collectionProducts } from '@/lib/collections';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { JsonLd, metadata as makeMetadata, origin } from '@/lib/seo';
+import { author, authorPath, authorSchema } from '@/lib/author';
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -27,17 +28,17 @@ export async function generateMetadata({ params }: Props) {
     post.title,
     post.description,
     `/blog/${post.slug}/`,
-    `/og/collections/${post.collection}.png`
+    `/og/blog/${post.slug}.png`
   );
   return {
     ...result,
-    authors: [{ name: 'AiToolsPk', url: `${origin}/about/` }],
+    authors: [{ name: author.name, url: `${origin}${authorPath}` }],
     openGraph: {
       ...result.openGraph,
       type: 'article' as const,
       publishedTime: post.published,
       modifiedTime: post.checked,
-      authors: ['AiToolsPk'],
+      authors: [author.name],
     },
   };
 }
@@ -89,7 +90,11 @@ export default async function BlogArticle({ params }: Props) {
             <h1>{post.title}</h1>
             <p className="blog-article-deck">{post.description}</p>
             <p className="blog-meta">
-              By <Link href="/about/">AiToolsPk</Link> · Published{' '}
+              By{' '}
+              <Link href={authorPath} prefetch={false}>
+                {author.name}
+              </Link>
+              , {author.role.toLowerCase()} · Published{' '}
               <time dateTime={post.published}>{blogDate(post.published)}</time>{' '}
               · Reviewed{' '}
               <time dateTime={post.checked}>{blogDate(post.checked)}</time> ·{' '}
@@ -122,7 +127,11 @@ export default async function BlogArticle({ params }: Props) {
             <div className="blog-prose">
               <section id="quick-answer" className="blog-answer">
                 <p className="store-eyebrow">THE SHORT ANSWER</p>
-                <h2>{collection.brand}: a practical starting point</h2>
+                <h2>
+                  {post.title.includes(' vs ')
+                    ? `${post.title.split(':')[0]}: which should you pick?`
+                    : `Which ${collection.brand} plan suits a buyer in Pakistan?`}
+                </h2>
                 <p>{post.answer}</p>
               </section>
               {post.sections.map((section) => (
@@ -271,16 +280,13 @@ export default async function BlogArticle({ params }: Props) {
           url,
           headline: post.title,
           description: post.description,
-          image: [`${origin}/og/collections/${post.collection}.png`],
+          image: [`${origin}/og/blog/${post.slug}.png`],
           datePublished: `${post.published}T00:00:00+05:00`,
           dateModified: `${post.checked}T00:00:00+05:00`,
-          author: {
-            '@type': 'Organization',
-            name: 'AiToolsPk',
-            url: `${origin}/about/`,
-          },
+          author: authorSchema(origin),
           publisher: {
             '@type': 'Organization',
+            '@id': `${origin}/#organization`,
             name: 'AiToolsPk',
             url: origin,
             logo: { '@type': 'ImageObject', url: `${origin}/brand/logo.png` },

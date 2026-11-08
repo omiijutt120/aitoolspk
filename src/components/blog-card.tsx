@@ -8,12 +8,12 @@ export function BlogCard({ post }: { post: BlogPost }) {
   const collection = blogCollections.find((c) => c.slug === post.collection)!;
   return (
     <article className="blog-card">
-      <div className="blog-card-art" aria-hidden="true">
+      <div className="blog-card-art">
         <span className="blog-card-topic">{post.topic}</span>
         {collection.logo && (
           <Image
             src={logoThumbnail(collection.logo, 'card')}
-            alt=""
+            alt={`${collection.brand} logo`}
             width={64}
             height={64}
             loading="eager"

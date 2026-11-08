@@ -2,6 +2,7 @@ import { readdirSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { isGoogleVerificationAsset } from './verification-assets.mjs';
+import { validateSchemas } from './schema.mjs';
 
 export function decode(value = '') {
   return value.replace(
@@ -99,6 +100,8 @@ export function inspectHtml(html, url) {
       }
   };
   schemas.forEach(visit);
+  const schemaProblems =
+    errors.length === 0 ? validateSchemas(schemas, url) : [];
   return {
     url,
     canonical: canonicalTags[0]?.href || null,
@@ -112,6 +115,7 @@ export function inspectHtml(html, url) {
     internalLinks,
     ogUrl: metas.find((a) => a.property === 'og:url')?.content || null,
     schemaTypes: [...schemaTypes],
+    schemaProblems,
     errors,
   };
 }

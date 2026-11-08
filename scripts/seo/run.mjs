@@ -304,6 +304,7 @@ if (['report', 'audit', 'validate'].includes(mode)) {
   };
   for (const page of pages) {
     if (page.errors.length) errors.push(`${page.url}: invalid JSON-LD`);
+    for (const problem of page.schemaProblems || []) errors.push(problem);
     if (page.errorPage) {
       if (page.indexable)
         errors.push(`${page.url}: error page must be noindex`);

@@ -167,13 +167,13 @@ export default async function ProductDetail({
               {p.sellerWarranty ? (
                 <>
                   <p>
-                    Your subscription includes AI Tools PK&apos;s
+                    Your subscription includes AiToolsPk&apos;s
                     seller-provided warranty covering the purchased subscription
                     duration, subject to the published warranty terms and fair
                     usage policy.
                   </p>
                   <p>
-                    This warranty is provided by AI Tools PK, independently of
+                    This warranty is provided by AiToolsPk, independently of
                     the original software company. Read the{' '}
                     <Link className="underline" href="/terms/#seller-warranty">
                       seller warranty terms
@@ -413,7 +413,7 @@ export default async function ProductDetail({
                       '@type': 'PropertyValue',
                       name: 'Seller warranty',
                       value:
-                        'AI Tools PK seller-provided warranty for the purchased subscription duration; subject to seller warranty terms and fair usage policy.',
+                        'AiToolsPk seller-provided warranty for the purchased subscription duration; subject to seller warranty terms and fair usage policy.',
                     },
                   ],
                 }

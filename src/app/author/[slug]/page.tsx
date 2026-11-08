@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Document } from '@/components/document';
 import { JsonLd, metadata as makeMetadata, origin } from '@/lib/seo';
-import { author, authorPath } from '@/lib/author';
+import { author, authorPath, authorSchema } from '@/lib/author';
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -34,10 +34,22 @@ export default async function AuthorPage({
         path={authorPath}
         eyebrow="WHO MAINTAINS THIS"
         title={author.name}
-        lead={`${author.role} at AiToolsPk.`}
+        lead={`${author.role} at AiToolsPk, based in ${author.basedIn}, editing the catalogue since ${author.since}.`}
       >
-        <h2>What does this editor do?</h2>
-        <p>{author.bio}</p>
+        <h2>Who is Muhammad Umar?</h2>
+        <p>
+          Muhammad Umar is the catalogue editor at AiToolsPk, working from
+          Pakistan since {author.since}. {author.bio} This is a named editorial
+          role with a public profile, not a stock byline: the same person keeps
+          the listings, the quote dates and the buying guides, and answers
+          corrections sent to the site.
+        </p>
+        <h2>What does this editor work on?</h2>
+        <ul>
+          {author.knowsAbout.map((subject) => (
+            <li key={subject}>{subject}</li>
+          ))}
+        </ul>
         <h2>How is the catalogue checked?</h2>
         <p>
           Every listing is a seller quote, not a vendor list price. Each record
@@ -91,15 +103,7 @@ export default async function AuthorPage({
           about: { '@id': `${origin}#author-${author.slug}` },
           isPartOf: { '@id': `${origin}/#website` },
           inLanguage: 'en-PK',
-          mainEntity: {
-            '@type': 'Person',
-            '@id': `${origin}#author-${author.slug}`,
-            name: author.name,
-            jobTitle: author.role,
-            description: author.bio,
-            sameAs: author.profiles.map((profile) => profile.url),
-            worksFor: { '@id': `${origin}/#organization` },
-          },
+          mainEntity: authorSchema(origin),
         }}
       />
     </>

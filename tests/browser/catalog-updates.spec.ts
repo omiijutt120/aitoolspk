@@ -6,7 +6,7 @@ test('Gemini 18-month filter shows one updated plan and its exact WhatsApp detai
   await page.goto('/plans/gemini/?duration=18+months');
   const cards = page.locator('.product-card');
   await expect(cards).toHaveCount(1);
-  await expect(cards.locator('h3')).toHaveText('Gemini Pro — 18 Months');
+  await expect(cards.locator('h3')).toHaveText('Gemini Pro — 18 months');
   await expect(cards).toContainText('PKR 1,200');
   await expect(cards).toContainText('Full seller warranty (18 months)');
   const buy = cards.getByRole('link', { name: /^Buy Now:/ });

@@ -72,7 +72,7 @@ export default function Terms() {
       <p>
         Offers explicitly marked “Full Duration Warranty” include AI Tools
         PK&apos;s seller-provided warranty for the purchased subscription
-        duration. This warranty is provided by AI Tools PK, independently of the
+        duration. This warranty is provided by AiToolsPk, independently of the
         original software company. It applies to the specific package and
         included features agreed before payment, subject to these terms and the
         fair usage policy below. Confirm the activation/start date, end date,

@@ -17,6 +17,22 @@ const durationPhrase = (duration: string) => {
 };
 
 /**
+ * Provenance for a figure.
+ *
+ * A price in a sentence is only checkable if the reader can reach the record
+ * that holds it, so the listing name is the link and the capture date sits
+ * beside the amount. The linked page is the seller record itself - not an
+ * endorsement, and deliberately not indexable.
+ */
+function ListingRef({ plan, brand }: { plan: Product; brand: string }) {
+  return (
+    <Link href={`/tool/${plan.slug}/`} prefetch={false}>
+      {displayName(plan.name, plan.warranty, brand)}
+    </Link>
+  );
+}
+
+/**
  * Buying guide for a plan collection.
  *
  * Every collection gets one, including the 70+ brands with no hand-written
@@ -137,11 +153,24 @@ export function CollectionGuide({
      is only appended when the name does not already carry a unit. */
   const statesTerm = (name: string) =>
     /\b(?:hours?|days?|weeks?|months?|years?)\b/i.test(name);
+  /*
+   * `quoted` is a render helper rather than a component: it returns a text
+   * fragment plus a <time>, so it stays a plain function on purpose.
+   */
+  const quoted = (plan: Product) => (
+    <>
+      quoted <time dateTime={plan.date}>{plan.date}</time>
+    </>
+  );
   const listingSentence = (label: string, plan: Product) => {
     const name = nameOf(plan);
-    return `${label} ${money(plan.price)} for ${name}${
-      statesTerm(name) ? '' : `, ${durationPhrase(plan.duration)}`
-    }.`;
+    return (
+      <>
+        {label} {money(plan.price)} for <ListingRef plan={plan} brand={brand} />
+        {statesTerm(name) ? '' : `, ${durationPhrase(plan.duration)}`},{' '}
+        {quoted(plan)}.
+      </>
+    );
   };
 
   const openField = facts.count - facts.warrantyStated - facts.warrantyNone;
@@ -184,10 +213,10 @@ export function CollectionGuide({
         {listingSentence(
           'The lowest quote in this collection is',
           facts.cheapest.plan
-        )}
-        {facts.count > 1 && (
-          <> {listingSentence('The highest is', facts.dearest.plan)}</>
         )}{' '}
+        {facts.count > 1 && (
+          <>{listingSentence('The highest is', facts.dearest.plan)} </>
+        )}
         Both sit under one brand because the rows describe different durations
         and access levels, not two prices for the same package.
       </p>
@@ -203,11 +232,13 @@ export function CollectionGuide({
         <>
           <h2>What does a month of {brand} cost here?</h2>
           <p>
-            The cheapest one-month row is {nameOf(facts.monthly.plan)} at{' '}
-            {money(facts.monthly.plan.price)}, about{' '}
-            {money(facts.monthly.perMonth as number)} per 30 days. The cheapest
-            twelve-month row is {nameOf(facts.yearly.plan)} at{' '}
-            {money(facts.yearly.plan.price)}, about{' '}
+            The cheapest one-month row is{' '}
+            <ListingRef plan={facts.monthly.plan} brand={brand} /> at{' '}
+            {money(facts.monthly.plan.price)}, {quoted(facts.monthly.plan)},
+            about {money(facts.monthly.perMonth as number)} per 30 days. The
+            cheapest twelve-month row is{' '}
+            <ListingRef plan={facts.yearly.plan} brand={brand} /> at{' '}
+            {money(facts.yearly.plan.price)}, {quoted(facts.yearly.plan)}, about{' '}
             {money(facts.yearly.perMonth as number)} per 30 days.
             {monthlySaving > 0 &&
               ` That is roughly ${monthlySaving}% less per 30 days; most of that gap comes from the term length rather than from a better package.`}{' '}
@@ -227,6 +258,21 @@ export function CollectionGuide({
           </p>
         </>
       )}
+
+      <p className="policy-date">
+        Every figure above is counted from the {facts.count} listed rows on this
+        page. Each named amount links to the record that carries its product ID
+        and quote date. The same numbers, with the date of the cheapest quote,
+        sit in the{' '}
+        <Link href={`/price-index/#tool-${slug}`} prefetch={false}>
+          {brand} row of the price index
+        </Link>
+        , and the{' '}
+        <Link href="/editorial-policy/" prefetch={false}>
+          editorial policy
+        </Link>{' '}
+        explains what is verified before a listing appears.
+      </p>
     </>
   );
 

@@ -32,11 +32,15 @@ function PriceTable({
   caption,
   ariaLabel,
   showCeiling = false,
+  anchorRows = false,
 }: {
   items: typeof rows;
   caption: string;
   ariaLabel: string;
   showCeiling?: boolean;
+  /* Only the A–Z table carries the row ids: the same collection appears in the
+     under-PKR-1,000 table too, and duplicate ids would break fragment links. */
+  anchorRows?: boolean;
 }) {
   return (
     <div
@@ -54,13 +58,14 @@ function PriceTable({
             <th scope="col">Plans</th>
             <th scope="col">Starting price</th>
             {showCeiling && <th scope="col">Highest listed</th>}
+            <th scope="col">Quoted</th>
             <th scope="col">Durations</th>
             <th scope="col">Warranty as listed</th>
           </tr>
         </thead>
         <tbody>
           {items.map((row) => (
-            <tr key={row.slug}>
+            <tr key={row.slug} id={anchorRows ? `tool-${row.slug}` : undefined}>
               <th scope="row">
                 <Link href={`/plans/${row.slug}/`} prefetch={false}>
                   {row.isApi ? 'API plans' : row.brand}
@@ -78,6 +83,9 @@ function PriceTable({
                 </Link>
               </td>
               {showCeiling && <td>{money(row.to)}</td>}
+              <td>
+                <time dateTime={row.fromDate}>{row.fromDate}</time>
+              </td>
               <td>{summarise(row.durations)}</td>
               <td>{displayedWarranty(row)}</td>
             </tr>
@@ -178,13 +186,18 @@ export default function PriceIndex() {
         </li>
         <li>
           <strong>Quote dates</strong> tell you how old a figure is. An older
-          quote is a starting point for a question, not a guaranteed total.
+          quote is a starting point for a question, not a guaranteed total. The{' '}
+          <strong>Quoted</strong> column gives the capture date of the starting
+          price in that row, not today&apos;s date.
+        </li>
+        <li>
+          <strong>Linking a figure.</strong> Every row has its own address —
+          this page, <code>#tool-</code> and the collection slug — so a price
+          quoted from here can be opened, dated and rechecked in one jump.
         </li>
       </ul>
 
-      <h2 id="under-1000">
-        Tools with a listed price under PKR 1,000
-      </h2>
+      <h2 id="under-1000">Tools with a listed price under PKR 1,000</h2>
       <p>
         {underThousand.length} of the {stats.tools} tools have at least one
         listed quote at or below PKR 1,000. The lowest starting prices come
@@ -209,6 +222,7 @@ export default function PriceIndex() {
         caption={`All ${stats.tools} tools with their listed PKR range`}
         ariaLabel="All tools and their listed PKR range, scroll horizontally if needed"
         showCeiling
+        anchorRows
       />
 
       <h2 id="next-steps">Check the plan, then ask</h2>

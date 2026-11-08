@@ -15,6 +15,8 @@ export type PriceIndexEntry = PlanCollection & {
   durations: string[];
   /** Distinct warranty labels exactly as the seller listed them. */
   warranties: string[];
+  /** Capture date of the cheapest quote behind `from`. */
+  fromDate: string;
   /** Most recent quote date in the collection. */
   newestQuote: string;
 };
@@ -53,6 +55,12 @@ export function priceIndex(input: Product[] = products): PriceIndexEntry[] {
       to: group.maxPrice,
       durations,
       warranties,
+      /* The cheapest row, so the index can show the date that figure was
+         captured. Ties resolve to the most recent quote, because a newer
+         capture is the one a reader can still ask the seller about. */
+      fromDate: [...plans].sort(
+        (a, b) => a.price - b.price || b.date.localeCompare(a.date)
+      )[0].date,
       newestQuote: plans
         .map((p) => p.date)
         .sort()
@@ -70,9 +78,7 @@ export type PriceIndexStats = {
   newestQuote: string;
 };
 
-export function priceIndexStats(
-  input: Product[] = products
-): PriceIndexStats {
+export function priceIndexStats(input: Product[] = products): PriceIndexStats {
   const eligible = input.filter((p) => p.approval !== 'excluded');
   const prices = eligible.map((p) => p.price);
   const dates = eligible.map((p) => p.date).sort();

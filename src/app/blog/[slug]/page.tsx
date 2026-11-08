@@ -80,7 +80,7 @@ export default async function BlogArticle({ params }: Props) {
               {collection.logo && (
                 <Image
                   src={logoThumbnail(collection.logo)}
-                  alt=""
+                  alt={`${collection.brand} logo`}
                   width={40}
                   height={40}
                 />

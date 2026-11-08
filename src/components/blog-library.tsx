@@ -77,7 +77,7 @@ export function BlogLibrary({
               {collection.logo ? (
                 <Image
                   src={logoThumbnail(collection.logo)}
-                  alt=""
+                  alt={`${collection.brand} logo`}
                   width={36}
                   height={36}
                 />

@@ -6,7 +6,7 @@
     "title": "ChatGPT for freelancers: brief to workflow",
     "description": "A practical ChatGPT project workflow for Pakistani freelancers: organize a brief, draft deliverables, review facts and compare the right subscription.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "Use a ChatGPT project to keep a client's approved reference files, instructions and related conversations together. Start with a clear deliverable, ask for a structured draft and review it against the original brief. Choose a plan around the tools and limits you actually need, rather than assuming every paid listing gives identical access.",
     "sections": [
       {
@@ -36,6 +36,38 @@
           "Read links and quotations yourself, check numerical claims and remove invented evidence. A polished answer can still misunderstand a product or omit a restriction. For a Pakistani audience, specify the required language and currency rather than assuming the assistant will choose them consistently.",
           "Assess the result using a small real task you can review: does it follow the brief, preserve the facts and make revision easier? That is more useful than treating a subscription name as a promise of better client outcomes."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "ChatGPT pricing in Pakistan, as listed",
+        "paragraphs": [
+          "Fifty-two ChatGPT offers are in the catalog, and the numbers need context. The typical quote is PKR 4,001, the lowest is PKR 29 and the highest is PKR 96,936. That is not one market: durations run from twenty-four hours to two years, and access types differ between the rows.",
+          "A twenty-four-hour row is a trial of the arrangement, not a cheap subscription, and a two-year row is a bulk commitment. Compare the total cost for the period you actually need, and confirm the renewal terms before you assume the monthly figure continues. Warranty wording is recorded as listed and unverified throughout."
+        ]
+      },
+      {
+        "id": "confidentiality",
+        "heading": "Client confidentiality inside a chat",
+        "paragraphs": [
+          "The fastest way to lose a client is to paste their unpublished material into a tool they did not agree to. Before the first prompt, decide what may leave your machine: usually the structure of the problem, not the content of it.",
+          "Replace names with roles, replace prices with placeholders, and keep the original brief beside you rather than inside the chat. When the output needs a real figure, add it back yourself. That habit costs a few seconds and removes the whole category of problem."
+        ]
+      },
+      {
+        "id": "handover",
+        "heading": "Handover notes are part of the deliverable",
+        "paragraphs": [
+          "When a project ends, leave the client with something they can run without you: the prompts that worked, the review steps you used, and the limits you hit. A short note turns a one-off favour into a process they will pay for again."
+        ]
+      },
+      {
+        "id": "pricing-work",
+        "heading": "Price the work, not the subscription",
+        "paragraphs": [
+          "A subscription is a fixed cost and a deliverable is a price. Clients pay for the outcome they can use, so quote the outcome and let the tool cost sit inside your margin rather than on their invoice as a line item they will question.",
+          "That also keeps the comparison honest. If the cheaper plan adds two hours of rework per project, it was not cheaper. Track the time once, and the decision stops being a preference.",
+          "Write the time you actually spent for two projects before quoting the third. That record turns a guess into a rate, and it is the only number that tells you whether the paid tier is earning its keep."
+        ]
       }
     ],
     "questions": [
@@ -46,6 +78,18 @@
       {
         "question": "Does a ChatGPT subscription also supply API credit?",
         "answer": "A subscription listing alone does not establish an API balance. If you need an integration, request the provider, billing arrangement and exact credit entitlement separately."
+      },
+      {
+        "question": "Can I bill client work produced with a ChatGPT subscription?",
+        "answer": "Billing depends on your agreement with the client, not on the tool. Confirm that the client accepts AI-assisted drafting, review the output yourself, and keep your own responsibility for accuracy. The subscription is a cost of doing the work, not a transfer of it."
+      },
+      {
+        "question": "Why does the same ChatGPT plan cost PKR 29 and PKR 96,936?",
+        "answer": "Because the rows describe different things: a twenty-four-hour arrangement at one end and a multi-year commitment at the other. Read the duration and access type first, then compare quotes for the same period only."
+      },
+      {
+        "question": "Do I need a paid plan to do client drafts?",
+        "answer": "Not for every task. Start with the free arrangement, note where you hit limits, and buy the tier that removes the limit you actually hit. Paying first usually means paying for a feature you never test."
       }
     ],
     "sources": [
@@ -62,7 +106,7 @@
     "title": "Gemini Deep Research: source-checked brief",
     "description": "Learn a practical Gemini research workflow: define a question, choose sources, check citations and separate research features from Google AI plan claims.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "Use Gemini Deep Research for a defined research question, then inspect the underlying sources before making a decision. Google documents web sources, uploaded files and supported connected sources. Account access and feature availability vary, so confirm the specific Gemini capabilities included in your selected package.",
     "sections": [
       {
@@ -93,6 +137,37 @@
           "The Gemini collection also contains listings with different app, video, credit and storage labels. A Google AI plan name does not establish identical access to every Google service. Before purchasing, name the specific research function and account arrangement you need.",
           "When a report includes an unsupported conclusion, return to the source and revise the claim. Do not treat the presence of a citation as proof that its linked page actually supports the sentence."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "Gemini pricing in Pakistan is unusually wide",
+        "paragraphs": [
+          "Forty-five Gemini offers appear in the catalog. The typical quote is PKR 22,318, but the range runs from PKR 404 to PKR 151,234, which is far too wide to describe one product. The listed rows include assistant access, bundled Google AI packages and video-related offers, so the median is a reference point, not the price of a single thing.",
+          "When a collection spans that much, the number on a card cannot decide anything. Open the plan, read what it includes, and compare it only against rows describing the same service. Durations in the collection run from a week to twelve months, and warranty wording varies as well."
+        ]
+      },
+      {
+        "id": "citations",
+        "heading": "Check a citation, not just the conclusion",
+        "paragraphs": [
+          "A research report is only as good as the links inside it. Open each source and confirm three things: that the page says what the report claims, that the page is the primary source rather than a summary of one, and that it is current. A citation that resolves to a marketing page has answered a different question.",
+          "Where a claim has no link, treat it as unsupported even when it sounds obvious. That habit matters most in the paragraphs you are about to quote to a client, because those are the ones nobody will check until they are wrong."
+        ]
+      },
+      {
+        "id": "note",
+        "heading": "Write down the method while you still remember it",
+        "paragraphs": [
+          "Add a short note to the report: the question you asked, the date you ran it, and which sources you opened. That note is what lets a reader judge the work later, and it takes two minutes while the session is still fresh."
+        ]
+      },
+      {
+        "id": "wrong-tool",
+        "heading": "When research is the wrong tool",
+        "paragraphs": [
+          "If the answer lives in one document you already have, read the document. A research pass is for questions that need several sources compared, and it adds noise when the question is narrow.",
+          "The same applies to decisions that need a person: a pricing call, a client negotiation, an eligibility question. Collect the material with the tool, then make the judgement yourself and write down why, because that reasoning is the part a client cannot get from a search box."
+        ]
       }
     ],
     "questions": [
@@ -103,6 +178,18 @@
       {
         "question": "Can I use a generated report without opening its sources?",
         "answer": "For decisions that depend on accuracy, inspect the supporting pages and their dates. Check exclusions and contradictory evidence before relying on the report."
+      },
+      {
+        "question": "Is a Deep Research report original work?",
+        "answer": "It is assembled from material the tool found and read. You still have to verify the sources and decide whether the conclusion holds. Sending it out unchanged outsources your judgement to a process you cannot inspect, and the client is paying for yours."
+      },
+      {
+        "question": "Why is the same Gemini package listed at very different prices?",
+        "answer": "Because the rows rarely describe the same product. Different durations, access types and bundled services all appear under one brand. Compare only rows that describe the same service, and confirm the included tools before treating any price as comparable."
+      },
+      {
+        "question": "Can I upload a client document into Gemini?",
+        "answer": "Only if the client permits it and the tool terms allow it. Remove names, prices and contact details you do not need, and keep a record of what was shared. A research workflow does not justify handing over a full confidential file."
       }
     ],
     "sources": [
@@ -119,7 +206,7 @@
     "title": "Claude Artifacts: plan and review a prototype",
     "description": "Use Claude Artifacts for a clearly scoped prototype, with example inputs, review checks and guidance for comparing Claude access in Pakistan.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "Claude Artifacts can present work such as documents, dashboards and small interactive tools beside a conversation. For a useful prototype, define its inputs, expected output and limitations first. Review the result with known examples before sharing it, and confirm the account capabilities required by the specific artifact you want to create.",
     "sections": [
       {
@@ -150,6 +237,44 @@
           "Check keyboard interaction, narrow-screen layout and whether the result communicates its assumptions. If the prototype handles real information or integrates with another system, those requirements need a separate implementation review.",
           "For a Claude purchase, identify the actual product and permitted account access. A conversational plan label, an artifact capability and developer API usage are different questions; confirm each relevant entitlement rather than inferring it from the name."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "Claude pricing in Pakistan, as listed",
+        "paragraphs": [
+          "Forty Claude offers are listed, with a typical quote of PKR 2,462 against a range from PKR 350 to PKR 27,488. That is not a pricing mistake — it is a description of how the same brand is resold at wildly different durations and access levels. Durations in the catalog include one day, three days, seven days, fifteen days and thirty days, alongside longer terms.",
+          "Read the duration before the number. A single-day row and a thirty-day row are not competing offers, and a hundred-month entry is a term to question rather than a discount. Warranty wording also ranges from none to full, recorded as listed and unverified, so the written terms matter more than the label on the card."
+        ]
+      },
+      {
+        "id": "limits",
+        "heading": "What a prototype is not",
+        "paragraphs": [
+          "An artifact is a working sketch you can show someone, and that is genuinely useful in the middle of a project. It is not a deployed application, and it does not come with hosting, a database, authentication or the operational work that keeps a tool alive after launch.",
+          "Be equally careful with data. Anything you paste into a prototype is material you have shared, so use invented records rather than a client spreadsheet, and strip names, prices and contact details before you test. A prototype that leaks a real customer list has cost more than the subscription."
+        ]
+      },
+      {
+        "id": "review",
+        "heading": "A review script you can repeat",
+        "paragraphs": [
+          "Give the artifact a fixed set of checks and run the same ones every time. Vary only the input, not the test:"
+        ],
+        "bullets": [
+          "One normal case with realistic values, to confirm the happy path is actually happy.",
+          "One empty case, because a blank screen is where prototypes usually break.",
+          "One invalid case — text in a number field, a negative value — to see what the interface does.",
+          "One long value, to check the layout does not collapse when real content arrives.",
+          "One round trip: enter data, refresh, and confirm whether it is supposed to persist."
+        ]
+      },
+      {
+        "id": "codebase",
+        "heading": "How a prototype becomes a real build",
+        "paragraphs": [
+          "Treat the artifact as a specification with behaviour. What you carry forward is the rule you agreed on — what the screen shows, what happens on an empty input, what the user sees when the request fails — not the generated markup itself.",
+          "Hand the rule to whoever builds it, along with the edge cases you already tested. The prototype has done its job when the developer can rebuild the screen without asking what you meant, and when nobody is tempted to ship the demo because it looked finished."
+        ]
       }
     ],
     "questions": [
@@ -160,6 +285,14 @@
       {
         "question": "What should I ask before choosing a Claude plan?",
         "answer": "Name the artifact or workflow you need, then confirm account capability, usage limits, permitted delivery, duration and the exact seller warranty terms."
+      },
+      {
+        "question": "Should I show a client an artifact before it is finished?",
+        "answer": "Yes, if you frame it as a direction rather than a build. Say what works, what is simulated and what would change in production. Unlabelled prototypes create expectations the finished product cannot meet, and that costs more trust than a late demo."
+      },
+      {
+        "question": "Do artifacts work the same on every Claude plan?",
+        "answer": "Do not assume so. Feature availability and usage limits differ by plan and can change. Confirm the specific capability on the account you are buying, and treat a package label as a description of the seller offer rather than proof of a fixed feature set."
       }
     ],
     "sources": [
@@ -176,7 +309,7 @@
     "title": "Canva Brand Kits: a consistent client workflow",
     "description": "A practical Canva workflow for client logos, colors, templates and final checks, with exact PKR plan links and questions to ask before purchasing.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "A Canva Brand Kit organizes brand assets such as logos, colors and fonts so a team can reuse the approved material. For client work, establish the asset source and workspace permissions first, then build a small set of templates. Confirm that your account's actual plan and role provide the functions you need.",
     "sections": [
       {
@@ -207,6 +340,38 @@
           "Decide whether the client must own the workspace or simply receive exported assets. Check the required editing role, access to source templates and what happens when a team membership ends.",
           "The Canva catalog includes different plan and education-related labels. Confirm eligibility and the actual workspace arrangement for your selected offer. Do not assume that a long subscription label supplies every brand-management or commercial-use entitlement."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "Canva pricing in Pakistan, as listed",
+        "paragraphs": [
+          "Thirteen Canva offers are listed, with a typical quote of PKR 675 and a range from PKR 14 to PKR 20,928. A spread that wide is not a market price range for one product; it describes different durations and access arrangements sitting under the same brand. Durations include one month, twelve months, one year and three years.",
+          "Read the term before the number. The lowest rows are short durations or limited arrangements, and the highest describe long terms. Warranty wording varies from full to none, all recorded as listed and unverified, so the written terms are the part worth asking about first."
+        ]
+      },
+      {
+        "id": "assets",
+        "heading": "Keep the brand kit honest about ownership",
+        "paragraphs": [
+          "A brand kit is a container, not a licence. Putting a client logo and font into a shared workspace does not give anyone permission to use them beyond the agreement. Confirm that the client actually owns the marks and fonts they sent, because a font licensed for their website may not cover printed collateral or a paid advertisement.",
+          "Name the kit after the client rather than the campaign, and record the date the assets were approved. When a logo changes six months later, the dated note is what stops an old mark from reappearing in a new deck."
+        ]
+      },
+      {
+        "id": "templates",
+        "heading": "A template set small enough to maintain",
+        "paragraphs": [
+          "Three well-built templates beat twelve half-finished ones. Start with the formats the client publishes most often, lock the elements that must not move, and leave the copy and one accent colour editable. A template everyone breaks is a template nobody uses twice."
+        ]
+      },
+      {
+        "id": "handover",
+        "heading": "Handing the kit to someone else",
+        "paragraphs": [
+          "A brand kit that only you can open is a dependency, not an asset. Before the handover, confirm which account owns the workspace, which role the client will hold, and what leaves the tool when the engagement ends.",
+          "Export the logo set and the colour and type values as a plain document alongside the templates. That file is what survives a plan change, and it means a future designer can rebuild the kit without asking for access to an account you no longer pay for.",
+          "Leave a one-page note describing which template to use for which format. The person opening the kit six months from now was probably not in the meeting where those decisions were made."
+        ]
       }
     ],
     "questions": [
@@ -217,6 +382,18 @@
       {
         "question": "Should I choose a plan just for its duration?",
         "answer": "First confirm the Brand Kit and template functions you need, then compare equivalent access and duration. Read the warranty separately from the subscription term."
+      },
+      {
+        "question": "Can two people share one Canva account?",
+        "answer": "Technically possible, practically risky. Shared logins break audit trails, expose private material and make removal awkward when a project ends. Ask exactly which access arrangement the seller provides, and keep confidential client assets out of an account you do not control."
+      },
+      {
+        "question": "Why is a three-year Canva listing cheaper than a one-year one?",
+        "answer": "It usually is not the same product. Long listings often describe a different access level or a bulk arrangement rather than a discount on the shorter term. Compare the term, the access type and the warranty together, then ask the seller to confirm all three in writing."
+      },
+      {
+        "question": "Does branding work need a paid Canva plan?",
+        "answer": "Only if you need the shared brand controls, the asset library or the export options that come with them. A solo project with a fixed set of colours can often be finished without one, so list the features you actually need before paying."
       }
     ],
     "sources": [
@@ -233,7 +410,7 @@
     "title": "Figma handoff: a design developers can inspect",
     "description": "Prepare a Figma handoff with component states, layout notes and assets. Understand Dev Mode's role and compare the appropriate Figma seat and plan.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "A useful Figma handoff communicates layout rules, reusable components, states and assets, as well as the finished screen. Figma's Dev Mode supports design inspection and handoff. Confirm the seat and plan needed for your actual role; a general Pro label does not establish every developer or editing capability.",
     "sections": [
       {
@@ -264,6 +441,44 @@
           "After implementation, compare the real page at mobile and desktop widths. Test keyboard focus, text wrapping and links. Inspecting a design or copying a generated code snippet does not replace this review.",
           "For a Figma offer, confirm seat type, ownership of files and workspace, invitation permissions and the actual duration. Keep editing access, inspection capabilities and seller warranty as separate parts of the purchasing decision."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "What Figma access costs in Pakistan right now",
+        "paragraphs": [
+          "The catalog currently lists four Figma offers: a typical (median) quote of PKR 2,125, with the lowest at PKR 1,376 and the highest at PKR 3,000. The spread is narrow because every listed offer runs for a year or longer. These are annual seats rather than monthly ones, so compare the quote against twelve months of official billing instead of against a single month.",
+          "Warranty wording is not uniform. Some rows state a full warranty and others state a one-year term, and every label is recorded as listed and unverified until the seller confirms it in writing. A four-offer market also means the cheapest row can disappear, so ask for the current price before you budget around the lowest figure."
+        ]
+      },
+      {
+        "id": "seats",
+        "heading": "Which seat does the work actually need?",
+        "paragraphs": [
+          "Figma separates people who edit files from people who only inspect them, and that difference decides what you have to buy. A designer producing screens needs an editing seat. A developer who reads measurements, copies assets and exports specifications needs inspection access, which is usually a smaller commitment.",
+          "If the client owns the file you may not need a paid seat at all — you need the client to invite you to their team with the right role. Ask two questions before paying: who owns the file after the project ends, and which role will each person hold. A handoff that depends on a personal seat you cancel next month breaks the moment the subscription stops."
+        ]
+      },
+      {
+        "id": "handoff-checklist",
+        "heading": "A handoff that survives the end of the project",
+        "paragraphs": [
+          "The file is not the deliverable; the client being able to continue without you is. Check these before the final invoice:"
+        ],
+        "bullets": [
+          "Move the source file somewhere the client controls, rather than leaving it on a personal account.",
+          "Export the screens and assets the client will need even if they never open Figma again.",
+          "Write spacing, type and colour rules into the file so the values travel with the design.",
+          "Label component states — hover, empty, error, loading — instead of shipping only the happy path.",
+          "Note what is intentionally unfinished, so the next person does not read it as a defect."
+        ]
+      },
+      {
+        "id": "bottleneck",
+        "heading": "When the subscription is not the bottleneck",
+        "paragraphs": [
+          "A cheap seat will not rescue a handoff that has no decision behind it. Before adding a paid plan, check whether the delay is actually access: if nobody has agreed the screen list, or the client has not supplied the copy, more seats only let more people wait.",
+          "The reverse also happens. Teams buy the smallest access they can find, then discover that the person expected to fix spacing cannot edit anything. Match the seat to the work in front of you this month, and revisit it when the work changes rather than paying ahead for a role nobody holds yet."
+        ]
       }
     ],
     "questions": [
@@ -274,6 +489,14 @@
       {
         "question": "What Figma access should a developer ask for?",
         "answer": "Specify the file access and Dev Mode capabilities required for the project, then confirm the appropriate seat and plan. Do not infer these from a generic subscription label."
+      },
+      {
+        "question": "Is an annual Figma listing always cheaper than paying monthly?",
+        "answer": "Not automatically. Divide the annual PKR quote by twelve and compare that with the monthly price you would pay directly, then decide what the seller warranty is actually worth. A long duration mostly removes renewal work; it is not proof of a lower monthly cost."
+      },
+      {
+        "question": "Can I hand a Figma file to a client who has no Figma account?",
+        "answer": "Only if you export it. Send the source file together with exported screens and assets, because a client without access cannot open the working file. Agree who keeps the file before the handoff, not after the invoice."
       }
     ],
     "sources": [
@@ -290,7 +513,7 @@
     "title": "Notion for client projects: workspace setup",
     "description": "Organize a client project in Notion with tasks, decisions, deliverables and permissions. Compare workspace needs before selecting a subscription.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "Use a Notion project workspace to connect a brief, task list, decision log and deliverables. Choose views that help people understand ownership and progress. Start with a simple structure, verify sharing permissions and only select paid features when they solve an identified requirement.",
     "sections": [
       {
@@ -321,6 +544,39 @@
           "Decide who maintains the workspace after the project ends and how important material will be retained or exported. Check guest access and the ownership of pages before a subscription or team arrangement changes.",
           "When comparing the Notion listings, confirm whether the quoted amount covers your required seats, workspace and functions. A Business label or a multi-month term does not establish unlimited AI usage or ownership of a particular workspace."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "What Notion access costs in Pakistan",
+        "paragraphs": [
+          "There are sixteen Notion offers in the catalog, with a typical listed quote of PKR 1,416 and a range from PKR 415 to PKR 6,972. That range is wide enough that the number on a card tells you very little on its own: the cheapest rows are usually short durations or limited workspace arrangements, while the top of the range tends to describe longer terms or workspace-level access.",
+          "Durations run from a single month to two years, and several rows leave the duration unspecified. Warranty labels vary from one day to a full year, all recorded as listed and unverified. When the duration is unclear, the price cannot be compared at all — ask for the start and end date before you treat a quote as monthly."
+        ]
+      },
+      {
+        "id": "structure",
+        "heading": "The smallest structure that still works",
+        "paragraphs": [
+          "Most client workspaces fail because they were built for the tool rather than for the work. Start with four things and add nothing else: a page that states the goal and the decision maker, a task list with an owner column, a decision log written as dated entries, and a place where final files live.",
+          "Resist databases you do not yet need. A second database for feedback sounds organised until nobody maintains its status field. Add a structure when a real question cannot be answered without it, and delete the view nobody opens after two weeks."
+        ]
+      },
+      {
+        "id": "access",
+        "heading": "Who can see what, and after the project ends",
+        "paragraphs": [
+          "Sharing permissions are the part clients notice last and argue about first. Decide early whether the client is a guest in your workspace or you are a guest in theirs, because the two arrangements end differently. If the workspace is yours, the client loses access when you stop paying; if it is theirs, you lose access when the engagement ends.",
+          "Before handover, export the content you are contractually expected to leave behind and confirm who retains admin rights. A workspace nobody owns is the most common way a tidy project turns into a set of screenshots six months later."
+        ]
+      },
+      {
+        "id": "rhythm",
+        "heading": "A weekly rhythm beats a better template",
+        "paragraphs": [
+          "A workspace stays useful because someone reads it on a schedule, not because the layout is elegant. Set one short weekly pass: move finished work, close stale tasks, and write down the single decision that changed the plan.",
+          "Ten minutes of maintenance each week is worth more than an elaborate setup nobody opens. If a page has not been touched in a month and nothing broke, it is probably not part of the work — archive it, and keep the section the client actually reads.",
+          "Give each client project a single entry point. When someone has to remember three page names to find the brief, the workspace has already stopped doing its job."
+        ]
       }
     ],
     "questions": [
@@ -331,6 +587,14 @@
       {
         "question": "What should I confirm about a Notion subscription offer?",
         "answer": "Confirm workspace ownership, seats, guest permissions, the functions you need, duration and renewal. Ask separately about any AI allowance rather than assuming it is included."
+      },
+      {
+        "question": "Can one Notion plan cover several client projects?",
+        "answer": "That depends on the access arrangement rather than the plan label. Separate workspaces keep client material apart and make removal simple when a project ends. Confirm what the seller actually provides, and keep confidential client data out of a shared space you do not control."
+      },
+      {
+        "question": "Is a lifetime Notion listing a good deal?",
+        "answer": "Treat any unusually long duration as a question, not a bargain. Ask who controls the workspace, what happens at renewal, and what the warranty covers in writing. If the seller cannot state the end date and the recovery route, the duration is not a guarantee."
       }
     ],
     "sources": [
@@ -347,7 +611,7 @@
     "title": "ElevenLabs voiceovers: script and credit budget",
     "description": "A practical ElevenLabs voiceover workflow: prepare a script, test pronunciation, budget revisions and check plan-specific credit and usage terms.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "For an ElevenLabs voiceover, prepare and approve the script before generating the full recording. Test a short sample with the intended voice and model, review pronunciation and reserve capacity for revisions. Credit use varies, so estimate with your actual settings instead of converting a package label into a guaranteed number of audio minutes.",
     "sections": [
       {
@@ -378,6 +642,44 @@
           "Ask whether the offer supplies subscription quota or another credit arrangement, when it resets or expires, and which product can use it. ElevenLabs documents different allocation and rollover conditions; confirm the ones that apply to your actual account.",
           "Estimate from the usage shown for your sample under the intended model, then allow for revisions. This is a planning method rather than a promise of a particular output length or a fixed saving."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "What voiceover capacity costs here",
+        "paragraphs": [
+          "Sixteen ElevenLabs offers appear in the catalog, with a typical quote of PKR 3,246 and a range from PKR 664 to PKR 19,364. Durations are mostly thirty days or one month, with a few annual rows. The price band is wide because the underlying products differ — a starter allowance and a studio-scale balance are not the same purchase at different prices.",
+          "Warranty labels range from two days to a full term, recorded as listed and unverified. For voice work that matters more than usual: a project that needs re-records three weeks later depends on the account still working, so ask what happens if the balance runs out mid-project."
+        ]
+      },
+      {
+        "id": "voice-rights",
+        "heading": "Voice choice is a rights decision",
+        "paragraphs": [
+          "Two questions decide whether a voice is usable commercially: whose voice is it, and what does the license allow? A stock voice from the platform library is a different proposition from a cloned voice, and a cloned voice requires the speaker’s documented consent — not a verbal yes in a WhatsApp thread.",
+          "If a client asks for their own voice, get written permission that names the scope: which campaigns, which duration, which channels. Consent that covers a website explainer does not automatically cover a paid advertisement, and a voice that sounds like a celebrity is a liability even when it was generated from text."
+        ]
+      },
+      {
+        "id": "budget",
+        "heading": "Budget the revisions, not just the read",
+        "paragraphs": [
+          "The first generation is never the deliverable. Clients hear a pause or a pronunciation and ask for another pass, and every pass consumes the same balance. Reserve roughly a third of the allowance for revisions before you quote a price to anyone.",
+          "Keep the approved script as the single source of truth, with pronunciation notes spelled phonetically in the document. A script that changes between generations makes the balance disappear without producing a better recording."
+        ]
+      },
+      {
+        "id": "delivery",
+        "heading": "Deliver audio the client can actually use",
+        "paragraphs": [
+          "A single file is not a delivery. Give the client what their editor needs and label it clearly, because a correctly named export saves a round trip that would otherwise cost another day.",
+          "Keep the original take as well as the approved one. Editors often want the earlier read once they hear it in the final cut, and a deleted generation cannot be recovered without spending the balance again."
+        ],
+        "bullets": [
+          "One clean master, plus a version with music or ambience if the brief asks for it.",
+          "A text version of the exact script that was recorded, so captions match the audio.",
+          "A note of the voice, settings and date, in case a second recording has to match later.",
+          "Filenames that state project, scene and version rather than export-final-2."
+        ]
       }
     ],
     "questions": [
@@ -388,6 +690,14 @@
       {
         "question": "Does every package allow commercial client voiceovers?",
         "answer": "Do not assume so. Confirm current usage rights, the chosen voice and your account's entitlement before using generated audio for a client."
+      },
+      {
+        "question": "Can I reuse one voiceover across several client projects?",
+        "answer": "Only if the license and the client agreement both allow it. A voice tied to one campaign should not reappear in another client’s advertisement. Keep a note of which voice, which project and which permission covers each recording."
+      },
+      {
+        "question": "What should I check before buying an ElevenLabs package?",
+        "answer": "Confirm the allowance, whether it expires, how renewal works and what the warranty covers in writing. Then test a short sample with the exact voice and settings you plan to use, because a sample recorded under different settings tells you little."
       }
     ],
     "sources": [
@@ -408,7 +718,7 @@
     "title": "Cursor for coding: small-change review workflow",
     "description": "Use Cursor with scoped coding tasks, explicit acceptance checks and human review. Compare the relevant account access and plan before purchasing.",
     "published": "2026-10-30",
-    "checked": "2026-10-30",
+    "checked": "2026-11-08",
     "answer": "Give Cursor one clearly scoped coding task, inspect the proposed changes and run checks that verify the intended behavior. Keep changes small enough to review. An AI-generated implementation or automated review is evidence to examine, not a substitute for testing or responsibility for what you deploy.",
     "sections": [
       {
@@ -439,6 +749,37 @@
           "A useful review checks logic, errors, permissions and whether the implementation meets the task. Generated code can still mishandle edge cases even when the main screen appears correct. Do not include credentials or private client data in an example that does not require them.",
           "Before buying Cursor access, confirm the legitimate account arrangement, usage terms, duration and renewal. A Pro label does not establish unlimited model usage or guarantee that a particular project will be completed successfully."
         ]
+      },
+      {
+        "id": "price",
+        "heading": "What Cursor costs in Pakistan",
+        "paragraphs": [
+          "Six Cursor offers are listed, with a typical quote of PKR 19,995 against a range from PKR 2,806 to PKR 41,635. Durations are one month or twelve months. The band is wide because monthly and annual terms sit side by side, and because usage allowances differ between the listed products.",
+          "The lowest row is not automatically the cheapest way to work. A short term at a low number can cost more per month of actual use than an annual row, especially if you have to repurchase twice. Warranty labels run from twenty-four hours to a full term, recorded as listed and unverified."
+        ]
+      },
+      {
+        "id": "tests",
+        "heading": "Keep the test suite in the loop",
+        "paragraphs": [
+          "The most useful habit with an AI code assistant is refusing to accept a change you cannot check. Run the existing tests before you start, so you know which failures were already there, and run them again after. A change that fixes one screen and quietly breaks two others is not a gain.",
+          "Where a test does not exist, write the smallest one that describes the expected behaviour first. It takes a few minutes and converts a vague request into something a reviewer can judge. That single step removes most of the disagreement about whether the assistant did the job."
+        ]
+      },
+      {
+        "id": "cost",
+        "heading": "Match the plan to the size of the work",
+        "paragraphs": [
+          "A hobby project that touches one file a week does not need a professional-tier allowance. A paid tier earns its price when you are using the assistant daily on a codebase you are responsible for, with review and testing already part of your routine."
+        ]
+      },
+      {
+        "id": "unfamiliar",
+        "heading": "Working inside a codebase you did not write",
+        "paragraphs": [
+          "Most client repositories arrive with no explanation. Spend the first pass reading structure rather than changing it: how the project starts, where routes are defined, how state is stored. Ask the assistant to describe the flow before asking it to modify anything, then check that description against the files.",
+          "Keep a short note of what you learned and where it lives. On a codebase you will return to, that note saves more time than any single generated change, and it is also the document that protects you when a later problem turns out to be pre-existing."
+        ]
       }
     ],
     "questions": [
@@ -449,6 +790,18 @@
       {
         "question": "What should a beginner compare between Cursor offers?",
         "answer": "Compare the actual account access, supported workflow, usage allowance, duration and renewal. Keep the stated seller warranty separate from the software's capabilities."
+      },
+      {
+        "question": "Is an AI code assistant safe for client repositories?",
+        "answer": "Only within the terms the client agreed to. Do not paste credentials, private keys or customer data into a prompt, and check whether the client allows generated code in their repository at all. The subscription does not decide that for you."
+      },
+      {
+        "question": "What should I compare between Cursor listings?",
+        "answer": "Compare the access type, the usage allowance, the term and the warranty. A monthly row and an annual row at similar prices are different commitments, and a warranty of one day rarely covers a problem that shows up in week three."
+      },
+      {
+        "question": "Do I need the most expensive Cursor plan to start?",
+        "answer": "No. Start on the smallest tier that covers your real weekly usage, and move up when you hit the limit repeatedly rather than once. Buying the top tier first hides which feature you actually needed."
       }
     ],
     "sources": [
@@ -465,7 +818,7 @@
     "title": "ChatGPT vs Claude: plans for Pakistan",
     "description": "ChatGPT and Claude compared for Pakistani buyers: documented strengths, how plan limits differ and what to check in a PKR listing before paying.",
     "published": "2026-11-06",
-    "checked": "2026-11-06",
+    "checked": "2026-11-08",
     "answer": "Both assistants draft, analyse and support coding, but they are sold in different shapes: OpenAI documents Projects for gathering related files, Anthropic documents Artifacts for rendering output beside the chat. Choose by the task you repeat most, then compare the exact PKR package, because the same brand appears at several durations and access types.",
     "sections": [
       {
@@ -505,6 +858,21 @@
           "Pick the one task you will repeat this month. If it needs long PDFs and careful review, test a Claude listing with a real document and check whether the output is easier to inspect. If it needs projects, files and a broad toolset, test ChatGPT with the same task.",
           "Run both on real material, keep the outputs, and judge the cost of revising them rather than the quality of the first draft. Only then compare price. The cheapest quote is usually the shortest or most restricted package, not the best value for repeated work."
         ]
+      },
+      {
+        "id": "price-real",
+        "heading": "What the two collections cost here",
+        "paragraphs": [
+          "The catalog lists fifty-two ChatGPT offers with a typical quote of PKR 4,001, against forty Claude offers with a typical quote of PKR 2,462. Both collections contain very short terms and very long ones, so the medians describe the shape of the listings rather than a monthly rate for either brand.",
+          "A lower median does not make Claude the cheaper choice for your work. Compare one row from each collection with the same duration and the same access type, then add the cost of the tasks each one fails at. That second number is usually the one that decides it."
+        ]
+      },
+      {
+        "id": "switch",
+        "heading": "When to switch, and what to carry over",
+        "paragraphs": [
+          "Switch when a repeated task consistently fails, not when a comparison article says one model is ahead. Keep a short list of the prompts and documents that matter, and run the same set on the alternative before you cancel anything."
+        ]
       }
     ],
     "questions": [
@@ -519,6 +887,14 @@
       {
         "question": "Does a chat subscription include API credit?",
         "answer": "No. A chat plan and an API balance are separate products with separate billing. If you need an integration, ask for the API listing and its credit terms rather than assuming the chat plan covers it."
+      },
+      {
+        "question": "Can one subscription cover writing and coding?",
+        "answer": "Often yes for light work, but the limits differ by task. Note where you hit a ceiling — long files, frequent edits, large repositories — and choose the tier that removes that specific ceiling rather than the one with the longest feature list."
+      },
+      {
+        "question": "Is a cheaper listing a different product?",
+        "answer": "Usually. A short duration, a smaller allowance or a different access arrangement explains most of the gap. Ask the seller to confirm the included tools and the term in writing before you compare two quotes as equivalents."
       }
     ],
     "sources": [
@@ -547,7 +923,7 @@
     "title": "Canva Pro vs CapCut Pro in Pakistan",
     "description": "Canva Pro and CapCut Pro compared for Pakistani creators: design versus editing work, what each plan covers and how to compare PKR quotes safely.",
     "published": "2026-11-06",
-    "checked": "2026-11-06",
+    "checked": "2026-11-08",
     "answer": "They cover different halves of the same job. Canva is a design and layout tool with documented brand controls; CapCut is a video editor built around cutting, captions and short-form export. The subscriptions are separate products with separate limits, so compare each listing on its own terms instead of buying a bundle you cannot verify.",
     "sections": [
       {
@@ -592,6 +968,22 @@
           "Buy the tool that removes the step you currently do by hand. If you are rebuilding the same layout for every post, start with Canva. If you are editing on a phone and fighting export limits, start with CapCut. Add the second only when paid work actually arrives for it.",
           "Before upgrading, test the specific paid feature on a real project. A subscription is worth its price when it saves a repeatable hour, not when it adds a tool you open once."
         ]
+      },
+      {
+        "id": "price-gap",
+        "heading": "The two price bands do not overlap much",
+        "paragraphs": [
+          "Canva has thirteen listed offers with a typical quote of PKR 675, while CapCut has sixteen with a typical quote of PKR 1,300. Both collections include very short terms at the bottom and long terms at the top, so the medians describe typical listings rather than a fixed monthly rate.",
+          "That difference is small enough that price should not decide the choice. What decides it is which half of the job you are doing more often: layout and brand consistency, or cutting and captioning footage. Buying the cheaper one and fighting it costs more than the difference."
+        ]
+      },
+      {
+        "id": "export",
+        "heading": "Check the export before the subscription",
+        "paragraphs": [
+          "Export rules decide more projects than editing features do. A design that cannot leave the tool at the size or format the client needs is a dead end, and a video that carries a visible mark is not the deliverable the brief asked for.",
+          "Test one real export on the plan you intend to buy: the exact dimensions, the format the platform accepts, and whether the result is clean. Do this before the deadline day, not after."
+        ]
       }
     ],
     "questions": [
@@ -606,6 +998,18 @@
       {
         "question": "Why is a long-duration Canva listing cheaper than a short one?",
         "answer": "Usually because it is a different product: an education slot, a shared arrangement or a resold invitation rather than a private monthly plan. Read the access type and warranty before comparing the number."
+      },
+      {
+        "question": "Is CapCut enough for client video work on its own?",
+        "answer": "For short-form cutting, captions and straightforward edits it often is. Longer narrative work, colour grading and multi-track audio usually need a different tool. Decide from the format the client publishes, not from the feature list."
+      },
+      {
+        "question": "Can I install one plan on two devices?",
+        "answer": "That depends on the access arrangement the seller provides, not on the brand. Ask before paying, and keep the answer in writing. Assuming a shared device limit is the most common way a working plan becomes a support conversation."
+      },
+      {
+        "question": "Do I need both tools for a single campaign?",
+        "answer": "Only if the campaign needs both a designed asset and an edited video. A single-format campaign is usually faster with one tool and a clear template, and adding the second mid-project costs more in relearning than it saves."
       }
     ],
     "sources": [
@@ -630,7 +1034,7 @@
     "title": "Gemini vs ChatGPT for research work",
     "description": "Gemini and ChatGPT compared for research in Pakistan: how research modes work, document checks, plan limits and how to verify an answer before using it.",
     "published": "2026-11-06",
-    "checked": "2026-11-06",
+    "checked": "2026-11-08",
     "answer": "Both can summarise, compare and draft from material you supply, and both can be wrong with confidence. The practical difference is the workflow around the model: how documents are attached, whether a research mode is included on your plan, and how easily a statement can be traced back to a source. Test that before choosing a brand.",
     "sections": [
       {
@@ -674,6 +1078,23 @@
           "Ask what the answer would look like if the premise were false, then look for that alternative.",
           "Date the draft and note the model or plan used, so a later revision is traceable."
         ]
+      },
+      {
+        "id": "price-gap",
+        "heading": "The PKR gap between the two, in numbers",
+        "paragraphs": [
+          "The catalog lists fifty-two ChatGPT offers with a typical quote of PKR 4,001, and forty-five Gemini offers with a typical quote of PKR 22,318. That contrast looks dramatic and is mostly not a quality signal: the Gemini collection includes bundled Google packages and video offers, while the ChatGPT rows are dominated by shorter app-level terms.",
+          "The practical conclusion is that brand-level price comparison is misleading here. Compare the one row you would actually buy from each collection, note the duration and what is included, and only then compare the totals. Anything else compares a month of one product with a year of another."
+        ]
+      },
+      {
+        "id": "evidence",
+        "heading": "A two-source rule for anything you publish",
+        "paragraphs": [
+          "Whichever assistant you use, require two independent sources before a claim leaves your desk. Two summaries of the same press release are one source. A vendor page and an independent test are two.",
+          "Record the sources next to the claim in the document. It slows the first draft by minutes and removes the argument that starts when a client asks where a number came from and the answer is a chat window that has since been closed.",
+          "Keep the comparison in a document rather than in your head. Two months later the prices, the limits and the plan names will all have moved, and a dated note is what stops an old conclusion being repeated as current."
+        ]
       }
     ],
     "questions": [
@@ -688,6 +1109,18 @@
       {
         "question": "Can these tools read a PDF I upload?",
         "answer": "Supported plans can accept documents, but size, count and retention rules differ. Confirm the current limits and avoid uploading material you are not allowed to share."
+      },
+      {
+        "question": "Which assistant is better for long documents?",
+        "answer": "Test it with your own document rather than deciding from a feature list. Upload the same file to both, ask the same three questions, and check which answers you can trace back to a specific page. That result is worth more than any general comparison."
+      },
+      {
+        "question": "Do I need both subscriptions?",
+        "answer": "Rarely at the same time. Pick the one that fits the work you repeat most, use it for a month, and add the second only when a specific task fails. Two subscriptions bought on day one usually means neither is tested properly."
+      },
+      {
+        "question": "Can a research mode replace reading the source?",
+        "answer": "No. It shortens the search, not the judgement. The source is still where you confirm the number, the date and the conditions attached to it, and that check is the part a client is paying for."
       }
     ],
     "sources": [
@@ -712,7 +1145,7 @@
     "title": "Streaming plans in Pakistan: what to compare",
     "description": "Netflix, Prime Video and Spotify plans for Pakistan compared: tiers, household rules, regional catalogues and how to check a PKR quote before paying.",
     "published": "2026-11-06",
-    "checked": "2026-11-06",
+    "checked": "2026-11-08",
     "answer": "The three services are not interchangeable. Netflix and Prime Video sell video libraries; Spotify sells music. Within each one, the tier decides resolution, screens and downloads, while the household or family rule decides who can legally share it. Compare the tier and the sharing rule before you compare the price.",
     "sections": [
       {
@@ -753,6 +1186,21 @@
           "Warranty: what remedy applies if access stops mid-term, and for how long.",
           "Payment path: confirm who holds the account and how the price is collected."
         ]
+      },
+      {
+        "id": "price-gap",
+        "heading": "What the listed quotes actually show",
+        "paragraphs": [
+          "Netflix appears with five offers in the catalog, a typical quote of PKR 895 and a range from PKR 400 to PKR 4,676. The durations are one, three or six months. The spread is explained by duration and tier rather than by generosity: a six-month row is not a discount on a one-month row until you divide it.",
+          "The same caution applies to the music and video services sold beside it. Compare monthly equivalents, then compare what the tier includes. A plan that costs less per month but restricts screens or resolution has not saved anyone money if two people cannot watch at once."
+        ]
+      },
+      {
+        "id": "verify",
+        "heading": "Confirm three things before paying",
+        "paragraphs": [
+          "Streaming listings change quickly, so ask the same three questions every time: which tier is this, how many screens and downloads does it allow, and what happens if the profile stops working mid-term. The answer to the third question is the warranty, whatever the card calls it."
+        ]
       }
     ],
     "questions": [
@@ -767,6 +1215,18 @@
       {
         "question": "Do I need a foreign card to subscribe directly?",
         "answer": "Many services accept international cards, but some require a card issued in the account country. Confirm the payment path before you rely on it, and remember that buying through a reseller raises a separate question about who owns the account."
+      },
+      {
+        "question": "Is a shared streaming profile against the service terms?",
+        "answer": "Often yes, depending on the household rules the service publishes. Those rules decide who may use a plan, and they are separate from what a seller is willing to sell. Read the service terms before assuming a shared arrangement is permitted."
+      },
+      {
+        "question": "Why does the same streaming plan cost different amounts?",
+        "answer": "Duration, tier and how the profile is supplied all change the quote. Compare the monthly equivalent for the same tier, and confirm whether the arrangement is a private profile or a shared one before treating two numbers as alternatives."
+      },
+      {
+        "question": "What should I do if a profile stops working?",
+        "answer": "Contact the seller in the original conversation, with the order reference and the date it stopped. A warranty is only useful if you can describe the failure clearly, so keep the message thread and any screenshots from the day it worked."
       }
     ],
     "sources": [
@@ -781,6 +1241,716 @@
       {
         "label": "Spotify: Premium Family requirements",
         "href": "https://support.spotify.com/us/article/family-plan/"
+      }
+    ]
+  },
+  {
+    "slug": "chatgpt-plus-kitne-ka-hai-pakistan",
+    "collection": "chatgpt",
+    "topic": "AI & research",
+    "title": "ChatGPT Plus kitne ka hai Pakistan mein?",
+    "description": "ChatGPT Plus ki qeemat Pakistan mein: typical quote, range, duration aur warranty ka farq, aur pay karne se pehle kya confirm karein.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Is catalog mein ChatGPT ke 52 plans listed hain. Typical (median) quote PKR 4,001 hai, sab se kam PKR 29 aur sab se zyada PKR 96,936. Ye range is liye itni chori hai ke durations 24 ghante se 2 saal tak hain aur access types bhi alag hain, is liye ek number ko monthly price na samjhein.",
+    "sections": [
+      {
+        "id": "numbers",
+        "heading": "Numbers ka matlab kya hai?",
+        "paragraphs": [
+          "PKR 29 ka row 24 ghante ka trial hota hai, monthly subscription nahi. PKR 96,936 ka row aam tor par bohat lambi muddat ya bulk arrangement batata hai. Beech mein jo rows hain wo 1 month, 30 days, 4 months aur 2 years jaise labels ke saath aati hain.",
+          "Is liye comparison ka tareeqa ye hai: pehle apni zaroorat ki muddat tay karein, phir usi muddat ke do ya teen rows ka total dekhein. Ek mahine ka row aur ek saal ka row aapas mein muqabla nahi kar sakte, chahe dono ke saamne \"ChatGPT\" hi likha ho."
+        ]
+      },
+      {
+        "id": "why-cheap",
+        "heading": "Kuch rows bohat sasti kyun hain?",
+        "paragraphs": [
+          "Sasti row ka matlab aam tor par chhoti allowance, chhoti muddat ya mukhtalif access arrangement hota hai. Kabhi ye shared slot hota hai jahan aap ke ilawa doosre log bhi usi subscription par hote hain, aur kabhi ye limited credits wala package hota hai.",
+          "Is liye price dekh kar ye nahi maan lein ke features bhi wohi hain. Product ID, muddat, access ka tareeqa aur warranty — ye char cheezein likhwa kar confirm karein, phir faisla karein."
+        ]
+      },
+      {
+        "id": "confirm",
+        "heading": "Pay karne se pehle kya confirm karein?",
+        "paragraphs": [
+          "Sawal poochne mein sharm na karein. Aik acha seller in cheezon ka jawab likh kar deta hai:"
+        ],
+        "bullets": [
+          "Exact product ID aur plan ka naam, screenshot ke saath.",
+          "Shuru aur khatam hone ki tareekh, sirf \"1 month\" ka label nahi.",
+          "Access personal hai ya shared, aur kitne devices par chalega.",
+          "Warranty kitne din ki hai aur kharabi par remedy kya hai.",
+          "Payment ka tareeqa aur refund ka rule, likhit tor par."
+        ]
+      },
+      {
+        "id": "rupee",
+        "heading": "Dollar ke hisab se mehnga ya sasta?",
+        "paragraphs": [
+          "Direct vendor price dollar mein hoti hai aur us par card ka exchange rate aur international transaction charges lagte hain. Local quote PKR mein hoti hai, is liye dono ko ek hi maqam par compare karna mushkil hai. Behtar tareeqa ye hai ke aap apne bank ke actual charge se compare karein, na ke kisi website ke \"official price\" se.",
+          "Agar aap ke paas international card nahi hai, to local quote hi amal ka raasta hai — lekin tab warranty aur access ki ahmiyat aur barh jati hai, kyunki chargeback ka option aam tor par nahi hota."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya ek hi price sab users ke liye hoti hai?",
+        "answer": "Nahi. Quote seller, duration aur access type ke hisab se badalti hai. Isi liye catalog median aur range dono dikhata hai, taake aap ko pata ho ke market kis had tak phaila hua hai."
+      },
+      {
+        "question": "Kya sasti row lena nuqsan deh hai?",
+        "answer": "Sasti row khud bura nahi hoti, lekin uski muddat aur allowance choti hoti hai. Agar aap roz kaam karte hain to chhoti muddat bar bar renew karne par mehngi par sakti hai."
+      },
+      {
+        "question": "Warranty ka matlab kya hai?",
+        "answer": "Warranty seller ka wada hai, software company ka nahi. Ye batati hai ke plan kharab hone par seller kitne din tak aur kis tareeqe se madad karega. Likh kar lein, warna baad mein sirf yaad reh jati hai."
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenAI: what is ChatGPT Plus",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      },
+      {
+        "label": "AiToolsPk price index",
+        "href": "https://aitoolspk.tech/price-index/"
+      }
+    ]
+  },
+  {
+    "slug": "bina-credit-card-ai-subscription-pakistan",
+    "collection": "chatgpt",
+    "topic": "Buying",
+    "title": "Bina credit card AI subscription kaise lein?",
+    "description": "Pakistan mein international card ke baghair AI subscription lene ke raaste, un ke risks, aur seller se poochne wale sawalat ki checklist.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Sab se aam raasta local reseller se PKR mein kharidna hai, kyunki vendor ko dollar mein payment karni parti hai aur aap ko sirf PKR dena hota hai. Lekin tab aap vendor ke customer nahi hote: account ka control, renewal aur support seller ke haath mein hota hai, is liye terms likhwa kar lein.",
+    "sections": [
+      {
+        "id": "options",
+        "heading": "Aam raaste kya hain?",
+        "paragraphs": [
+          "Pehla raasta: apne bank se international debit ya credit card, jis par vendor direct charge karta hai. Is mein aap seedha vendor ke customer hote hain, lekin har bank har subscription allow nahi karta aur charges alag hote hain.",
+          "Doosra raasta: local reseller, jo PKR mein quote deta hai aur account ya access arrange karta hai. Teesra: kisi dost ya family member ka card, jis par aap PKR mein hisab barabar kar dete hain. Har raaste ka apna risk hai, aur risk ka farq paison se zyada control ka hai."
+        ]
+      },
+      {
+        "id": "control",
+        "heading": "Asli sawal: account ka control kis ke paas hai?",
+        "paragraphs": [
+          "Agar account aap ke email par bana hai aur aap ke paas password hai, to control aap ke paas hai — bhale payment kisi aur ne ki ho. Agar account seller ke paas hai aur aap ko sirf access diya gaya hai, to control seller ke paas hai.",
+          "Is farq ko samajhna zaroori hai kyunki renewal, recovery aur data ka faisla usi ke paas hota hai jis ke paas account hai. Shared slot mein aap ka access kabhi bhi band ho sakta hai, aur us par aap ka koi ikhtiyar nahi hota."
+        ]
+      },
+      {
+        "id": "ask-seller",
+        "heading": "Seller se ye sawalat poochein",
+        "paragraphs": [
+          "Jawab likh kar lein, sirf voice note par yaad na rakhein:"
+        ],
+        "bullets": [
+          "Account kis email par hai aur recovery ka haq kis ke paas hai?",
+          "Payment ke baad kya main password khud badal sakta hoon?",
+          "Renewal ka tareeqa kya hai aur price badal sakti hai?",
+          "Kharabi par kitne din mein jawab milega?",
+          "Kya main apna data export kar sakta hoon agar band karna ho?"
+        ]
+      },
+      {
+        "id": "avoid",
+        "heading": "Kya cheez Red flag hai?",
+        "paragraphs": [
+          "Jo seller \"lifetime\" ka wada kare bina likhit terms ke, jo screenshot mangne par jhijhke, ya jo price sirf DM mein bataye aur page par na likhe — in se ehtiyat karein. Isi tarah \"unlimited\" credits ka dawa bhi sawal khada karta hai, kyunki vendor ki apni limits hoti hain.",
+          "Aik aur nishani: seller aap se OTP, recovery code ya browser cookies maange. Ye kabhi na dein. Koi bhi qanooni access arrange karne ke liye aap ka OTP zaroori nahi hota."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya JazzCash ya Easypaisa se payment ho sakti hai?",
+        "answer": "Ye seller par depend karta hai, is liye catalog par koi payment method nahi likha jata jab tak seller confirm na kare. Order se pehle seedha poochein ke kaunsa tareeqa qabool hai aur receipt milegi ya nahi."
+      },
+      {
+        "question": "Kya bina card lena qanooni hai?",
+        "answer": "Local reseller se kharidna khud qanoon ke khilaf nahi, lekin vendor ke terms par depend karta hai ke account kis ke naam par ho sakta hai. Shared ya resold access vendor ki policy tor sakta hai, aur uska risk aap par hota hai."
+      },
+      {
+        "question": "Sab se mehnga nuqsan kya ho sakta hai?",
+        "answer": "Ye ke aap ne 12 mahine ka paisa de diya aur teen mahine baad access band ho gaya, bina likhit warranty ke. Isi liye lambi muddat par paisa dene se pehle chhoti muddat test karein."
+      }
+    ],
+    "sources": [
+      {
+        "label": "AiToolsPk: how to order",
+        "href": "https://aitoolspk.tech/how-to-order/"
+      },
+      {
+        "label": "AiToolsPk: refund policy",
+        "href": "https://aitoolspk.tech/refund-policy/"
+      }
+    ]
+  },
+  {
+    "slug": "sasti-ai-subscription-pakistan",
+    "collection": "canva",
+    "topic": "AI & research",
+    "title": "Pakistan mein sab se sasti AI subscription",
+    "description": "Sab se kam PKR quote dhoondne ka tareeqa, aur kyun sab se sasta number hamesha sab se behtar deal nahi hota.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Sab se kam number dhoondna aasan hai, lekin us se faisla karna mushkil. Har collection mein kuch rows sirf kuch din ki hoti hain, is liye PKR 14 ya PKR 29 jaisi quotes dekhi jati hain. Behtar tareeqa ye hai ke ek mahine ka barabar kharcha nikalein, phir features compare karein.",
+    "sections": [
+      {
+        "id": "cheapest-row",
+        "heading": "Sab se sasti row kya batati hai?",
+        "paragraphs": [
+          "Catalog mein Canva ke 13 plans hain, typical quote PKR 675 aur range PKR 14 se PKR 20,928 tak. PKR 14 waja-e-nazar hai lekin wo monthly plan nahi: bohat chhoti muddat ya mehdood arrangement hoti hai. Isi tarah ChatGPT ke 52 plans mein sab se kam quote PKR 29 hai, jo 24 ghante ka row hai.",
+          "Is liye pehla sawal price nahi, muddat hai. Jab tak muddat maloom na ho, number ka koi matlab nahi."
+        ]
+      },
+      {
+        "id": "per-month",
+        "heading": "Per-month cost kaise nikalein?",
+        "paragraphs": [
+          "Total PKR ko us muddat ke mahino par taqseem karein. 12 mahine ka PKR 2,400 = PKR 200 mahina. 30 din ka PKR 300 = PKR 300 mahina. Ab dono numbers aapas mein compare ho sakte hain.",
+          "Lekin ye hisab tabhi sahi hai jab features barabar hon. Agar sasta plan aap ko wo kaam karne nahi deta jo aap roz karte hain, to bachaya hua paisa waqt mein wapas chala jata hai."
+        ]
+      },
+      {
+        "id": "bundle",
+        "heading": "Ek tool ya do?",
+        "paragraphs": [
+          "Bohat log do subscriptions le lete hain aur dono ka sirf aadha istemal karte hain. Pehle ek mahina aik tool par kaam karein. Agar mahine ke aakhir mein aap ko kisi doosre tool ki kami mehsoos ho, tab wo khareedein.",
+          "Do sahi tools aik ghalat tool se behtar hain, lekin aik sahi tool do adhoore tools se behtar hai — khaas tor par jab aap abhi seekh rahe hain."
+        ]
+      },
+      {
+        "id": "hidden",
+        "heading": "Chhupe hue kharchay",
+        "paragraphs": [
+          "Subscription ke ilawa teen kharchay aam tor par nazar andaaz hote hain: renewal par price barhna, payment ka transaction charge, aur wo waqt jo kharab plan ki wajah se zaya hota hai. Teenon ko apne hisab mein shamil karein, warna sasta plan mehnga sabit hota hai."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya sab se sasta plan lena theek hai?",
+        "answer": "Agar aap ka kaam kam hai to theek hai. Agar roz kaam hai to chhoti muddat bar bar renew karne par mehngi parti hai aur har dafa access dobara set karna parta hai."
+      },
+      {
+        "question": "Free plan se kaam nahi chalta?",
+        "answer": "Bohat kaam ke liye chalta hai. Free plan ki limits note karein, aur jab wo limit har hafte rukawat bane tab paid plan lein. Pehle din paid lena aksar un features ke liye hota hai jo kabhi use nahi hote."
+      },
+      {
+        "question": "Kya ek hi plan do kaamon ke liye kaafi hai?",
+        "answer": "Likhne, research aur halke coding ke liye aam tor par haan. Video, design aur heavy API usage ke liye alag tools behtar hote hain, is liye apne roz ke kaam ki list banayein."
+      }
+    ],
+    "sources": [
+      {
+        "label": "AiToolsPk price index",
+        "href": "https://aitoolspk.tech/price-index/"
+      },
+      {
+        "label": "Canva pricing",
+        "href": "https://www.canva.com/pricing/"
+      }
+    ]
+  },
+  {
+    "slug": "shared-ya-personal-ai-account-pakistan",
+    "collection": "claude",
+    "topic": "Buying",
+    "title": "Shared account ya personal account: kya farq?",
+    "description": "Shared slot aur personal account mein control, privacy aur renewal ka farq, aur kaunsa arrangement kis kaam ke liye theek hai.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Shared slot mein aap kisi aur ke account par seat lete hain, is liye control seller ke paas hota hai aur access kabhi bhi band ho sakta hai. Personal account aap ke email par hota hai, is liye recovery aur data aap ke paas rehta hai. Farq price se zyada control ka hai.",
+    "sections": [
+      {
+        "id": "definitions",
+        "heading": "Dono ka matlab kya hai?",
+        "paragraphs": [
+          "Shared slot: seller apna plan chalata hai aur aap ko us par jagah deta hai. Aap ko kaam karne ki jagah mil jati hai, lekin account aap ka nahi hota. Doosre log bhi usi plan par ho sakte hain, aur aap ka access seller ke faisle par depend karta hai.",
+          "Personal account: plan aap ke email par banta hai. Aap password badal sakte hain, apna data export kar sakte hain, aur recovery aap ke paas hoti hai. Price aam tor par zyada hoti hai kyunki seller ko account aap ke naam par dena parta hai."
+        ]
+      },
+      {
+        "id": "risk",
+        "heading": "Kis mein kya risk hai?",
+        "paragraphs": [
+          "Shared slot ka bara risk ye hai ke aap ka kaam kisi doosre ke haath mein hai. Aaj kaam karta hai, kal access band, aur aap ke paas compensation ka sirf seller ka wada hota hai. Privacy ka risk bhi hai: agar workspace shared hai to aap ke files doosron ko nazar aa sakte hain.",
+          "Personal account ka risk mukhtalif hai: agar seller account banata hai aur baad mein recover karta hai, to aap phir bhi control kho sakte hain. Is liye account ke email par aap ka control hona zaroori hai, warna \"personal\" label sirf naam ka hota hai."
+        ]
+      },
+      {
+        "id": "choose",
+        "heading": "Kis kaam ke liye kya theek hai?",
+        "paragraphs": [
+          "Agar aap sirf seekh rahe hain aur client ka kaam nahi kar rahe, to shared slot ka risk qabool kiya ja sakta hai. Agar client ka data us tool mein ja raha hai, to personal account hi munasib hai — aur client ko batana bhi zaroori hai ke data kahan ja raha hai."
+        ]
+      },
+      {
+        "id": "checks",
+        "heading": "Char sawalat jo farq tay karte hain",
+        "paragraphs": [
+          "In ke jawab likh kar lein:"
+        ],
+        "bullets": [
+          "Account kis email par banega?",
+          "Password badalne ka haq kis ke paas hoga?",
+          "Agar access band ho to wapsi ya badla kis soorat mein milega?",
+          "Mera data kahan rahega aur band karne par kaise nikalega?"
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya shared slot sasta hota hai?",
+        "answer": "Aam tor par haan, lekin sasta hone ki wajah control ka nuqsan hota hai. Agar us par client ka kaam ho to ye bachat mehngi par sakti hai, kyunki access band hone par deadline bhi ja sakti hai."
+      },
+      {
+        "question": "Kya main shared slot par apna data safe rakh sakta hoon?",
+        "answer": "Zaroorat se zyada nahi. Agar workspace ya account shared hai to aap ke files doosron ko dikh sakte hain. Client ka data aise account mein na rakhein jahan aap ke ilawa koi aur bhi ho."
+      },
+      {
+        "question": "Workspace access ka matlab kya hai?",
+        "answer": "Workspace access aam tor par team ke liye hota hai, jahan admin aap ko add karta hai aur aap ke paas poora control nahi hota. Admin kaun hai, ye pehle poochein — kyunki removal ka haq usi ke paas hota hai."
+      }
+    ],
+    "sources": [
+      {
+        "label": "AiToolsPk: private, shared and workspace access",
+        "href": "https://aitoolspk.tech/guides/private-shared-workspace-access/"
+      },
+      {
+        "label": "Anthropic pricing",
+        "href": "https://www.anthropic.com/pricing"
+      }
+    ]
+  },
+  {
+    "slug": "ai-subscription-seller-verify-pakistan",
+    "collection": "notion",
+    "topic": "Buying",
+    "title": "AI subscription seller verify kaise karein",
+    "description": "Kisi bhi AI subscription seller ko pay karne se pehle 10 minute ki checking: price, duration, warranty, payment aur support ka tareeqa.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Pay karne se pehle teen cheezein likhit tor par lein: exact product aur duration, warranty ka period aur remedy, aur payment ka tareeqa. Phir dekhein ke seller ki baat page par likhi price se milti hai ya nahi. Jo seller likhne se bache, us se lambi muddat ka paisa na dein.",
+    "sections": [
+      {
+        "id": "ten-minutes",
+        "heading": "Pehle 10 minute",
+        "paragraphs": [
+          "Page par likhi price aur WhatsApp par batayi price aapas mein milayein. Agar farq ho to poochein kyun. Isi tarah listing ki duration check karein: \"1 month\" aur \"30 days\" ek hi cheez nahi, aur \"12 months\" ka matlab renewal ki tareekh bhi likhi honi chahiye.",
+          "Phir seller ka pura naam, contact aur koi aik permanent page dekhein. Sirf WhatsApp number hona kaafi nahi — agar kal number band ho jaye to aap ke paas kuch nahi bachta."
+        ]
+      },
+      {
+        "id": "written",
+        "heading": "Jo cheezein likhwa kar lein",
+        "paragraphs": [
+          "Message thread mein ye sab likha hua hona chahiye, taake baad mein yaad par bharosa na karna pare:"
+        ],
+        "bullets": [
+          "Product ID aur plan ka naam.",
+          "Shuru aur khatam hone ki exact tareekh.",
+          "Access personal, shared ya workspace?",
+          "Warranty kitne din aur kharabi par kya hoga.",
+          "Payment ka tareeqa aur receipt.",
+          "Support ka waqt aur jawab ka tareeqa."
+        ]
+      },
+      {
+        "id": "red-flags",
+        "heading": "Red flags",
+        "paragraphs": [
+          "Price sirf DM mein batana, screenshot dene se inkaar, ya \"abhi bata dein, price barh rahi hai\" wali jaldi — ye sales pressure ki nishaniyan hain. Isi tarah OTP, recovery code ya browser cookies ki demand foran mana karne wali baat hai.",
+          "Aik aur cheez: jo seller \"official partnership\" ka dawa kare bina kisi proof ke, us se poochein ke proof kya hai. Vendor ki website par aisa partnership aam tor par likha hota hai, aur agar nahi hai to dawa bhi nahi hona chahiye."
+        ]
+      },
+      {
+        "id": "start-small",
+        "heading": "Chhota shuru karein",
+        "paragraphs": [
+          "Pehli dafa kisi seller se 12 mahine ka plan na lein. Aik mahina lein, poora use karein, aur dekhein ke support milta hai ya nahi. Jo seller chhote order par theek chalta hai, wo bara order bhi sambhal leta hai — aur jo chhote par ghaib ho jaye, uska bara order bach jana faida hai."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya price kam hona buri nishani hai?",
+        "answer": "Akele price se kuch tay nahi hota. Kam price aksar chhoti muddat ya shared access batati hai. Sawal ye hai ke seller us price ke saath kya de raha hai aur kya likh raha hai."
+      },
+      {
+        "question": "Kya receipt zaroori hai?",
+        "answer": "Haan, kam az kam likha hua confirmation. Receipt se pata chalta hai ke kis product ke liye kitne paise diye aur kab. Dispute ki soorat mein yahi aik cheez aap ke paas hoti hai."
+      },
+      {
+        "question": "Kya main advance mein poora paisa de doon?",
+        "answer": "Pehli dafa chhoti muddat ke liye dein. Lambi muddat ka poora paisa advance dena sirf tab theek hai jab seller ka record aur likhit warranty dono aap ne khud check kiye hon."
+      }
+    ],
+    "sources": [
+      {
+        "label": "AiToolsPk: seller warranty versus vendor warranty",
+        "href": "https://aitoolspk.tech/guides/seller-warranty-vs-vendor-warranty/"
+      },
+      {
+        "label": "AiToolsPk: editorial policy",
+        "href": "https://aitoolspk.tech/editorial-policy/"
+      }
+    ]
+  },
+  {
+    "slug": "student-ai-plan-eligibility-pakistan",
+    "collection": "gemini",
+    "topic": "Buying",
+    "title": "Student AI plan: eligibility aur limits",
+    "description": "Student AI plans kya hote hain, eligibility kaise check hoti hai, aur resold student access mein kya risk hai.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Student plans vendor ki apni offer hoti hain, jis ki eligibility country, institute aur verification par depend karti hai. Agar koi reseller \"student plan\" bech raha hai to wo aksar kisi doosre ki verification istemal kar raha hota hai, aur wo account kabhi bhi band ho sakta hai. Eligibility khud vendor ki site par check karein.",
+    "sections": [
+      {
+        "id": "what-it-is",
+        "heading": "Student plan hota kya hai?",
+        "paragraphs": [
+          "Vendor kabhi kabhi students ke liye kam price ya extra features deta hai. Ye offer vendor ki apni website par hoti hai, aur us ki shartein likhi hoti hain: kaun eligible hai, kis mulk mein available hai, verification kaise hoti hai aur kitne saal tak chalti hai.",
+          "Ahm baat ye hai ke student plan ka taalluq student ki shanakht se hota hai, na ke plan ke naam se. Agar verification kisi aur ki hai, to plan \"student plan\" nahi raha — wo sirf us shakhs ka account hai jise aap istemal kar rahe hain."
+        ]
+      },
+      {
+        "id": "resold",
+        "heading": "Resold student access mein risk",
+        "paragraphs": [
+          "Jab seller student plan bechta hai, aam tor par wo kisi student ki verification istemal karta hai. Is ka matlab ye hai ke account kis ke naam par hai, wo aap nahi hain. Vendor jab bhi verification dobara maange, account band ho sakta hai.",
+          "Doosra masla ye hai ke aap ka data us account mein rehta hai jo aap ka nahi. Client ka kaam us account mein karna bohat bara risk hai, kyunki access khatam hone par data bhi saath ja sakta hai."
+        ]
+      },
+      {
+        "id": "check",
+        "heading": "Eligibility khud kaise check karein",
+        "paragraphs": [
+          "Vendor ki official page par ye cheezein dekhein:"
+        ],
+        "bullets": [
+          "Offer kis mulk ke liye available hai.",
+          "Kaun se idaraat ya email domains qabool hote hain.",
+          "Verification ke liye kya document chahiye.",
+          "Offer kitne arse tak chalti hai aur renewal par kya hota hai.",
+          "Kya commercial ya client kaam ki ijazat hai."
+        ]
+      },
+      {
+        "id": "better",
+        "heading": "Agar eligible nahi hain to kya karein",
+        "paragraphs": [
+          "Agar aap eligible nahi hain, to student plan ke peeche na paren. Aik mahine ka normal plan lein, us ki limit note karein, aur usi hisab se apna kharcha tay karein. Jo paisa aap eligibility ke chakkar mein zaya karte hain, wo aksar plan ki bachat se zyada hota hai."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya student plan commercial kaam ke liye hai?",
+        "answer": "Aam tor par nahi. Student offers shakhsi istemal ke liye hote hain aur unki shartein commercial use se rok sakti hain. Client ka kaam karne se pehle vendor ki shartein parhein, warna account band hone ka risk aap par hai."
+      },
+      {
+        "question": "Kya seller ko student card dikhana chahiye?",
+        "answer": "Agar seller aap se student card ya institute ka email maange to wo verification aap ke naam par kar raha hai. Ye behtar soorat hai. Lekin phir bhi shartein parhein ke offer kis had tak chalti hai."
+      },
+      {
+        "question": "Student plan sasta kyun hota hai?",
+        "answer": "Kyunki vendor chahta hai ke students product seekhein aur baad mein paid customer banein. Ye discount eligibility par depend karta hai, is liye har kisi ke liye available nahi hota."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Google Gemini plans",
+        "href": "https://support.google.com/gemini/answer/15719111?hl=en"
+      },
+      {
+        "label": "AiToolsPk: plan comparison guide",
+        "href": "https://aitoolspk.tech/guides/chatgpt-claude-gemini-plan-comparison-pakistan/"
+      }
+    ]
+  },
+  {
+    "slug": "ai-subscription-price-change-pakistan",
+    "collection": "chatgpt",
+    "topic": "AI & research",
+    "title": "AI subscription price kyun badalti hai?",
+    "description": "Dollar rate, vendor price change, duration aur access type: Pakistan mein AI subscription ki qeemat badalne ki wajah aur us se bachne ka tareeqa.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Qeemat aam tor par char wajahon se badalti hai: dollar ka rate, vendor ka apna price change, seller ki nayi stock aur plan ki muddat. Is liye kisi purani post ya screenshot par bharosa na karein. Catalog har quote ke saath us ki date rakhta hai, aur purani date wali row par tasdeeq maangta hai.",
+    "sections": [
+      {
+        "id": "dollar",
+        "heading": "Dollar rate aur local quote",
+        "paragraphs": [
+          "Vendor dollar mein charge karta hai. Jab rupee kamzor hota hai to local reseller ka kharcha barhta hai, aur wo nayi quote deta hai. Is liye mahine mein aik dafa price badalna aam baat hai, kharabi nahi.",
+          "Is ka matlab ye bhi hai ke purani quote se compare karna galat ho sakta hai. Do quoted prices ko compare karne se pehle dekhein ke dono kis tareekh ke hain."
+        ]
+      },
+      {
+        "id": "vendor",
+        "heading": "Vendor ka apna change",
+        "paragraphs": [
+          "Vendor kabhi apne plans badalta hai: naya tier, kam features, ya price increase. Jab aisa hota hai to purane plan ka naam reh jata hai lekin us ke andar kuch aur hota hai. Is liye plan ka naam kaafi nahi — exact product ID aur us waqt ke features dekhein.",
+          "Isi tarah \"unlimited\" jaisi baatein vendor ki fair-use limits ke saath aati hain. Jo limit writing mein nahi hai, wo guarantee nahi hai."
+        ]
+      },
+      {
+        "id": "duration",
+        "heading": "Muddat ka asar",
+        "paragraphs": [
+          "Lambi muddat ka plan aam tor par sasta per-month parta hai, lekin us mein paisa zyada phansta hai. Agar aap ka kaam ya tool badal jaye to bacha hua paisa wapas nahi milta. Is liye pehli dafa chhoti muddat, phir lambi."
+        ]
+      },
+      {
+        "id": "track",
+        "heading": "Price track karne ka tareeqa",
+        "paragraphs": [
+          "Aik simple tareeqa: har hafte usi din apne do ya teen plans ka quote note karein, tareekh ke saath. Char hafton mein aap ko pata chal jayega ke qeemat steady hai ya move kar rahi hai, aur aap ko kisi ki baat par bharosa karne ki zaroorat nahi paregi.",
+          "Isi tarah apne seller se poochein ke agla renewal kis price par hoga. Wo number aap ke budget ke liye zyada ahem hai na ke aaj ka discount."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya purani price par order kar sakta hoon?",
+        "answer": "Agar page par purani price likhi hai to bhi pay karne se pehle tasdeeq karein. Catalog aise rows par confirm karne ko kehta hai, kyunki price change hone par purana number sirf reference reh jata hai."
+      },
+      {
+        "question": "Kya price kabhi kam hoti hai?",
+        "answer": "Kabhi kabhi promotions mein, aur kabhi naye sellers ke aane par. Lekin kam price aksar chhoti muddat ya kam allowance ke saath aati hai, is liye number dekh kar khush hone se pehle terms parhein."
+      },
+      {
+        "question": "Kya main price lock kar sakta hoon?",
+        "answer": "Sirf usi muddat ke liye jitna aap ne pay kiya hai, aur wo bhi seller ke likhit waday par. Koi bhi \"lifetime price lock\" ka dawa likhit terms ke baghair adhoora hai."
+      }
+    ],
+    "sources": [
+      {
+        "label": "OpenAI: ChatGPT plans",
+        "href": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus"
+      },
+      {
+        "label": "AiToolsPk price index",
+        "href": "https://aitoolspk.tech/price-index/"
+      }
+    ]
+  },
+  {
+    "slug": "freelancer-monthly-ai-kharcha-pakistan",
+    "collection": "cursor",
+    "topic": "AI & research",
+    "title": "Freelancer ka monthly AI kharcha",
+    "description": "Pakistan ke freelancer ke liye AI tools ka realistic monthly budget: kya zaroori hai, kya optional, aur kis cheez par paisa zaya hota hai.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Aik shuru karta freelancer ke liye aik general assistant kaafi hota hai, aur baqi tools tab add karein jab koi kaam us tool ke baghair ruk raha ho. Do subscriptions se shuru karein, har mahine hisab dekhein, aur jo tool teen mahine mein koi kaam na kare usay band kar dein.",
+    "sections": [
+      {
+        "id": "core",
+        "heading": "Core aur optional",
+        "paragraphs": [
+          "Core mein aam tor par do cheezein aati hain: writing ya research ke liye aik assistant, aur design ya video ke liye aik tool. Catalog mein ChatGPT ka typical quote PKR 4,001 aur Canva ka PKR 675 hai, is liye core set chhote budget mein bhi mumkin hai.",
+          "Optional wo tools hain jo kisi khaas kaam ke liye hote hain: coding assistant, voiceover, ya video generation. In ki qeemat zyada hoti hai — Cursor ka typical quote PKR 19,995 tak jata hai — is liye ye tab lein jab us kaam ka paisa aa raha ho."
+        ]
+      },
+      {
+        "id": "math",
+        "heading": "Aik mahine ka hisab",
+        "paragraphs": [
+          "Farz karein aap ke paas aik assistant, aik design tool aur aik coding tool hai. Assistant ka monthly quote, design ka monthly quote, aur coding ka annual row jo 12 se taqseem hoga — teenon ko jama karein. Ab is number ko apni monthly income ke saath compare karein.",
+          "Agar tools ka kharcha income ka 10% se zyada ho raha hai aur kaam bar nahi raha, to kuch band karna hoga. Ye hisab har mahine karein, saal mein aik dafa nahi."
+        ]
+      },
+      {
+        "id": "waste",
+        "heading": "Paisa kahan zaya hota hai",
+        "paragraphs": [
+          "Teen aam ghaltiyan:"
+        ],
+        "bullets": [
+          "Aik hi kaam ke liye do tools, kyunki dono ke features achhe lagte hain.",
+          "Saal ka plan lena bina aik mahina test kiye.",
+          "Annual discount ke lalach mein wo tool lena jo abhi use hi nahi ho raha."
+        ]
+      },
+      {
+        "id": "rule",
+        "heading": "Aik saada rule",
+        "paragraphs": [
+          "Koi naya tool tab khareedein jab teen mahine mein kam az kam 5 dafa aap ne wahi kaam kisi free ya sasti option se rok kar chhora ho. Ye rule bohat se fazool subscriptions bacha deta hai, aur jo tool bachta hai wo waqai kaam ka hota hai."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya client se tools ka kharcha wasool kar sakta hoon?",
+        "answer": "Bohat se freelancers project price mein shamil kar dete hain, alag line item ke tor par nahi. Agar alag charge karna hai to pehle client se likhit tor par poochein, warna invoice par achanak extra item sawal khada karta hai."
+      },
+      {
+        "question": "Kya free tools se shuru karna behtar hai?",
+        "answer": "Haan, jab tak limit rukawat na bane. Free plan ki limit note karein aur jab wo har hafte kaam roke tab paid plan lein. Is tarah aap ko pata hota hai ke paisa kis feature ke liye ja raha hai."
+      },
+      {
+        "question": "Annual plan kab lena chahiye?",
+        "answer": "Jab aap ne kam az kam teen mahine us tool ko roz istemal kiya ho aur aap ko yaqeen ho ke agle saal bhi yehi kaam rahega. Us se pehle annual plan sirf paisa phansata hai."
+      }
+    ],
+    "sources": [
+      {
+        "label": "Cursor: agent review documentation",
+        "href": "https://cursor.com/docs/agent/agent-review"
+      },
+      {
+        "label": "AiToolsPk price index",
+        "href": "https://aitoolspk.tech/price-index/"
+      }
+    ]
+  },
+  {
+    "slug": "ai-subscription-band-ho-jaye-pakistan",
+    "collection": "netflix",
+    "topic": "Buying",
+    "title": "Subscription band ho jaye to kya karein?",
+    "description": "Access band hone par pehle kya likhein, kya saboot rakhein, aur seller se kis tareeqe se baat karein — wapis ya badle ke liye.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "Sab se pehle usi WhatsApp thread mein seller ko likhein jahan order hua tha, tareekh aur product ID ke saath. Screenshot rakhein, apna data export karein, aur warranty ki shartein parhein. Aik hi din mein aap ko jawab aur agla qadam maloom hona chahiye, warna faisla aage barhayein.",
+    "sections": [
+      {
+        "id": "first-hour",
+        "heading": "Pehle ghante mein",
+        "paragraphs": [
+          "Naya thread shuru na karein — purani thread mein likhein, kyunki wahan order ki tareekh, price aur terms pehle se maujood hain. Message mein teen cheezein likhein: kaunsa product, kab kharida, aur kya message aata hai jab access karte hain.",
+          "Screenshot lein. Agar error message hai to us ka, agar login page aa raha hai to us ka. Saboot baad mein kaam aata hai, aur baad mein banane ki koshish mein aksar kuch reh jata hai."
+        ]
+      },
+      {
+        "id": "data",
+        "heading": "Data pehle bachayein",
+        "paragraphs": [
+          "Agar account abhi bhi khul raha hai, to apna data export kar lein — chahe access sirf kuch ghante ke liye wapas aaya ho. Documents, files aur settings pehle. Wapis aane ka intezar karte hue data ka nuqsan na karein."
+        ]
+      },
+      {
+        "id": "warranty",
+        "heading": "Warranty ki shartein dekhein",
+        "paragraphs": [
+          "Aap ne jo likha hua le liya tha, wo parhein: kitne din, kis soorat mein, aur remedy kya hai. Replacement, partial refund ya extension — teeno mumkin hain, lekin sirf wohi jo likha gaya ho. Zubani wada dispute mein kamzor hota hai."
+        ]
+      },
+      {
+        "id": "escalate",
+        "heading": "Agar jawab na mile",
+        "paragraphs": [
+          "Aik dafa reminder bhejein, tareekh ke saath. Agar phir bhi jawab na aaye to apne record mukammal rakhein aur aage kisi aur seller se nahi, isi masle ko hal karne par tawajjo dein. Lambi muddat ke liye paisa dobara dene se pehle ye masla band hona chahiye.",
+          "Aur agar payment kisi card se hui thi, to bank ke dispute ka waqt mehdood hota hai — is liye tareekhein note karein, sirf yaad par na chhorein."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya main foran naya account kharid loon?",
+        "answer": "Nahi. Pehle ye masla hal karein, warna aap ke paas do masle honge. Agar kaam ruk nahi sakta to kisi doosre tareeqe se aik chhoti muddat lein, lekin purani order ki follow-up jari rakhein."
+      },
+      {
+        "question": "Kya refund ka haq banta hai?",
+        "answer": "Ye aap ke seller ke likhit terms par depend karta hai, aur catalog ke refund policy par bhi. Terms parhein aur unhi ke mutabiq baat karein. Kisi bhi waday ko message mein likhwa lein."
+      },
+      {
+        "question": "Saboot kya rakhein?",
+        "answer": "Order ka message, payment ka record, error ka screenshot, aur har baat cheet ki tareekh. Ye chaar cheezein aap ke case ko saaf rakhti hain aur baat cheet ko short rakhti hain."
+      }
+    ],
+    "sources": [
+      {
+        "label": "AiToolsPk: refund policy",
+        "href": "https://aitoolspk.tech/refund-policy/"
+      },
+      {
+        "label": "AiToolsPk: seller warranty terms",
+        "href": "https://aitoolspk.tech/terms/#seller-warranty"
+      }
+    ]
+  },
+  {
+    "slug": "ai-subscription-duration-pakistan",
+    "collection": "elevenlabs",
+    "topic": "Buying",
+    "title": "1 month ya 30 days: duration ka farq",
+    "description": "Pakistan ki listings mein 1 month, 30 days, 12 months aur ghair mamooli durations ka matlab, aur renewal ki tareekh kaise confirm karein.",
+    "published": "2026-11-08",
+    "checked": "2026-11-08",
+    "answer": "1 month aur 30 days aam tor par ek hi cheez hote hain, lekin 12 months ka matlab saal bhar ka commitment hota hai. Duration listing ka sab se ahem hissa hai kyunki price isi se compare hoti hai. Shuru aur khatam hone ki tareekh likhwa kar lein, sirf label par bharosa na karein.",
+    "sections": [
+      {
+        "id": "labels",
+        "heading": "Labels ka matlab",
+        "paragraphs": [
+          "Catalog mein durations ka range bohat chora hai. ElevenLabs mein 30 days, 1 month, 12 months aur 1 year ke rows hain. Canva mein 1 month se 3 years tak. Claude mein 1 day, 3 days, 7 days, 15 days, 30 days aur 100 months jaisi entries bhi milti hain.",
+          "100 months jaisa number sawal khada karta hai: kya ye waqai itni muddat chalega, ya ye kisi doosre arrangement ka label hai? Aise rows par likhit tasdeeq maangein, warna number ka koi matlab nahi."
+        ]
+      },
+      {
+        "id": "renewal",
+        "heading": "Renewal ki tareekh",
+        "paragraphs": [
+          "\"1 month\" ka matlab har mahine usi tareekh par renew hona nahi hota. 31 January se shuru hone wala plan 28 February ko khatam ho sakta hai. Is liye tareekh poochein, label nahi.",
+          "Renewal ka price bhi ab poochein. Aaj ka discount agle mahine ka price tay nahi karta, aur bohat se log isi farq par hairan hote hain."
+        ]
+      },
+      {
+        "id": "compare",
+        "heading": "Sahi comparison kaise karein",
+        "paragraphs": [
+          "Aik page par teen columns banayein:"
+        ],
+        "bullets": [
+          "Total price PKR mein.",
+          "Duration dinon mein.",
+          "Per-month cost (total ÷ din × 30).",
+          "Access type aur warranty."
+        ]
+      },
+      {
+        "id": "rule",
+        "heading": "Pehli dafa ki rule",
+        "paragraphs": [
+          "Pehli dafa kisi bhi naye seller se sab se chhoti munasib muddat lein, chahe lambi muddat sasti part ho. Aik mahina poora chalta hai to aap ko pata chal jata hai ke support milta hai ya nahi. Usi tajurbe ke baad lambi muddat ka faisla karein."
+        ]
+      }
+    ],
+    "questions": [
+      {
+        "question": "Kya 12 months ka plan har soorat mein sasta parta hai?",
+        "answer": "Per-month ke hisab se aksar haan, lekin total kharcha zyada hota hai. Agar tool ya kaam badal jaye to bacha hua paisa wapas nahi milta, is liye pehle chhoti muddat test karein."
+      },
+      {
+        "question": "Kya duration ke andar plan badla ja sakta hai?",
+        "answer": "Ye seller ke terms par depend karta hai. Kuch log upgrade ki ijazat dete hain, kuch nahi. Order se pehle poochein, kyunki baad mein ye sawal aksar jhagra ban jata hai."
+      },
+      {
+        "question": "Kya 30 days aur 1 month bilkul same hain?",
+        "answer": "Aam tor par same samjhe jate hain, lekin renewal ki tareekh par farq aa sakta hai. Jo bhi ho, exact start aur end date likhwa lein, kyunki wahi aap ka asli record hai."
+      }
+    ],
+    "sources": [
+      {
+        "label": "ElevenLabs billing documentation",
+        "href": "https://elevenlabs.io/docs/overview/administration/billing"
+      },
+      {
+        "label": "AiToolsPk price index",
+        "href": "https://aitoolspk.tech/price-index/"
       }
     ]
   }

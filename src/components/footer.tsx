@@ -31,6 +31,9 @@ export function Footer() {
             >
               +92 371 4549245 <ArrowUpRight size={14} />
             </a>
+            <a className="text-link" href="mailto:hello@aitoolspk.tech">
+              hello@aitoolspk.tech
+            </a>
           </div>
           <div>
             <p className="footer-label">EXPLORE</p>

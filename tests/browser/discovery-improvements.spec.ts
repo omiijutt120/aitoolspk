@@ -149,14 +149,17 @@ test('About, editorial policy and contact publish only supplied business contact
   for (const path of ['/about/', '/editorial-policy/', '/contact/']) {
     await page.goto(path);
     await expect(page.locator('h1')).toHaveCount(1);
-    // Only the one published domain address may appear, and only on the contact
-    // page. Any other mailto link would be an unverified contact claim.
+    // Only the one published domain address may appear anywhere on the page.
+    // Any other mailto link would be an unverified contact claim. The address is
+    // repeated in the site footer so it reaches every page, which is why the
+    // expected value no longer depends on the path.
     const mailto = await page
       .locator('a[href^="mailto:"]')
       .evaluateAll((links) => links.map((link) => link.getAttribute('href')));
-    expect(mailto.sort()).toEqual(
-      path === '/contact/' ? ['mailto:hello@aitoolspk.tech'] : []
+    expect(mailto.every((href) => href === 'mailto:hello@aitoolspk.tech')).toBe(
+      true
     );
+    if (path !== '/contact/') expect(mailto.length).toBeGreaterThan(0);
     const schema = (
       await page.locator('script[type="application/ld+json"]').allTextContents()
     ).map((s) => JSON.parse(s));

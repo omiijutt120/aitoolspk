@@ -95,10 +95,12 @@ export default function About() {
             rel="noopener noreferrer"
           >
             WhatsApp at +92 371 4549245
-          </a>
-          . For an existing order, reply in the original conversation with the
-          product ID and order reference. Do not send passwords, recovery keys,
-          payment-card details or security codes.
+          </a>{' '}
+          or email{' '}
+          <a href="mailto:hello@aitoolspk.tech">hello@aitoolspk.tech</a>. For an
+          existing order, reply in the original conversation with the product ID
+          and order reference. Do not send passwords, recovery keys, payment-card
+          details or security codes.
         </p>
         <div className="guide-links">
           <Link href="/editorial-policy/">

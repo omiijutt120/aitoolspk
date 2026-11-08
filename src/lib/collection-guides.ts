@@ -638,7 +638,16 @@ const originalGuides: Record<string, CollectionGuideContent> = {
   },
 };
 
+/*
+ * Hand-written guides win over the imported JSON ones. The two sets overlap on
+ * `microsoft` and `youtube`, and both of those collections turned out to mix
+ * products a listing title makes look identical (licence keys versus family
+ * seats, Premium seats versus trial-linked accounts versus follower services).
+ * The hand-written versions name that split; the JSON versions do not. Spreading
+ * the JSON first keeps it authoritative for every collection that has no
+ * hand-written entry.
+ */
 export const collectionGuides: Record<string, CollectionGuideContent> = {
-  ...originalGuides,
   ...additionalGuides,
+  ...originalGuides,
 };

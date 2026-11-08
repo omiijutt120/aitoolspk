@@ -2257,6 +2257,42 @@ body {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+/*
+ * Sideways links between collections. Kept visually quiet so it reads as a
+ * comparison aid, not as another product grid competing with the listing above.
+ */
+.related-collections {
+  border-top: 1px solid #e6e7e9;
+  margin: 34px 0 12px;
+  padding-top: 22px;
+}
+.related-collections h2 {
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+.related-collections > p {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0 0 14px;
+}
+.related-collections ul {
+  display: grid;
+  gap: 8px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  list-style: none;
+  padding: 0;
+}
+.related-collections li {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.related-collections a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.related-collections-meta {
+  color: #626871;
+}
 .buying-guide ul {
   list-style: disc;
   padding-left: 22px;

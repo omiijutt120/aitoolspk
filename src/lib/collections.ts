@@ -80,3 +80,66 @@ export function homeCollections(input: Product[]): PlanCollection[] {
   const featured = new Set(homeSelection(input).map(collectionSlug));
   return groupCollections(input).filter((g) => featured.has(g.slug) || g.isApi);
 }
+
+/**
+ * Sibling collections worth comparing against one specific collection.
+ *
+ * Every collection already sits two clicks from the homepage through
+ * /categories/, so this is not about making the pages reachable. It is about
+ * the link itself: a reader comparing security subscriptions should be able to
+ * move sideways to another security subscription without going back to the hub,
+ * and a crawler should see the 108 money pages linking to each other with
+ * descriptive anchors instead of only receiving links from a single index page.
+ *
+ * Relevance is ranked in two passes — shared category first, then a similar
+ * typical price — so a niche collection with no category peers still gets
+ * genuinely comparable neighbours. Nothing is estimated: both the category and
+ * the median price come from the same rows that the page lists.
+ */
+export type RelatedCollection = PlanCollection & {
+  /** Why this collection is shown: it shares a category, or it is priced alike. */
+  reason: 'category' | 'price';
+};
+
+export function relatedCollections(
+  all: PlanCollection[],
+  slug: string,
+  limit = 6
+): RelatedCollection[] {
+  const self = all.find((c) => c.slug === slug);
+  if (!self) return [];
+  const others = all.filter((c) => c.slug !== slug);
+
+  // Log ratio so a PKR 400 collection is not "close" to a PKR 40,000 one.
+  const distance = (c: PlanCollection) =>
+    Math.abs(
+      Math.log(Math.max(c.medianPrice, 1) / Math.max(self.medianPrice, 1))
+    );
+
+  const picked: RelatedCollection[] = [];
+  const taken = new Set<string>();
+
+  const sameCategory = others
+    .filter((c) =>
+      c.categories.some((category) => self.categories.includes(category))
+    )
+    .sort((a, b) => distance(a) - distance(b) || b.count - a.count);
+  for (const c of sameCategory) {
+    if (picked.length >= limit) break;
+    picked.push({ ...c, reason: 'category' });
+    taken.add(c.slug);
+  }
+
+  if (picked.length < limit) {
+    const byPrice = others
+      .filter((c) => !taken.has(c.slug))
+      .sort((a, b) => distance(a) - distance(b) || b.count - a.count);
+    for (const c of byPrice) {
+      if (picked.length >= limit) break;
+      picked.push({ ...c, reason: 'price' });
+      taken.add(c.slug);
+    }
+  }
+
+  return picked;
+}

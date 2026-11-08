@@ -463,6 +463,179 @@ const originalGuides: Record<string, CollectionGuideContent> = {
       },
     ],
   },
+  /*
+   * The four largest collections with no hand-written guide all turned out to
+   * mix products that only look similar in a listing title. These guides are
+   * written as a split: name what each row actually is, then say plainly which
+   * ones transfer an account or change a public metric. Nothing here is
+   * promotional — a buyer who understands the difference converts better
+   * anyway, and the site should not imply a seller can grant platform
+   * permission it cannot grant.
+   */
+  google: {
+    heading: 'What the Google listings here actually are',
+    intro:
+      'Most rows in this collection are existing Google accounts — usually a Gmail login sold for its age or for two-factor setup — plus verification phone numbers and one Google Cloud credit. An account transfer is not a subscription bought from Google, and the seller cannot give you Google’s permission to hold it. Read the age, the recovery details and the warranty label together before comparing prices.',
+    choose: [
+      'Decide what you are buying: an existing Gmail login, a phone number used to verify an account, or a Google Cloud credit. Those are three different products and none of them is a new Google One or Gemini subscription.',
+      'Ask who keeps recovery access. If the seller retains a recovery email, a phone number or a backup code, that person can take the account back whatever the listing says, and the warranty period will not prevent it.',
+      'Weigh the stated age against your actual need. An older account is priced for its history, not for storage or extra features, so do not read the price as a monthly subscription rate.',
+    ],
+    questions: [
+      {
+        question: 'Does Google allow an account to be sold or transferred?',
+        answer:
+          'Google’s Terms of Service restrict transferring an account to someone else, and Google’s own help pages describe accounts being disabled. A seller’s promise is not permission from Google. Treat the price as the cost of that risk rather than a subscription fee you can rely on for a fixed term.',
+      },
+      {
+        question: 'What does the warranty label mean on these listings?',
+        answer:
+          'Most rows here carry no warranty label at all, and where one appears it is a seller statement recorded when the catalog was imported. It describes that seller’s own remedy window, not a Google guarantee. Ask in writing what happens if the account is disabled in the first week, and get the answer before paying.',
+      },
+    ],
+    related: [
+      { label: 'Microsoft listings', href: '/plans/microsoft/' },
+      { label: 'YouTube listings', href: '/plans/youtube/' },
+      {
+        label: 'Seller warranty vs vendor warranty',
+        href: '/guides/seller-warranty-vs-vendor-warranty/',
+      },
+    ],
+    sources: [
+      {
+        label: 'Google Terms of Service',
+        href: 'https://policies.google.com/terms',
+      },
+      {
+        label: 'Google Account Help: your account is disabled',
+        href: 'https://support.google.com/accounts/answer/40695',
+      },
+    ],
+    checked: '2026-11-09',
+  },
+  microsoft: {
+    heading: 'Choose between a licence key, a family slot and an admin offer',
+    intro:
+      'This collection mixes three different products: permanent activation keys for Windows and Office editions, member seats inside a Microsoft 365 family or workspace subscription, and separate Hotmail or Outlook accounts. A key activates software you install and keep; a slot is a seat someone else administers and can remove; an account listing transfers a login. Compare like with like, because the cheapest row is often a different product from the one you wanted.',
+    choose: [
+      'Name the product you need first: a permanent key, a twelve-month seat with storage, or an email account. Prices in this collection are only comparable inside one of those groups.',
+      'For a key, confirm the exact edition and channel — retail, OEM or volume — and ask what happens when you reactivate after a hardware change. For a slot, confirm who owns the subscription and how removal is handled.',
+      'For an account listing, assume the seller may keep a recovery route. The Microsoft Services Agreement binds the account holder, not whoever bought the login, so a transfer does not move the agreement with it.',
+    ],
+    questions: [
+      {
+        question:
+          'Is a Microsoft 365 family slot the same as buying Microsoft 365?',
+        answer:
+          'No. A slot is a member seat inside a subscription that someone else administers. The subscription stays with the admin and a member can be removed from it. Microsoft sells the same plan directly with you as the subscriber; a slot is cheaper precisely because you are not the owner and cannot renew it yourself.',
+      },
+      {
+        question:
+          'Why do the licence keys show such different warranty periods?',
+        answer:
+          'The warranty is set by each seller, not by Microsoft. A seven-day, sixty-day or hundred-year label describes that seller’s promise and says nothing about whether the key will still activate next year. Check the stated edition, ask about reactivation after replacing a motherboard, and treat the warranty as a return window rather than a guarantee of validity.',
+      },
+    ],
+    related: [
+      { label: 'Software listings', href: '/category/software/' },
+      {
+        label: 'Shared versus private access',
+        href: '/guides/private-shared-workspace-access/',
+      },
+      {
+        label: 'Seller warranty vs vendor warranty',
+        href: '/guides/seller-warranty-vs-vendor-warranty/',
+      },
+    ],
+    sources: [
+      {
+        label: 'Microsoft Services Agreement',
+        href: 'https://www.microsoft.com/en-us/servicesagreement',
+      },
+      {
+        label: 'Compare Microsoft 365 plans',
+        href: 'https://www.microsoft.com/en-us/microsoft-365/buy/compare-all-microsoft-365-products',
+      },
+    ],
+    checked: '2026-11-09',
+  },
+  youtube: {
+    heading: 'Premium seats, trial-linked accounts and follower listings',
+    intro:
+      'Three unrelated products share this collection: YouTube Premium seats on a plan someone else administers, Gmail accounts whose value is a Premium trial the login may or may not still have, and services that add followers to a channel. A Premium seat is a subscription position; a trial-linked account is a login transfer; a follower listing changes a public number without producing viewers. YouTube’s spam policy treats bought engagement as a violation, so the risk sits with the channel owner.',
+    choose: [
+      'Separate the three before comparing prices: a Premium seat, a Gmail login sold for a possible trial, and a follower count. The cheapest row is unlikely to be the product you actually came for.',
+      'For a Premium seat, ask who the admin is, how many of the five seats are already used, and what happens if that admin cancels mid-term. A seat is only as long as the plan behind it.',
+      'For a follower listing, read YouTube’s spam policy first. Bought subscribers do not watch, which weakens engagement relative to channel size, and the policy violation is recorded against the channel rather than the seller.',
+    ],
+    questions: [
+      {
+        question: 'Does buying a Premium seat give me my own subscription?',
+        answer:
+          'No. You become a member of a plan the seller administers, so the plan’s country, payment method and admin stay theirs and they can remove you. Confirm the exact term, the removal policy and whether the seat includes YouTube Music before paying, because none of that is guaranteed by the listing title.',
+      },
+      {
+        question: 'Are purchased followers against YouTube’s rules?',
+        answer:
+          'YouTube’s spam policy prohibits artificially inflating metrics such as subscribers, views and likes. A listing that adds ten thousand followers changes a number; it does not produce an audience, and the channel carries the enforcement risk. Decide what the number is supposed to achieve before spending on it.',
+      },
+    ],
+    related: [
+      { label: 'Google listings', href: '/plans/google/' },
+      { label: 'Entertainment listings', href: '/category/entertainment/' },
+      {
+        label: 'Seller warranty vs vendor warranty',
+        href: '/guides/seller-warranty-vs-vendor-warranty/',
+      },
+    ],
+    sources: [
+      {
+        label: 'YouTube spam policy',
+        href: 'https://support.google.com/youtube/answer/2801973',
+      },
+      {
+        label: 'YouTube Premium benefits',
+        href: 'https://support.google.com/youtube/answer/6308116',
+      },
+    ],
+    checked: '2026-11-09',
+  },
+  discord: {
+    heading: 'Nitro, decorations, boosts and transferred accounts',
+    intro:
+      'This collection mixes Discord Nitro, profile decorations and effects, server boosts, gifting badges and older accounts sold as clones. Nitro and boosts are real Discord products with defined terms; decorations and badges are cosmetic; a clone account is a transferred login. Discord lists what a Nitro subscription includes on its own site, and a seller delivering a token is not the same as a subscription sitting on your account.',
+    choose: [
+      'Identify the item first: a Nitro subscription, a one-off decoration or effect applied to your profile, a server boost that raises one server’s level, or a login. Only the first is a recurring product.',
+      'For anything delivered as a token or login, ask who keeps the original email and whether the account can be recovered from you. Discord accounts are not transferable under its terms, so a seller warranty cannot restore one that Discord closes.',
+      'For boosts, confirm which server and which month. A boost applies to a single server and lapses when the plan behind it stops, which matters if you are buying it to reach a server level.',
+    ],
+    questions: [
+      {
+        question:
+          'What is the difference between Nitro and a decoration listing?',
+        answer:
+          'Nitro is a subscription with a defined set of features. A decoration or profile effect is a cosmetic item applied on top of an account, and some rows here describe a discount rather than a product at all. Check which of the two the product ID actually supplies before comparing the amounts.',
+      },
+      {
+        question: 'Are clone accounts safe to buy?',
+        answer:
+          'Treat them as transferred logins. The original owner may keep a recovery route, and Discord can disable an account that breaks its terms. A seller warranty period does not undo a platform decision, so ask what the seller will actually do if the account is closed.',
+      },
+    ],
+    related: [
+      { label: 'Entertainment listings', href: '/category/entertainment/' },
+      { label: 'YouTube listings', href: '/plans/youtube/' },
+      {
+        label: 'Seller warranty vs vendor warranty',
+        href: '/guides/seller-warranty-vs-vendor-warranty/',
+      },
+    ],
+    sources: [
+      { label: 'Discord Nitro', href: 'https://discord.com/nitro' },
+      { label: 'Discord Terms of Service', href: 'https://discord.com/terms' },
+    ],
+    checked: '2026-11-09',
+  },
 };
 
 export const collectionGuides: Record<string, CollectionGuideContent> = {

@@ -5,7 +5,11 @@ import { Braces } from 'lucide-react';
 import { Catalog } from '@/components/catalog';
 import { products } from '@/lib/catalog';
 import { categoryName } from '@/lib/categories';
-import { collectionProducts, groupCollections } from '@/lib/collections';
+import {
+  collectionProducts,
+  groupCollections,
+  relatedCollections,
+} from '@/lib/collections';
 import {
   pageCount,
   pageDescription,
@@ -17,6 +21,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { PlanComparison } from '@/components/plan-comparison';
 import { money } from '@/lib/commerce.mjs';
 import { CollectionGuide } from '@/components/collection-guide';
+import { RelatedCollections } from '@/components/related-collections';
 import { CollectionSchema } from '@/components/collection-schema';
 import { PriceSource } from '@/components/price-source';
 import { PAGE_SIZE } from '@/lib/pagination';
@@ -133,9 +138,8 @@ export default async function PlansPage({
             {money(c.minPrice)}–{money(c.maxPrice)}
           </strong>{' '}
           across different packages; these are seller quotes, not vendor list
-          prices.{' '}
-          <PriceSource brand={c.brand} brandSlug={c.slug} /> Quote dates:{' '}
-          <time dateTime={quoteDates[0]}>{quoteDates[0]}</time>
+          prices. <PriceSource brand={c.brand} brandSlug={c.slug} /> Quote
+          dates: <time dateTime={quoteDates[0]}>{quoteDates[0]}</time>
           {quoteDates.length > 1 && (
             <>
               –<time dateTime={quoteDates.at(-1)}>{quoteDates.at(-1)}</time>
@@ -289,6 +293,13 @@ export default async function PlansPage({
       <Catalog collection={slug} initialPage={page} />
       <PlanComparison plans={pagePlans} brand={c.brand} page={page} />
       {page === 1 && <CollectionGuide slug={slug} plans={plans} />}
+      {page === 1 && (
+        <RelatedCollections
+          slug={slug}
+          brand={c.brand}
+          items={relatedCollections(collections, slug)}
+        />
+      )}
       {page === 1 && article && (
         <aside className="blog-collection-link">
           <p className="store-eyebrow">A PRACTICAL PRODUCT GUIDE</p>

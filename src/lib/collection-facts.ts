@@ -66,7 +66,9 @@ export type CollectionFacts = {
   warrantyNone: number;
 };
 
-const NONE = /^no warranty/i;
+const NONE = /^(?:no|without) warranty\b/i;
+const UNSPECIFIED = /^(?:not specified|unknown|n\/?a|-)$/i;
+const warrantyLabel = (plan: Product) => (plan.warranty ?? '').trim();
 
 export function collectionFacts(plans: Product[]): CollectionFacts | null {
   if (plans.length === 0) return null;
@@ -102,8 +104,10 @@ export function collectionFacts(plans: Product[]): CollectionFacts | null {
     unstated: plans.length - withTerm.length,
     shortest: byTerm[0] ?? null,
     longest: byTerm[byTerm.length - 1] ?? null,
-    warrantyStated: plans.filter((p) => p.warranty && !NONE.test(p.warranty))
-      .length,
-    warrantyNone: plans.filter((p) => NONE.test(p.warranty ?? '')).length,
+    warrantyStated: plans.filter((p) => {
+      const label = warrantyLabel(p);
+      return label && !UNSPECIFIED.test(label) && !NONE.test(label);
+    }).length,
+    warrantyNone: plans.filter((p) => NONE.test(warrantyLabel(p))).length,
   };
 }

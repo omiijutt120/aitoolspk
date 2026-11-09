@@ -121,7 +121,7 @@ export function CollectionGuide({
     'A shared slot is one seat on a plan the seller administers, so other people hold the same subscription; your access can end if the seller removes you. Seller warranty is a promise the seller makes, not the software vendor’s warranty. It covers a stated period and remedy only, and it does not make the offer an official vendor subscription.';
 
   const romanUrduQuestion = `${brand} ka plan Pakistan mein kitne ka hai?`;
-  const romanUrduPrice = `Is collection mein ${brand} ke ${plans.length} plans listed hain. Typical quote ${money(medianPrice)} hai, aur range ${money(minPrice)} se ${money(maxPrice)} tak hai. Har plan ki duration, access aur warranty alag hoti hai, is liye sirf sab se kam price dekh kar decide na karein.`;
+  const romanUrduPrice = `Is collection mein ${brand} ke ${plans.length} plans listed hain. Typical quote ${money(medianPrice)} hai, aur range ${money(minPrice)} se ${money(maxPrice)} tak hai. Duration, access aur warranty har product ID ke liye confirm karein. Sirf sab se kam price dekh kar decide na karein.`;
 
   const warrantyQuestion =
     'Does full seller warranty mean official vendor warranty?';
@@ -217,8 +217,8 @@ export function CollectionGuide({
         {facts.count > 1 && (
           <>{listingSentence('The highest is', facts.dearest.plan)} </>
         )}
-        Both sit under one brand because the rows describe different durations
-        and access levels, not two prices for the same package.{' '}
+        A shared brand label does not establish identical or different
+        entitlements. Compare the stated terms for each product ID.{' '}
         <PriceSource brand={plans[0]?.brand || brand} brandSlug={slug} />
       </p>
 

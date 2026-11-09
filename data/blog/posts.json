@@ -6,7 +6,7 @@
     "title": "ChatGPT for freelancers: brief to workflow",
     "description": "A practical ChatGPT project workflow for Pakistani freelancers: organize a brief, draft deliverables, review facts and compare the right subscription.",
     "published": "2026-10-30",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "Use a ChatGPT project to keep a client's approved reference files, instructions and related conversations together. Start with a clear deliverable, ask for a structured draft and review it against the original brief. Choose a plan around the tools and limits you actually need, rather than assuming every paid listing gives identical access.",
     "sections": [
       {
@@ -41,7 +41,7 @@
         "id": "price",
         "heading": "ChatGPT pricing in Pakistan, as listed",
         "paragraphs": [
-          "Fifty-two ChatGPT offers are in the catalog, and the numbers need context. The typical quote is PKR 4,001, the lowest is PKR 29 and the highest is PKR 96,936. That is not one market: durations run from twenty-four hours to two years, and access types differ between the rows.",
+          "Fifty-two ChatGPT offers are in the catalog, and the numbers need context. The typical quote is PKR 4,001, the lowest is PKR 29 and the highest is PKR 96,936. That is not one market: durations run from twenty-four hours to two years, and access types differ between the rows. OpenAI lists its own plans at [chatgpt.com/pricing](https://chatgpt.com/pricing/) (checked 9 November 2026), which is the list to compare against before treating any row here as that plan.",
           "A twenty-four-hour row is a trial of the arrangement, not a cheap subscription, and a two-year row is a bulk commitment. Compare the total cost for the period you actually need, and confirm the renewal terms before you assume the monthly figure continues. Warranty wording is recorded as listed and unverified throughout."
         ]
       },
@@ -96,6 +96,10 @@
       {
         "label": "OpenAI: Projects in ChatGPT",
         "href": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+      },
+      {
+        "label": "OpenAI: ChatGPT plans and pricing",
+        "href": "https://chatgpt.com/pricing/"
       }
     ]
   },
@@ -106,7 +110,7 @@
     "title": "Gemini Deep Research: source-checked brief",
     "description": "Learn a practical Gemini research workflow: define a question, choose sources, check citations and separate research features from Google AI plan claims.",
     "published": "2026-10-30",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "Use Gemini Deep Research for a defined research question, then inspect the underlying sources before making a decision. Google documents web sources, uploaded files and supported connected sources. Account access and feature availability vary, so confirm the specific Gemini capabilities included in your selected package.",
     "sections": [
       {
@@ -142,7 +146,7 @@
         "id": "price",
         "heading": "Gemini pricing in Pakistan is unusually wide",
         "paragraphs": [
-          "Forty-five Gemini offers appear in the catalog. The typical quote is PKR 22,318, but the range runs from PKR 404 to PKR 151,234, which is far too wide to describe one product. The listed rows include assistant access, bundled Google AI packages and video-related offers, so the median is a reference point, not the price of a single thing.",
+          "Forty-five Gemini offers appear in the catalog. The typical quote is PKR 22,318, but the range runs from PKR 404 to PKR 151,234, which is far too wide to describe one product. The listed rows include assistant access, bundled Google AI packages and video-related offers, so the median is a reference point, not the price of a single thing. Google lists its own Gemini and Google AI plans at [gemini.google/subscriptions](https://gemini.google/subscriptions/) (checked 9 November 2026), which is the product those rows are reselling.",
           "When a collection spans that much, the number on a card cannot decide anything. Open the plan, read what it includes, and compare it only against rows describing the same service. Durations in the collection run from a week to twelve months, and warranty wording varies as well."
         ]
       },
@@ -196,6 +200,10 @@
       {
         "label": "Google: use Deep Research in Gemini Apps",
         "href": "https://support.google.com/gemini/answer/15719111?hl=en"
+      },
+      {
+        "label": "Google: Gemini and Google AI plans",
+        "href": "https://gemini.google/subscriptions/"
       }
     ]
   },
@@ -206,7 +214,7 @@
     "title": "Claude Artifacts: plan and review a prototype",
     "description": "Use Claude Artifacts for a clearly scoped prototype, with example inputs, review checks and guidance for comparing Claude access in Pakistan.",
     "published": "2026-10-30",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "Claude Artifacts can present work such as documents, dashboards and small interactive tools beside a conversation. For a useful prototype, define its inputs, expected output and limitations first. Review the result with known examples before sharing it, and confirm the account capabilities required by the specific artifact you want to create.",
     "sections": [
       {
@@ -242,7 +250,7 @@
         "id": "price",
         "heading": "Claude pricing in Pakistan, as listed",
         "paragraphs": [
-          "Forty Claude offers are listed, with a typical quote of PKR 2,462 against a range from PKR 350 to PKR 27,488. That is not a pricing mistake — it is a description of how the same brand is resold at wildly different durations and access levels. Durations in the catalog include one day, three days, seven days, fifteen days and thirty days, alongside longer terms.",
+          "Forty Claude offers are listed, with a typical quote of PKR 2,462 against a range from PKR 350 to PKR 27,488. That is not a pricing mistake — it is a description of how the same brand is resold at wildly different durations and access levels. Durations in the catalog include one day, three days, seven days, fifteen days and thirty days, alongside longer terms. Anthropic lists its own Claude plans at [claude.com/pricing](https://claude.com/pricing) (checked 9 November 2026); the PKR rows here are seller packages rather than that list.",
           "Read the duration before the number. A single-day row and a thirty-day row are not competing offers, and a hundred-month entry is a term to question rather than a discount. Warranty wording also ranges from none to full, recorded as listed and unverified, so the written terms matter more than the label on the card."
         ]
       },
@@ -299,6 +307,10 @@
       {
         "label": "Anthropic: what artifacts are and how to use them",
         "href": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+      },
+      {
+        "label": "Anthropic: Claude plans and pricing",
+        "href": "https://claude.com/pricing"
       }
     ]
   },
@@ -410,7 +422,7 @@
     "title": "Figma handoff: a design developers can inspect",
     "description": "Prepare a Figma handoff with component states, layout notes and assets. Understand Dev Mode's role and compare the appropriate Figma seat and plan.",
     "published": "2026-10-30",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "A useful Figma handoff communicates layout rules, reusable components, states and assets, as well as the finished screen. Figma's Dev Mode supports design inspection and handoff. Confirm the seat and plan needed for your actual role; a general Pro label does not establish every developer or editing capability.",
     "sections": [
       {
@@ -446,7 +458,7 @@
         "id": "price",
         "heading": "What Figma access costs in Pakistan right now",
         "paragraphs": [
-          "The catalog currently lists four Figma offers: a typical (median) quote of PKR 2,125, with the lowest at PKR 1,376 and the highest at PKR 3,000. The spread is narrow because every listed offer runs for a year or longer. These are annual seats rather than monthly ones, so compare the quote against twelve months of official billing instead of against a single month.",
+          "The catalog currently lists four Figma offers: a typical (median) quote of PKR 2,125, with the lowest at PKR 1,376 and the highest at PKR 3,000. The spread is narrow because every listed offer runs for a year or longer. These are annual seats rather than monthly ones, so compare the quote against twelve months of official billing instead of against a single month. Figma publishes its own seat prices at [figma.com/pricing](https://www.figma.com/pricing/) (checked 9 November 2026), where a Professional Full seat and a Dev seat are listed separately, which is why the seat type matters more here than the plan name.",
           "Warranty wording is not uniform. Some rows state a full warranty and others state a one-year term, and every label is recorded as listed and unverified until the seller confirms it in writing. A four-offer market also means the cheapest row can disappear, so ask for the current price before you budget around the lowest figure."
         ]
       },
@@ -503,6 +515,10 @@
       {
         "label": "Figma: guide to Dev Mode",
         "href": "https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode-in-Figma"
+      },
+      {
+        "label": "Figma: plans and per-seat pricing",
+        "href": "https://www.figma.com/pricing/"
       }
     ]
   },
@@ -513,7 +529,7 @@
     "title": "Notion for client projects: workspace setup",
     "description": "Organize a client project in Notion with tasks, decisions, deliverables and permissions. Compare workspace needs before selecting a subscription.",
     "published": "2026-10-30",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "Use a Notion project workspace to connect a brief, task list, decision log and deliverables. Choose views that help people understand ownership and progress. Start with a simple structure, verify sharing permissions and only select paid features when they solve an identified requirement.",
     "sections": [
       {
@@ -549,7 +565,7 @@
         "id": "price",
         "heading": "What Notion access costs in Pakistan",
         "paragraphs": [
-          "There are sixteen Notion offers in the catalog, with a typical listed quote of PKR 1,416 and a range from PKR 415 to PKR 6,972. That range is wide enough that the number on a card tells you very little on its own: the cheapest rows are usually short durations or limited workspace arrangements, while the top of the range tends to describe longer terms or workspace-level access.",
+          "There are sixteen Notion offers in the catalog, with a typical listed quote of PKR 1,416 and a range from PKR 415 to PKR 6,972. That range is wide enough that the number on a card tells you very little on its own: the cheapest rows are usually short durations or limited workspace arrangements, while the top of the range tends to describe longer terms or workspace-level access. Notion lists its own plans at [notion.com/pricing](https://www.notion.com/pricing) (checked 9 November 2026), where the workspace level and the seat decide what a plan includes.",
           "Durations run from a single month to two years, and several rows leave the duration unspecified. Warranty labels vary from one day to a full year, all recorded as listed and unverified. When the duration is unclear, the price cannot be compared at all — ask for the start and end date before you treat a quote as monthly."
         ]
       },
@@ -601,6 +617,10 @@
       {
         "label": "Notion: project management features",
         "href": "https://www.notion.com/product/projects"
+      },
+      {
+        "label": "Notion: plans and pricing",
+        "href": "https://www.notion.com/pricing"
       }
     ]
   },
@@ -718,7 +738,7 @@
     "title": "Cursor for coding: small-change review workflow",
     "description": "Use Cursor with scoped coding tasks, explicit acceptance checks and human review. Compare the relevant account access and plan before purchasing.",
     "published": "2026-10-30",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "Give Cursor one clearly scoped coding task, inspect the proposed changes and run checks that verify the intended behavior. Keep changes small enough to review. An AI-generated implementation or automated review is evidence to examine, not a substitute for testing or responsibility for what you deploy.",
     "sections": [
       {
@@ -754,7 +774,7 @@
         "id": "price",
         "heading": "What Cursor costs in Pakistan",
         "paragraphs": [
-          "Six Cursor offers are listed, with a typical quote of PKR 19,995 against a range from PKR 2,806 to PKR 41,635. Durations are one month or twelve months. The band is wide because monthly and annual terms sit side by side, and because usage allowances differ between the listed products.",
+          "Six Cursor offers are listed, with a typical quote of PKR 19,995 against a range from PKR 2,806 to PKR 41,635. Durations are one month or twelve months. The band is wide because monthly and annual terms sit side by side, and because usage allowances differ between the listed products. Cursor's own [pricing page](https://cursor.com/pricing) (checked 9 November 2026) sets out the paid tiers and what each includes, and states that subscriptions are sold only directly and that resellers are not authorised, so read both before comparing a package with the vendor's list price.",
           "The lowest row is not automatically the cheapest way to work. A short term at a low number can cost more per month of actual use than an annual row, especially if you have to repurchase twice. Warranty labels run from twenty-four hours to a full term, recorded as listed and unverified."
         ]
       },
@@ -808,6 +828,10 @@
       {
         "label": "Cursor: Agent Review",
         "href": "https://cursor.com/docs/agent/agent-review"
+      },
+      {
+        "label": "Cursor: plans and pricing",
+        "href": "https://cursor.com/pricing"
       }
     ]
   },
@@ -1145,7 +1169,7 @@
     "title": "Streaming plans in Pakistan: what to compare",
     "description": "Netflix, Prime Video and Spotify plans for Pakistan compared: tiers, household rules, regional catalogues and how to check a PKR quote before paying.",
     "published": "2026-11-06",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "The three services are not interchangeable. Netflix and Prime Video sell video libraries; Spotify sells music. Within each one, the tier decides resolution, screens and downloads, while the household or family rule decides who can legally share it. Compare the tier and the sharing rule before you compare the price.",
     "sections": [
       {
@@ -1191,7 +1215,7 @@
         "id": "price-gap",
         "heading": "What the listed quotes actually show",
         "paragraphs": [
-          "Netflix appears with five offers in the catalog, a typical quote of PKR 895 and a range from PKR 400 to PKR 4,676. The durations are one, three or six months. The spread is explained by duration and tier rather than by generosity: a six-month row is not a discount on a one-month row until you divide it.",
+          "Netflix appears with five offers in the catalog, a typical quote of PKR 895 and a range from PKR 400 to PKR 4,676. The durations are one, three or six months. The spread is explained by duration and tier rather than by generosity: a six-month row is not a discount on a one-month row until you divide it. Netflix lists its own tiers for Pakistan at [netflix.com/pk](https://www.netflix.com/pk/) (checked 9 November 2026), so compare the row you are buying with the tier it names.",
           "The same caution applies to the music and video services sold beside it. Compare monthly equivalents, then compare what the tier includes. A plan that costs less per month but restricts screens or resolution has not saved anyone money if two people cannot watch at once."
         ]
       },
@@ -1241,6 +1265,10 @@
       {
         "label": "Spotify: Premium Family requirements",
         "href": "https://support.spotify.com/us/article/family-plan/"
+      },
+      {
+        "label": "Netflix: plans available in Pakistan",
+        "href": "https://www.netflix.com/pk/"
       }
     ]
   },
@@ -1252,7 +1280,7 @@
     "description": "ChatGPT Plus ki qeemat Pakistan mein: typical quote, range, duration aur warranty ka farq, aur pay karne se pehle kya confirm karein.",
     "published": "2026-11-08",
     "checked": "2026-11-09",
-    "answer": "Do alag numbers hain aur inhe milana nahi chahiye. OpenAI khud ChatGPT Plus ko $20/month par list karta hai (help.openai.com, checked 2026-11-09). Is catalog mein ChatGPT ke 52 plans listed hain: typical (median) quote PKR 4,001, sab se kam PKR 29 aur sab se zyada PKR 96,936. Dollar wali vendor ki monthly list price hai; PKR wale local sellers ke quotes hain jo alag muddat aur access type bechte hain, is liye ek number ko doosre ka jawab na samjhein.",
+    "answer": "Do alag numbers hain aur inhe milana nahi chahiye. OpenAI khud ChatGPT Plus ko $20/month par list karta hai ([help.openai.com](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus), checked 2026-11-09). Is catalog mein ChatGPT ke 52 plans listed hain: typical (median) quote PKR 4,001, sab se kam PKR 29 aur sab se zyada PKR 96,936. Dollar wali vendor ki monthly list price hai; PKR wale local sellers ke quotes hain jo alag muddat aur access type bechte hain, is liye ek number ko doosre ka jawab na samjhein.",
     "sections": [
       {
         "id": "numbers",
@@ -1399,14 +1427,14 @@
     "title": "Pakistan mein sab se sasti AI subscription",
     "description": "Sab se kam PKR quote dhoondne ka tareeqa, aur kyun sab se sasta number hamesha sab se behtar deal nahi hota.",
     "published": "2026-11-08",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "Sab se kam number dhoondna aasan hai, lekin us se faisla karna mushkil. Har collection mein kuch rows sirf kuch din ki hoti hain, is liye PKR 14 ya PKR 29 jaisi quotes dekhi jati hain. Behtar tareeqa ye hai ke ek mahine ka barabar kharcha nikalein, phir features compare karein.",
     "sections": [
       {
         "id": "cheapest-row",
         "heading": "Sab se sasti row kya batati hai?",
         "paragraphs": [
-          "Catalog mein Canva ke 13 plans hain, typical quote PKR 675 aur range PKR 14 se PKR 20,928 tak. PKR 14 waja-e-nazar hai lekin wo monthly plan nahi: bohat chhoti muddat ya mehdood arrangement hoti hai. Isi tarah ChatGPT ke 52 plans mein sab se kam quote PKR 29 hai, jo 24 ghante ka row hai.",
+          "Catalog mein Canva ke 13 plans hain, typical quote PKR 675 aur range PKR 14 se PKR 20,928 tak. PKR 14 waja-e-nazar hai lekin wo monthly plan nahi: bohat chhoti muddat ya mehdood arrangement hoti hai. Isi tarah ChatGPT ke 52 plans mein sab se kam quote PKR 29 hai, jo 24 ghante ka row hai. Canva apne plans khud [canva.com/pricing](https://www.canva.com/pricing/) par list karta hai (checked 9 November 2026); wahan current plans aur unke features dekh lein, kyunki seller ka PKR quote vendor ke kisi ek plan ke barabar nahi hota.",
           "Is liye pehla sawal price nahi, muddat hai. Jab tak muddat maloom na ho, number ka koi matlab nahi."
         ]
       },
@@ -1748,14 +1776,14 @@
     "title": "Freelancer ka monthly AI kharcha",
     "description": "Pakistan ke freelancer ke liye AI tools ka realistic monthly budget: kya zaroori hai, kya optional, aur kis cheez par paisa zaya hota hai.",
     "published": "2026-11-08",
-    "checked": "2026-11-08",
+    "checked": "2026-11-09",
     "answer": "Aik shuru karta freelancer ke liye aik general assistant kaafi hota hai, aur baqi tools tab add karein jab koi kaam us tool ke baghair ruk raha ho. Do subscriptions se shuru karein, har mahine hisab dekhein, aur jo tool teen mahine mein koi kaam na kare usay band kar dein.",
     "sections": [
       {
         "id": "core",
         "heading": "Core aur optional",
         "paragraphs": [
-          "Core mein aam tor par do cheezein aati hain: writing ya research ke liye aik assistant, aur design ya video ke liye aik tool. Catalog mein ChatGPT ka typical quote PKR 4,001 aur Canva ka PKR 675 hai, is liye core set chhote budget mein bhi mumkin hai.",
+          "Core mein aam tor par do cheezein aati hain: writing ya research ke liye aik assistant, aur design ya video ke liye aik tool. Catalog mein ChatGPT ka typical quote PKR 4,001 aur Canva ka PKR 675 hai, is liye core set chhote budget mein bhi mumkin hai. In dono ke apne plans [chatgpt.com/pricing](https://chatgpt.com/pricing/) aur [canva.com/pricing](https://www.canva.com/pricing/) par listed hain (checked 9 November 2026); ye PKR quotes un plans ke barabar nahi hote.",
           "Optional wo tools hain jo kisi khaas kaam ke liye hote hain: coding assistant, voiceover, ya video generation. In ki qeemat zyada hoti hai — Cursor ka typical quote PKR 19,995 tak jata hai — is liye ye tab lein jab us kaam ka paisa aa raha ho."
         ]
       },
@@ -1803,6 +1831,14 @@
       {
         "label": "Cursor: agent review documentation",
         "href": "https://cursor.com/docs/agent/agent-review"
+      },
+      {
+        "label": "OpenAI: ChatGPT plans and pricing",
+        "href": "https://chatgpt.com/pricing/"
+      },
+      {
+        "label": "Canva: plans and pricing",
+        "href": "https://www.canva.com/pricing/"
       },
       {
         "label": "AiToolsPk price index",

@@ -15,6 +15,39 @@ import { collectionProducts } from '@/lib/collections';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { JsonLd, metadata as makeMetadata, origin } from '@/lib/seo';
 import { author, authorPath, authorSchema } from '@/lib/author';
+import { PriceSource } from '@/components/price-source';
+
+/**
+ * Article body text with an optional inline citation.
+ *
+ * A post's prose is stored as plain strings, but a paragraph that quotes a
+ * price is only checkable when the vendor's own page is one click away. The
+ * only markup allowed is `[label](https://…)`; everything else is rendered as
+ * written, so a post can never inject markup it did not mean to.
+ */
+const INLINE_LINK = /\[([^\]]+)\]\((https:\/\/[^\s)]+)\)/g;
+
+function Prose({ text }: { text: string }) {
+  const out: React.ReactNode[] = [];
+  let at = 0;
+  for (const match of text.matchAll(INLINE_LINK)) {
+    const start = match.index ?? 0;
+    if (start > at) out.push(text.slice(at, start));
+    out.push(
+      <a
+        key={start}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {match[1]}
+      </a>
+    );
+    at = start + match[0].length;
+  }
+  if (at < text.length) out.push(text.slice(at));
+  return <>{out}</>;
+}
 
 export const dynamicParams = false;
 export function generateStaticParams() {
@@ -132,18 +165,24 @@ export default async function BlogArticle({ params }: Props) {
                     ? `${post.title.split(':')[0]}: which should you pick?`
                     : `Which ${collection.brand} plan suits a buyer in Pakistan?`}
                 </h2>
-                <p>{post.answer}</p>
+                <p>
+                  <Prose text={post.answer} />
+                </p>
               </section>
               {post.sections.map((section) => (
                 <section id={section.id} key={section.id}>
                   <h2>{section.heading}</h2>
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p key={paragraph}>
+                      <Prose text={paragraph} />
+                    </p>
                   ))}
                   {section.bullets && (
                     <ul>
                       {section.bullets.map((bullet) => (
-                        <li key={bullet}>{bullet}</li>
+                        <li key={bullet}>
+                          <Prose text={bullet} />
+                        </li>
                       ))}
                     </ul>
                   )}
@@ -170,6 +209,10 @@ export default async function BlogArticle({ params }: Props) {
                       <strong>
                         Listed PKR {plan.price.toLocaleString('en-PK')}
                       </strong>
+                      <PriceSource
+                        brand={plan.brand}
+                        brandSlug={plan.brandSlug}
+                      />
                       <dl>
                         <div>
                           <dt>Duration</dt>

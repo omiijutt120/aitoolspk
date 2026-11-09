@@ -189,14 +189,14 @@ export function CollectionGuide({
       : '');
   const warrantySentence =
     [
-      `${facts.warrantyStated} of ${facts.count} rows state a seller warranty period`,
+      `${facts.warrantyStated} of ${facts.count} rows carry a seller warranty label`,
       facts.warrantyNone > 0
         ? `${facts.warrantyNone} ${
             facts.warrantyNone === 1 ? 'states' : 'state'
           } none`
         : null,
       openField > 0
-        ? `${openField} ${openField === 1 ? 'leaves' : 'leave'} the field blank`
+        ? `${openField} ${openField === 1 ? 'has' : 'have'} no specified warranty label`
         : null,
     ]
       .filter(Boolean)
@@ -249,13 +249,14 @@ export function CollectionGuide({
         </>
       )}
 
-      {facts.warrantyStated + facts.warrantyNone > 0 && (
+      {facts.count > 0 && (
         <>
-          <h2>How much warranty do {brand} listings state?</h2>
+          <h2>What warranty labels do {brand} listings carry?</h2>
           <p>
-            {warrantySentence} A stated period is the seller’s own promise for
-            that product ID, not the software company’s warranty, so ask what
-            the remedy is and when it starts.
+            {warrantySentence} A label alone does not establish a coverage period
+            or verified remedy. These are seller labels, not the software
+            company’s warranty; confirm coverage, exclusions, start date and
+            remedy for the exact product ID.
           </p>
         </>
       )}

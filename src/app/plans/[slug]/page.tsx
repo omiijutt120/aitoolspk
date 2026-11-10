@@ -230,6 +230,59 @@ export default async function PlansPage({
           </p>
         </section>
       )}
+      {slug === 'netflix' && page === 1 && (
+        <section className="page-intro" aria-labelledby="netflix-vendor-price">
+          <h2 id="netflix-vendor-price">
+            What Netflix itself charges in Pakistan
+          </h2>
+          <p>
+            Netflix&apos;s own signup page for Pakistan states that plans range
+            from <strong>Rs 250 to Rs 1,100 per month</strong>, and that
+            membership starts at Rs 250. That is the vendor&apos;s price for its
+            own plans, in Pakistani rupees, before any local reseller is
+            involved.
+          </p>
+          <p>
+            The listings below are not that price. Each one is a seller quote for
+            access resold in Pakistan, and it can land above or below the
+            vendor&apos;s own tiers for four reasons:
+          </p>
+          <ul>
+            <li>
+              <strong>Who owns the account.</strong> A private profile on a
+              seller&apos;s membership is a different thing from your own Netflix
+              membership. Ask which one you are buying before paying.
+            </li>
+            <li>
+              <strong>The duration sold.</strong> Netflix sells monthly
+              membership. A 3-month or 6-month listing is the seller&apos;s own
+              package over that period, not a Netflix plan sold at that length.
+            </li>
+            <li>
+              <strong>Quality and screens.</strong> HD and 4K, and the number of
+              simultaneous screens, are set by the vendor tier. A &quot;4K
+              Premium&quot; slot label is the seller&apos;s description; confirm
+              what the tier actually allows.
+            </li>
+            <li>
+              <strong>Seller warranty.</strong> A replacement promise is the
+              seller&apos;s term, not Netflix&apos;s. Get the coverage period and
+              what it covers in writing.
+            </li>
+          </ul>
+          <p>
+            If you want Netflix&apos;s own membership at the vendor price, buy it
+            from Netflix. If you are comparing the listings here, confirm the
+            four points above and read the{' '}
+            <Link href="/how-to-order/">ordering checklist</Link> first.
+          </p>
+          <p>
+            Source checked <time dateTime="2026-11-10">10 November 2026</time>:{' '}
+            <a href="https://www.netflix.com/pk/">Netflix Pakistan</a>. Vendor
+            prices and plan tiers change; recheck before deciding.
+          </p>
+        </section>
+      )}
       {slug === 'api' && page === 1 && (
         <section className="page-intro" aria-labelledby="api-credit-guide">
           <h2 id="api-credit-guide">Compare API providers, units and expiry</h2>

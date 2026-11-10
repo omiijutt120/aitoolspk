@@ -18,6 +18,7 @@ import { metadata as makeMetadata, origin } from '@/lib/seo';
 import { categories } from '@/lib/categories';
 import { CategoryIcon } from '@/components/icon';
 import { Steps } from '@/components/steps';
+import { SiteVideo } from '@/components/site-video';
 import { FaqList } from '@/components/faq';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { BlogCard } from '@/components/blog-card';
@@ -316,6 +317,7 @@ export default function Home() {
         </div>
         <Steps />
       </section>
+      <SiteVideo />
       <section className="container home-faq" aria-labelledby="faq-heading">
         <div>
           <p className="store-eyebrow">GOOD QUESTIONS. CLEAR ANSWERS.</p>

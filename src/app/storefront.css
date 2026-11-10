@@ -713,6 +713,47 @@ body {
   padding-block: 65px 85px;
   border-top: 1px solid var(--store-border);
 }
+.home-video {
+  padding-block: 0 85px;
+}
+.home-video .home-section-heading {
+  margin-bottom: 28px;
+}
+.home-video .home-section-heading p:not(.store-eyebrow) {
+  max-width: 620px;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #62666d;
+}
+.home-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--store-border);
+  border-radius: 17px;
+  background: #000;
+}
+.home-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.home-video-transcript {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #62666d;
+}
+.home-video-transcript summary {
+  cursor: pointer;
+}
+.home-video-transcript p {
+  margin-top: 10px;
+  line-height: 1.75;
+  max-width: 760px;
+}
 .home-faq h2 {
   font-size: 45px;
   letter-spacing: -0.05em;

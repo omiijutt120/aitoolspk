@@ -68,3 +68,7 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+        with:
+          # The export is ~237 MB and Pages syncing it has run past the 10
+          # minute default, which aborts an otherwise healthy deployment.
+          timeout: 1500000

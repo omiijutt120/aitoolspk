@@ -21,7 +21,8 @@ export function CollectionCard({
       data-collection={c.slug}
       // The whole card is the link, so without this the accessible name is
       // every word in the card - count, category, heading, blurb and price.
-      aria-label={`${c.title} plans in Pakistan`}
+      // c.title already ends in "plans", so do not add the word again.
+      aria-label={`${c.title} in Pakistan`}
     >
       <div className="collection-card-top">
         <span className="collection-count">

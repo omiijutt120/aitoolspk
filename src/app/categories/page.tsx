@@ -26,6 +26,9 @@ export default function Categories() {
             className="category-tile"
             key={c.slug}
             href={`/category/${c.slug}/`}
+            // Icon, heading, description and count are all inside the link, so
+            // the accessible name would otherwise be the whole tile.
+            aria-label={`${c.name} category`}
           >
             <CategoryIcon name={c.icon} size={27} />
             <h2>{c.name}</h2>

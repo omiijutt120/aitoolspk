@@ -28,7 +28,7 @@ const collectionTotal = groupCollections(products).length;
 
 export const metadata: Metadata = {
   ...makeMetadata(
-    `AI tool prices in Pakistan 2026: ${collectionTotal} collections`,
+    'AI tool prices in Pakistan 2026 | AiToolsPk',
     `Compare ${products.length} AI tool and subscription plans in Pakistan: listed PKR quotes, exact durations and seller warranty. Browse ${collectionTotal} collections, then confirm on WhatsApp.`,
     '/'
   ),

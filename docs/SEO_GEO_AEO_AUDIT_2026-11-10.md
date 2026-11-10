@@ -206,3 +206,53 @@ Ranked by expected effect, not by effort:
   re-tested with a phrase query before being recorded as absent.
 - Google rate-limited automated SERP navigation after roughly 30 queries, so
   §6 is a small number of confirmed observations, not a rank-tracking series.
+
+## 9. Link integrity, re-checked 10 November 2026
+
+The earlier audit said "0 broken internal links" without ever checking the other
+direction. Both directions are now measured.
+
+| Check | Result |
+| --- | --- |
+| Internal link references | 72,823 across 1,003 pages — **0 broken** |
+| Fragment links (`#anchor`) | 1,498 across 1,007 documents — **0 issues** |
+| Local assets (images, CSS, icons, OG images) | 1,291 unique references — **0 missing** |
+| External links | 152 unique URLs — **0 returning 404/410** |
+
+### The external-link checker was broken
+
+`npm run seo:check-outbound` shelled out to `curl -o /dev/null`, a path that
+does not exist on Windows. Every URL therefore returned a null status, the
+script counted them as "uncertain", and the check silently passed. It had never
+produced a real result on this machine.
+
+It now uses Node's built-in `fetch`, and separates the three cases that used to
+be one pile:
+
+- **broken** — 404 or 410. These need the link replaced.
+- **blocked** — 403, 429 or 999. The host refuses automated clients. Open it in
+  a browser before assuming anything.
+- **unreachable** — no response at all.
+
+Measured after the fix: 152 checked, **0 broken**, 20 blocked (Canva, Midjourney,
+NordVPN, Runway and similar vendor sites behind bot protection), 0 other errors.
+
+Two runs were done, and the no-response set was not stable between them — a
+timeout is a property of the connection, not of the page. Across the two runs
+three URLs produced no response at all, and each was opened by hand:
+
+| URL | Browser result |
+| --- | --- |
+| `support.apple.com/en-us/118428` | 200 — "Cancel a subscription from Apple" |
+| `support.nordvpn.com/hc/.../how-to-check-the-plans-and-prices-of-NordVPN` | loads, correct title |
+| `proton.me` | loads — "Proton: Privacy by default" |
+
+So the no-answer was a timeout, not a dead link, and it changed set between
+runs. That is why `unreachable` is reported separately from `broken` and never
+fails the check.
+
+### Why nothing was "fixed"
+
+There was nothing broken to fix. Zero 404s out of 152 external URLs and zero
+missing assets out of 1,291 references. The defect was the instrument, not the
+links.

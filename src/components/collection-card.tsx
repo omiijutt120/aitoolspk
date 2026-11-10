@@ -19,6 +19,9 @@ export function CollectionCard({
       className={`collection-card${c.isApi ? ' api-collection-card' : ''}`}
       prefetch={false}
       data-collection={c.slug}
+      // The whole card is the link, so without this the accessible name is
+      // every word in the card - count, category, heading, blurb and price.
+      aria-label={`${c.title} plans in Pakistan`}
     >
       <div className="collection-card-top">
         <span className="collection-count">

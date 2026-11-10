@@ -1,11 +1,8 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { resolve, join, relative } from 'node:path';
-import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
 
 // Manual, non-build-gating check. Vendor sites may block automated requests.
 // Only repeatable HTTP 404/410 GET responses should prompt link replacements.
-const exec = promisify(execFile);
 const root = resolve(process.argv[2] || 'out');
 const links = new Map();
 
@@ -44,28 +41,26 @@ function inspect(directory) {
 }
 
 async function requestStatus(url, method) {
+  // Node's fetch instead of curl: the previous version shelled out to
+  // `curl -o /dev/null`, which does not exist on Windows, so every URL
+  // reported a null status and the check silently passed on this machine.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
   try {
-    const { stdout } = await exec(
-      'curl',
-      [
-        '-sS',
-        '-L',
-        ...(method === 'HEAD' ? ['-I'] : []),
-        '--max-time',
-        '15',
-        '-o',
-        '/dev/null',
-        '-w',
-        '%{http_code}',
-        '--user-agent',
-        'Mozilla/5.0 (compatible; AiToolsPkLinkAudit/1.0)',
-        url,
-      ],
-      { timeout: 18000 }
-    );
-    return Number(stdout.trim()) || null;
+    const response = await fetch(url, {
+      method,
+      redirect: 'follow',
+      signal: controller.signal,
+      headers: {
+        'user-agent': 'Mozilla/5.0 (compatible; AiToolsPkLinkAudit/1.0)',
+        accept: 'text/html,application/xhtml+xml,*/*;q=0.8',
+      },
+    });
+    return response.status;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timer);
   }
 }
 
@@ -88,17 +83,38 @@ async function worker() {
 
 await Promise.all(Array.from({ length: 8 }, worker));
 const broken = results.filter(({ status }) => status === 404 || status === 410);
-const uncertain = results.filter(
-  ({ status }) => !status || status >= 400 && status !== 404 && status !== 410
+// Bot gating and no-answer are different problems and used to be reported as
+// one "uncertain" pile, which meant a 403 from Cloudflare and a dead host
+// looked identical. They are separated so only the second needs a browser.
+const blocked = results.filter(
+  ({ status }) => status === 403 || status === 429 || status === 999
+);
+const unreachable = results.filter(({ status }) => !status);
+const otherErrors = results.filter(
+  ({ status }) =>
+    status &&
+    status >= 400 &&
+    status !== 403 &&
+    status !== 429 &&
+    status !== 999 &&
+    status !== 404 &&
+    status !== 410
 );
 console.log(
   JSON.stringify(
     {
       checked: results.length,
-      accessible: results.length - broken.length - uncertain.length,
+      accessible:
+        results.length -
+        broken.length -
+        blocked.length -
+        unreachable.length -
+        otherErrors.length,
       broken,
-      uncertain,
-      note: 'HEAD failures are retried with GET. 403/429/5xx and network failures are not proof that a link is broken. External inbound backlinks require a separate provider export.',
+      blocked,
+      unreachable,
+      otherErrors,
+      note: 'HEAD failures are retried with GET. 403/429 means the host refuses automated clients, not that the page is gone - open blocked URLs in a browser before replacing them. External inbound backlinks require a separate provider export.',
     },
     null,
     2

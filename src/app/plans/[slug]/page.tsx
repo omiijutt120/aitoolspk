@@ -26,7 +26,7 @@ import { CollectionSchema } from '@/components/collection-schema';
 import { PriceSource } from '@/components/price-source';
 import { PAGE_SIZE } from '@/lib/pagination';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
-import { blogPostForCollection } from '@/lib/blog';
+import { blogPostsForCollection } from '@/lib/blog';
 
 const collections = groupCollections(products);
 export const dynamicParams = false;
@@ -81,7 +81,8 @@ export default async function PlansPage({
   const plans = collectionProducts(products, slug);
   const pagePlans = plans.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
   const quoteDates = [...new Set(plans.map((p) => p.date))].sort();
-  const article = blogPostForCollection(slug);
+  const collectionArticles = blogPostsForCollection(slug);
+  const [article, ...otherArticles] = collectionArticles;
   return (
     <div className="container">
       <div className="page-intro collection-intro">
@@ -179,6 +180,15 @@ export default async function PlansPage({
             eligibility. Check the individual offer&apos;s review status.
             Pending offers require availability and eligibility confirmation
             first; an enquiry is not a purchase or reservation.
+          </p>
+          <p>
+            For the quoted range itself - what a ChatGPT Plus month typically
+            costs in Pakistan, and why two quotes for the same duration can
+            still differ - read{' '}
+            <Link href="/blog/chatgpt-plus-kitne-ka-hai-pakistan/">
+              what ChatGPT Plus costs in Pakistan
+            </Link>
+            .
           </p>
           <p>
             Use the product ID to confirm the final PKR price, safe delivery
@@ -369,6 +379,20 @@ export default async function PlansPage({
           >
             Read the article →
           </Link>
+          {otherArticles.length > 0 && (
+            <div className="blog-collection-more">
+              <p className="store-eyebrow">More on {c.brand}</p>
+              <ul>
+                {otherArticles.map((post) => (
+                  <li key={post.slug}>
+                    <Link href={`/blog/${post.slug}/`} prefetch={false}>
+                      {post.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </aside>
       )}
       <CollectionSchema

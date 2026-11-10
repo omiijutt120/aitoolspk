@@ -28,6 +28,14 @@ export const blogPostBySlug = (slug: string) =>
   blogPosts.find((post) => post.slug === slug);
 export const blogPostForCollection = (slug: string) =>
   blogPosts.find((post) => post.collection === slug);
+/**
+ * Every article filed under a collection, in editorial order. The first one
+ * leads the block on the collection page; the rest are listed so a price or
+ * comparison article is not stranded behind whichever workflow post happens to
+ * come first in `posts.json`.
+ */
+export const blogPostsForCollection = (slug: string) =>
+  blogPosts.filter((post) => post.collection === slug);
 export const blogReviewed = blogPosts
   .map((p) => p.checked)
   .sort()

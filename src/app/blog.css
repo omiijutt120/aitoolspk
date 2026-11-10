@@ -489,6 +489,27 @@
   line-height: 1.8;
   color: #62666d;
 }
+.blog-collection-more {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid var(--store-border);
+}
+.blog-collection-more ul {
+  display: grid;
+  gap: 8px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.blog-collection-more li {
+  font-size: 15px;
+  line-height: 1.55;
+}
+.blog-collection-more a {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 @media (max-width: 1200px) {
   .blog-hero {
     gap: 40px;

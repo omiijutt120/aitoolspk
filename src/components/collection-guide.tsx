@@ -4,6 +4,7 @@ import { collectionGuides } from '@/lib/collection-guides';
 import { money } from '@/lib/commerce.mjs';
 import { author, authorPath } from '@/lib/author';
 import { displayName } from '@/lib/product-name';
+import { productLinkRel } from '@/lib/product-link';
 import { collectionFacts } from '@/lib/collection-facts';
 import { PriceSource } from './price-source';
 
@@ -26,7 +27,11 @@ const durationPhrase = (duration: string) => {
  */
 function ListingRef({ plan, brand }: { plan: Product; brand: string }) {
   return (
-    <Link href={`/tool/${plan.slug}/`} prefetch={false}>
+    <Link
+      href={`/tool/${plan.slug}/`}
+      prefetch={false}
+      rel={productLinkRel(plan)}
+    >
       {displayName(plan.name, plan.warranty, brand)}
     </Link>
   );

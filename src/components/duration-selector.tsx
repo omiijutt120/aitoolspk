@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import type { Product } from '@/lib/types';
 import { money } from '@/lib/commerce.mjs';
+import { productLinkRel } from '@/lib/product-link';
 
 // Each option has a canonical page and its own product ID. Navigating atomically
 // updates price, terms, mobile CTA, metadata and WhatsApp intent together.
@@ -65,9 +66,14 @@ export function DurationSelector({
               : 'Compare the available subscription durations.'}
       </p>
       <noscript>
+        {/* No-JS fallback; see src/lib/product-link.ts for the rel rule. */}
         <p>Choose your plan:</p>
         {variants.map((p) => (
-          <Link key={p.id} href={`/tool/${p.slug}/`}>
+          <Link
+            key={p.id}
+            href={`/tool/${p.slug}/`}
+            rel={productLinkRel(p)}
+          >
             {p.duration}: {money(p.price)}{' '}
           </Link>
         ))}

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Product } from '@/lib/types';
 import { money } from '@/lib/commerce.mjs';
+import { productLinkRel } from '@/lib/product-link';
 import { PriceSource } from './price-source';
 
 export function PlanComparison({
@@ -45,7 +46,11 @@ export function PlanComparison({
             {plans.map((plan) => (
               <tr key={plan.id}>
                 <th scope="row">
-                  <Link href={`/tool/${plan.slug}/`} prefetch={false}>
+                  <Link
+                    href={`/tool/${plan.slug}/`}
+                    prefetch={false}
+                    rel={productLinkRel(plan)}
+                  >
                     {plan.name}
                   </Link>
                   <span className="comparison-id">{plan.id}</span>

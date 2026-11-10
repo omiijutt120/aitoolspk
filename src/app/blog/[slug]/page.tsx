@@ -13,6 +13,7 @@ import {
 import { products } from '@/lib/catalog';
 import { collectionProducts } from '@/lib/collections';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
+import { productLinkRel } from '@/lib/product-link';
 import { JsonLd, metadata as makeMetadata, origin } from '@/lib/seo';
 import { author, authorPath, authorSchema } from '@/lib/author';
 import { PriceSource } from '@/components/price-source';
@@ -202,7 +203,11 @@ export default async function BlogArticle({ params }: Props) {
                   {samplePlans.map((plan) => (
                     <div className="blog-plan-sample" key={plan.id}>
                       <h3>
-                        <Link href={`/tool/${plan.slug}/`} prefetch={false}>
+                        <Link
+                          href={`/tool/${plan.slug}/`}
+                          prefetch={false}
+                          rel={productLinkRel(plan)}
+                        >
                           {plan.name}
                         </Link>
                       </h3>
@@ -231,6 +236,7 @@ export default async function BlogArticle({ params }: Props) {
                         className="text-link"
                         href={`/tool/${plan.slug}/`}
                         prefetch={false}
+                        rel={productLinkRel(plan)}
                       >
                         View exact details{' '}
                         <ArrowUpRight size={15} aria-hidden="true" />

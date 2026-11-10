@@ -17,6 +17,7 @@ import { collectionSlug } from '@/lib/collections';
 import inventory from '../../../../data/inventory.json';
 import { productPublication } from '@/lib/seo-editorial';
 import { productSearchCopy } from '@/lib/seo-publication.mjs';
+import { productLinkRel } from '@/lib/product-link';
 export const dynamicParams = false;
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -332,7 +333,12 @@ export default async function ProductDetail({
                 <p>Each offer has its own ID, duration, price and terms.</p>
                 <div className="variant-links">
                   {variants.map((v) => (
-                    <Link href={`/tool/${v.slug}/`} prefetch={false} key={v.id}>
+                    <Link
+                      href={`/tool/${v.slug}/`}
+                      prefetch={false}
+                      rel={productLinkRel(v)}
+                      key={v.id}
+                    >
                       <span>{v.name}</span>
                       <strong className="whitespace-nowrap">
                         {money(v.price)}

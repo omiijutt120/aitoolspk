@@ -52,7 +52,8 @@ against the exact collection path, run in a real browser:
 - `site:` is **not** a page count. Google says so itself, and this run returned
   ~56 URLs across six pages before running dry.
 
-Probed: the 22 collections that carry the most listings.
+Probed: 22 collections — most of the largest by listing count, plus the three
+highest-demand consumer names outside that set (Netflix, Spotify, Grammarly).
 
 | Collection | Listings | In Google's index | Title Google shows |
 |---|---:|---|---|
@@ -130,8 +131,8 @@ the owner's click on Verify in Bing Webmaster Tools.
 
 ## 5. The only action that moves this — owner, in Search Console
 
-URL Inspection → Request Indexing, these twelve, biggest first. Two minutes each
-in the same session; Google will re-crawl and refresh the title at the same time.
+URL Inspection → Request Indexing, biggest first. Two minutes each in the same
+session; Google re-crawls and refreshes the title at the same time.
 
 1. `https://aitoolspk.tech/plans/gemini/`
 2. `https://aitoolspk.tech/plans/claude/`
@@ -161,7 +162,7 @@ let the next round tune real pages instead of guessing.
   pages; asking Google to fetch them is the owner's click, not a markup trick.
 - **No change to the pagination policy — recorded as a decision, not applied.**
   Google returns `/plans/microsoft/page/2/` and `/plans/google/page/2/` while
-  their page 1 does not come back, and four `blog/page/N/` URLs plus
+  their page 1 does not come back, and the `blog/page/N/` URLs plus
   `ChatGPT … Page 3` are in the index. `noindex, follow` on those paginated
   archives is the standard treatment and may let page 1 take the slot, but it
   removes ~9 URLs from the index and changes what the site publishes, so it needs

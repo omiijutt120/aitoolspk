@@ -8,6 +8,7 @@ import { money, whatsappUrl } from '@/lib/commerce.mjs';
 import { categoryName } from '@/lib/categories';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { displayName } from '@/lib/product-name';
+import { productLinkRel } from '@/lib/product-link';
 import { PriceSource } from './price-source';
 export function BrandLogo({
   product,
@@ -32,6 +33,7 @@ export function BrandLogo({
   );
 }
 export function ProductCard({ product }: { product: Product }) {
+  const rel = productLinkRel(product);
   return (
     <article
       className={`product-card${product.sellerWarranty ? ' premium-product' : ''}`}
@@ -47,6 +49,7 @@ export function ProductCard({ product }: { product: Product }) {
         <Link
           href={`/tool/${product.slug}/`}
           prefetch={false}
+          rel={rel}
           data-catalog-event="product_open"
           data-product-id={product.id}
         >
@@ -90,6 +93,7 @@ export function ProductCard({ product }: { product: Product }) {
           className="button outline"
           href={`/tool/${product.slug}/`}
           prefetch={false}
+          rel={rel}
           data-catalog-event="product_open"
           data-product-id={product.id}
         >

@@ -79,9 +79,15 @@ test('affected collection guides fit mobile, tablet and desktop without changing
     ).toBe(true);
   }
   const sitemap = await (await request.get('/sitemap.xml')).text();
-  expect(sitemap).toMatch(
-    /<loc>https:\/\/aitoolspk.tech\/plans\/railway\/<\/loc>\s*<lastmod>2026-10-27<\/lastmod>/
-  );
+  // `lastmod` follows the newest file that renders the page, so shipping the
+  // cost-table template moves it without any editorial change. The invariant
+  // worth holding is that it is never older than the guide's own checked date.
+  const railway =
+    /<loc>https:\/\/aitoolspk\.tech\/plans\/railway\/<\/loc>\s*<lastmod>([\d-]+)<\/lastmod>/.exec(
+      sitemap
+    );
+  expect(railway).not.toBeNull();
+  expect(railway![1] >= '2026-10-27').toBe(true);
   expect(sitemap).not.toContain('?category=');
   await page
     .getByRole('link', { name: 'View Details', exact: true })

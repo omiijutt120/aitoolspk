@@ -48,7 +48,9 @@ export async function generateMetadata({
   const name = collection.isApi ? 'API' : collection.brand;
   // Buy-intent phrasing that still fits beside the 13-character " | AiToolsPk"
   // suffix, so the rendered title stays inside the 65-character limit.
-  const withCount = `${name} price in Pakistan 2026: ${collection.count} plans`;
+  const withCount = `${name} price in Pakistan 2026: ${collection.count} ${
+    collection.count === 1 ? 'plan' : 'plans'
+  }`;
   const base =
     page > 1
       ? `${name} prices in Pakistan — page ${page}`
@@ -67,9 +69,13 @@ export async function generateMetadata({
   const describeBand = (label: string, band: BandSummary) =>
     bandSpread(band) === 'narrow' && band.medianPrice > band.minPrice
       ? `${label} from ${money(band.minPrice)}, typically ${money(band.medianPrice)}`
-      : `${label} from ${money(band.minPrice)} across ${band.count} listings`;
+      : `${label} from ${money(band.minPrice)} across ${band.count} ${
+          band.count === 1 ? 'listing' : 'listings'
+        }`;
   const head = `${name} in Pakistan: `;
-  const tail = `${collection.count} dated seller quotes, compared by duration, access and warranty.`;
+  const tail = `${collection.count} dated seller ${
+    collection.count === 1 ? 'quote' : 'quotes'
+  }, compared by duration, access and warranty.`;
   const monthBand = collection.bands.month;
   const yearBand = collection.bands.year;
   const monthText = monthBand ? describeBand('1 month', monthBand) : null;
@@ -90,12 +96,16 @@ export async function generateMetadata({
       (text) =>
         text && (prefix + head + text + '. ' + tail).length <= 160
     );
+  // A collection with one listing has a price, not a range, so it says so.
+  const single = collection.minPrice === collection.maxPrice;
   return metadata(
     base,
     pageDescription(
       answered
         ? `${head}${answered}. ${tail}`
-        : `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} ${collection.count === 1 ? 'plan' : 'plans'}. Compare duration, access and warranty before paying.`,
+        : single
+          ? `${name} in Pakistan: listed at ${money(collection.minPrice)}. ${tail}`
+          : `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} plans. ${tail}`,
       page
     ),
     pagePath(`/plans/${slug}/`, page),

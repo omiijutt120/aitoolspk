@@ -1,7 +1,15 @@
 import type { Product } from './types';
 import { homeSelection, orderCatalog } from './catalog-order';
 import { collectionSlug } from './catalog-identity.mjs';
+import { durationBand } from './duration-band';
 export { collectionSlug } from './catalog-identity.mjs';
+
+/** Cheapest and middle listed quote inside one normalized duration band. */
+export type BandSummary = {
+  count: number;
+  minPrice: number;
+  medianPrice: number;
+};
 
 export type PlanCollection = {
   slug: string;
@@ -17,6 +25,12 @@ export type PlanCollection = {
    * a whole collection look like it starts at that price.
    */
   medianPrice: number;
+  /**
+   * Cheapest quote per month and per year, which is what a buyer asking
+   * "kitne ka hai" actually wants. Empty when the collection has no listing
+   * stating that duration - it is never inferred from a different band.
+   */
+  bands: { month: BandSummary | null; year: BandSummary | null };
   categories: string[];
   isApi: boolean;
 };
@@ -27,10 +41,25 @@ export function collectionProducts(input: Product[], slug: string): Product[] {
   );
 }
 
+function summarizeBand(prices?: number[]): BandSummary | null {
+  if (!prices?.length) return null;
+  const sorted = [...prices].sort((a, b) => a - b);
+  const middle = Math.floor((sorted.length - 1) / 2);
+  return {
+    count: sorted.length,
+    minPrice: sorted[0],
+    medianPrice:
+      sorted.length % 2 === 0
+        ? Math.round((sorted[middle] + sorted[middle + 1]) / 2)
+        : sorted[middle],
+  };
+}
+
 /** Every eligible offer belongs to exactly one parent, including all API offers. */
 export function groupCollections(input: Product[]): PlanCollection[] {
   const groups = new Map<string, PlanCollection>();
   const prices = new Map<string, number[]>();
+  const bandTotals = new Map<string, { month?: number[]; year?: number[] }>();
   for (const p of orderCatalog(
     input.filter((p) => p.approval !== 'excluded')
   )) {
@@ -39,6 +68,12 @@ export function groupCollections(input: Product[]): PlanCollection[] {
     const bucket = prices.get(slug);
     if (bucket) bucket.push(p.price);
     else prices.set(slug, [p.price]);
+    const band = durationBand(p.duration);
+    if (band) {
+      const totals = bandTotals.get(slug) ?? {};
+      (totals[band] ??= []).push(p.price);
+      bandTotals.set(slug, totals);
+    }
     if (existing) {
       existing.count++;
       existing.minPrice = Math.min(existing.minPrice, p.price);
@@ -56,6 +91,7 @@ export function groupCollections(input: Product[]): PlanCollection[] {
         minPrice: p.price,
         maxPrice: p.price,
         medianPrice: p.price,
+        bands: { month: null, year: null },
         categories: [p.category],
         isApi: slug === 'api',
       });
@@ -68,6 +104,11 @@ export function groupCollections(input: Product[]): PlanCollection[] {
       sorted.length % 2 === 0
         ? Math.round((sorted[middle] + sorted[middle + 1]) / 2)
         : sorted[middle];
+    const totals = bandTotals.get(group.slug);
+    group.bands = {
+      month: summarizeBand(totals?.month),
+      year: summarizeBand(totals?.year),
+    };
   }
   const collections = [...groups.values()];
   return [

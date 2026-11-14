@@ -9,7 +9,9 @@ import {
   collectionProducts,
   groupCollections,
   relatedCollections,
+  type BandSummary,
 } from '@/lib/collections';
+import { bandSpread } from '@/lib/duration-band';
 import {
   pageCount,
   pageDescription,
@@ -23,6 +25,7 @@ import { money } from '@/lib/commerce.mjs';
 import { CollectionGuide } from '@/components/collection-guide';
 import { RelatedCollections } from '@/components/related-collections';
 import { CollectionSchema } from '@/components/collection-schema';
+import { CollectionCostAnswer } from '@/components/collection-cost-answer';
 import { PriceSource } from '@/components/price-source';
 import { PAGE_SIZE } from '@/lib/pagination';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
@@ -54,10 +57,45 @@ export async function generateMetadata({
         : `${name} price in Pakistan 2026`.length <= 52
           ? `${name} price in Pakistan 2026`
           : `${name} prices in Pakistan`;
+  // Lead with the per-duration answer instead of the whole-collection range.
+  // A description reading "PKR 14-PKR 20,928" tells a searcher nothing they
+  // can act on, which is a query-satisfaction problem as well as a CTR one.
+  // The month band carries its typical value too, because the cheapest month
+  // is usually a shared slot and "from" alone would overstate it. Where the
+  // band mixes shared slots with enterprise credit packs, the middle figure
+  // would overstate it just as badly, so that band is described by count.
+  const describeBand = (label: string, band: BandSummary) =>
+    bandSpread(band) === 'narrow' && band.medianPrice > band.minPrice
+      ? `${label} from ${money(band.minPrice)}, typically ${money(band.medianPrice)}`
+      : `${label} from ${money(band.minPrice)} across ${band.count} listings`;
+  const head = `${name} in Pakistan: `;
+  const tail = `${collection.count} dated seller quotes, compared by duration, access and warranty.`;
+  const monthBand = collection.bands.month;
+  const yearBand = collection.bands.year;
+  const monthText = monthBand ? describeBand('1 month', monthBand) : null;
+  const yearFull = yearBand ? describeBand('1 year', yearBand) : null;
+  const yearShort = yearBand ? `1 year from ${money(yearBand.minPrice)}` : null;
+  // Longest answer first. The 160-character budget stops a snippet being cut
+  // mid-figure, so qualifiers are dropped before the band itself is. Paginated
+  // pages carry an extra "Page N: " prefix, so it counts against the budget.
+  const prefix = page > 1 ? `Page ${page}: ` : '';
+  const answered = [
+    [monthText, yearFull],
+    [monthText, yearShort],
+    [monthText],
+    [yearShort],
+  ]
+    .map((parts) => parts.filter(Boolean).join('; '))
+    .find(
+      (text) =>
+        text && (prefix + head + text + '. ' + tail).length <= 160
+    );
   return metadata(
     base,
     pageDescription(
-      `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} plans. Compare duration, access and warranty before paying.`,
+      answered
+        ? `${head}${answered}. ${tail}`
+        : `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} plans. Compare duration, access and warranty before paying.`,
       page
     ),
     pagePath(`/plans/${slug}/`, page),
@@ -133,6 +171,7 @@ export default async function PlansPage({
             ? 'Every API offer, together. Search providers and compare credits, durations and access before choosing a plan.'
             : `All ${c.brand} subscriptions and variants, together. Compare the exact duration, access and warranty before choosing your plan.`}
         </p>
+        {page === 1 && <CollectionCostAnswer collection={c} />}
         <p className="collection-price-context">
           Listed range:{' '}
           <strong>

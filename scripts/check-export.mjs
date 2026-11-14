@@ -123,6 +123,13 @@ function walk(dir) {
               other: indexableDescriptions.get(description),
             });
           indexableDescriptions.set(description, file);
+          // Collection pages lead with a price answer, and a snippet cut
+          // mid-figure reads as a broken price. Keep those inside the width
+          // Google shows; other sections are not held to this rule.
+          if (pagePath.startsWith('/plans/') && description.length > 160)
+            throw new Error(
+              `Plan description over 160 characters (${description.length}): ${file}`
+            );
         }
         if (canonicals.has(canonical))
           throw new Error(`Duplicate canonical target: ${file}`);

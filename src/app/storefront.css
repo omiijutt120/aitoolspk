@@ -2369,6 +2369,55 @@ body {
 .collection-price-context strong {
   color: #24272b;
 }
+.collection-cost-answer {
+  border: 1px solid #dedfe2;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 20px 0 8px;
+  max-width: 560px;
+}
+.collection-cost-answer h2 {
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+.collection-cost-answer table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+.collection-cost-answer th,
+.collection-cost-answer td {
+  text-align: left;
+  padding: 7px 0;
+  border-bottom: 1px solid #eceef1;
+  font-weight: 400;
+}
+.collection-cost-answer thead th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #626871;
+}
+.collection-cost-answer tbody th {
+  font-weight: 600;
+}
+.collection-cost-answer td:last-child,
+.collection-cost-answer th:last-child {
+  text-align: right;
+}
+.collection-cost-count {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #626871;
+  letter-spacing: 0.01em;
+}
+.collection-cost-answer p {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #626871;
+  margin: 10px 0 0;
+}
 .plan-comparison {
   border: 1px solid #dedfe2;
   border-radius: 14px;

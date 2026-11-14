@@ -179,12 +179,14 @@ discoverable those 11 are.
 
 - Re-ping IndexNow for all indexable URLs after deploy. Free, and it is the only
   crawl nudge available without GSC access.
-- Keep the sitemap `lastmod` derived from real quote dates so a re-crawl sees a
-  genuine change.
+- Make the sitemap `lastmod` reflect this change. It is derived from the newest
+  commit that touched the files rendering a route, which is why 90 collection
+  URLs now carry the date the band table shipped. Collections that render no
+  band keep their old date, because their HTML did not change.
 
 Expected effect: crawl priority. Google decides whether to index; we only make
-it cheaper to find. The faster path is the owner-side Request Indexing in GSC
-(P2), which is not available to an agent without authentication.
+it cheaper to find. The faster path is the owner-side Request Indexing in GSC,
+which is not available to an agent without authentication.
 
 ### P2 — Authority (owner-only, cannot be done by an agent)
 

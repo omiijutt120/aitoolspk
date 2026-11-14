@@ -23,7 +23,7 @@ const alphabetical = [...rows].sort((a, b) =>
 
 export const metadata = makeMetadata(
   'AI subscription price index for Pakistan',
-  `Every listed AI and digital subscription price for Pakistan in one index: ${stats.tools} tools with their lowest quoted PKR price, plan counts, durations and warranty labels.`,
+  `Every listed AI and digital subscription price for Pakistan: ${stats.tools} tools with their lowest quoted PKR price, plan counts, durations and warranty labels.`,
   '/price-index/'
 );
 

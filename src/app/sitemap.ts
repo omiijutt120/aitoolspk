@@ -88,14 +88,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${origin}/guides/${g.slug}/`,
       lastModified: latest(g.checked, modified('src/lib/guides.ts')),
     })),
-    ...groupCollections(products).map((c) => ({
-      url: `${origin}/plans/${c.slug}/`,
-      lastModified: latest(
-        '2026-10-24',
-        collectionGuides[c.slug]?.checked,
-        (collectionModified as Record<string, string>)[c.slug]
-      ),
-    })),
+    ...groupCollections(products).map((c) => {
+      // A band renders the per-duration answer table and rewrites the
+      // description, so only those collections can claim the template's commit
+      // date. Collections without a band render the same HTML as before and
+      // must not look freshly edited.
+      const bandTemplate =
+        c.bands.month || c.bands.year
+          ? modified(
+              'src/app/plans/[slug]/page.tsx',
+              'src/components/collection-cost-answer.tsx',
+              'src/lib/collections.ts',
+              'src/lib/duration-band.ts'
+            )
+          : undefined;
+      return {
+        url: `${origin}/plans/${c.slug}/`,
+        lastModified: latest(
+          '2026-10-24',
+          collectionGuides[c.slug]?.checked,
+          (collectionModified as Record<string, string>)[c.slug],
+          bandTemplate
+        ),
+      };
+    }),
     ...products
       .filter((p) => productPublication(p).sitemapEligible)
       .map((p) => ({

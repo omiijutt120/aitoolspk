@@ -95,7 +95,7 @@ export async function generateMetadata({
     pageDescription(
       answered
         ? `${head}${answered}. ${tail}`
-        : `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} plans. Compare duration, access and warranty before paying.`,
+        : `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} ${collection.count === 1 ? 'plan' : 'plans'}. Compare duration, access and warranty before paying.`,
       page
     ),
     pagePath(`/plans/${slug}/`, page),

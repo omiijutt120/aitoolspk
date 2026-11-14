@@ -28,7 +28,7 @@ export function CollectionSchema({
         inLanguage: 'en-PK',
         author: {
           '@type': 'Person',
-          '@id': `${origin}#author-${author.slug}`,
+          '@id': `${origin}/#author-${author.slug}`,
           name: author.name,
           url: `${origin}${authorPath}`,
         },

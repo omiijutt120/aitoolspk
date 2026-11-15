@@ -23,8 +23,8 @@ function categoryTitle(name: string, page: number) {
     ? name.slice(0, -6)
     : name;
   return page > 1
-    ? `${base} | Page ${page} | AiToolsPk`
-    : `${base} in Pakistan | AiToolsPk`;
+    ? `${base} | Page ${page}`
+    : `${base} in Pakistan`;
 }
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));

@@ -63,6 +63,8 @@ function PriceTable({
             {showCeiling && <th scope="col">Highest listed</th>}
             <th scope="col">Quoted</th>
             <th scope="col">Durations</th>
+            <th scope="col">Review status</th>
+            <th scope="col">Quote freshness</th>
             <th scope="col">Warranty as listed</th>
           </tr>
         </thead>
@@ -90,6 +92,16 @@ function PriceTable({
                 <time dateTime={row.fromDate}>{row.fromDate}</time>
               </td>
               <td>{summarise(row.durations)}</td>
+              <td>
+                {row.pendingOffers > 0
+                  ? `${row.pendingOffers} pending verification`
+                  : 'Seller review recorded'}
+              </td>
+              <td>
+                {row.staleOffers > 0
+                  ? `${row.staleOffers} quotes need refresh`
+                  : 'Within 7-day quote window'}
+              </td>
               <td>{displayedWarranty(row)}</td>
             </tr>
           ))}
@@ -118,6 +130,12 @@ export default function PriceIndex() {
           which durations they cover and what warranty the seller attached.
         </p>
       </div>
+
+      <p className="collection-price-context">
+        Snapshot checked <time dateTime={stats.asOf}>{stats.asOf}</time>. Of {stats.offers} listed offers,
+        {stats.pendingOffers} are awaiting commercial verification and {stats.staleOffers} have quotes older than seven days.
+        No offer should be treated as currently purchasable from its catalog label alone.
+      </p>
 
       <p className="collection-price-context">
         Quote dates in this index run from{' '}
@@ -184,6 +202,15 @@ export default function PriceIndex() {
           <strong>Durations</strong> lists the labels exactly as supplied. Where
           a seller wrote &quot;Not specified&quot;, the row says to confirm
           instead of guessing a length.
+        </li>
+        <li>
+          <strong>Review status</strong> distinguishes offers awaiting commercial
+          verification from offers with a seller approval record. A review label
+          does not prove vendor authorization.
+        </li>
+        <li>
+          <strong>Quote freshness</strong> uses the site&apos;s seven-day refresh
+          window. Older quotes must be confirmed again before payment.
         </li>
         <li>
           <strong>Warranty as listed</strong> is the seller&apos;s own label,

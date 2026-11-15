@@ -141,7 +141,7 @@ test('navigation and mobile filter dialogs support keyboard close', async ({
     'Pending verification'
   );
   await expect(page.locator('.product-card').first().locator('.buy-button'))
-    .toContainText('Buy Now');
+    .toContainText('Check availability');
   const pendingHref = new URL(
     (await page.locator('.product-card').first().locator('.buy-button').getAttribute('href'))!
   );

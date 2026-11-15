@@ -12,6 +12,11 @@
  *
  *   node scripts/indexnow.mjs --dry-run
  *   node scripts/indexnow.mjs
+ *   node scripts/indexnow.mjs --live   # read the sitemap from production
+ *
+ * `--live` exists so CI can submit without building: the exported sitemap and
+ * the deployed one are the same file, and reading it from the host proves the
+ * deployment being announced is the one that is actually serving.
  */
 import { readFile, readdir, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -20,6 +25,7 @@ const HOST = 'aitoolspk.tech';
 const ORIGIN = `https://${HOST}`;
 const ENDPOINT = 'https://api.indexnow.org/indexnow';
 const dryRun = process.argv.includes('--dry-run');
+const fromLive = process.argv.includes('--live');
 
 const keyFiles = (await readdir('public')).filter((name) =>
   /^[a-f0-9]{32}\.txt$/i.test(name)
@@ -35,16 +41,30 @@ if (keyBody !== key)
   throw new Error(`${keyFile} must contain exactly the key "${key}"`);
 const keyLocation = `${ORIGIN}/${keyFile}`;
 
-if (!existsSync('out/sitemap.xml'))
+if (!fromLive && !existsSync('out/sitemap.xml'))
   throw new Error('Run `npm run build` first: out/sitemap.xml is missing.');
-const sitemap = await readFile('out/sitemap.xml', 'utf8');
+const sitemap = fromLive
+  ? await (async () => {
+      const response = await fetch(`${ORIGIN}/sitemap.xml?indexnow=1`);
+      if (!response.ok)
+        throw new Error(`Live sitemap returned HTTP ${response.status}`);
+      return response.text();
+    })()
+  : await readFile('out/sitemap.xml', 'utf8');
 const urlList = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 if (!urlList.length) throw new Error('Sitemap contains no URLs');
+const foreign = urlList.filter((url) => !url.startsWith(`${ORIGIN}/`));
+if (foreign.length)
+  throw new Error(
+    `Sitemap lists ${foreign.length} URL(s) outside ${ORIGIN}, e.g. ${foreign[0]}`
+  );
 if (urlList.length > 10000)
   throw new Error('IndexNow accepts at most 10,000 URLs per request');
 
 const payload = { host: HOST, key, keyLocation, urlList };
-console.log(`IndexNow: ${urlList.length} URLs from out/sitemap.xml`);
+console.log(
+  `IndexNow: ${urlList.length} URLs from ${fromLive ? 'the live sitemap' : 'out/sitemap.xml'}`
+);
 console.log(`Key file: ${keyLocation}`);
 
 if (dryRun) {

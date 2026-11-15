@@ -1,0 +1,40 @@
+name: Submit the deployed sitemap to IndexNow
+
+# Bing, Yandex, Seznam and Naver accept URL submissions through IndexNow without
+# an account, and Bing's index also backs Copilot. The key file
+# (public/<key>.txt) is already published, so this only ever tells those crawlers
+# that the URLs in the live sitemap exist.
+#
+# Google ignores IndexNow entirely and finds the same URLs through sitemap.xml.
+# This workflow is not a substitute for Search Console.
+
+on:
+  workflow_run:
+    workflows: ['Publish custom-domain website']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Submit the live sitemap
+        run: node scripts/indexnow.mjs --live
+      - name: Keep the submission receipt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: indexnow-receipt
+          path: reports/indexnow.json
+          retention-days: 30

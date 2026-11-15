@@ -53,3 +53,52 @@ Executed against draft PR #10 on seo/organic-growth-recovery. The contract file 
 ## No claims made
 
 This report does not claim improved rankings, indexing, CTR, Core Web Vitals, backlinks, sales, WhatsApp conversions or AI citations.
+
+## Final exact-head verification — 16 November 2026
+
+The recovery branch is `seo/organic-growth-recovery` at
+`aedd2b4024c160609a963d224a0dfd078989dad9`. The required GitHub Actions
+`verify` job for that exact head passed in run `43755895527`; the skipped
+production-smoke and diagnostic jobs were conditional workflow-dispatch jobs,
+not failures. Local verification on the same source passed `npm ci`, lint,
+TypeScript, 96 unit tests, build, SEO validation, export checks, fragment
+checks and all 87 Playwright browser tests.
+
+The only source change in this final recovery step is a portable regression
+test in `tests/release-workflow.test.mjs`: CI still executes the actual Bash
+release guard, while Windows development runs validate the same three guard
+predicates when Bash is unavailable.
+
+The guarded Pages release completed successfully in run `43756289987` for
+exact reviewed `main` SHA `e677f6a92f297bceaf66a5e153b4e19563686edd`.
+Read-only production smoke passed at `https://aitoolspk.tech/` for desktop and
+iPhone 13 emulation: all six routes returned 200, self-canonicals and schema
+JSON parsed, the representative pending offer stayed `noindex`, it remained
+absent from the sitemap, WhatsApp links were valid, and no console, page or
+resource errors occurred. `www.aitoolspk.tech` returned 301 to the apex and
+DNS returned GitHub's four Pages addresses.
+
+### Acceptance matrix at final head
+
+| # | Acceptance area | Status | Evidence |
+| ---: | --- | --- | --- |
+| 1 | Correct domain identity | `FIXED_VERIFIED` | `public/CNAME`, DNS and live HTTPS smoke |
+| 2 | Routes/export/robots/sitemap/canonicals/noindex | `FIXED_VERIFIED` | 1,006 HTML pages; 188 sitemap URLs; export validator |
+| 3 | Historical query anomaly and Price Index intent | `FIXED_VERIFIED` | Supplied GSC evidence separated from attribution; Price Index copy/links |
+| 4 | Collection/category intent coverage | `FIXED_VERIFIED` | 108 collections, 13 categories, 32 derived priority links |
+| 5 | Repetitive pending offers | `BLOCKED_MISSING_FACTS` | 788 duplicates; 815 offers still need commercial review |
+| 6 | Truthful titles, answer-first content and price method | `FIXED_VERIFIED` | SEO validator, browser content checks and seller-quote disclosures |
+| 7 | Internal-link graph and broken URLs | `FIXED_VERIFIED` | 72,855 references; 0 broken; 1,499 fragments |
+| 8 | Image payloads and responsive sizing | `FIXED_VERIFIED` | Generated thumbnails, explicit sizes, browser asset checks |
+| 9 | Responsive/accessibility/table behavior | `FIXED_VERIFIED` | 87 Playwright tests including 320/768/820px and axe checks |
+| 10 | JS/build stability and lab performance | `FIXED_VERIFIED` | Build and browser gates pass; field CWV remains unmeasured |
+| 11 | Truthful structured data | `FIXED_VERIFIED` | 3,303 local blocks validated; no fabricated review/Offer claims |
+| 12 | AEO/GEO crawl readiness | `FIXED_VERIFIED` | robots, llms assets, answer passages and schema/text parity |
+| 13 | Privacy, trust, WhatsApp and policies | `FIXED_VERIFIED` | repository checks, browser policy routes and valid inquiry links |
+| 14 | Search data/URL Inspection/monitoring | `BLOCKED_EXTERNAL` | No authenticated GSC/URL Inspection connection |
+| 15 | Actions YAML/security/concurrency | `FIXED_VERIFIED` | workflow tests, locked actions and guarded release design |
+| 16 | Node 24 build and complete suites | `FIXED_VERIFIED` | GitHub Node 24 run; 96 unit + 87 browser tests |
+| 17 | Exact-head GitHub CI | `FIXED_VERIFIED` | run `43755895527`, exact recovery SHA |
+| 18 | Guarded release/deploy | `FIXED_VERIFIED` | run `43756289987`, exact reviewed main SHA |
+| 19 | Live post-release smoke | `FIXED_VERIFIED` | `reports/production-browser/summary.json`, status `PASS` |
+| 20 | Irreducible external requirements | `BLOCKED_EXTERNAL` | GSC/CrUX access and supplier approvals remain owner-controlled |

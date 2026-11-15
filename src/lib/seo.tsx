@@ -8,22 +8,23 @@ export function metadata(
   path: string,
   image: string = '/brand/social.png'
 ): Metadata {
+  const normalizedTitle = title.replace(/(?:\s*\|\s*AiToolsPk)+$/gi, '');
   return {
-    title,
+    title: normalizedTitle,
     description,
     alternates: { canonical: `${origin}${path}` },
     openGraph: {
-      title,
+      title: normalizedTitle,
       description,
       url: `${origin}${path}`,
       type: 'website',
       siteName: 'AiToolsPk',
       locale: 'en_PK',
-      images: [{ url: image, width: 1200, height: 630, alt: title }],
+      images: [{ url: image, width: 1200, height: 630, alt: normalizedTitle }],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: normalizedTitle,
       description,
       images: [image],
     },

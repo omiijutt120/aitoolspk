@@ -10,12 +10,11 @@ export function PurchaseLink({
   intent: 'order' | 'confirm' | 'restock';
 }) {
   const restock = intent === 'restock';
-  const label =
-    restock
-      ? 'Restock'
-      : intent === 'confirm'
-        ? 'Buy Now - Check availability'
-        : 'Buy Now';
+  const label = restock
+    ? 'Restock'
+    : intent === 'confirm'
+      ? 'Buy Now - Check availability'
+      : 'Buy Now';
   const actionName = restock ? 'Restock' : 'Buy Now';
   return (
     <a
@@ -35,7 +34,12 @@ export function PurchaseLink({
       }
     >
       <MessageCircle size={16} aria-hidden="true" />
-      <span>{intent === 'confirm' ? 'Buy Now (Check availability)' : label}</span>
+      <span>
+        {intent !== 'restock' &&
+        (intent === 'confirm' || product.approval !== 'approved')
+          ? 'Buy Now (Check availability)'
+          : label}
+      </span>
     </a>
   );
 }

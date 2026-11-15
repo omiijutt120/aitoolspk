@@ -16,6 +16,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
             alt={`${collection.brand} logo`}
             width={64}
             height={64}
+            sizes="64px"
             loading="eager"
           />
         )}

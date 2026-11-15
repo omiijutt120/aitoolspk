@@ -105,6 +105,7 @@ export default function Home() {
                     src={logoThumbnail(p.logo)}
                     width={44}
                     height={44}
+                    sizes="44px"
                     alt={`${p.brand} logo`}
                   />
                 ) : (

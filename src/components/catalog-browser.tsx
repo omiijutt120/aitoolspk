@@ -589,6 +589,7 @@ export function CatalogBrowser({
                       src={logoThumbnail(p.logo)}
                       width={24}
                       height={24}
+                      sizes="24px"
                       alt=""
                     />
                   )}
@@ -700,6 +701,7 @@ export function CatalogBrowser({
                     src={logoThumbnail(p.logo)}
                     width={18}
                     height={18}
+                    sizes="18px"
                     alt=""
                   />
                 )}

@@ -6,9 +6,8 @@ This is a repository and supplied-export diagnosis performed on the feature
 branch `seo/organic-growth-recovery`. The supplied baseline is a Search
 Console Web export for `https://aitoolspk.tech/`, last three months, with chart
 rows dated 22 October–13 November 2026. No Search Console account, URL
-Inspection API, device-filtered query export, page-filtered query export,
-manual-action report, security-issues report, CrUX field data or production
-HTML was available in this environment. The production hostname also failed
+Inspection API, manual-action report, security-issues report, CrUX field data
+or production HTML was available in this environment. The production hostname also failed
 DNS resolution (`curl: (6) Could not resolve host: aitoolspk.tech`), so live
 HTTP and deployment verification are **BLOCKED**.
 
@@ -26,6 +25,28 @@ HTTP and deployment verification are **BLOCKED**.
 The query, page and chart exports have different aggregation scopes and are
 not interchangeable totals.
 
+### Filtered `^ai[0-9]+$` query group
+
+The additional Search Console export is explicitly filtered to the regular
+expression `^ai[0-9]+$`. It reports **236 queries, 884 impressions and 0
+clicks**. This is a query-group total, not evidence that every query produced
+the same landing page or intent.
+
+Its filtered Pages report groups those impressions by landing page as follows:
+
+| Landing-page group | Impressions |
+| --- | ---: |
+| `/price-index/` | 822 |
+| Homepage | 64 |
+| `/plans/chatgpt/page/3/?category=ai-chat` | 4 |
+
+The filtered device breakdown is desktop **565**, tablet **173**, and mobile
+**146**. The country breakdown is Pakistan **883** and United States **1**.
+These filtered totals are the correct evidence for the anomaly's landing-page,
+device and country groups. They do **not** provide individual
+query-to-page attribution: separate query rows and filtered page rows cannot
+be joined to claim that `ai27538`, for example, landed on `/price-index/`.
+
 ## Query anomaly investigation
 
 The repository was rechecked with a source-tree search for `ai` followed by
@@ -37,14 +58,18 @@ is produced.
 
 The supplied query rows do not establish which landing pages received those
 impressions. Pages.csv and Queries.csv must not be joined to fabricate
-query-to-page attribution. The next valid investigation is a Search Console
-Performance query filtered by page, then separately by device and country.
+query-to-page attribution. The filtered Pages report now establishes only the
+three landing-page groups above. The next valid investigation is a Search
+Console Performance query filtered by each page, then separately by device and
+country, with a genuine combined table or URL Inspection evidence.
 Check the manual-action and security-issues reports in the same property.
 Do not add the codes to content, robots.txt or noindex rules.
 
-**Owner action required:** export the filtered query tables for `/price-index/`,
-desktop, mobile, tablet and Pakistan; export the manual-action and security
-issues status; provide the date range and property scope.
+**Owner action required:** export the page-filtered query tables for
+`/price-index/`, the homepage and the ChatGPT page-3 URL; export the
+manual-action and security-issues status; provide the date range and property
+scope. The existing regex-filtered totals are sufficient to document the group
+pattern, but not to attribute individual query strings to pages.
 
 ## Page and device diagnosis
 
@@ -96,6 +121,23 @@ Kling, TikTok, YouTube and Microsoft. For each, obtain page-filtered GSC
 queries and URL Inspection results before changing publication or creating
 content.
 
+### Gap analysis against the requested recovery scope
+
+| Area | Current repository evidence | Safe implementation status | Classification |
+| --- | --- | --- | --- |
+| 32 priority listings and collections | 108 collection pages render from the public catalog; collection pages already expose factual price, duration, warranty and related-collection sections. All 817 individual offers remain gated. | Added evidence-based 32-collection internal-link scope on the Price Index; no offer was promoted. | HIGH |
+| Unique product metadata and descriptions | Collection metadata is unique by slug and current quote facts. 788 offers have exact normalized-description duplicates and 815 need review. | Not safe to rewrite offers without product-fact approval; collection-level differentiation is implemented from catalog facts. | OWNER ACTION REQUIRED |
+| Duplicate-description remediation | Repeated descriptions are triage evidence, not permission to bulk-edit or index. | Preserve the gate; review product IDs individually with seller terms and editorial approval. | BLOCKED |
+| Technical SEO and indexing | Local export validates 1,006 HTML pages, 1,003 canonical pages, 188 indexable sitemap URLs, zero orphans and zero errors. | Repository checks pass; live status, Google-selected canonicals and URL Inspection remain unavailable. | VERIFIED PASS / OWNER ACTION REQUIRED |
+| Sitemap, robots, canonicals and structured data | Generated sitemap/robots/discovery files, shared metadata helper and schema validators are present. | No conflicting local signals found; no live response verification. | VERIFIED PASS / BLOCKED |
+| Speed and Core Web Vitals | Static-first build and generated thumbnails exist; no CrUX or field CWV data is available. | Added responsive `sizes` hints to fixed logo images to avoid oversized responsive candidates. | MEDIUM |
+| Image optimization and responsive layout | WebP thumbnails are generated for small/card slots; browser rendering is not executable in the root environment. | Kept generated assets and improved image selection hints without changing layout. | VERIFIED PASS / BLOCKED |
+| GEO/AEO and AI crawler access | Explicit crawler rules, `llms.txt`, `llms-full.txt`, `ai.txt`, entity/schema and visible answer passages exist. | No fabricated schema or citations added; live crawler access remains unverified. | VERIFIED PASS / BLOCKED |
+| Internal linking and authority | Collection pages link to price index, guides, categories, related collections and relevant articles. | Added 32 evidence-based priority links from the high-impression Price Index. | HIGH |
+| Trust and safety pages | About, contact, policies, editorial policy and ordering guidance are present and linked from collection guidance. | No unsupported business claims added. | VERIFIED PASS |
+| Ethical backlink strategy | Existing strategy and backlink files document owner-reviewed opportunities. | No outreach or submissions performed. | OWNER ACTION REQUIRED |
+| GSC monitoring and conversion tracking | No authorized GSC/GA4/CrUX import; WhatsApp is the conversion path. | Measurement plan remains documented; no tracker added without approval. | OWNER ACTION REQUIRED |
+
 ## GEO/AEO and trust
 
 The codebase exposes explicit crawler rules, organization/website identity,
@@ -120,21 +162,28 @@ WhatsApp enquiry clicks and qualified enquiries in separate reports.
 | --- | --- | --- | --- |
 | `src/app/price-index/page.tsx` | 827 impressions and 0 clicks in supplied Pages.csv; existing title did not state “AI tool prices” or PKR | Rewrote only the title and description to match the page's actual comparison intent and seller-quote disclosure | Low; metadata-only change. Covered by build/export SEO checks |
 | `src/app/price-index/page.tsx` | A high-impression comparison page made readers scan the full index before reaching priority collections | Added a concise, factual priority-tools link block using existing collection rows, prices and plan counts; aligned CollectionPage schema naming with the visible title | Low; derived links only, no new URLs or commercial claims. Covered by build/export/browser checks |
+| `src/app/price-index/page.tsx` | The recovery scope needed a concrete, crawlable destination map for the 32 largest current catalog collections | Added 32 links selected from current offer-count evidence, explicitly labelled as catalog size rather than popularity or search demand | Low; links resolve to existing collection pages and do not alter indexability |
+| Collection logo components | Fixed-size thumbnails lacked `sizes`, so responsive candidates could be selected as if they were viewport-width images | Added exact rendered-size hints to collection, product, catalog and article logo images | Low; image URL, dimensions and generated WebP assets are unchanged |
 | `docs/seo/SEO_30_60_90_DAY_ROADMAP.md` | Roadmap predates the 15 November baseline | Added dated evidence and measurement constraints | Documentation-only |
 | `docs/seo/GSC_PERFORMANCE_DIAGNOSIS_2026-11-15.md` | No dated diagnosis for this baseline | Added evidence, findings, implementation record, blockers and owner actions | Documentation-only |
 
 ## Test results
 
 The following local checks ran after dependencies were installed with
-`npm ci`: `npm run seo:products` and `npm run seo:keywords` completed;
-`npm run lint`, `npm run typecheck`, `npm test` and `npm run check:repo` were
-started. Lint and typecheck passed; the unit suite had 93 passing, 2 failing
-browser-sandbox tests and 1 skipped test because Chromium refuses to launch
-as root without its sandbox. The repository check passed with 0 issues.
+`npm ci`: `npm run seo:products`, `npm run seo:keywords`, `npm run lint`,
+`npm run typecheck`, `npm run build`, `npm run check:export` and
+`npm run check:fragments` completed successfully. The export contains 1,006
+HTML pages, 815 product routes, 72,855 checked internal references, zero
+broken targets, zero confidential fields, zero duplicate indexable
+descriptions and 1,499 valid fragment links. The SEO publication gate remains
+815 `NEEDS_REVIEW`, 2 `EXCLUDED`, and 0 approved indexable offers.
 
-The build, export, fragment, launch and browser suites remain to be run after
-the metadata change. `npm run seo:audit -- --live` is blocked by DNS
-resolution and must not be represented as passed.
+`npm test` still has 93 passing, 2 failing browser-sandbox tests and 1 skipped
+test because Chromium refuses to launch as root without its sandbox. The
+failure is environmental and no test was weakened. `npm run launch:check` and
+`npm run test:browser` have the same root Chromium limitation.
+`npm run seo:audit -- --live` remains blocked by
+`getaddrinfo EAI_AGAIN aitoolspk.tech` and is not represented as passed.
 
 ## 30/60/90-day owner plan
 

@@ -158,6 +158,7 @@ export default async function PlansPage({
                 src={logoThumbnail(c.logo)}
                 width={40}
                 height={40}
+                sizes="40px"
                 alt={`${c.brand} logo`}
               />
             ) : (

@@ -80,6 +80,7 @@ export function BlogLibrary({
                   alt={`${collection.brand} logo`}
                   width={36}
                   height={36}
+                  sizes="36px"
                 />
               ) : (
                 <Layers size={32} aria-hidden="true" />

@@ -21,21 +21,38 @@ const alphabetical = [...rows].sort((a, b) =>
   a.title.localeCompare(b.title, 'en')
 );
 const prioritySlugs = [
+  'api',
   'chatgpt',
   'gemini',
-  'claude',
-  'canva',
+  'google',
+  'microsoft',
+  'discord',
+  'youtube',
+  'tele',
+  'digital-tools',
+  'higgfield',
+  'facebook',
   'adobe',
   'elevenlabs',
-  'cursor',
-  'gamma',
   'capcut',
-  'grok',
-  'notion',
   'kling',
+  'notion',
   'tiktok',
-  'youtube',
-  'microsoft',
+  'gamma',
+  'canva',
+  'duolingo',
+  'grok',
+  'meitu',
+  'lovable',
+  'nordvpn',
+  'minimax',
+  'vieon',
+  'fpt-play',
+  'express',
+  'gpm-login',
+  'icloud',
+  'xingtu',
+  'autodesk',
 ];
 const priorityRows = prioritySlugs
   .map((slug) => rows.find((row) => row.slug === slug))
@@ -172,8 +189,8 @@ export default function PriceIndex() {
         <Link href="#how-to-read" prefetch={false}>
           How to read a starting price
         </Link>
-        <Link href="#priority-tools" prefetch={false}>
-          Priority tools
+        <Link href="#catalog-priority" prefetch={false}>
+          Largest catalog collections
         </Link>
         <Link href="#under-1000" prefetch={false}>
           Under PKR 1,000
@@ -220,12 +237,12 @@ export default function PriceIndex() {
         </li>
       </ul>
 
-      <h2 id="priority-tools">Compare commonly requested tools</h2>
+      <h2 id="catalog-priority">Largest current catalog collections</h2>
       <p>
-        Start with these frequently compared collections, then open the full
-        A–Z index below when you need another tool. Each link leads to the
-        collection page, where the exact listed plans, durations and seller
-        terms are shown together.
+        These 32 collections currently contain the most listed plans in the
+        public catalog. They are a navigation aid, not a search-volume or
+        popularity claim. Each link leads to the collection page, where the
+        exact listed plans, durations and seller terms are shown together.
       </p>
       <ul className="price-index-priority-links">
         {priorityRows.map((row) => (

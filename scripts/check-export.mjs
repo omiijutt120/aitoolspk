@@ -11,7 +11,8 @@ let pageCount = 0,
   seoPages = 0,
   structuredDataBlocks = 0,
   externalLinks = 0,
-  verificationAssets = 0;
+  verificationAssets = 0,
+  opaqueQueryTokenPages = 0;
 const origin = (
   process.env.NEXT_PUBLIC_SITE_URL || 'https://aitoolspk.tech'
 ).replace(/\/$/, '');
@@ -58,6 +59,14 @@ function walk(dir) {
       pageCount++;
       if (pageCount % 200 === 0)
         console.log(`Checked ${pageCount} HTML pages…`);
+      // Search Console has reported opaque values such as ai27538 as queries.
+      // They are not product identifiers and must never be emitted by this
+      // site; reject them so a future content change cannot create a source
+      // defect from the historical anomaly.
+      if (/\bai\d{4,}\b/i.test(html)) {
+        opaqueQueryTokenPages++;
+        throw new Error(`Opaque ai#### token emitted in exported HTML: ${file}`);
+      }
       if (
         /(?:href|src)=["'](?:https:\/\/aitoolspk\.tech)?\/aitoolspk(?:\/|["'])/i.test(
           html
@@ -273,6 +282,7 @@ const report = {
   seoPages,
   structuredDataBlocks,
   externalLinks,
+  opaqueQueryTokenPages,
   canonicalPages: canonicals.size,
   indexableSitemapUrls: sitemapUrls.length,
   paginatedCanonicalPages: [...canonicals.keys()].filter((url) =>

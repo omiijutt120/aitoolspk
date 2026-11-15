@@ -141,7 +141,11 @@ test('navigation and mobile filter dialogs support keyboard close', async ({
     'Pending verification'
   );
   await expect(page.locator('.product-card').first().locator('.buy-button'))
-    .toContainText('Check availability');
+    .toContainText('Buy Now');
+  const pendingHref = new URL(
+    (await page.locator('.product-card').first().locator('.buy-button').getAttribute('href'))!
+  );
+  expect(pendingHref.searchParams.get('text')).toContain('please confirm availability and eligibility');
 });
 for (const width of [320, 375, 390, 600, 768, 820, 1024, 1280, 1440]) {
   test(`responsive layout ${width}px`, async ({ page }) => {

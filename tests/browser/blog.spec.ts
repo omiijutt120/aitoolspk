@@ -121,7 +121,9 @@ test('articles are indexable, use truthful BlogPosting metadata and show exact c
       await expect(card).toContainText(
         `Listed PKR ${product.price.toLocaleString('en-PK')}`
       );
-      await expect(card).toContainText(product.id);
+      // The catalogue id stays in the order flow, not in the article body: an
+      // indexable page should read as a plan name and a price, not a SKU.
+      await expect(card).not.toContainText(product.id);
       await expect(card).toContainText(product.warranty);
     }
   }

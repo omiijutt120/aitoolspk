@@ -1,4 +1,4 @@
-import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';
+﻿import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 import { collectionSlug } from '../src/lib/catalog-identity.mjs';
@@ -66,7 +66,7 @@ for (const [slug, plans] of groups) {
           `<text x="82" y="${322 + i * 65}" font-family="Arial,sans-serif" font-size="57" font-weight="700" fill="#18191b">${escape(line.trim())}</text>`
       )
       .join('')}
-    <text x="82" y="453" font-family="Arial,sans-serif" font-size="27" fill="#555">${plans.length} listed ${plans.length === 1 ? 'plan' : 'plans'} · Typical ${escape(money(typicalPrice))}${highPrice > lowPrice ? ` · ${escape(money(lowPrice))} to ${escape(money(highPrice))}` : ''}</text>
+    <text x="82" y="453" font-family="Arial,sans-serif" font-size="27" fill="#555">${plans.length} listed ${plans.length === 1 ? 'plan' : 'plans'} Â· Typical ${escape(money(typicalPrice))}${highPrice > lowPrice ? ` Â· ${escape(money(lowPrice))} to ${escape(money(highPrice))}` : ''}</text>
     <line x1="82" y1="489" x2="1118" y2="489" stroke="#e4e4e0"/>
     <text x="82" y="542" font-family="Arial,sans-serif" font-size="25" fill="#333">Compare duration, access &amp; seller warranty</text>
     <text x="1118" y="542" text-anchor="end" font-family="Arial,sans-serif" font-size="21" fill="#666">Confirm current quote</text>
@@ -118,7 +118,7 @@ for (const post of blogPosts) {
     <rect width="1200" height="630" fill="#f5f5f3"/><rect x="32" y="32" width="1136" height="566" rx="30" fill="#fff" stroke="#dededb"/>
     <text x="82" y="107" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#18191b">AiToolsPk</text>
     <text x="1118" y="105" text-anchor="end" font-family="Arial,sans-serif" font-size="22" fill="#666">aitoolspk.tech</text>
-    <text x="82" y="172" font-family="Arial,sans-serif" font-size="24" fill="#7a5c24">${escape(brand)} · practical guide</text>
+    <text x="82" y="172" font-family="Arial,sans-serif" font-size="24" fill="#7a5c24">${escape(brand)} Â· practical guide</text>
     ${lines
       .slice(0, 3)
       .map(
@@ -127,7 +127,7 @@ for (const post of blogPosts) {
       )
       .join('')}
     <line x1="82" y1="489" x2="1118" y2="489" stroke="#e4e4e0"/>
-    <text x="82" y="542" font-family="Arial,sans-serif" font-size="25" fill="#333">${readingMinutes(post)} min read · Reviewed ${escape(post.checked)}</text>
+    <text x="82" y="542" font-family="Arial,sans-serif" font-size="25" fill="#333">${readingMinutes(post)} min read Â· Reviewed ${escape(post.checked)}</text>
     <text x="1118" y="542" text-anchor="end" font-family="Arial,sans-serif" font-size="21" fill="#666">By Muhammad Umar</text>
   </svg>`;
   const hash = createHash('sha256').update(svg).digest('hex');
@@ -237,7 +237,7 @@ const lines = [
     ['Price index: every listed PKR starting price', '/price-index/'],
     ['Categories', '/categories/'],
     ['How to order', '/how-to-order/'],
-    ['Contact: WhatsApp +923714549245, email hello@aitoolspk.tech', '/contact/'],
+    ['Contact: WhatsApp +923714549245', '/contact/'],
     ['Editorial policy', '/editorial-policy/'],
     ['Terms', '/terms/'],
     ['Refund policy', '/refund-policy/'],
@@ -270,13 +270,13 @@ const lines = [
 await writeFile('public/llms.txt', lines.join('\n'));
 
 /*
- * /llms-full.txt — the same navigation, expanded into the facts a model would
+ * /llms-full.txt â€” the same navigation, expanded into the facts a model would
  * otherwise have to crawl 159 pages to collect: every collection with its plan
  * count, PKR range, quote dates and durations, plus the guides. Generated from
  * data/catalog.json, so it cannot drift from the pages it describes.
  */
 const full = [
-  '# AiToolsPk — full catalogue text',
+  '# AiToolsPk â€” full catalogue text',
   '',
   '> Independent catalogue of AI tools and digital subscriptions for Pakistan, with listed PKR prices and WhatsApp enquiries.',
   '',
@@ -286,7 +286,7 @@ const full = [
   '',
   '- Every amount is a dated seller quote in PKR. It is not the vendor list price, and comparing it with a USD list price is not a like-for-like comparison.',
   '- A listed brand or logo identifies the tool being compared. It does not establish vendor affiliation, authorization to resell, or approval of any offer.',
-  '- Subscription duration is not a warranty period. An explicit AiToolsPk seller warranty is separate from the vendor’s own terms.',
+  '- Subscription duration is not a warranty period. An explicit AiToolsPk seller warranty is separate from the vendorâ€™s own terms.',
   '- There is no on-site checkout, customer account or payment collection. An enquiry is not a purchase or a reservation.',
   '- Prices, access methods and warranty labels change. Confirm the exact product ID, amount and delivery terms in writing before paying.',
   '',
@@ -295,7 +295,7 @@ const full = [
   ...[
     ['About', '/about/'],
     ['How to order', '/how-to-order/'],
-    ['Contact: WhatsApp +923714549245, email hello@aitoolspk.tech', '/contact/'],
+    ['Contact: WhatsApp +923714549245', '/contact/'],
     ['Editorial policy', '/editorial-policy/'],
     ['Terms', '/terms/'],
     ['Refund policy', '/refund-policy/'],
@@ -339,15 +339,15 @@ const full = [
 await writeFile('public/llms-full.txt', full);
 
 /*
- * /ai.txt — a short usage notice next to the navigation. It grants citation and
+ * /ai.txt â€” a short usage notice next to the navigation. It grants citation and
  * summarisation of the public pages and states the limits plainly; it is not a
  * robots.txt and does not override it.
  */
-const aiTxt = `# ai.txt — AiToolsPk
+const aiTxt = `# ai.txt â€” AiToolsPk
 # https://aitoolspk.tech/
 
 Site: AiToolsPk
-Contact: WhatsApp +923714549245, email hello@aitoolspk.tech via https://aitoolspk.tech/contact/
+Contact: WhatsApp +923714549245 via https://aitoolspk.tech/contact/
 Last generated: ${new Date().toISOString().slice(0, 10)}
 
 You may read, quote and cite the public pages of this site when answering a
@@ -362,10 +362,10 @@ vary by product, and a brand name or logo does not imply vendor affiliation or
 authorization to resell.
 
 The most useful machine-readable entry points:
-- https://aitoolspk.tech/llms.txt — navigation
-- https://aitoolspk.tech/llms-full.txt — every collection with its PKR range
-- https://aitoolspk.tech/price-index/ — every tool with its listed starting price
-- https://aitoolspk.tech/sitemap.xml — canonical page list
+- https://aitoolspk.tech/llms.txt â€” navigation
+- https://aitoolspk.tech/llms-full.txt â€” every collection with its PKR range
+- https://aitoolspk.tech/price-index/ â€” every tool with its listed starting price
+- https://aitoolspk.tech/sitemap.xml â€” canonical page list
 
 Ignored by design: no prices behind a login, no account data, no customer
 records. Nothing here should be treated as an offer to sell at a stated price.

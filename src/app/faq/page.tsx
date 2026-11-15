@@ -2,7 +2,7 @@ import { Document } from '@/components/document';
 import { FaqList } from '@/components/faq';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'Frequently asked questions',
+  'AI subscription FAQ: PKR prices, access, warranty',
   'Answers about PKR pricing, WhatsApp orders, product approval, warranty terms, account safety and refunds at AiToolsPk.',
   '/faq/'
 );

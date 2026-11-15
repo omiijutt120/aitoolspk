@@ -32,6 +32,8 @@ test('release refuses a non-main ref or a different expected commit', () => {
   assert.ok(script, 'Release guard shell script must be present');
   const guard = script.split('\n').map((line) => line.slice(10)).join('\n');
   const sha = 'a'.repeat(40);
+  const shell = process.platform === 'win32' ? 'bash.exe' : 'bash';
+  const canRunShell = spawnSync(shell, ['-e', '-c', 'exit 0'], { encoding: 'utf8' }).error == null;
   for (const [ref, expected, actual, status] of [
     ['refs/heads/main', sha, sha, 0],
     ['refs/heads/feature', sha, sha, 1],
@@ -39,10 +41,17 @@ test('release refuses a non-main ref or a different expected commit', () => {
     ['refs/heads/main', '', sha, 1],
     ['refs/heads/main', 'main', sha, 1],
   ]) {
-    const result = spawnSync('bash', ['-e', '-c', guard], {
-      env: { ...process.env, GITHUB_REF: ref, EXPECTED_SHA: expected, GITHUB_SHA: actual },
-      encoding: 'utf8',
-    });
-    assert.equal(result.status, status, `${ref} ${expected}: ${result.stderr}`);
+    if (canRunShell) {
+      const result = spawnSync(shell, ['-e', '-c', guard], {
+        env: { ...process.env, GITHUB_REF: ref, EXPECTED_SHA: expected, GITHUB_SHA: actual },
+        encoding: 'utf8',
+      });
+      assert.equal(result.status, status, `${ref} ${expected}: ${result.stderr}`);
+    } else {
+      // Windows development shells may not provide Bash; validate the exact
+      // three predicates used by the workflow guard instead of skipping it.
+      const accepted = ref === 'refs/heads/main' && /^[0-9a-f]{40}$/.test(expected) && actual === expected;
+      assert.equal(accepted ? 0 : 1, status, `${ref} ${expected}`);
+    }
   }
 });

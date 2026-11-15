@@ -15,7 +15,7 @@ export function PurchaseLink({
     : intent === 'confirm'
       ? 'Check availability'
       : 'Buy Now';
-  const accessibleLabel = restock ? 'Ask about restock' : 'Buy Now';
+  const actionName = restock ? 'Restock' : 'Buy Now';
   return (
     <a
       className="button buy-button"
@@ -24,7 +24,7 @@ export function PurchaseLink({
       href={whatsappUrl(product, intent)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`${accessibleLabel}: ${product.name}`}
+      aria-label={`${actionName}: ${product.name}`}
       title={
         restock
           ? 'Ask when this out-of-stock plan may be available'

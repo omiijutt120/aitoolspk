@@ -11,14 +11,7 @@ or production HTML was available in this environment. The production hostname al
 DNS resolution (`curl: (6) Could not resolve host: aitoolspk.tech`), so live
 HTTP and deployment verification are **BLOCKED**.
 
-The requested `AiToolsPk_GitHub_Copilot_ONE_SHOT_SEO_GEO_AEO_RECOVERY.md`
-contract was not present in the tracked repository or Git history. The only
-reference supplied to this session was a temporary uploaded prompt path, which
-is intentionally not accessed. Therefore the matrix below maps the explicit
-20 acceptance areas in the user request and repository's existing release
-gates; any additional acceptance wording in that unavailable file is
-**BLOCKED** and must be supplied as a repository file or non-temporary
-instruction before it can be verified.
+The complete `AiToolsPk_GitHub_Copilot_ONE_SHOT_SEO_GEO_AEO_RECOVERY.md` contract is now tracked on the feature branch and was read in full. Its 20 acceptance areas are mapped in the recovery report and PR #10.
 
 ## Baseline
 
@@ -92,6 +85,10 @@ retaining the seller-quote disclosure. It does not change commercial data.
 No desktop-specific rendering defect can be concluded from aggregate device
 data. Desktop snippets, page-filtered queries, rendered screenshots and
 interaction traces are unavailable until production access is restored.
+
+## Fresh live crawl (15/16 November 2026)
+
+Firecrawl mapped 196 URLs and completed a 220-document crawl. All 220 returned HTTP 200. The crawl found no duplicate title groups; two documents lacked title/description fields, 20 titles exceeded 60 characters, and two documents contained under 250 extracted words. The long-title sample includes intentionally noindex offer pages, so it is not a reason to bulk-edit all titles. The two metadata-empty documents have not yet been isolated by content type. A separate OpenSEO audit remained limited to 50 pages and reported 320 discovered URLs not crawled; its sample was all HTTP 200 and indexable. Lighthouse completed 9 of 20 attempts and failed 11. These are crawler/lab observations, not GSC index or field CWV evidence.
 
 ## Technical audit
 

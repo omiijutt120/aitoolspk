@@ -10,11 +10,38 @@ const gsc = new Map(
     ['/plans/chatgpt/', 20, 0, '0%', 6.85],
     ['/plans/adobe/', 16, 0, '0%', 22.31],
     ['/faq/', 12, 0, '0%', 11.42],
+    ['/categories/', 26, 0, '0%', 7.23],
+    ['/about/', 21, 0, '0%', 4.86],
+    ['/plans/cursor/', 11, 0, '0%', 9.09],
+    ['/plans/tradingview/', 11, 0, '0%', 9.18],
   ].map(([p, impressions, clicks, ctr, position]) => [
     p,
     { impressions, clicks, ctr, position },
   ])
 );
+
+/**
+ * The 15 entertainment collections whose title changed in release 7b837ff.
+ * Listed explicitly so the inventory can say what changed on those rows instead
+ * of implying every collection was touched.
+ */
+const ENTERTAINMENT_TITLED = new Set([
+  'youtube',
+  'discord',
+  'tiktok',
+  'vieon',
+  'fpt-play',
+  'netflix',
+  'tv360',
+  'spotify',
+  'galaxy-play',
+  'iqiyi',
+  'apple',
+  'youku',
+  'gemini',
+  'roblox',
+  'xbox',
+]);
 
 const sitemap = readFileSync('out/sitemap.xml', 'utf8');
 const sitemapUrls = new Set(
@@ -55,17 +82,26 @@ function typeOf(route) {
 function actionFor(route, type, indexable) {
   const row = gsc.get(route);
   if (type === 'product-detail')
-    return 'Noindex, absent from sitemap. Keep noindex: 817/817 quotes dated 2026-10-19, 0 approving reviews.';
+    return 'Noindex, absent from sitemap. Keep noindex: 817/817 quotes dated 2026-10-19 to -24, 0 approved reviews.';
+  if (route === '/')
+    return 'Shipped in 7b837ff: title, description and H1 now name the catalogue ("AI tools and subscriptions in Pakistan") so the price query belongs to /price-index/ alone. Read CTR after recrawl.';
   if (route === '/price-index/')
-    return 'Fixed in this branch: title names the query and currency; method + sources section added; quote dates stated.';
+    return 'Shipped in 7b837ff: title names the query and currency, method + sources section added, quote dates stated, and a #streaming section lists the 15 entertainment collections. 884 ai##### impressions inflate this row.';
   if (route === '/plans/netflix/')
-    return 'Snippet already leads with from-PKR and typical; constraint is average position 11.4, not the snippet.';
+    return 'Shipped in 7b837ff: title now reads "Netflix plans and prices", matching the 62 Netflix queries. Ranking constraint is average position 11.44 plus authority, not the snippet.';
   if (route === '/plans/chatgpt/')
     return 'Title and snippet answer the query; page was absent from the 22-collection index probe on 2026-11-10. Owner: request indexing.';
   if (route === '/plans/adobe/')
     return 'Average position 22.3. On-page metadata already specific; needs authority/internal links, not a rewrite.';
   if (route === '/faq/')
-    return 'Snippet is generic because the page answers many questions. Linked from footer; no change this round.';
+    return 'Shipped in 7b837ff: title now names PKR prices, access and warranty instead of "Frequently asked questions".';
+  if (route === '/categories/')
+    return 'Shipped in 7b837ff: title names categories, AI/software and Pakistan; H1 names categories. Routing hub, so no further on-page lever.';
+  if (route === '/about/')
+    return 'No change this round beyond removing the unreachable email address. Average position 4.86 with 0 clicks: judge after recrawl.';
+  const collection = /^\/plans\/([^/]+)\/$/.exec(route)?.[1];
+  if (collection && ENTERTAINMENT_TITLED.has(collection))
+    return 'Shipped in 7b837ff: title now reads "plans and prices in Pakistan 2026" because all 62 Netflix queries use plans/packages/subscription wording.';
   if (!indexable) return 'Not indexable by design; excluded from sitemap.';
   if (row) return 'Measured row; no change this round.';
   return 'Indexable, in sitemap; no Search Console page row was supplied for it.';

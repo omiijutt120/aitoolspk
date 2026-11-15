@@ -61,7 +61,7 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .hover();
   await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'AI tool prices in Pakistan.'
+    'AI tools and subscriptions in Pakistan.'
   );
   await expect(page.locator('.collection-card').first()).toBeVisible();
   await page.locator('.collection-card').first().click();

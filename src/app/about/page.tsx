@@ -5,7 +5,7 @@ import { author, authorPath, authorSchema } from '@/lib/author';
 
 export const metadata = makeMetadata(
   'Price sources and who runs this catalog',
-  'Who runs AiToolsPk, where the listed PKR quotes come from, how a quote is dated and how to reach the editor by email or WhatsApp before paying.',
+  'Who runs AiToolsPk, where the listed PKR quotes come from, how a quote is dated and how to reach the editor on WhatsApp before paying.',
   '/about/'
 );
 
@@ -95,12 +95,10 @@ export default function About() {
             rel="noopener noreferrer"
           >
             WhatsApp at +92 371 4549245
-          </a>{' '}
-          or email{' '}
-          <a href="mailto:hello@aitoolspk.tech">hello@aitoolspk.tech</a>. For an
-          existing order, reply in the original conversation with the product ID
-          and order reference. Do not send passwords, recovery keys, payment-card
-          details or security codes.
+          </a>
+          . For an existing order, reply in the original conversation with the
+          product ID and order reference. Do not send passwords, recovery keys,
+          payment-card details or security codes.
         </p>
         <div className="guide-links">
           <Link href="/editorial-policy/">

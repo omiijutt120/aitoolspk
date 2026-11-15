@@ -158,23 +158,22 @@ test('About, editorial policy and contact publish only supplied business contact
   for (const path of ['/about/', '/editorial-policy/', '/contact/']) {
     await page.goto(path);
     await expect(page.locator('h1')).toHaveCount(1);
-    // Only the one published domain address may appear anywhere on the page.
-    // Any other mailto link would be an unverified contact claim. The address is
-    // repeated in the site footer so it reaches every page, which is why the
-    // expected value no longer depends on the path.
+    // The published address hello@aitoolspk.tech has no mailbox behind it: the
+    // domain carries no MX record, so every message to it bounced. The link was
+    // removed rather than left as an invitation that cannot be answered, which
+    // means no page may publish a mailto link at all and the Organization node
+    // must not declare an email it cannot receive.
     const mailto = await page
       .locator('a[href^="mailto:"]')
       .evaluateAll((links) => links.map((link) => link.getAttribute('href')));
-    expect(mailto.every((href) => href === 'mailto:hello@aitoolspk.tech')).toBe(
-      true
-    );
-    if (path !== '/contact/') expect(mailto.length).toBeGreaterThan(0);
+    expect(mailto).toEqual([]);
     const schema = (
       await page.locator('script[type="application/ld+json"]').allTextContents()
     ).map((s) => JSON.parse(s));
     const org = schema.find((s) => s['@type'] === 'Organization');
     expect(org.contactPoint.telephone).toBe('+923714549245');
-    expect(org.email).toBe('hello@aitoolspk.tech');
+    expect(org.email).toBeUndefined();
+    expect(org.contactPoint.email).toBeUndefined();
     expect(org.address).toBeUndefined();
     // Only profiles that resolve are declared. A social placeholder would be a
     // false identity claim, so nothing beyond the two public GitHub records the

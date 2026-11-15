@@ -46,11 +46,20 @@ export async function generateMetadata({
   const collection = collections.find((c) => c.slug === slug);
   if (!collection) return {};
   const name = collection.isApi ? 'API' : collection.brand;
+  // The entertainment collections carry the only query cluster with real
+  // Pakistani demand in the export (Netflix: 378 impressions across 62
+  // queries), and those queries are "netflix plans", "netflix packages" and
+  // "netflix subscription" — not "netflix price". The title names plans as
+  // well as prices for that category only; every other collection keeps the
+  // price-led form that matches its queries.
+  const entertainment = collection.categories.includes('entertainment');
   // Buy-intent phrasing that still fits beside the 13-character " | AiToolsPk"
   // suffix, so the rendered title stays inside the 65-character limit.
-  const withCount = `${name} price in Pakistan 2026: ${collection.count} ${
-    collection.count === 1 ? 'plan' : 'plans'
-  }`;
+  const withCount = entertainment
+    ? `${name} plans and prices in Pakistan 2026`
+    : `${name} price in Pakistan 2026: ${collection.count} ${
+        collection.count === 1 ? 'plan' : 'plans'
+      }`;
   const base =
     page > 1
       ? `${name} prices in Pakistan — page ${page}`
@@ -72,7 +81,9 @@ export async function generateMetadata({
       : `${label} from ${money(band.minPrice)} across ${band.count} ${
           band.count === 1 ? 'listing' : 'listings'
         }`;
-  const head = `${name} in Pakistan: `;
+  const head = entertainment
+    ? `${name} plans in Pakistan: `
+    : `${name} in Pakistan: `;
   const tail = `${collection.count} dated seller ${
     collection.count === 1 ? 'quote' : 'quotes'
   }, compared by duration, access and warranty.`;
@@ -104,7 +115,7 @@ export async function generateMetadata({
       answered
         ? `${head}${answered}. ${tail}`
         : single
-          ? `${name} in Pakistan: listed at ${money(collection.minPrice)}. ${tail}`
+          ? `${head}listed at ${money(collection.minPrice)}. ${tail}`
           : `Typical listed ${name} quote ${money(collection.medianPrice)}, range ${money(collection.minPrice)}–${money(collection.maxPrice)} across ${collection.count} plans. ${tail}`,
       page
     ),

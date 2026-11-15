@@ -20,6 +20,14 @@ const underThousand = rows
 const alphabetical = [...rows].sort((a, b) =>
   a.title.localeCompare(b.title, 'en')
 );
+// Entertainment is the one category with measured Pakistani demand outside the
+// AI/software core: the Netflix collection alone accounts for 378 impressions in
+// the current Search Console export, more than every non-Netflix query combined.
+// Listing those collections together makes the index answer that query instead of
+// burying five streaming collections inside 108 alphabetical rows.
+const streaming = rows
+  .filter((row) => row.categories.includes('entertainment'))
+  .sort((a, b) => a.from - b.from || a.title.localeCompare(b.title, 'en'));
 
 export const metadata = makeMetadata(
   // This is the largest impression row in the Search Console export and the
@@ -193,6 +201,9 @@ export default function PriceIndex() {
         <Link href="#under-1000" prefetch={false}>
           Under PKR 1,000
         </Link>
+        <Link href="#streaming" prefetch={false}>
+          Streaming subscriptions
+        </Link>
         <Link href="#all-tools" prefetch={false}>
           All {stats.tools} tools
         </Link>
@@ -263,6 +274,22 @@ export default function PriceIndex() {
         items={underThousand}
         caption={`${underThousand.length} tools with a listed quote of PKR 1,000 or less`}
         ariaLabel="Tools under PKR 1,000, scroll horizontally if needed"
+      />
+
+      <h2 id="streaming">Entertainment and streaming subscriptions</h2>
+      <p>
+        {streaming.length} of the {stats.tools} collections are entertainment
+        accounts rather than work tools. They are listed here because they are
+        sold the same way: a dated seller quote, a stated duration and a
+        warranty label. Several are shared slots rather than whole-account
+        plans, which is why a month can cost less than the vendor&apos;s own
+        price, so open the collection and read the access type before assuming
+        the quote buys a private account.
+      </p>
+      <PriceTable
+        items={streaming}
+        caption={`${streaming.length} entertainment and streaming collections, lowest listed quote first`}
+        ariaLabel="Entertainment and streaming subscriptions, scroll horizontally if needed"
       />
 
       <h2 id="all-tools">All {stats.tools} tools, A to Z</h2>

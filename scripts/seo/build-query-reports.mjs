@@ -41,14 +41,14 @@ const keywordRows = [
     gsc_avg_position: 5.12,
     current_ranking_url: 'not supplied (Pages dimension withheld)',
     content_gap:
-      "Homepage and /price-index/ now both carry 'AI tool prices in Pakistan' in the title, so two URLs target one phrase; the price index owns the price intent and the homepage does not yet own 'tools & subscriptions'.",
-    recommended_title: 'AI tools & subscriptions in Pakistan | AiToolsPk',
+      "Homepage and /price-index/ both carried 'AI tool prices in Pakistan' in the title while only the price index earned impressions for it (827 against 120), so the homepage was competing with its own index page for one phrase instead of owning 'AI tools and subscriptions in Pakistan'.",
+    recommended_title: 'AI tools and subscriptions in Pakistan | AiToolsPk',
     recommended_h1:
-      'AI tool prices in Pakistan. Compare every plan. (unchanged)',
+      'AI tools and subscriptions in Pakistan. Compare every plan.',
     next_action:
-      "Hold until the price index has been recrawled: it already converts at 2.50% CTR. If both URLs still compete for the price phrase, retarget the homepage title and drop 'prices' from the H1.",
-    evidence_source: 'supplied Pages row; live 200 response',
-    approval_required: 'yes - visible H1 change',
+      'Applied on this branch: title, description and H1 retargeted to the catalogue intent; the price index keeps the price phrase. Measure the two pages separately after recrawl. CTR is 2.50% on 120 impressions, so the lever here is relevance, not a bigger claim.',
+    evidence_source: 'supplied Pages row; built HTML title/H1 measured after the change',
+    approval_required: 'no - shipped on this branch, pending deploy',
   },
   {
     cluster: 'AI price discovery',
@@ -69,10 +69,33 @@ const keywordRows = [
     recommended_title: 'AI tool prices in Pakistan 2026: 108 tools in PKR',
     recommended_h1: 'Every listed price, one index. (unchanged)',
     next_action:
-      'Applied on this branch: title, description, quote-date sentence, #method section, fourth anchor. Measure CTR after recrawl; do not add more keywords before that read.',
+      'Applied on this branch: title, description, quote-date sentence, #method section, and a streaming section that lists the 15 entertainment collections instead of burying them in 108 alphabetical rows. Measure CTR after recrawl; do not add more keywords before that read.',
     evidence_source:
       'supplied Pages row; built HTML title/description measured; live row still pre-fix',
     approval_required: 'no - shipped in this branch, pending deploy approval',
+  },
+  {
+    cluster: 'Category navigation',
+    primary_keyword: 'AI tool categories Pakistan',
+    secondary_intents:
+      'AI software categories; digital tool types Pakistan; browse AI tools by category',
+    target_url: '/categories/',
+    page_type: 'navigation hub',
+    competing_internal_urls: '/; /tools/; /category/ai-chat/; /price-index/',
+    gsc_impressions: 26,
+    gsc_clicks: 0,
+    gsc_ctr: '0%',
+    gsc_avg_position: 7.23,
+    current_ranking_url: 'not supplied (Pages dimension withheld)',
+    content_gap:
+      "26 impressions at average position 7.23 with no clicks; the title was 'Explore categories | AiToolsPk' (33 chars), which names neither the country nor the subject, and the H1 read 'Start with what you do.' The page is a routing hub, so the only realistic gain is a title and H1 that repeat the query.",
+    recommended_title: 'AI and software categories in Pakistan | AiToolsPk',
+    recommended_h1: 'Categories: start with what you do.',
+    next_action:
+      'Applied on this branch: title, description and H1 now name categories and Pakistan. No new hub pages: the 13 category pages already exist and were retitled in the same branch.',
+    evidence_source:
+      'supplied Pages row; built HTML title and H1 measured after the change',
+    approval_required: 'no - shipped on this branch, pending deploy',
   },
   {
     cluster: 'ChatGPT',
@@ -89,11 +112,11 @@ const keywordRows = [
     gsc_avg_position: 6.85,
     current_ranking_url: 'not supplied (Pages dimension withheld)',
     content_gap:
-      '52 listings with 20 impressions: the 10 November site: probe returned this URL under the pre-9-November title, so Google has not reprocessed it. The homepage card sits 18th of 27.',
+      '52 listings with 20 impressions: the 10 November site: probe returned this URL under the pre-9-November title, so Google has not reprocessed it. The homepage card is already first in the rendered grid (measured in out/index.html), so merchandising is not the gap.',
     recommended_title: 'ChatGPT price in Pakistan 2026: 52 plans | AiToolsPk',
     recommended_h1: 'ChatGPT plans & prices in Pakistan (unchanged)',
     next_action:
-      'Deploy, then URL Inspection -> Request Indexing. Moving the homepage card is merchandising, not SEO: owner decision.',
+      'Deploy, then URL Inspection -> Request Indexing. The homepage already leads with ChatGPT, so no merchandising change is needed.',
     evidence_source:
       'supplied Pages row; docs/seo/INDEX_AND_QUERY_COVERAGE_2026-11-10.md',
     approval_required: 'no (metadata unchanged); deploy approval yes',
@@ -598,13 +621,14 @@ const keywordRows = [
     gsc_avg_position: 11.44,
     current_ranking_url: 'not supplied (Pages dimension withheld)',
     content_gap:
-      "62 Netflix queries, 378 impressions, 1 click. The snippet already leads with 'from PKR 400, typically PKR 758', so the snippet is not the gap; average position 11.44 is page 2.",
-    recommended_title: 'Netflix price in Pakistan 2026: 5 plans | AiToolsPk',
+      "62 Netflix queries, 378 impressions, 1 click, and they are the only real demand cluster in the export: 'netflix plans' 145 impressions at 7.74, 'netflix subscription' 107 at 10.34, 'netflix packages' 20 at 16.70. The page itself sits at 11.44 with 434 impressions. The snippet already led with 'from PKR 400, typically PKR 758', so the snippet was not the gap; the title said 'price' while the queries say 'plans'.",
+    recommended_title: 'Netflix plans and prices in Pakistan 2026 | AiToolsPk',
     recommended_h1: 'Netflix plans & prices in Pakistan (unchanged)',
     next_action:
-      'No snippet change. The lever is ranking: the streaming article already links here, and the 34 unsubmitted link targets in docs/OFFSITE_SUBMISSION_PACK.md are the other half.',
-    evidence_source: 'supplied Pages row; built HTML title/description',
-    approval_required: 'no change proposed',
+      'Applied on this branch: the 15 entertainment collections now title as "X plans and prices in Pakistan 2026", and /price-index/ gained a streaming section that links here with a descriptive anchor. Both are relevance and internal-anchor changes; the ranking lever is still authority (34 unsubmitted targets in docs/OFFSITE_SUBMISSION_PACK.md).',
+    evidence_source:
+      'supplied Pages and Queries rows; built HTML title/description measured after the change',
+    approval_required: 'no - shipped on this branch, pending deploy',
   },
   {
     cluster: 'Entertainment (wink, measured)',
@@ -693,28 +717,30 @@ const queryRows = [
     impressions: 884,
     clicks: 0,
     ctr: '0%',
-    landing_page: 'unknown',
+    landing_page: '/price-index/ (probable)',
     landing_page_status:
-      'Cannot be identified: the Pages dimension of the export was not supplied',
+      'Inferable from the supplied Pages table: /price-index/ carries 827 of 1,750 page impressions at average position 6.88 with 0 clicks, the closest page-side match to these 884 query impressions (47% of pages against 69% of queries). The export still does not pair a query with a page, so this is inference, not proof.',
     source_and_rendered_evidence: scanSummary,
     root_cause:
       'Not emitted by this codebase. Catalogue identifiers are PK-[A-F0-9]{12}, never ai+digits. Consistent with (a) the domain hosting a different site before 19 October 2026 and (b) Google serving a loosely related page as a fallback for a query with almost no matching demand.',
     remediation:
-      'No page was created for these strings (no intent to satisfy). Identifier-shaped text is now removed from every indexable page and blocked by check:export, so this site cannot leak one in future.',
-    status: 'Diagnosed as not self-generated; landing page still open',
+      'No page was created for these strings (no intent to satisfy). Identifier-shaped text is now removed from every indexable page and blocked by check:export, so this site cannot leak one in future. The impressions are expected to decay as the domain is recrawled; they are not a ranking opportunity.',
+    status:
+      'Diagnosed as not self-generated; landing page inferred from the Pages table',
     closes_with:
-      'Owner exports Pages.csv filtered to these queries, or URL Inspection on the candidate URLs',
+      'Owner filters the GSC Queries report by page (or exports with the page dimension) to confirm the pairing',
   },
   {
     row_id: 'Q2',
     query_group: 'Code-like identifiers (example)',
     pattern_or_example: 'ai27538',
     queries: 'part of Q1',
-    impressions: NOT_SUPPLIED,
-    clicks: NOT_SUPPLIED,
-    ctr: NOT_SUPPLIED,
+    impressions: 15,
+    clicks: 0,
+    ctr: '0%',
     landing_page: 'unknown',
-    landing_page_status: 'Example row only; counts and page not supplied',
+    landing_page_status:
+      'Example row; the export gives no query-to-page pairing',
     source_and_rendered_evidence: scanSummary,
     root_cause: 'Same as Q1',
     remediation: 'Same as Q1',
@@ -726,11 +752,12 @@ const queryRows = [
     query_group: 'Code-like identifiers (example)',
     pattern_or_example: 'ai54581',
     queries: 'part of Q1',
-    impressions: NOT_SUPPLIED,
-    clicks: NOT_SUPPLIED,
-    ctr: NOT_SUPPLIED,
+    impressions: 15,
+    clicks: 0,
+    ctr: '0%',
     landing_page: 'unknown',
-    landing_page_status: 'Example row only; counts and page not supplied',
+    landing_page_status:
+      'Example row; the export gives no query-to-page pairing',
     source_and_rendered_evidence: scanSummary,
     root_cause: 'Same as Q1',
     remediation: 'Same as Q1',
@@ -742,11 +769,12 @@ const queryRows = [
     query_group: 'Code-like identifiers (example)',
     pattern_or_example: 'ai24130',
     queries: 'part of Q1',
-    impressions: NOT_SUPPLIED,
-    clicks: NOT_SUPPLIED,
-    ctr: NOT_SUPPLIED,
+    impressions: 13,
+    clicks: 0,
+    ctr: '0%',
     landing_page: 'unknown',
-    landing_page_status: 'Example row only; counts and page not supplied',
+    landing_page_status:
+      'Example row; the export gives no query-to-page pairing',
     source_and_rendered_evidence: scanSummary,
     root_cause: 'Same as Q1',
     remediation: 'Same as Q1',
@@ -758,11 +786,12 @@ const queryRows = [
     query_group: 'Code-like identifiers (example)',
     pattern_or_example: 'ai38985',
     queries: 'part of Q1',
-    impressions: NOT_SUPPLIED,
-    clicks: NOT_SUPPLIED,
-    ctr: NOT_SUPPLIED,
+    impressions: 13,
+    clicks: 0,
+    ctr: '0%',
     landing_page: 'unknown',
-    landing_page_status: 'Example row only; counts and page not supplied',
+    landing_page_status:
+      'Example row; the export gives no query-to-page pairing',
     source_and_rendered_evidence: scanSummary,
     root_cause: 'Same as Q1',
     remediation: 'Same as Q1',
@@ -774,11 +803,12 @@ const queryRows = [
     query_group: 'Code-like identifiers (example)',
     pattern_or_example: 'ai10750',
     queries: 'part of Q1',
-    impressions: NOT_SUPPLIED,
-    clicks: NOT_SUPPLIED,
-    ctr: NOT_SUPPLIED,
+    impressions: 13,
+    clicks: 0,
+    ctr: '0%',
     landing_page: 'unknown',
-    landing_page_status: 'Example row only; counts and page not supplied',
+    landing_page_status:
+      'Example row; the export gives no query-to-page pairing',
     source_and_rendered_evidence: scanSummary,
     root_cause: 'Same as Q1',
     remediation: 'Same as Q1',
@@ -799,10 +829,11 @@ const queryRows = [
     source_and_rendered_evidence:
       'Page exists, is canonical, is in the sitemap, and its title/description answer the price query with a from-PKR figure and a typical figure',
     root_cause:
-      'The page is indexed and eligible but sits at average position 11.44 (page 2), so impressions are earned and clicks are not. The snippet is not the constraint: it already leads with the price answer.',
+      'The page is indexed and eligible but sits at average position 11.44 (page 2), so impressions are earned and clicks are not. The snippet was already price-led; the mismatch was the title saying "price" while the queries say "plans".',
     remediation:
-      'No snippet rewrite. The 10 November audit already replaced the pre-9-November title; recrawl is pending. Ranking levers are authority and internal anchors, not more copy.',
-    status: 'Explained; no on-page defect found',
+      'Applied on this branch: entertainment collections now title as "X plans and prices in Pakistan 2026", and /price-index/ gained a streaming section that links to each one. Ranking levers are still authority and internal anchors, not more copy.',
+    status:
+      'Title matched to the measured query wording; ranking gap unchanged and attributed to authority',
     closes_with:
       'Re-export after recrawl to confirm the new title is being read, and the offsite pack for authority',
   },
@@ -818,7 +849,7 @@ const queryRows = [
     landing_page_status:
       'Probable; the brief names this query as the one with impressions',
     source_and_rendered_evidence:
-      'Title: "Netflix price in Pakistan 2026: 5 plans | AiToolsPk"; description names 1 month, from PKR 400 and typical PKR 758',
+      'Title: "Netflix plans and prices in Pakistan 2026 | AiToolsPk"; description names 1 month, from PKR 400 and typical PKR 758',
     root_cause: 'Same as Q7',
     remediation: 'Same as Q7',
     status: 'Example logged for the record',
@@ -826,22 +857,67 @@ const queryRows = [
   },
   {
     row_id: 'Q9',
-    query_group: 'Everything else (residual)',
-    pattern_or_example: 'not supplied',
-    queries: NOT_SUPPLIED,
-    impressions: 249,
-    clicks: NOT_SUPPLIED,
-    ctr: NOT_SUPPLIED,
+    query_group: 'Everything else (residual, measured)',
+    pattern_or_example:
+      'compare coursera pakistan; adobe illustrator price in pakistan; surfshark; aitoolsvault.site; adobe; netlix plans; pia vpn price in pakistan; trading view subscription; buzzy ai price; netflic basic plan; aitoolspak.com; aitoolsdetail.com',
+    queries: 12,
+    impressions: 21,
+    clicks: 0,
+    ctr: '0%',
     landing_page: 'not supplied',
-    landing_page_status: 'Not supplied',
+    landing_page_status:
+      'Not supplied: the export does not pair these queries with a page',
     source_and_rendered_evidence:
-      'Balancing figure only: 1,511 chart impressions minus 884 (Q1) minus 378 (Q7); not a measured row',
+      'Queries.csv rows that are neither ai##### nor Netflix: 12 rows, 21 impressions, 0 clicks. Largest are 4 impressions each (compare coursera pakistan at 4.00, adobe illustrator price in pakistan at 70.25). Two rows are competitor domains (aitoolsvault.site, aitoolsdetail.com) and one is an apparent misspelling of another owned domain (aitoolspak.com).',
     root_cause:
-      'Unanalysable without the rows. The residual cannot be attributed to a query or a page.',
+      'No cluster: twelve unrelated queries, each at 1-4 impressions. The demand is too thin to target, and the two competitor-domain queries are people looking for a different site, not for this catalogue.',
     remediation:
-      'Do not act on this figure. Export the full Queries and Pages tables before the next round.',
-    status: 'Open - blocked on the export',
-    closes_with: 'Owner supplies Queries.csv (last 3 months)',
+      'No page, title or snippet was created for any of these. "adobe illustrator price in pakistan" is a genuine product query that no collection answers (there is no Illustrator collection), so it is recorded as a content gap rather than answered with an invented price.',
+    status: 'Measured; no action possible from on-page work',
+    closes_with:
+      'A second export after the site is indexed more broadly; revisit only if one of these rows grows past 20 impressions',
+  },
+  {
+    row_id: 'Q10',
+    query_group: 'Legacy filtered URLs (page rows)',
+    pattern_or_example: '/plans/*/?category=*',
+    queries: 'not a query: 17 page rows',
+    impressions: 48,
+    clicks: 1,
+    ctr: '2.08% (derived)',
+    landing_page: '/plans/suno/?category=video and 16 similar URLs',
+    landing_page_status:
+      'Indexed as separate page rows, average positions 4.00-75.00, one click on /plans/suno/?category=video',
+    source_and_rendered_evidence:
+      'The repository has no ?category= link in any current or historical src file (git log -S returns nothing), so these URLs are not produced by this build. They match the pattern of the site that hosted the domain before 19 October 2026. Every exported page carries a query-free self-canonical, so each variant already consolidates to its clean path.',
+    root_cause:
+      'Legacy crawl inventory from the domain, not a live internal link pattern. 48 impressions over 3 months across 17 URLs is 1.6% of page impressions.',
+    remediation:
+      'No change. Adding noindex or redirects would mean creating rules for URLs the site no longer links to, and the canonical already consolidates them.',
+    status: 'Accepted: canonical already consolidates; no live source link',
+    closes_with:
+      'Nothing on-site. They leave the index as Google recrawls the domain; verify in the next Pages export',
+  },
+  {
+    row_id: 'Q11',
+    query_group: 'Measurement integrity (cross-table check)',
+    pattern_or_example: 'Pages total vs Chart total',
+    queries: 310,
+    impressions: 1283,
+    clicks: 1,
+    ctr: 'not comparable across tables',
+    landing_page: 'n/a',
+    landing_page_status:
+      'Pages.csv totals 1,750 impressions and 7 clicks across 81 rows; Chart.csv totals 1,511 impressions and 7 clicks across 23 days; Queries.csv totals 1,283 impressions and 1 click across 310 rows',
+    source_and_rendered_evidence:
+      'The three tables in one export do not agree: Pages exceeds Chart by 239 impressions, and Queries sits 228 below Chart (GSC withholds low-volume queries, which explains a query shortfall but not a page excess). Clicks agree between Chart and Pages (7) and disagree with Queries (1), which is the same withholding effect.',
+    root_cause:
+      'Not determinable from the files supplied. Two candidate explanations are a different aggregation window inside one export and anonymisation rules; neither can be tested without a fresh export.',
+    remediation:
+      'No figure in these reports is produced by summing across tables. Page-level claims use Pages.csv, query-level claims use Queries.csv, and the daily trend uses Chart.csv, each stated with its own denominator.',
+    status: 'Recorded so no later report silently mixes denominators',
+    closes_with:
+      'Owner re-exports all three tables in one session with the same date range and confirms the totals',
   },
 ];
 

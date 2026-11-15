@@ -10,11 +10,12 @@ export function PurchaseLink({
   intent: 'order' | 'confirm' | 'restock';
 }) {
   const restock = intent === 'restock';
-  const label = restock
-    ? 'Restock'
-    : intent === 'confirm'
-      ? 'Check availability'
-      : 'Buy Now';
+  const label =
+    restock
+      ? 'Restock'
+      : intent === 'confirm'
+        ? 'Buy Now - Check availability'
+        : 'Buy Now';
   const actionName = restock ? 'Restock' : 'Buy Now';
   return (
     <a

@@ -55,3 +55,13 @@ test('release refuses a non-main ref or a different expected commit', () => {
     }
   }
 });
+
+test('scheduled production monitoring resolves a successful Pages release', () => {
+  const source = readFileSync('.github/workflows/production-monitor.yml', 'utf8');
+  assert.match(source, /schedule:/);
+  assert.match(source, /workflow_dispatch:/);
+  assert.match(source, /gh run list --workflow pages\.yml --branch main --status success/);
+  assert.match(source, /EXPECTED_PRODUCTION_SHA: \$\{\{ steps\.release\.outputs\.sha \}\}/);
+  assert.match(source, /node scripts\/production-smoke\.mjs/);
+  assert.match(source, /retention-days: 30/);
+});

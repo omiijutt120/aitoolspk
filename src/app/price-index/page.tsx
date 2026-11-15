@@ -22,8 +22,8 @@ const alphabetical = [...rows].sort((a, b) =>
 );
 
 export const metadata = makeMetadata(
-  'AI subscription price index for Pakistan',
-  `Every listed AI and digital subscription price for Pakistan: ${stats.tools} tools with their lowest quoted PKR price, plan counts, durations and warranty labels.`,
+  'AI tool prices in Pakistan | PKR subscription price index',
+  `Compare listed PKR prices for ${stats.tools} AI and digital tools in Pakistan, with plan counts, durations, quote dates and warranty labels. Seller quotes, not vendor list prices.`,
   '/price-index/'
 );
 

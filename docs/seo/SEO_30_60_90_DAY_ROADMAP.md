@@ -1,5 +1,20 @@
 # Measurable 30/60/90-day SEO growth roadmap
 
+## Update — 15 November 2026
+
+This roadmap now uses the 15 November diagnosis as its operating baseline.
+The supplied Search Console export reports 1,511 impressions and 7 clicks for
+the selected three-month window, including 827 impressions and 0 clicks for
+`/price-index/`. No live deployment, URL Inspection result, query-to-page
+filtered export, device-filtered query export, Core Web Vitals field data or
+AI citation evidence was available in this environment. Those gaps are
+owner actions, not inferred failures.
+
+The first 30 days therefore prioritize evidence and snippet/conversion
+measurement rather than traffic promises. Compare like-for-like Search Console
+windows and report relevant Pakistan clicks, priority-page impressions,
+desktop CTR, qualified WhatsApp enquiries and verified indexing status.
+
 Prepared **23 October 2026**. Day 0 starts after an **authorized release** and actual owner verification establish a usable baseline, not when this document was written. The current enterprise changes are local-only. Search impressions, traffic, rankings, completed enquiries/orders, backlinks and AI citations are not available as measured baselines. Targets below concern quality, evidence and execution; no ranking/traffic outcome is guaranteed.
 
 Owners: **business owner** supplies commercial facts and controls accounts/publication; **maintainer** handles source, tests and reproducible technical defects; **editor/reviewer** checks factual content and sources. One person may perform several roles, but must retain the evidence boundary.

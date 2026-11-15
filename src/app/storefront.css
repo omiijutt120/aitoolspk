@@ -578,11 +578,23 @@ body {
   letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
 }
+/* Without a rule of its own the range inherited the 22px price size and sat
+   flush against it, so "PKR 29,111Range PKR 419-151,234" read as one figure. */
+.collection-range {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #62666d;
+  font-variant-numeric: tabular-nums;
+}
 .collection-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 9px;
+  flex-shrink: 0;
   min-height: 46px;
   padding: 11px 14px;
   border-radius: 9px;
@@ -2475,13 +2487,6 @@ body {
 .comparison-scroll th a {
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-.comparison-id {
-  display: block;
-  color: #626871;
-  font-size: 11px;
-  font-weight: 400;
-  margin-top: 4px;
 }
 .comparison-price {
   white-space: nowrap;

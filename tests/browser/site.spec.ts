@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import catalog from '../../data/catalog.json';
 import { collectionSlug } from '../../src/lib/collections';
+import { PAGE_SIZE } from '../../src/lib/pagination';
 import type { Product } from '../../src/lib/types';
 test('approved offers have exact order links and expire without a redeploy', async ({
   page,
@@ -60,7 +61,7 @@ test('homepage, details and rendered UI produce no console errors', async ({
     .hover();
   await page.waitForLoadState('networkidle');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'AI tool prices in Pakistan.'
+    'AI tools and subscriptions in Pakistan.'
   );
   await expect(page.locator('.collection-card').first()).toBeVisible();
   await page.locator('.collection-card').first().click();
@@ -107,7 +108,7 @@ test('search, fuzzy matching, filters, pagination and URL persistence', async ({
   await page.locator('#catalog-search').fill('zzqnonexistentproduct');
   await expect(page.getByText('No tools found.')).toBeVisible();
   await page.getByRole('button', { name: 'Clear all filters' }).click();
-  await expect(page.locator('.collection-card')).toHaveCount(24);
+  await expect(page.locator('.collection-card')).toHaveCount(PAGE_SIZE);
   await page.getByRole('link', { name: 'Page 2', exact: true }).click();
   await expect(page).toHaveURL(/\/page\/2\//);
   await page.reload();

@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import posts from '../../data/blog/posts.json';
 import catalog from '../../data/catalog.json';
 import { collectionSlug } from '../../src/lib/catalog-identity.mjs';
+import { PAGE_SIZE } from '../../src/lib/pagination';
 
 const collections = new Set(
   catalog.filter((p) => p.approval !== 'excluded').map(collectionSlug)
@@ -66,7 +67,7 @@ test('library search finds off-page products, has a useful empty state and reset
     .getByRole('button', { name: 'Show all collections', exact: true })
     .click();
   await expect(search).toHaveValue('');
-  await expect(page.locator('.blog-library-card')).toHaveCount(24);
+  await expect(page.locator('.blog-library-card')).toHaveCount(PAGE_SIZE);
   await page
     .getByRole('link', { name: 'Product library page 2', exact: true })
     .click();
@@ -120,7 +121,9 @@ test('articles are indexable, use truthful BlogPosting metadata and show exact c
       await expect(card).toContainText(
         `Listed PKR ${product.price.toLocaleString('en-PK')}`
       );
-      await expect(card).toContainText(product.id);
+      // The catalogue id stays in the order flow, not in the article body: an
+      // indexable page should read as a plan name and a price, not a SKU.
+      await expect(card).not.toContainText(product.id);
       await expect(card).toContainText(product.warranty);
     }
   }

@@ -31,8 +31,13 @@ const staleOfferCount = products.filter((p) => isStale(p)).length;
 
 export const metadata: Metadata = {
   ...makeMetadata(
-    'AI tool prices in Pakistan 2026 | AiToolsPk',
-    `Compare ${products.length} AI tool and subscription plans in Pakistan: listed PKR quotes, exact durations and seller warranty. Browse ${collectionTotal} collections, then confirm on WhatsApp.`,
+    // The price index owns the "AI tool prices in Pakistan" query and is the
+    // page Search Console already shows for it (827 impressions against this
+    // page's 120). Two titles competing for one query splits the signal, so the
+    // homepage names the catalogue instead and the price index keeps the price
+    // query to itself.
+    'AI tools and subscriptions in Pakistan | AiToolsPk',
+    `Compare ${collectionTotal} AI, software and streaming tools by listed PKR quote, plan duration and seller warranty. ${products.length} plans to compare.`,
     '/'
   ),
   // The homepage advertises the plain-text site summary beside its canonical
@@ -59,7 +64,8 @@ export default function Home() {
             <span /> YOUR NEXT TOOLKIT STARTS HERE
           </p>
           <h1 id="store-title">
-            AI tool prices in Pakistan. <span>Compare every plan.</span>
+            AI tools and subscriptions in Pakistan.{' '}
+            <span>Compare every plan.</span>
           </h1>
           <p>
             AiToolsPk is an independent catalog of AI tools, creative software

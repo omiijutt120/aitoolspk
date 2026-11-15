@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { author, authorPath } from './author';
 export const origin = (
   process.env.NEXT_PUBLIC_SITE_URL || 'https://aitoolspk.tech'
 ).replace(/\/$/, '');
@@ -12,6 +13,9 @@ export function metadata(
   return {
     title: normalizedTitle,
     description,
+    // Renders <meta name="author"> on every page. The name is the same record
+    // that signs the guides, so the tag cannot drift from the visible byline.
+    authors: [{ name: author.name, url: `${origin}${authorPath}` }],
     alternates: { canonical: `${origin}${path}` },
     openGraph: {
       title: normalizedTitle,

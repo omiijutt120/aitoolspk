@@ -5,7 +5,9 @@ import { products } from '@/lib/catalog';
 import { CategoryIcon } from '@/components/icon';
 import { metadata as makeMetadata } from '@/lib/seo';
 export const metadata = makeMetadata(
-  'Explore categories',
+  // Search Console shows this page at average position 7.2 with no clicks; the
+  // old title, "Explore categories", named neither the country nor the subject.
+  'AI and software categories in Pakistan',
   'Find tools for AI chat, video, design, writing, coding, productivity, security, entertainment and software. Compare plans in PKR.',
   '/categories/'
 );
@@ -14,7 +16,7 @@ export default function Categories() {
     <div className="container">
       <div className="page-intro">
         <p className="eyebrow">A TOOL FOR EVERY AMBITION</p>
-        <h1>Start with what you do.</h1>
+        <h1>Categories: start with what you do.</h1>
         <p>
           A focused way to find tools for your next project, workflow or
           creative idea.

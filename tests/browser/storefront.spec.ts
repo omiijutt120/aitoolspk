@@ -10,6 +10,7 @@ import {
 } from '../../src/lib/collections';
 import type { Product } from '../../src/lib/types';
 import { displayName } from '../../src/lib/product-name';
+import { PAGE_SIZE } from '../../src/lib/pagination';
 
 const products = (catalog as Product[]).filter(
   (p) => p.approval !== 'excluded'
@@ -114,7 +115,7 @@ test('both discovery links work; plan search opens its matching parent with the 
   await expect(page.locator('.result-count strong')).toHaveText(
     String(products.length)
   );
-  await expect(page.locator('.collection-card')).toHaveCount(24);
+  await expect(page.locator('.collection-card')).toHaveCount(PAGE_SIZE);
 });
 
 test('ChatGPT parent exposes every exact variant across pages with correct detail and WhatsApp links', async ({

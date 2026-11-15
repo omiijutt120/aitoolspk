@@ -130,6 +130,23 @@ function walk(dir) {
             throw new Error(
               `Plan description over 160 characters (${description.length}): ${file}`
             );
+          // Internal identifiers belong in the data model and the order flow,
+          // not in the text a searcher reads. A slug may carry the id (that is
+          // URL identity) and an attribute may carry it (the WhatsApp message),
+          // but the visible text may not: a catalogue id is not a search term,
+          // and 161 pages used to print one under every plan name.
+          const visibleText = html
+            .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+            .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+            .replace(/<[^>]+>/g, ' ')
+            .replace(/&[a-z#0-9]+;/gi, ' ');
+          const internalId =
+            visibleText.match(/\bPK-[A-F0-9]{12}\b/) ||
+            visibleText.match(/\bai\d{4,}\b/i);
+          if (internalId)
+            throw new Error(
+              `Internal identifier in indexable text (${internalId[0]}): ${file}`
+            );
         }
         if (canonicals.has(canonical))
           throw new Error(`Duplicate canonical target: ${file}`);
@@ -157,6 +174,16 @@ function walk(dir) {
         }
         if (/"@type"\s*:\s*"(?:AggregateRating|Review)"/.test(match[1]))
           throw new Error(`Unverified review/rating schema: ${file}`);
+        // No listing is approved, so the site publishes no price, offer or
+        // rating markup anywhere - the collection node says so in a comment.
+        // This gate holds that policy: adding `offers.price` without a source
+        // would put an unverified figure into structured data.
+        if (
+          /"(?:offers|price|priceCurrency|priceValidUntil|availability)"\s*:/.test(
+            match[1]
+          )
+        )
+          throw new Error(`Unverified price/offer schema: ${file}`);
         structuredDataBlocks++;
       }
       for (const match of html.matchAll(/<a\b([^>]+)>/g)) {

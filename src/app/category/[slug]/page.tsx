@@ -15,17 +15,6 @@ import {
 import { PAGE_SIZE } from '@/lib/pagination';
 import { CollectionSchema } from '@/components/collection-schema';
 export const dynamicParams = false;
-function categoryHeading(name: string) {
-  return name.toLowerCase().endsWith(' tools') ? name : `${name} tools`;
-}
-function categoryTitle(name: string, page: number) {
-  const base = name.toLowerCase().endsWith(' tools')
-    ? name.slice(0, -6)
-    : name;
-  return page > 1
-    ? `${base} | Page ${page}`
-    : `${base} in Pakistan`;
-}
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
 }
@@ -39,7 +28,9 @@ export async function generateMetadata({
   const c = categories.find((c) => c.slug === slug);
   return c
     ? metadata(
-        `${categoryTitle(c.name, page)}`,
+        // Page 1 carries the descriptive hub title; later pages use the short
+        // form so " - Page 2" cannot push the title past the SERP cut.
+        page > 1 ? `${c.name} in Pakistan - Page ${page}` : c.title,
         pageDescription(
           c.description + ' Compare exact plans and PKR prices.',
           page
@@ -85,7 +76,8 @@ export default async function Category({
         />
         <p className="eyebrow">FIND YOUR FIT</p>
         <h1>
-          {categoryHeading(c.name)}, in PKR.{page > 1 ? ` Page ${page}.` : ''}
+          {c.h1}
+          {page > 1 ? ` Page ${page}.` : ''}
         </h1>
         <p>
           {c.description} Read each offer’s access method, duration and warranty

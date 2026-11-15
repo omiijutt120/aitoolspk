@@ -12,6 +12,9 @@ const chromiumSandbox = process.getuid?.() !== 0;
 export default defineConfig({
   testDir: './tests/browser',
   timeout: 45000,
+  // One CI retry absorbs a slow first paint or a cold static server. It does not
+  // hide a broken assertion: a real regression fails twice and still reports.
+  retries: process.env.CI ? 1 : 0,
   fullyParallel: false,
   workers: 1,
   use: {

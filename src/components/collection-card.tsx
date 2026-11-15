@@ -6,6 +6,24 @@ import { categoryName } from '@/lib/categories';
 import { money } from '@/lib/commerce.mjs';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
 
+/**
+ * The shape of the terms a collection actually lists.
+ *
+ * Cards used to repeat one sentence - "Find your fit. Compare durations,
+ * access and warranty options." - under 27 headings at once. It was true on
+ * every card and specific to none, so a reader learned nothing from the
+ * twenty-seventh copy. This reads the parsed duration bands instead: a
+ * collection with a 1-month and a 1-year listing says so, and a collection
+ * where the seller never states a term says that instead of implying one.
+ */
+function termShape(c: PlanCollection): string {
+  const { month, year } = c.bands;
+  if (month && year) return 'Monthly and yearly terms';
+  if (month) return 'Monthly terms';
+  if (year) return 'Yearly terms';
+  return 'Term stated per offer';
+}
+
 export function CollectionCard({
   collection: c,
   query = '',
@@ -27,7 +45,7 @@ export function CollectionCard({
       <div className="collection-card-top">
         <span className="collection-count">
           <Layers3 size={14} aria-hidden="true" />
-          {c.count} {c.count === 1 ? 'plan' : 'plans'}
+          {c.count} {c.count === 1 ? 'option' : 'options'}
         </span>
         <span className="collection-open" aria-hidden="true">
           <ArrowUpRight size={20} />
@@ -60,7 +78,7 @@ export function CollectionCard({
         <p>
           {c.isApi
             ? 'Providers, credits and token limits. All your API options, together.'
-            : 'Find your fit. Compare durations, access and warranty options.'}
+            : termShape(c)}
         </p>
       </div>
       <div className="collection-card-bottom">
@@ -74,7 +92,7 @@ export function CollectionCard({
           )}
         </div>
         <span className="collection-cta">
-          Explore plans <ArrowRight size={17} aria-hidden="true" />
+          View prices <ArrowRight size={17} aria-hidden="true" />
         </span>
       </div>
     </Link>

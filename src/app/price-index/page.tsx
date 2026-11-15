@@ -20,43 +20,9 @@ const underThousand = rows
 const alphabetical = [...rows].sort((a, b) =>
   a.title.localeCompare(b.title, 'en')
 );
-const prioritySlugs = [
-  'api',
-  'chatgpt',
-  'gemini',
-  'google',
-  'microsoft',
-  'discord',
-  'youtube',
-  'tele',
-  'digital-tools',
-  'higgfield',
-  'facebook',
-  'adobe',
-  'elevenlabs',
-  'capcut',
-  'kling',
-  'notion',
-  'tiktok',
-  'gamma',
-  'canva',
-  'duolingo',
-  'grok',
-  'meitu',
-  'lovable',
-  'nordvpn',
-  'minimax',
-  'vieon',
-  'fpt-play',
-  'express',
-  'gpm-login',
-  'icloud',
-  'xingtu',
-  'autodesk',
-];
-const priorityRows = prioritySlugs
-  .map((slug) => rows.find((row) => row.slug === slug))
-  .filter((row): row is (typeof rows)[number] => Boolean(row));
+const priorityRows = [...rows]
+  .sort((a, b) => b.count - a.count || a.title.localeCompare(b.title, 'en'))
+  .slice(0, 32);
 
 export const metadata = makeMetadata(
   'AI tool prices in Pakistan | PKR subscription price index',

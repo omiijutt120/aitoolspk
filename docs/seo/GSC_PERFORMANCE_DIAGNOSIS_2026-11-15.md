@@ -155,7 +155,7 @@ content.
 | 2 | Filtered landing-page groups are recorded accurately | VERIFIED PASS | Price Index 822, homepage 64, ChatGPT page 3 4 |
 | 3 | Query-to-page attribution is not fabricated | VERIFIED PASS | Separate query/page aggregates are explicitly separated |
 | 4 | Filtered device and country totals are recorded | VERIFIED PASS | Desktop 565, tablet 173, mobile 146; Pakistan 883, US 1 |
-| 5 | Priority collection destinations are crawlable | VERIFIED PASS | 32 existing `/plans/<slug>/` links generated from catalog evidence |
+| 5 | Priority collection destinations are crawlable | NEWLY FIXED | 32 existing `/plans/<slug>/` links now derive at build time from current offer counts, preventing a stale priority list |
 | 6 | Product IDs, prices, variants and warranties are preserved | VERIFIED PASS | No catalog or commercial files changed; export gate passes |
 | 7 | Unapproved offers remain protected | VERIFIED PASS | 815 `NEEDS_REVIEW`, 2 `EXCLUDED`, 0 approved indexable offers |
 | 8 | Duplicate offer descriptions are investigated without bulk rewriting | VERIFIED PASS | 788 duplicates documented; individual review remains required |
@@ -165,7 +165,7 @@ content.
 | 12 | Robots and AI crawler policy remains explicit | VERIFIED PASS | `robots.ts` names approved public crawlers; no private paths exposed |
 | 13 | Structured data remains validated and claim-safe | VERIFIED PASS | Export validator passed; no Review/AggregateRating/FAQPage markup |
 | 14 | Internal links and fragment targets remain valid | VERIFIED PASS | 72,855 internal references; 1,499 fragments; zero issues |
-| 15 | Fixed logo images have responsive size hints | VERIFIED PASS | Collection, product, catalog and article logo components updated |
+| 15 | Fixed logo images have responsive size hints | NEWLY FIXED | Collection, product, catalog, article, header and footer logo components now declare exact rendered sizes |
 | 16 | Static export and public-field safety pass | VERIFIED PASS | 1,006 pages, 0 broken, 0 confidential fields |
 | 17 | Core Web Vitals are measured honestly | BLOCKED | No CrUX/GSC field data; browser lab cannot launch as root |
 | 18 | Production HTTP, redirects and Google-selected canonicals are verified | BLOCKED | `aitoolspk.tech` DNS returns `EAI_AGAIN` in this environment |
@@ -197,7 +197,8 @@ WhatsApp enquiry clicks and qualified enquiries in separate reports.
 | `src/app/price-index/page.tsx` | 827 impressions and 0 clicks in supplied Pages.csv; existing title did not state “AI tool prices” or PKR | Rewrote only the title and description to match the page's actual comparison intent and seller-quote disclosure | Low; metadata-only change. Covered by build/export SEO checks |
 | `src/app/price-index/page.tsx` | A high-impression comparison page made readers scan the full index before reaching priority collections | Added a concise, factual priority-tools link block using existing collection rows, prices and plan counts; aligned CollectionPage schema naming with the visible title | Low; derived links only, no new URLs or commercial claims. Covered by build/export/browser checks |
 | `src/app/price-index/page.tsx` | The recovery scope needed a concrete, crawlable destination map for the 32 largest current catalog collections | Added 32 links selected from current offer-count evidence, explicitly labelled as catalog size rather than popularity or search demand | Low; links resolve to existing collection pages and do not alter indexability |
-| Collection logo components | Fixed-size thumbnails lacked `sizes`, so responsive candidates could be selected as if they were viewport-width images | Added exact rendered-size hints to collection, product, catalog and article logo images | Low; image URL, dimensions and generated WebP assets are unchanged |
+| `src/app/price-index/page.tsx` | A manually maintained priority slug list could drift from catalog changes | Derive the 32 links from current collection counts and a stable title tie-breaker at build time | Low; only existing collection routes are emitted |
+| Collection/logo components | Fixed-size thumbnails lacked `sizes`, so responsive candidates could be selected as if they were viewport-width images | Added exact rendered-size hints to collection, product, catalog, article, header and footer logo images | Low; image URL, dimensions and generated WebP assets are unchanged |
 | `docs/seo/SEO_30_60_90_DAY_ROADMAP.md` | Roadmap predates the 15 November baseline | Added dated evidence and measurement constraints | Documentation-only |
 | `docs/seo/GSC_PERFORMANCE_DIAGNOSIS_2026-11-15.md` | No dated diagnosis for this baseline | Added evidence, findings, implementation record, blockers and owner actions | Documentation-only |
 

@@ -43,6 +43,7 @@ export function Header() {
             alt=""
             width={38}
             height={38}
+            sizes="38px"
             priority
           />
           <span>

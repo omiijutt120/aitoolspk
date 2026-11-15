@@ -35,7 +35,7 @@ export function PurchaseLink({
       }
     >
       <MessageCircle size={16} aria-hidden="true" />
-      <span>{label}</span>
+      <span>{intent === 'confirm' ? 'Buy Now (Check availability)' : label}</span>
     </a>
   );
 }

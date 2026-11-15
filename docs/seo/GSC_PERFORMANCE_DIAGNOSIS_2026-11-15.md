@@ -119,6 +119,7 @@ WhatsApp enquiry clicks and qualified enquiries in separate reports.
 | File | Problem/evidence | Exact fix | Regression risk and check |
 | --- | --- | --- | --- |
 | `src/app/price-index/page.tsx` | 827 impressions and 0 clicks in supplied Pages.csv; existing title did not state “AI tool prices” or PKR | Rewrote only the title and description to match the page's actual comparison intent and seller-quote disclosure | Low; metadata-only change. Covered by build/export SEO checks |
+| `src/app/price-index/page.tsx` | A high-impression comparison page made readers scan the full index before reaching priority collections | Added a concise, factual priority-tools link block using existing collection rows, prices and plan counts; aligned CollectionPage schema naming with the visible title | Low; derived links only, no new URLs or commercial claims. Covered by build/export/browser checks |
 | `docs/seo/SEO_30_60_90_DAY_ROADMAP.md` | Roadmap predates the 15 November baseline | Added dated evidence and measurement constraints | Documentation-only |
 | `docs/seo/GSC_PERFORMANCE_DIAGNOSIS_2026-11-15.md` | No dated diagnosis for this baseline | Added evidence, findings, implementation record, blockers and owner actions | Documentation-only |
 

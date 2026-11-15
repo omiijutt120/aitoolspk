@@ -20,6 +20,26 @@ const underThousand = rows
 const alphabetical = [...rows].sort((a, b) =>
   a.title.localeCompare(b.title, 'en')
 );
+const prioritySlugs = [
+  'chatgpt',
+  'gemini',
+  'claude',
+  'canva',
+  'adobe',
+  'elevenlabs',
+  'cursor',
+  'gamma',
+  'capcut',
+  'grok',
+  'notion',
+  'kling',
+  'tiktok',
+  'youtube',
+  'microsoft',
+];
+const priorityRows = prioritySlugs
+  .map((slug) => rows.find((row) => row.slug === slug))
+  .filter((row): row is (typeof rows)[number] => Boolean(row));
 
 export const metadata = makeMetadata(
   'AI tool prices in Pakistan | PKR subscription price index',
@@ -152,6 +172,9 @@ export default function PriceIndex() {
         <Link href="#how-to-read" prefetch={false}>
           How to read a starting price
         </Link>
+        <Link href="#priority-tools" prefetch={false}>
+          Priority tools
+        </Link>
         <Link href="#under-1000" prefetch={false}>
           Under PKR 1,000
         </Link>
@@ -195,6 +218,27 @@ export default function PriceIndex() {
           this page, <code>#tool-</code> and the collection slug — so a price
           quoted from here can be opened, dated and rechecked in one jump.
         </li>
+      </ul>
+
+      <h2 id="priority-tools">Compare commonly requested tools</h2>
+      <p>
+        Start with these frequently compared collections, then open the full
+        A–Z index below when you need another tool. Each link leads to the
+        collection page, where the exact listed plans, durations and seller
+        terms are shown together.
+      </p>
+      <ul className="price-index-priority-links">
+        {priorityRows.map((row) => (
+          <li key={row.slug}>
+            <Link href={`/plans/${row.slug}/`} prefetch={false}>
+              {row.isApi ? 'API plans' : row.brand}
+            </Link>{' '}
+            <span>
+              from {money(row.from)} · {row.count}{' '}
+              {row.count === 1 ? 'listed plan' : 'listed plans'}
+            </span>
+          </li>
+        ))}
       </ul>
 
       <h2 id="under-1000">Tools with a listed price under PKR 1,000</h2>
@@ -251,8 +295,8 @@ export default function PriceIndex() {
       </p>
 
       <CollectionSchema
-        name="AI subscription price index for Pakistan"
-        description={`Listed PKR starting prices, plan counts, durations and warranty labels for ${stats.tools} AI and digital tools sold in Pakistan.`}
+        name="AI tool prices in Pakistan"
+        description={`Listed PKR starting prices, plan counts, durations and warranty labels for ${stats.tools} AI and digital tools in Pakistan. Seller quotes, not vendor list prices.`}
         path="/price-index/"
         dateModified={stats.newestQuote}
         items={alphabetical.map((row) => ({

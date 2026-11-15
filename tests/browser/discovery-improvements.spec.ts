@@ -3,6 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 import catalog from '../../data/catalog.json';
 import collectionContent from '../../data/seo/collection-content.json';
 import extraGuides from '../../data/seo/additional-guides.json';
+import { guides } from '../../src/lib/guides';
 import { collectionSlug } from '../../src/lib/catalog-identity.mjs';
 
 test.setTimeout(120000);
@@ -109,7 +110,9 @@ test('all ten buying guides are discoverable with factual dates, schema and nati
   request,
 }) => {
   await page.goto('/guides/');
-  await expect(page.locator('.document section h2 a')).toHaveCount(10);
+  await expect(page.locator('.document section h2 a')).toHaveCount(
+    guides.length
+  );
   const sitemap = await (await request.get('/sitemap.xml')).text();
   const robots = await (await request.get('/robots.txt')).text();
   expect(robots).not.toMatch(/^Host:/im);

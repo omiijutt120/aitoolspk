@@ -101,7 +101,7 @@ test('all six new offers retain exact prices, honest eligibility, canonical, war
     ])
       expect(message).toContain(expected);
   }
-  expect(titles.size).toBe(6);
+  expect(titles.size).toBe(added.length);
   expect(errors).toEqual([]);
 });
 

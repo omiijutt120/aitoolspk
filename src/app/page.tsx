@@ -29,7 +29,9 @@ const collectionTotal = groupCollections(products).length;
 export const metadata: Metadata = {
   ...makeMetadata(
     'AI tool prices in Pakistan 2026 | AiToolsPk',
-    `Compare ${products.length} AI tool and subscription plans in Pakistan: listed PKR quotes, exact durations and seller warranty. Browse ${collectionTotal} collections, then confirm on WhatsApp.`,
+    // Search results cut off at roughly 920 px, ~150 characters. This sentence
+    // leads with the query people actually type and still carries both counts.
+    `AI tool prices in Pakistan: compare ${products.length} plans by listed PKR quote, duration and seller warranty. ${collectionTotal} collections.`,
     '/'
   ),
   // The homepage advertises the plain-text site summary beside its canonical

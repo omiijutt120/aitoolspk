@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import catalog from '../../data/catalog.json';
+import { PAGE_SIZE } from '../../src/lib/pagination';
+import { faqs } from '../../src/components/faq';
 
 test('static browsing avoids the full-catalog download until search needs it', async ({
   page,
@@ -12,7 +14,7 @@ test('static browsing avoids the full-catalog download until search needs it', a
   });
   await page.goto('/tools/');
   await page.waitForLoadState('networkidle');
-  await expect(page.locator('.collection-card')).toHaveCount(24);
+  await expect(page.locator('.collection-card')).toHaveCount(PAGE_SIZE);
   await expect(page.getByRole('status')).not.toContainText('Loading');
   expect(requests).toHaveLength(0);
   await page.locator('#catalog-search').fill('claude');
@@ -95,7 +97,7 @@ test('twelve priority collections expose specific sourced guidance and honest li
   page,
 }) => {
   const intros = new Set<string>();
-  for (const slug of [
+  const priority = [
     'chatgpt',
     'gemini',
     'claude',
@@ -108,7 +110,8 @@ test('twelve priority collections expose specific sourced guidance and honest li
     'lovable',
     'n8n',
     'api',
-  ]) {
+  ];
+  for (const slug of priority) {
     await page.goto(`/plans/${slug}/`);
     const guide = page.getByRole('region', { name: `${slug} buying guide` });
     await expect(guide).toBeVisible();
@@ -127,7 +130,7 @@ test('twelve priority collections expose specific sourced guidance and honest li
       schema.some((s) => s['@type'] === 'Product' || s['@type'] === 'Offer')
     ).toBe(false);
   }
-  expect(intros.size).toBe(12);
+  expect(intros.size).toBe(priority.length);
   await page.goto('/plans/chatgpt/page/2/');
   await expect(page.locator('.collection-buying-guide')).toHaveCount(0);
   await expect(page.locator('h1')).toContainText('Page 2');
@@ -213,7 +216,7 @@ test('unknown paths remain real 404s and buyer FAQs remain visible without retir
 }) => {
   expect((await request.get('/guides/not-a-real-guide/')).status()).toBe(404);
   await page.goto('/faq/');
-  await expect(page.locator('.faq-list details')).toHaveCount(6);
+  await expect(page.locator('.faq-list details')).toHaveCount(faqs.length);
   expect(
     (
       await page.locator('script[type="application/ld+json"]').allTextContents()

@@ -10,9 +10,12 @@ export function PurchaseLink({
   intent: 'order' | 'confirm' | 'restock';
 }) {
   const restock = intent === 'restock';
-  // Keep the established CTA stable; the WhatsApp message carries the
-  // correct order, confirmation or restock intent.
-  const label = restock ? 'Restock' : 'Buy Now';
+  const label = restock
+    ? 'Restock'
+    : intent === 'confirm'
+      ? 'Check availability'
+      : 'Buy Now';
+  const accessibleLabel = restock ? 'Ask about restock' : 'Buy Now';
   return (
     <a
       className="button buy-button"
@@ -21,7 +24,7 @@ export function PurchaseLink({
       href={whatsappUrl(product, intent)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`${label}: ${product.name}`}
+      aria-label={`${accessibleLabel}: ${product.name}`}
       title={
         restock
           ? 'Ask when this out-of-stock plan may be available'

@@ -15,6 +15,15 @@ import {
 import { PAGE_SIZE } from '@/lib/pagination';
 import { CollectionSchema } from '@/components/collection-schema';
 export const dynamicParams = false;
+function categoryHeading(name: string) {
+  return /\\btools?$/i.test(name) ? name : `${name} tools`;
+}
+function categoryTitle(name: string, page: number) {
+  const base = name.replace(/\\s+tools?$/i, '');
+  return page > 1
+    ? `${base} | Page ${page} | AiToolsPk`
+    : `${base} in Pakistan | AiToolsPk`;
+}
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
 }
@@ -28,7 +37,7 @@ export async function generateMetadata({
   const c = categories.find((c) => c.slug === slug);
   return c
     ? metadata(
-        `${c.name} in Pakistan${page > 1 ? ` — Page ${page}` : ''}`,
+        `${categoryTitle(c.name, page)}`,
         pageDescription(
           c.description + ' Compare exact plans and PKR prices.',
           page
@@ -74,7 +83,7 @@ export default async function Category({
         />
         <p className="eyebrow">FIND YOUR FIT</p>
         <h1>
-          {c.name} tools, in PKR.{page > 1 ? ` Page ${page}.` : ''}
+          {categoryHeading(c.name)}, in PKR.{page > 1 ? ` Page ${page}.` : ''}
         </h1>
         <p>
           {c.description} Read each offer’s access method, duration and warranty

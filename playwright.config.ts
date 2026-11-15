@@ -8,6 +8,7 @@ const executablePath =
   (process.platform === 'win32' && existsSync(localChrome)
     ? localChrome
     : undefined);
+const chromiumSandbox = process.getuid?.() !== 0;
 export default defineConfig({
   testDir: './tests/browser',
   timeout: 45000,
@@ -17,7 +18,7 @@ export default defineConfig({
     baseURL,
     launchOptions: {
       ...(executablePath ? { executablePath } : process.env.CI ? { channel: 'chrome' } : {}),
-      chromiumSandbox: true,
+      chromiumSandbox,
     },
     screenshot: 'only-on-failure',
   },

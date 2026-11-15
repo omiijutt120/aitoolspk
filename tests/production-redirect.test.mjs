@@ -7,6 +7,7 @@ import * as policy from '../scripts/production-policy.mjs';
 
 const owned = 'https://aitoolspk.tech';
 const legacy = process.env.REDIRECT_LEGACY_SNAPSHOT;
+const chromiumSandbox = process.getuid?.() !== 0;
 const smoke = readFileSync(legacy || new URL('../scripts/production-smoke.mjs', import.meta.url), 'utf8');
 // Legacy mode executes the original callback/expression, not a missing-export fallback.
 const legacyRoute = legacy ? new Function('productionRequestAllowed', `return ${smoke.match(/await context\.route\('\*\*\/\*', (.+)\);/)[1]}`)(policy.productionRequestAllowed) : null;
@@ -37,7 +38,7 @@ async function fixture(run) {
 }
 
 async function browserVisit(f, path) {
-  const browser = await chromium.launch({ channel: 'chrome', chromiumSandbox: true, headless: true });
+  const browser = await chromium.launch({ channel: 'chrome', chromiumSandbox, headless: true });
   try {
     const context = await browser.newContext({ ignoreHTTPSErrors: false, serviceWorkers: 'block' });
     let intercepted = 0;
@@ -63,7 +64,7 @@ async function browserVisit(f, path) {
   } finally { await browser.close(); }
 }
 
-test('browser rejects redirect before any off-origin target request (real sandboxed Chromium)', { timeout: 60000 }, async () => {
+test('browser rejects redirect before any off-origin target request', { timeout: 60000 }, async () => {
   await fixture(async (f) => {
     for (const status of [301, 302, 303, 307, 308]) {
       const result = await browserVisit(f, `/redirect/${status}`);

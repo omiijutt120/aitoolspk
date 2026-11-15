@@ -10,11 +10,9 @@ export function PurchaseLink({
   intent: 'order' | 'confirm' | 'restock';
 }) {
   const restock = intent === 'restock';
-  const label = restock
-    ? 'Restock'
-    : intent === 'confirm'
-      ? 'Check availability'
-      : 'Buy Now';
+  // Keep the established CTA stable; the WhatsApp message carries the
+  // correct order, confirmation or restock intent.
+  const label = restock ? 'Restock' : 'Buy Now';
   return (
     <a
       className="button buy-button"

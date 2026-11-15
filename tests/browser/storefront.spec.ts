@@ -144,6 +144,12 @@ test('ChatGPT parent exposes every exact variant across pages with correct detai
       await expect(
         cards.nth(i).locator('.product-card-price strong')
       ).toHaveText(`PKR ${p.price.toLocaleString('en-PK')}`);
+      await expect(cards.nth(i).locator('.stock-badge')).toHaveText(
+        p.approval === 'approved' ? 'Available' : 'Pending verification'
+      );
+      await expect(cards.nth(i).locator('.buy-button')).toContainText(
+        p.approval === 'approved' ? 'Buy Now' : 'Check availability'
+      );
       const href = await cards
         .nth(i)
         .getByRole('link', { name: 'View Details', exact: true })

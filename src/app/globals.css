@@ -1963,3 +1963,13 @@ input {
     animation: none !important;
   }
 }
+
+
+/* Commercial review status is separate from supplier stock. */
+.product-review-note {
+  display: block;
+  margin-top: 5px;
+  color: #7a4b12;
+  font-size: 11px;
+  line-height: 1.4;
+}

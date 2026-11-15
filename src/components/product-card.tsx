@@ -87,14 +87,6 @@ export function ProductCard({ product }: { product: Product }) {
       <div className="product-card-price">
         <strong>{money(product.price)}</strong>
         <StockBadge product={product} />
-        {product.approval !== 'approved' && (
-          <span className="product-review-note">Seller verification pending</span>
-        )}
-        {product.approval === 'approved' && (
-          <span className="product-review-note">
-            {product.stock === 'in-stock' ? 'Seller approval recorded' : 'Availability requires confirmation'}
-          </span>
-        )}
         <PriceSource brand={product.brand} brandSlug={product.brandSlug} />
       </div>
       <div className="product-buttons">

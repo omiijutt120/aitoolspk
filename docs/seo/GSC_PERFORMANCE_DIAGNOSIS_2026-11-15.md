@@ -201,6 +201,10 @@ WhatsApp enquiry clicks and qualified enquiries in separate reports.
 | Collection/logo components | Fixed-size thumbnails lacked `sizes`, so responsive candidates could be selected as if they were viewport-width images | Added exact rendered-size hints to collection, product, catalog, article, header and footer logo images | Low; image URL, dimensions and generated WebP assets are unchanged |
 | `docs/seo/SEO_30_60_90_DAY_ROADMAP.md` | Roadmap predates the 15 November baseline | Added dated evidence and measurement constraints | Documentation-only |
 | `docs/seo/GSC_PERFORMANCE_DIAGNOSIS_2026-11-15.md` | No dated diagnosis for this baseline | Added evidence, findings, implementation record, blockers and owner actions | Documentation-only |
+| `docs/seo/SEO_RECOVERY_ONE_SHOT_2026-11-15.md` | The one-shot contract had no durable requirement-by-requirement implementation report | Added the final workstream status, evidence boundaries and explicit non-claims | Documentation-only |
+| `docs/seo/SEO_COLLECTION_IMPLEMENTATION_MATRIX.csv` | Collection coverage was not available as a complete, reviewable artifact | Added all 108 current collection routes with priority, local validation, change and remaining-reason fields | Generated from current SEO report; no commercial data changed |
+| `docs/seo/IMAGE_AND_CWV_EVIDENCE.md` | Image and performance claims lacked a measured asset baseline | Added public asset byte/dimension inventory and separated local image evidence from blocked field/lab metrics | No asset was re-encoded without a measured performance target |
+| `docs/seo/OWNER_UNBLOCK_CHECKLIST.md` | GSC, DNS, CWV, Bing and product-fact dependencies were scattered across notes | Added exact owner-side evidence and approval actions required to close external blockers | Owner action required; no external account or deployment was changed |
 
 ## Test results
 
@@ -221,6 +225,13 @@ weakened. `npm run launch:check` and `npm run test:browser` have the same root
 Chromium limitation.
 `npm run seo:audit -- --live` remains blocked by
 `getaddrinfo EAI_AGAIN aitoolspk.tech` and is not represented as passed.
+
+The official Google guidance URLs required by the one-shot contract were
+recorded as references, but direct retrieval from this environment failed at
+DNS lookup (`WebFetchBlockedUrlError: No address associated with hostname`).
+Accordingly, no current Google policy claim is presented as externally
+verified here. The local Next.js App Router and accessibility guidance was
+read from the installed package before reviewing the route implementation.
 
 ## 30/60/90-day owner plan
 

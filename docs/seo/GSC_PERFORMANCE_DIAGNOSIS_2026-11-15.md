@@ -11,6 +11,15 @@ or production HTML was available in this environment. The production hostname al
 DNS resolution (`curl: (6) Could not resolve host: aitoolspk.tech`), so live
 HTTP and deployment verification are **BLOCKED**.
 
+The requested `AiToolsPk_GitHub_Copilot_ONE_SHOT_SEO_GEO_AEO_RECOVERY.md`
+contract was not present in the tracked repository or Git history. The only
+reference supplied to this session was a temporary uploaded prompt path, which
+is intentionally not accessed. Therefore the matrix below maps the explicit
+20 acceptance areas in the user request and repository's existing release
+gates; any additional acceptance wording in that unavailable file is
+**BLOCKED** and must be supplied as a repository file or non-temporary
+instruction before it can be verified.
+
 ## Baseline
 
 | Finding | Evidence | Classification |
@@ -138,6 +147,31 @@ content.
 | Ethical backlink strategy | Existing strategy and backlink files document owner-reviewed opportunities. | No outreach or submissions performed. | OWNER ACTION REQUIRED |
 | GSC monitoring and conversion tracking | No authorized GSC/GA4/CrUX import; WhatsApp is the conversion path. | Measurement plan remains documented; no tracker added without approval. | OWNER ACTION REQUIRED |
 
+### Twenty-item implementation acceptance matrix
+
+| # | Acceptance item | Result | Evidence or blocker |
+| ---: | --- | --- | --- |
+| 1 | GSC regex-group totals are recorded accurately | VERIFIED PASS | 236 queries, 884 impressions, 0 clicks |
+| 2 | Filtered landing-page groups are recorded accurately | VERIFIED PASS | Price Index 822, homepage 64, ChatGPT page 3 4 |
+| 3 | Query-to-page attribution is not fabricated | VERIFIED PASS | Separate query/page aggregates are explicitly separated |
+| 4 | Filtered device and country totals are recorded | VERIFIED PASS | Desktop 565, tablet 173, mobile 146; Pakistan 883, US 1 |
+| 5 | Priority collection destinations are crawlable | VERIFIED PASS | 32 existing `/plans/<slug>/` links generated from catalog evidence |
+| 6 | Product IDs, prices, variants and warranties are preserved | VERIFIED PASS | No catalog or commercial files changed; export gate passes |
+| 7 | Unapproved offers remain protected | VERIFIED PASS | 815 `NEEDS_REVIEW`, 2 `EXCLUDED`, 0 approved indexable offers |
+| 8 | Duplicate offer descriptions are investigated without bulk rewriting | VERIFIED PASS | 788 duplicates documented; individual review remains required |
+| 9 | Collection metadata and factual guide content remain unique/useful | VERIFIED PASS | 108 collection routes, per-collection facts and quote references |
+| 10 | Canonicals and OG URLs remain self-consistent locally | VERIFIED PASS | SEO validator found no canonical/OG errors |
+| 11 | Sitemap membership matches local indexability | VERIFIED PASS | 188 indexable sitemap URLs; validator passed |
+| 12 | Robots and AI crawler policy remains explicit | VERIFIED PASS | `robots.ts` names approved public crawlers; no private paths exposed |
+| 13 | Structured data remains validated and claim-safe | VERIFIED PASS | Export validator passed; no Review/AggregateRating/FAQPage markup |
+| 14 | Internal links and fragment targets remain valid | VERIFIED PASS | 72,855 internal references; 1,499 fragments; zero issues |
+| 15 | Fixed logo images have responsive size hints | VERIFIED PASS | Collection, product, catalog and article logo components updated |
+| 16 | Static export and public-field safety pass | VERIFIED PASS | 1,006 pages, 0 broken, 0 confidential fields |
+| 17 | Core Web Vitals are measured honestly | BLOCKED | No CrUX/GSC field data; browser lab cannot launch as root |
+| 18 | Production HTTP, redirects and Google-selected canonicals are verified | BLOCKED | `aitoolspk.tech` DNS returns `EAI_AGAIN` in this environment |
+| 19 | Ethical authority work is prepared without outreach | OWNER ACTION REQUIRED | Strategy/backlink evidence exists; owner must approve and send outreach |
+| 20 | GSC monitoring and WhatsApp conversion measurement are enabled | OWNER ACTION REQUIRED | No authorized GSC/analytics access; no tracker added without approval |
+
 ## GEO/AEO and trust
 
 The codebase exposes explicit crawler rules, organization/website identity,
@@ -180,8 +214,10 @@ descriptions and 1,499 valid fragment links. The SEO publication gate remains
 
 `npm test` still has 93 passing, 2 failing browser-sandbox tests and 1 skipped
 test because Chromium refuses to launch as root without its sandbox. The
-failure is environmental and no test was weakened. `npm run launch:check` and
-`npm run test:browser` have the same root Chromium limitation.
+Playwright Chromium was installed and the tests were retried; the same
+sandbox failure remains. The failure is environmental and no test was
+weakened. `npm run launch:check` and `npm run test:browser` have the same root
+Chromium limitation.
 `npm run seo:audit -- --live` remains blocked by
 `getaddrinfo EAI_AGAIN aitoolspk.tech` and is not represented as passed.
 

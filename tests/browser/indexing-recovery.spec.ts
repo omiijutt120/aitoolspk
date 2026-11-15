@@ -135,3 +135,20 @@ test('hyphenated catalog terms reach product pages and the exact WhatsApp enquir
     );
   }
 });
+
+test('price index separates seller approval from stock and stale quote freshness', async ({
+  page,
+}) => {
+  await page.goto('/price-index/');
+  await expect(page.locator('main')).toContainText('815 are awaiting commercial verification');
+  await expect(page.locator('main')).toContainText('815 have quotes older than seven days');
+  const telegram = page.locator('table').last().getByRole('row').filter({
+    hasText: 'Telegram',
+  });
+  await expect(telegram).toContainText('20 pending verification');
+  await expect(telegram).toContainText('20 quotes need refresh');
+  await page.goto('/plans/chatgpt/');
+  const card = page.locator('.product-card').first();
+  await expect(card.locator('.stock-badge')).toHaveText('Pending verification');
+  await expect(card.locator('.buy-button')).toContainText('Check availability');
+});

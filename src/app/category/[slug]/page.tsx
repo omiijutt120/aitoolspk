@@ -16,10 +16,12 @@ import { PAGE_SIZE } from '@/lib/pagination';
 import { CollectionSchema } from '@/components/collection-schema';
 export const dynamicParams = false;
 function categoryHeading(name: string) {
-  return /\\btools?$/i.test(name) ? name : `${name} tools`;
+  return name.toLowerCase().endsWith(' tools') ? name : `${name} tools`;
 }
 function categoryTitle(name: string, page: number) {
-  const base = name.replace(/\\s+tools?$/i, '');
+  const base = name.toLowerCase().endsWith(' tools')
+    ? name.slice(0, -6)
+    : name;
   return page > 1
     ? `${base} | Page ${page} | AiToolsPk`
     : `${base} in Pakistan | AiToolsPk`;

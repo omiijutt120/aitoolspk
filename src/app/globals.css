@@ -705,7 +705,7 @@ input {
 }
 .product-buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px;
   margin-top: 15px;
 }
@@ -715,6 +715,10 @@ input {
   min-height: 44px;
   gap: 4px;
   border-radius: 7px;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 .center-action {
   display: flex;
@@ -1916,7 +1920,7 @@ input {
     grid-template-columns: 1fr;
   }
   .product-buttons {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .product-card-price,
   .catalog-results .product-card-price {
@@ -1974,4 +1978,21 @@ input {
   color: #7a4b12;
   font-size: 11px;
   line-height: 1.4;
+}
+
+/* Keep wide comparison data inside its own scroll region on small screens. */
+.plan-comparison {
+  min-width: 0;
+  max-width: 100%;
+}
+.comparison-scroll {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.comparison-scroll table {
+  width: 100%;
+  min-width: 720px;
 }

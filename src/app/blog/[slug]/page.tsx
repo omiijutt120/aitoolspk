@@ -35,12 +35,7 @@ function Prose({ text }: { text: string }) {
     const start = match.index ?? 0;
     if (start > at) out.push(text.slice(at, start));
     out.push(
-      <a
-        key={start}
-        href={match[2]}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a key={start} href={match[2]} target="_blank" rel="noopener noreferrer">
         {match[1]}
       </a>
     );
@@ -226,10 +221,6 @@ export default async function BlogArticle({ params }: Props) {
                         <div>
                           <dt>Seller warranty</dt>
                           <dd>{plan.warranty}</dd>
-                        </div>
-                        <div>
-                          <dt>Product ID</dt>
-                          <dd>{plan.id}</dd>
                         </div>
                       </dl>
                       <Link

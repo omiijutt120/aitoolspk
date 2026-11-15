@@ -84,7 +84,12 @@ test('expanded collections have distinct guidance, local social previews and acc
   }
   await page.goto('/plans/gemini/');
   const plan = catalog.find((p) => p.id === 'PK-1C4151BB27E1')!;
-  const row = page.locator('.plan-comparison tr').filter({ hasText: plan.id });
+  // The row is found by its plan name, not its id: indexable pages no longer
+  // print the catalogue id, and this test should fail if one comes back.
+  const row = page
+    .locator('.plan-comparison tr')
+    .filter({ hasText: plan.name })
+    .first();
   for (
     let remaining = 3;
     (await row.count()) === 0 && remaining > 0;
@@ -95,6 +100,7 @@ test('expanded collections have distinct guidance, local social previews and acc
   await page.locator('.plan-comparison summary').click();
   await expect(row).toContainText('PKR 1,200');
   await expect(row).toContainText('Full seller warranty (18 months)');
+  await expect(row).not.toContainText(plan.id);
   // The first link in the row is the exact plan; the price cell additionally
   // carries an outbound link to the vendor's own site.
   expect(await row.locator('a').first().getAttribute('href')).toBe(

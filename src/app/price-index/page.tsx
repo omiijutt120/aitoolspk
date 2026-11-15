@@ -22,8 +22,11 @@ const alphabetical = [...rows].sort((a, b) =>
 );
 
 export const metadata = makeMetadata(
-  'AI subscription price index for Pakistan',
-  `Every listed AI and digital subscription price for Pakistan: ${stats.tools} tools with their lowest quoted PKR price, plan counts, durations and warranty labels.`,
+  // This is the largest impression row in the Search Console export and the
+  // title never named the query. "Price index" is our internal name; people
+  // type "AI tool prices in Pakistan" and the currency, so the title says that.
+  `AI tool prices in Pakistan 2026: ${stats.tools} tools in PKR`,
+  `Every listed AI tool price in Pakistan: ${stats.tools} tools and ${stats.offers.toLocaleString('en-PK')} seller quotes, lowest quoted PKR figure, plan counts, durations and warranty labels.`,
   '/price-index/'
 );
 
@@ -117,21 +120,53 @@ export default function PriceIndex() {
       </div>
 
       <p className="collection-price-context">
-        Quote dates in this index run from{' '}
-        <time dateTime={stats.oldestQuote}>
-          {new Date(`${stats.oldestQuote}T00:00:00Z`).toLocaleDateString(
-            'en-GB',
-            { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }
-          )}
-        </time>{' '}
-        to{' '}
-        <time dateTime={stats.newestQuote}>
-          {new Date(`${stats.newestQuote}T00:00:00Z`).toLocaleDateString(
-            'en-GB',
-            { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }
-          )}
-        </time>
-        . Every figure is a seller quote, not a vendor list price, and a brand
+        {stats.oldestQuote === stats.newestQuote ? (
+          <>
+            All {stats.offers.toLocaleString('en-PK')} quotes in this index were
+            recorded on{' '}
+            <time dateTime={stats.newestQuote}>
+              {new Date(`${stats.newestQuote}T00:00:00Z`).toLocaleDateString(
+                'en-GB',
+                {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                  timeZone: 'UTC',
+                }
+              )}
+            </time>
+            , the seller&apos;s latest listing date.
+          </>
+        ) : (
+          <>
+            Quote dates in this index run from{' '}
+            <time dateTime={stats.oldestQuote}>
+              {new Date(`${stats.oldestQuote}T00:00:00Z`).toLocaleDateString(
+                'en-GB',
+                {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                  timeZone: 'UTC',
+                }
+              )}
+            </time>{' '}
+            to{' '}
+            <time dateTime={stats.newestQuote}>
+              {new Date(`${stats.newestQuote}T00:00:00Z`).toLocaleDateString(
+                'en-GB',
+                {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric',
+                  timeZone: 'UTC',
+                }
+              )}
+            </time>
+            .
+          </>
+        )}{' '}
+        Every figure is a seller quote, not a vendor list price, and a brand
         name does not imply vendor affiliation. Confirm the exact package,
         legitimate access and warranty before paying.
       </p>
@@ -152,6 +187,9 @@ export default function PriceIndex() {
         <Link href="#how-to-read" prefetch={false}>
           How to read a starting price
         </Link>
+        <Link href="#method" prefetch={false}>
+          Method and sources
+        </Link>
         <Link href="#under-1000" prefetch={false}>
           Under PKR 1,000
         </Link>
@@ -170,9 +208,9 @@ export default function PriceIndex() {
       </p>
       <ul className="price-index-notes">
         <li>
-          <strong>Plans</strong> counts the separate product IDs the seller
-          lists for that tool. Each ID carries its own duration, access method
-          and warranty label.
+          <strong>Plans</strong> counts the separate listings the seller
+          publishes for that tool. Each listing carries its own duration, access
+          method and warranty label.
         </li>
         <li>
           <strong>Durations</strong> lists the labels exactly as supplied. Where
@@ -196,6 +234,23 @@ export default function PriceIndex() {
           quoted from here can be opened, dated and rechecked in one jump.
         </li>
       </ul>
+
+      <h2 id="method">Method and sources</h2>
+      <p>
+        Each amount is copied from the seller&apos;s own listing on the date in
+        the <strong>Quoted</strong> column and stored against that exact
+        listing. The index does not estimate a market average, convert a
+        vendor&apos;s dollar price into rupees or infer a discount. Where a
+        seller left the duration or the warranty blank, the row says so instead
+        of filling the gap.
+      </p>
+      <p>
+        A brand name identifies the product the seller names. It does not mean
+        the software maker sells through this catalog, authorises the listing or
+        sponsors it. Prices here are quotes to question, not offers to accept:
+        open the collection, read the exact package, then confirm the current
+        amount and delivery terms in writing.
+      </p>
 
       <h2 id="under-1000">Tools with a listed price under PKR 1,000</h2>
       <p>

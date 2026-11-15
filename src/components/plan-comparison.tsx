@@ -53,7 +53,6 @@ export function PlanComparison({
                   >
                     {plan.name}
                   </Link>
-                  <span className="comparison-id">{plan.id}</span>
                 </th>
                 <td>
                   {plan.duration === 'Not specified'

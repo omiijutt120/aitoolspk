@@ -13,6 +13,7 @@ export function Footer() {
                 alt=""
                 width={34}
                 height={34}
+                sizes="34px"
               />
               <span>
                 AiTools<span className="brand-light">Pk</span>

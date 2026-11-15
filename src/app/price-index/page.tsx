@@ -28,6 +28,9 @@ const alphabetical = [...rows].sort((a, b) =>
 const streaming = rows
   .filter((row) => row.categories.includes('entertainment'))
   .sort((a, b) => a.from - b.from || a.title.localeCompare(b.title, 'en'));
+const priorityRows = [...rows]
+  .sort((a, b) => b.count - a.count || a.title.localeCompare(b.title, 'en'))
+  .slice(0, 32);
 
 export const metadata = makeMetadata(
   // This is the largest impression row in the Search Console export and the
@@ -71,6 +74,8 @@ function PriceTable({
             {showCeiling && <th scope="col">Highest listed</th>}
             <th scope="col">Quoted</th>
             <th scope="col">Durations</th>
+            <th scope="col">Review status</th>
+            <th scope="col">Quote freshness</th>
             <th scope="col">Warranty as listed</th>
           </tr>
         </thead>
@@ -98,6 +103,16 @@ function PriceTable({
                 <time dateTime={row.fromDate}>{row.fromDate}</time>
               </td>
               <td>{summarise(row.durations)}</td>
+              <td>
+                {row.pendingOffers > 0
+                  ? `${row.pendingOffers} pending verification`
+                  : 'Seller review recorded'}
+              </td>
+              <td>
+                {row.staleOffers > 0
+                  ? `${row.staleOffers} quotes need refresh`
+                  : 'Within 7-day quote window'}
+              </td>
               <td>{displayedWarranty(row)}</td>
             </tr>
           ))}
@@ -178,6 +193,13 @@ export default function PriceIndex() {
         name does not imply vendor affiliation. Confirm the exact package,
         legitimate access and warranty before paying.
       </p>
+      <p className="collection-price-context">
+        Snapshot checked <time dateTime={stats.asOf}>{stats.asOf}</time>. Of{' '}
+        {stats.offers} listed offers, {stats.pendingOffers} are awaiting
+        commercial verification and {stats.staleOffers} have quotes older than
+        seven days. No offer should be treated as currently purchasable from
+        its catalog label alone.
+      </p>
 
       <p className="guide-byline">
         Index maintained by{' '}
@@ -197,6 +219,9 @@ export default function PriceIndex() {
         </Link>
         <Link href="#method" prefetch={false}>
           Method and sources
+        </Link>
+        <Link href="#catalog-priority" prefetch={false}>
+          Largest catalog collections
         </Link>
         <Link href="#under-1000" prefetch={false}>
           Under PKR 1,000
@@ -262,6 +287,27 @@ export default function PriceIndex() {
         open the collection, read the exact package, then confirm the current
         amount and delivery terms in writing.
       </p>
+
+      <h2 id="catalog-priority">Largest current catalog collections</h2>
+      <p>
+        These 32 collections currently contain the most listed plans in the
+        public catalog. They are a navigation aid, not a search-volume or
+        popularity claim. Each link leads to the collection page, where the
+        exact listed plans, durations and seller terms are shown together.
+      </p>
+      <ul className="price-index-priority-links">
+        {priorityRows.map((row) => (
+          <li key={row.slug}>
+            <Link href={`/plans/${row.slug}/`} prefetch={false}>
+              {row.isApi ? 'API plans' : row.brand}
+            </Link>{' '}
+            <span>
+              from {money(row.from)} · {row.count}{' '}
+              {row.count === 1 ? 'listed plan' : 'listed plans'}
+            </span>
+          </li>
+        ))}
+      </ul>
 
       <h2 id="under-1000">Tools with a listed price under PKR 1,000</h2>
       <p>

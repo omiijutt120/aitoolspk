@@ -10,11 +10,13 @@ test('Gemini 18-month filter shows one updated plan and its exact WhatsApp detai
   await expect(cards).toContainText('PKR 1,200');
   await expect(cards).toContainText('Full seller warranty (18 months)');
   const buy = cards.getByRole('link', { name: /^Buy Now:/ });
+  await expect(cards.locator('.stock-badge')).toHaveText('Pending verification');
   const href = await buy.getAttribute('href');
   expect(href).toBeTruthy();
   const url = new URL(href!);
   expect(url.hostname).toBe('wa.me');
   expect(url.pathname).toBe('/923714549245');
+  expect(url.searchParams.get('text')).toContain('please confirm availability and eligibility');
   for (const text of [
     'PK-1C4151BB27E1',
     '1,200',

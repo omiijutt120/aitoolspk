@@ -1,4 +1,5 @@
 import type { Product } from './types';
+import { isStale } from './commerce.mjs';
 import { products } from './catalog';
 import {
   collectionProducts,
@@ -19,6 +20,12 @@ export type PriceIndexEntry = PlanCollection & {
   fromDate: string;
   /** Most recent quote date in the collection. */
   newestQuote: string;
+  /** Offers whose seller approval is still pending. */
+  pendingOffers: number;
+  /** Offers with seller approval recorded. */
+  approvedOffers: number;
+  /** Offers whose quote date is outside the seven-day refresh window. */
+  staleOffers: number;
 };
 
 const IGNORED = new Set(['', 'not specified']);
@@ -31,7 +38,10 @@ export function warrantyText(value: string) {
     .toLowerCase();
 }
 
-export function priceIndex(input: Product[] = products): PriceIndexEntry[] {
+export function priceIndex(
+  input: Product[] = products,
+  now = new Date()
+): PriceIndexEntry[] {
   const eligible = input.filter((p) => p.approval !== 'excluded');
   return groupCollections(eligible).map((group) => {
     const plans = collectionProducts(eligible, group.slug);
@@ -65,6 +75,9 @@ export function priceIndex(input: Product[] = products): PriceIndexEntry[] {
         .map((p) => p.date)
         .sort()
         .at(-1) as string,
+      pendingOffers: plans.filter((p) => p.approval !== 'approved').length,
+      approvedOffers: plans.filter((p) => p.approval === 'approved').length,
+      staleOffers: plans.filter((p) => isStale(p, now)).length,
     };
   });
 }
@@ -76,9 +89,16 @@ export type PriceIndexStats = {
   mostExpensive: number;
   oldestQuote: string;
   newestQuote: string;
+  pendingOffers: number;
+  approvedOffers: number;
+  staleOffers: number;
+  asOf: string;
 };
 
-export function priceIndexStats(input: Product[] = products): PriceIndexStats {
+export function priceIndexStats(
+  input: Product[] = products,
+  now = new Date()
+): PriceIndexStats {
   const eligible = input.filter((p) => p.approval !== 'excluded');
   const prices = eligible.map((p) => p.price);
   const dates = eligible.map((p) => p.date).sort();
@@ -89,6 +109,10 @@ export function priceIndexStats(input: Product[] = products): PriceIndexStats {
     mostExpensive: Math.max(...prices),
     oldestQuote: dates[0],
     newestQuote: dates.at(-1) as string,
+    pendingOffers: eligible.filter((p) => p.approval !== 'approved').length,
+    approvedOffers: eligible.filter((p) => p.approval === 'approved').length,
+    staleOffers: eligible.filter((p) => isStale(p, now)).length,
+    asOf: now.toISOString().slice(0, 10),
   };
 }
 

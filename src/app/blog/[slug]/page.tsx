@@ -112,6 +112,7 @@ export default async function BlogArticle({ params }: Props) {
                   alt={`${collection.brand} logo`}
                   width={40}
                   height={40}
+                  sizes="40px"
                 />
               )}
               <span>{post.topic}</span>

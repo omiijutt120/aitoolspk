@@ -474,7 +474,7 @@ export function CatalogBrowser({
         label="Availability"
         param="stock"
         values={[
-          { value: 'in-stock', label: 'Available' },
+          { value: 'in-stock', label: 'Listed as in stock' },
           { value: 'out-of-stock', label: 'Out of stock' },
           { value: 'unconfirmed', label: 'Stock unconfirmed' },
         ]}
@@ -589,6 +589,7 @@ export function CatalogBrowser({
                       src={logoThumbnail(p.logo)}
                       width={24}
                       height={24}
+                      sizes="24px"
                       alt=""
                     />
                   )}
@@ -700,6 +701,7 @@ export function CatalogBrowser({
                     src={logoThumbnail(p.logo)}
                     width={18}
                     height={18}
+                    sizes="18px"
                     alt=""
                   />
                 )}
@@ -729,8 +731,10 @@ export function CatalogBrowser({
           <div className="catalog-notice">
             <Info size={15} />
             <p>
-              Availability reflects seller-confirmed stock. Confirm your plan,
-              current price and terms on WhatsApp before payment.
+              Stock labels reflect the last recorded supplier update, not live
+              inventory. Pending offers still require commercial and delivery
+              verification. Confirm current stock, price and terms on WhatsApp
+              before payment.
             </p>
           </div>
           {error && waitingForCatalog && (
@@ -748,7 +752,7 @@ export function CatalogBrowser({
             </p>
           )}
           <h2 className="sr-only">
-            {grouped ? 'Tool collections' : 'Available plans'}
+            {grouped ? 'Tool collections' : 'Listed plans'}
           </h2>
           {grouped && shownCollections.length ? (
             <div className="collection-grid">

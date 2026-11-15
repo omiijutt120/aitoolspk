@@ -58,6 +58,7 @@ export function CollectionCard({
               src={logoThumbnail(c.logo, 'card')}
               width={68}
               height={68}
+              sizes="68px"
               alt={`${c.brand} logo`}
             />
           ) : (

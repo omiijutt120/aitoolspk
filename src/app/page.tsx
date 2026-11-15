@@ -23,8 +23,11 @@ import { FaqList } from '@/components/faq';
 import { logoThumbnail } from '@/lib/logo-thumbnail';
 import { BlogCard } from '@/components/blog-card';
 import { blogPosts } from '@/lib/blog';
+import { isStale } from '@/lib/commerce.mjs';
 
 const collectionTotal = groupCollections(products).length;
+const pendingOfferCount = products.filter((p) => p.approval !== 'approved').length;
+const staleOfferCount = products.filter((p) => isStale(p)).length;
 
 export const metadata: Metadata = {
   ...makeMetadata(
@@ -111,6 +114,7 @@ export default function Home() {
                     src={logoThumbnail(p.logo)}
                     width={44}
                     height={44}
+                    sizes="44px"
                     alt={`${p.brand} logo`}
                   />
                 ) : (
@@ -158,6 +162,11 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <section className="container home-method" aria-label="Offer verification notice">
+        <p>
+          <strong>Offer verification notice:</strong> {pendingOfferCount} of {products.length} listed offers are awaiting seller/commercial verification, and {staleOfferCount} price quotes are older than the seven-day refresh window. Prices are dated snapshots, not live stock or a promise of current availability. Confirm the exact product ID, price, access and warranty before paying.
+        </p>
+      </section>
       <section
         className="container home-categories"
         aria-labelledby="category-heading"

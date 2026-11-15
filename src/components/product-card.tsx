@@ -25,6 +25,7 @@ export function BrandLogo({
           alt={`${product.brand} logo`}
           width={large ? 58 : 34}
           height={large ? 58 : 34}
+          sizes={large ? '58px' : '34px'}
         />
       ) : (
         <span className="brand-wordmark">{product.brand}</span>

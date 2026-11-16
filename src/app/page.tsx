@@ -36,10 +36,15 @@ export const metadata: Metadata = {
     // page's 120). Two titles competing for one query splits the signal, so the
     // homepage names the catalogue instead and the price index keeps the price
     // query to itself.
-    'AI tools and subscriptions in Pakistan | AiToolsPk',
+    'AI tools and subscriptions in Pakistan',
     `Compare ${collectionTotal} AI, software and streaming tools by listed PKR quote, plan duration and seller warranty. ${products.length} plans to compare.`,
     '/'
   ),
+  // A layout's title template does not apply to the page in its own segment, so
+  // the root layout's "%s | AiToolsPk" never reaches `/`. `makeMetadata` strips a
+  // suffix to avoid a duplicate, which left this page with a bare 43-character
+  // title; write the one brand suffix explicitly instead.
+  title: { absolute: 'AI tools and subscriptions in Pakistan | AiToolsPk' },
   // The homepage advertises the plain-text site summary beside its canonical
   // URL, so a crawler or an answer engine does not have to guess that it
   // exists. Kept on this route only: every other page already points at it

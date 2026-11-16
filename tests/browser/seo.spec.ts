@@ -103,6 +103,16 @@ test('audited landing-page titles fit their search intent without boilerplate re
   }
 });
 
+test('the homepage keeps exactly one brand suffix', async ({ request }) => {
+  // The root layout template does not apply to the root page itself, so the
+  // homepage title is the one that can silently lose its brand suffix when the
+  // shared metadata helper strips a duplicate.
+  const response = await request.get('/');
+  expect(response.status()).toBe(200);
+  const title = (await response.text()).match(/<title>([^<]+)<\/title>/)?.[1] ?? '';
+  expect(title).toBe('AI tools and subscriptions in Pakistan | AiToolsPk');
+});
+
 test('ordering instructions introduce an H2 before step H3s', async ({
   page,
 }) => {

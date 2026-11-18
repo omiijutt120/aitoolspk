@@ -72,7 +72,7 @@ test('the sitemap parser ignores whitespace inside loc', () => {
   );
 });
 
-function fixture({ robots } = {}) {
+function fixture({ robots, pageA } = {}) {
   const keyFile = readdirSync('public').find((name) =>
     /^[a-f0-9]{32}\.txt$/i.test(name)
   );
@@ -89,7 +89,9 @@ function fixture({ robots } = {}) {
     '/llms-full.txt': '# full\n',
     '/ai.txt': '# ai\n',
     [`/${keyFile}`]: key,
-    '/a/': `<html><head><title>A</title><link rel="canonical" href="${SITE}/a/"><meta name="robots" content="index, follow"></head><body><h1>A</h1></body></html>`,
+    '/a/':
+      pageA ??
+      `<html><head><title>A</title><link rel="canonical" href="${SITE}/a/"><meta name="robots" content="index, follow"></head><body><h1>A</h1></body></html>`,
     '/b/': `<html><head><title>B</title><link rel="canonical" href="${SITE}/b/"><meta name="robots" content="index, follow"></head><body><h1>B</h1></body></html>`,
   };
   return async (url) => {
@@ -105,8 +107,21 @@ test('an intact discovery layer passes every hard check', async () => {
   const report = await runChecks({ fetchImpl: fixture() });
   const failures = report.checks.filter((check) => check.hard && !check.passed);
   assert.deepEqual(failures, []);
-  assert.equal(report.checks.length, 13);
+  assert.equal(report.checks.length, 14);
   assert.equal(report.urlCount, 2);
+});
+
+test('live discovery check rejects opaque query tokens on sitemap pages', async () => {
+  const report = await runChecks({
+    fetchImpl: fixture({
+      pageA: `<html><head><link rel="canonical" href="${SITE}/a/"></head><body><h1>A</h1>ai45527</body></html>`,
+    }),
+  });
+  const check = report.checks.find((entry) =>
+    entry.name.includes('opaque ai-number')
+  );
+  assert.equal(check.passed, false);
+  assert.match(check.detail, /\/a\//);
 });
 
 test('a disallow-all robots.txt is caught before it hides the site', async () => {

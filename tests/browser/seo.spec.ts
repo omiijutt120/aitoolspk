@@ -103,23 +103,26 @@ test('audited landing-page titles fit their search intent without boilerplate re
   }
 });
 
-test('the homepage keeps exactly one brand suffix', async ({ request }) => {
+test('the homepage title starts with its distinct site name', async ({
+  request,
+}) => {
   // The root layout template does not apply to the root page itself, so the
-  // homepage title is the one that can silently lose its brand suffix when the
-  // shared metadata helper strips a duplicate.
+  // homepage title is the one that can silently lose its brand when the
+  // shared metadata helper and root layout title template interact.
   const response = await request.get('/');
   expect(response.status()).toBe(200);
-  const title = (await response.text()).match(/<title>([^<]+)<\/title>/)?.[1] ?? '';
-  expect(title).toBe('AI tools and subscriptions in Pakistan | AiToolsPk');
+  const title =
+    (await response.text()).match(/<title>([^<]+)<\/title>/)?.[1] ?? '';
+  expect(title).toBe('AiToolsPk: AI tools and subscriptions in Pakistan');
 });
 
 test('ordering instructions introduce an H2 before step H3s', async ({
   page,
 }) => {
   await page.goto('/how-to-order/');
-  const levels = await page.locator('main h1, main h2, main h3').evaluateAll(
-    (nodes) => nodes.map((node) => Number(node.tagName.slice(1)))
-  );
+  const levels = await page
+    .locator('main h1, main h2, main h3')
+    .evaluateAll((nodes) => nodes.map((node) => Number(node.tagName.slice(1))));
   expect(levels[0]).toBe(1);
   expect(levels[1]).toBe(2);
   // The page now opens with a written answer before the steps, so the first

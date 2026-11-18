@@ -103,10 +103,7 @@ export async function generateMetadata({
     [yearShort],
   ]
     .map((parts) => parts.filter(Boolean).join('; '))
-    .find(
-      (text) =>
-        text && (prefix + head + text + '. ' + tail).length <= 160
-    );
+    .find((text) => text && (prefix + head + text + '. ' + tail).length <= 160);
   // A collection with one listing has a price, not a range, so it says so.
   const single = collection.minPrice === collection.maxPrice;
   return metadata(
@@ -193,7 +190,12 @@ export default async function PlansPage({
             ? 'Every API offer, together. Search providers and compare credits, durations and access before choosing a plan.'
             : `All ${c.brand} subscriptions and variants, together. Compare the exact duration, access and warranty before choosing your plan.`}
         </p>
-        {page === 1 && <CollectionCostAnswer collection={c} />}
+        {page === 1 && (
+          <CollectionCostAnswer
+            collection={c}
+            latestQuote={quoteDates.at(-1)!}
+          />
+        )}
         <p className="collection-price-context">
           Listed range:{' '}
           <strong>
@@ -314,15 +316,15 @@ export default async function PlansPage({
             involved.
           </p>
           <p>
-            The listings below are not that price. Each one is a seller quote for
-            access resold in Pakistan, and it can land above or below the
+            The listings below are not that price. Each one is a seller quote
+            for access resold in Pakistan, and it can land above or below the
             vendor&apos;s own tiers for four reasons:
           </p>
           <ul>
             <li>
               <strong>Who owns the account.</strong> A private profile on a
-              seller&apos;s membership is a different thing from your own Netflix
-              membership. Ask which one you are buying before paying.
+              seller&apos;s membership is a different thing from your own
+              Netflix membership. Ask which one you are buying before paying.
             </li>
             <li>
               <strong>The duration sold.</strong> Netflix sells monthly
@@ -337,13 +339,13 @@ export default async function PlansPage({
             </li>
             <li>
               <strong>Seller warranty.</strong> A replacement promise is the
-              seller&apos;s term, not Netflix&apos;s. Get the coverage period and
-              what it covers in writing.
+              seller&apos;s term, not Netflix&apos;s. Get the coverage period
+              and what it covers in writing.
             </li>
           </ul>
           <p>
-            If you want Netflix&apos;s own membership at the vendor price, buy it
-            from Netflix. If you are comparing the listings here, confirm the
+            If you want Netflix&apos;s own membership at the vendor price, buy
+            it from Netflix. If you are comparing the listings here, confirm the
             four points above and read the{' '}
             <Link href="/how-to-order/">ordering checklist</Link> first.
           </p>

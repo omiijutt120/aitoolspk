@@ -93,11 +93,7 @@ function PriceTable({
                   : row.categories.map(categoryName).join(', ')}
               </td>
               <td>{row.count}</td>
-              <td className="comparison-price">
-                <Link href={`/plans/${row.slug}/`} prefetch={false}>
-                  {money(row.from)}
-                </Link>
-              </td>
+              <td className="comparison-price">{money(row.from)}</td>
               {showCeiling && <td>{money(row.to)}</td>}
               <td>
                 <time dateTime={row.fromDate}>{row.fromDate}</time>
@@ -194,11 +190,12 @@ export default function PriceIndex() {
         legitimate access and warranty before paying.
       </p>
       <p className="collection-price-context">
-        Snapshot checked <time dateTime={stats.asOf}>{stats.asOf}</time>. Of{' '}
-        {stats.offers} listed offers, {stats.pendingOffers} are awaiting
-        commercial verification and {stats.staleOffers} have quotes older than
-        seven days. No offer should be treated as currently purchasable from
-        its catalog label alone.
+        Automated catalog check run on{' '}
+        <time dateTime={stats.asOf}>{stats.asOf}</time>. Of {stats.offers}{' '}
+        listed offers, {stats.pendingOffers} are awaiting commercial
+        verification and {stats.staleOffers} have quotes older than seven days.
+        No offer should be treated as currently purchasable from its catalog
+        label alone.
       </p>
 
       <p className="guide-byline">

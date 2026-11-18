@@ -29,6 +29,23 @@ export function toCsv(rows, columns) {
   return [header, ...body].join('\r\n') + '\r\n';
 }
 
+/** For human-opened reports that may contain untrusted search or product text. */
+export function toSafeCsv(rows, columns) {
+  return toCsv(
+    rows.map((row) =>
+      Object.fromEntries(
+        Object.entries(row).map(([key, value]) => [
+          key,
+          typeof value === 'string' && /^[=+@\-\t\r]/.test(value)
+            ? `'${value}`
+            : value,
+        ])
+      )
+    ),
+    columns
+  );
+}
+
 /**
  * Parses CSV text into objects keyed by the header row. Empty lines are
  * ignored; a missing trailing newline is fine. Duplicate headers are rejected

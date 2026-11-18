@@ -51,5 +51,8 @@ test('a middle figure is only called typical while the band is comparable', () =
 
 test('the collection table is scoped to the first page', () => {
   const source = readFileSync('src/app/plans/[slug]/page.tsx', 'utf8');
-  assert.match(source, /\{page === 1 && <CollectionCostAnswer collection=\{c\} \/>\}/);
+  assert.match(
+    source,
+    /\{page === 1 && \([\s\S]{0,250}<CollectionCostAnswer[\s\S]{0,250}latestQuote=\{quoteDates\.at\(-1\)!\}/
+  );
 });

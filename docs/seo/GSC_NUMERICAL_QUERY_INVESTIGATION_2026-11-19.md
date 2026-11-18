@@ -1,0 +1,20 @@
+# Numerical Search Console queries — evidence update
+
+The owner's pasted latest 24-hour summary reports 125 impressions, 0 clicks, 102 impressions from 64 `ai` plus digits queries, and 16 impressions not represented by identifiable queries. These are **owner-supplied summary figures**, not a fresh authenticated export. Separately, the attached `D:\httpsaitoolspk.tech-Performance` file is a Search Console ZIP: its Filters.csv says Web (text-based), Last 3 months; its chart rows actually span **22 October–13 November 2026**. This is the raw source for the earlier figures. Windows and dimensions differ; do not add or compare the counts as if they were one table.
+
+Running `npm run gsc:analyze` on that attached Queries.csv and Chart.csv reproduced **310 visible query rows, 1,283 visible query impressions and 1 click**. Of those, **236** exact `^ai[0-9]+$` rows account for **884 impressions and 0 clicks**. The chart has **1,511 impressions and 7 clicks**, leaving **228 impressions and 6 clicks** absent from visible query rows. Those missing values are *unreported*, not presumed to be commercial. The visible rows include **379 Netflix-related impressions** and **zero rows mentioning ChatGPT, Claude, Gemini, Canva, ElevenLabs, Cursor, Grok or CapCut**. This supports the owner's concern that actual AI-product query discovery is weak in this dated export; it does not prove zero demand or zero future visibility. The Pages.csv dimension independently totals **1,750 impressions**, illustrating why it must not be joined with Queries.csv.
+
+The earlier filtered Pages summary lists `/price-index/` 822, homepage 64, and ChatGPT page 3 with a parameter 4 impressions. That totals 890, not 884. The discrepancy is another reason to keep page and query dimensions separate until the original same-scope export is available. It does **not** prove which individual numerical query appeared on which URL.
+
+Current source `data/`, `src/`, `public/` and the local export guard contain no customer-facing identifier of this pattern; the live complete sitemap check now fetches every sitemap page and rejects `/\bai[0-9]{4,}\b/i` in its HTML. Codes remain in developer comments and historical audit documentation as examples, which are not published as indexable page content. Current product IDs use `PK-` plus hexadecimal characters. The existing `scripts/check-export.mjs` prevents opaque tokens entering exported HTML; the live check detects a deployment or content divergence.
+
+**Root cause: NOT VERIFIED.** The data does not distinguish automated searches, historic content, external anchors, a domain-history artifact or another source. It is inappropriate to noindex the price index or block crawlers based on the query pattern alone. Search Console impressions cannot be erased retroactively.
+
+Next evidence needed, all with the same property, Web search type and exact dates:
+
+1. Export unfiltered daily, query, page, country and device tables for 7, 28 and 90 days. Record the totals for each independently.
+2. Apply the Queries filter **Matches regex** `(?i)^ai[0-9]+$`, export the resulting Pages table, then repeat with **Doesn't match regex** for the non-numerical view. The regex is a reporting filter, not a robots rule.
+3. Page-filter `/price-index/`, `/`, and `/plans/chatgpt/page/3/`; export their Queries tables. If API access is available, `npm run gsc:export -- --days 28 --out reports/gsc/28d` writes actual `query-pages.csv` pairs. The offline `gsc:analyze` script classifies only the visible query rows and labels the remainder unreported.
+4. Inspect the Google-selected canonical, last crawl, referring pages, Manual actions and Security issues in the verified property. Document exact results before attributing the anomaly.
+
+Google documents [omitted anonymized queries and dimension differences](https://support.google.com/webmasters/answer/17010575) and [regex filtering](https://support.google.com/webmasters/answer/17011165). This investigation should be repeated after the reviewed branch is deployed; the branch itself does not change historical GSC data.

@@ -26,7 +26,9 @@ import { blogPosts } from '@/lib/blog';
 import { isStale } from '@/lib/commerce.mjs';
 
 const collectionTotal = groupCollections(products).length;
-const pendingOfferCount = products.filter((p) => p.approval !== 'approved').length;
+const pendingOfferCount = products.filter(
+  (p) => p.approval !== 'approved'
+).length;
 const staleOfferCount = products.filter((p) => isStale(p)).length;
 
 export const metadata: Metadata = {
@@ -36,15 +38,14 @@ export const metadata: Metadata = {
     // page's 120). Two titles competing for one query splits the signal, so the
     // homepage names the catalogue instead and the price index keeps the price
     // query to itself.
-    'AI tools and subscriptions in Pakistan',
+    'AiToolsPk: AI tools and subscriptions in Pakistan',
     `Compare ${collectionTotal} AI, software and streaming tools by listed PKR quote, plan duration and seller warranty. ${products.length} plans to compare.`,
     '/'
   ),
-  // A layout's title template does not apply to the page in its own segment, so
-  // the root layout's "%s | AiToolsPk" never reaches `/`. `makeMetadata` strips a
-  // suffix to avoid a duplicate, which left this page with a bare 43-character
-  // title; write the one brand suffix explicitly instead.
-  title: { absolute: 'AI tools and subscriptions in Pakistan | AiToolsPk' },
+  // A layout's title template does not apply to the root page. Keep the
+  // distinct site name in the homepage's own title so its search result can
+  // be identified even beside other similarly named domains.
+  title: { absolute: 'AiToolsPk: AI tools and subscriptions in Pakistan' },
   // The homepage advertises the plain-text site summary beside its canonical
   // URL, so a crawler or an answer engine does not have to guess that it
   // exists. Kept on this route only: every other page already points at it
@@ -69,7 +70,7 @@ export default function Home() {
             <span /> YOUR NEXT TOOLKIT STARTS HERE
           </p>
           <h1 id="store-title">
-            AI tools and subscriptions in Pakistan.{' '}
+            AiToolsPk: AI tools and subscriptions in Pakistan.{' '}
             <span>Compare every plan.</span>
           </h1>
           <p>
@@ -167,9 +168,17 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <section className="container home-method" aria-label="Offer verification notice">
+      <section
+        className="container home-method"
+        aria-label="Offer verification notice"
+      >
         <p>
-          <strong>Offer verification notice:</strong> {pendingOfferCount} of {products.length} listed offers are awaiting seller/commercial verification, and {staleOfferCount} price quotes are older than the seven-day refresh window. Prices are dated snapshots, not live stock or a promise of current availability. Confirm the exact product ID, price, access and warranty before paying.
+          <strong>Offer verification notice:</strong> {pendingOfferCount} of{' '}
+          {products.length} listed offers are awaiting seller/commercial
+          verification, and {staleOfferCount} price quotes are older than the
+          seven-day refresh window. Prices are dated snapshots, not live stock
+          or a promise of current availability. Confirm the exact product ID,
+          price, access and warranty before paying.
         </p>
       </section>
       <section

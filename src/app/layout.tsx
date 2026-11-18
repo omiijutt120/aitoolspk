@@ -109,7 +109,7 @@ export default function RootLayout({
             '@id': `${origin}/#website`,
             publisher: { '@id': `${origin}/#organization` },
             name: 'AiToolsPk',
-            alternateName: 'AI Tools PK',
+            alternateName: 'aitoolspk.tech',
             url: origin,
             potentialAction: {
               '@type': 'SearchAction',

@@ -251,6 +251,7 @@ export async function runChecks({
   const badCanonical = [];
   const noH1 = [];
   const noindexed = [];
+  const opaqueTokens = [];
   for (const url of picked) {
     const page = await fetchText(fetchImpl, url, { cacheBust: true });
     if (page.status !== 200) {
@@ -272,6 +273,7 @@ export async function runChecks({
       badCanonical.push(`${url} → ${canonical}`);
     if (!extractH1(page.body)) noH1.push(url);
     if (/noindex/i.test(metaRobots(page.body))) noindexed.push(url);
+    if (/\bai[0-9]{4,}\b/i.test(page.body)) opaqueTokens.push(url);
   }
   record(
     'sampled pages are self-canonical',
@@ -290,6 +292,13 @@ export async function runChecks({
     noindexed.length === 0,
     noindexed.length
       ? noindexed.slice(0, 5).join('; ')
+      : `${picked.length} checked`
+  );
+  record(
+    'sampled pages contain no opaque ai-number tokens',
+    opaqueTokens.length === 0,
+    opaqueTokens.length
+      ? opaqueTokens.slice(0, 5).join('; ')
       : `${picked.length} checked`
   );
 

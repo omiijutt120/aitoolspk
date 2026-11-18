@@ -18,8 +18,9 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from '../lib/args.mjs';
-import { toCsv } from '../lib/csv.mjs';
+import { toSafeCsv } from '../lib/csv.mjs';
 import { getAccessToken, querySearchAnalytics } from './client.mjs';
+import { analyzeDirectory } from './analyze.mjs';
 
 const SITE = 'sc-domain:aitoolspk.tech';
 const HELP = `Usage: node scripts/gsc/export.mjs [options]
@@ -31,7 +32,8 @@ const HELP = `Usage: node scripts/gsc/export.mjs [options]
   --out <dir>           where to write (default reports/gsc/export)
   --help
 
-Writes daily.csv, queries.csv, pages.csv and summary.json.`;
+Writes daily.csv, queries.csv, pages.csv, query-pages.csv, countries.csv,
+devices.csv, search-appearances.csv, query-segments.csv and summary.json.`;
 
 const iso = (date) => date.toISOString().slice(0, 10);
 const percent = (value) => `${(value * 100).toFixed(2)}%`;
@@ -70,11 +72,16 @@ async function main() {
   const common = { token, site, startDate, endDate };
   console.log(`Reading ${site} from ${startDate} to ${endDate} (${source}).`);
 
-  const [daily, queries, pages] = await Promise.all([
-    querySearchAnalytics({ ...common, dimensions: ['date'] }),
-    querySearchAnalytics({ ...common, dimensions: ['query'] }),
-    querySearchAnalytics({ ...common, dimensions: ['page'] }),
-  ]);
+  const [daily, queries, pages, queryPages, countries, devices, appearances] =
+    await Promise.all([
+      querySearchAnalytics({ ...common, dimensions: ['date'] }),
+      querySearchAnalytics({ ...common, dimensions: ['query'] }),
+      querySearchAnalytics({ ...common, dimensions: ['page'] }),
+      querySearchAnalytics({ ...common, dimensions: ['query', 'page'] }),
+      querySearchAnalytics({ ...common, dimensions: ['country'] }),
+      querySearchAnalytics({ ...common, dimensions: ['device'] }),
+      querySearchAnalytics({ ...common, dimensions: ['searchAppearance'] }),
+    ]);
 
   const dailyRows = daily.map((row) => ({
     date: row.keys[0],
@@ -101,16 +108,35 @@ async function main() {
   mkdirSync(outDir, { recursive: true });
   writeFileSync(
     path.join(outDir, 'daily.csv'),
-    toCsv(dailyRows, Object.keys(dailyRows[0] ?? { date: '' }))
+    toSafeCsv(dailyRows, Object.keys(dailyRows[0] ?? { date: '' }))
   );
   writeFileSync(
     path.join(outDir, 'queries.csv'),
-    toCsv(queryRows, Object.keys(queryRows[0] ?? { query: '' }))
+    toSafeCsv(queryRows, Object.keys(queryRows[0] ?? { query: '' }))
   );
   writeFileSync(
     path.join(outDir, 'pages.csv'),
-    toCsv(pageRows, Object.keys(pageRows[0] ?? { page: '' }))
+    toSafeCsv(pageRows, Object.keys(pageRows[0] ?? { page: '' }))
   );
+  for (const [file, input, keys] of [
+    ['query-pages.csv', queryPages, ['query', 'page']],
+    ['countries.csv', countries, ['country']],
+    ['devices.csv', devices, ['device']],
+    ['search-appearances.csv', appearances, ['searchAppearance']],
+  ]) {
+    const rows = input.map((row) => ({
+      ...Object.fromEntries(keys.map((key, index) => [key, row.keys[index]])),
+      clicks: row.clicks,
+      impressions: row.impressions,
+      ctr: percent(row.ctr),
+      position: round(row.position),
+    }));
+    writeFileSync(
+      path.join(outDir, file),
+      toSafeCsv(rows, [...keys, 'clicks', 'impressions', 'ctr', 'position'])
+    );
+  }
+  const querySegments = analyzeDirectory(outDir);
 
   const total = (rows, key) => rows.reduce((sum, row) => sum + row[key], 0);
   const summary = {
@@ -123,7 +149,21 @@ async function main() {
       daily: dailyRows.length,
       queries: queryRows.length,
       pages: pageRows.length,
+      queryPages: queryPages.length,
+      countries: countries.length,
+      devices: devices.length,
+      appearances: appearances.length,
     },
+    querySegments,
+    limitations: [
+      'Query and page totals are independent dimensions; only query-pages.csv pairs them.',
+      'Search Console may omit anonymized queries; unreported query metrics are not a search-intent segment.',
+      ...(queryPages.length === 25000
+        ? [
+            'Query-page rows reached the 25,000-row API limit; this export may be incomplete.',
+          ]
+        : []),
+    ],
     // Reported separately on purpose: Search Console's own tables disagree.
     totals: {
       daily: {
